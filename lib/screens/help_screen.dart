@@ -25,6 +25,7 @@ class HelpScreen extends StatelessWidget {
             padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
             child: Text(
               textAlign: TextAlign.center,
+              //edit this string to change the instructions (I'm guessing this is bound to change)
               'Welcome! The purpose of this app is to integrate an AI model that is meant to '
               'determine whether or not the patient has autism or not.  To do that, we need you to'
               'fill out some questionaires nad take a few videos of your child'
@@ -42,3 +43,4 @@ class HelpScreen extends StatelessWidget {
     );
   }
 }
+//EOF help_screen.dart

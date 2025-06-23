@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 
+//Stateful Widget that displays a series of video recording sections that the user must complete
+// The user records data for one section, moves on to the next section, and etc
 class GuidedVideoRecording extends StatefulWidget {
+  //Takes in the camera from main and the instructions are from home_screen
   final CameraDescription camera;
   final List<String> instructions;
   const GuidedVideoRecording({
@@ -11,15 +14,16 @@ class GuidedVideoRecording extends StatefulWidget {
   });
 
   @override
-  State<GuidedVideoRecording> createState() => GuidedRecorderState();
+  State<GuidedVideoRecording> createState() => _GuidedRecorderState();
 }
 
-class GuidedRecorderState extends State<GuidedVideoRecording> {
+class _GuidedRecorderState extends State<GuidedVideoRecording> {
   int currentStep = 0;
   late CameraController controller;
   bool isRecording = false;
   List<XFile> recordedVideos = [];
 
+  //initlize the camera controller
   @override
   void initState() {
     super.initState();
@@ -30,12 +34,14 @@ class GuidedRecorderState extends State<GuidedVideoRecording> {
     });
   }
 
+  //deactivates the recording
   @override
   void dispose() {
     controller.dispose();
     super.dispose();
   }
 
+  //starts recording
   Future<void> _startRecording() async {
     if (!controller.value.isRecordingVideo) {
       await controller.startVideoRecording();
@@ -43,6 +49,7 @@ class GuidedRecorderState extends State<GuidedVideoRecording> {
     }
   }
 
+  //stops recording, moves onto next section automatically
   Future<void> _stopRecording() async {
     if (controller.value.isRecordingVideo) {
       final videoFile = await controller.stopVideoRecording();
@@ -61,7 +68,7 @@ class GuidedRecorderState extends State<GuidedVideoRecording> {
           context: context,
           builder: (_) => AlertDialog(
             title: const Text('All Done'),
-            content: const Text('You have completed all steps!'),
+            content: const Text('Thank you for completing all of the steps! Your responses have been recorded'),
             actions: [
               TextButton(
                 onPressed: () =>
@@ -102,6 +109,7 @@ class GuidedRecorderState extends State<GuidedVideoRecording> {
               style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ),
+          //Displays instructions, these are different across different surveys
           Padding(
             padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
             child: Text(
@@ -118,6 +126,7 @@ class GuidedRecorderState extends State<GuidedVideoRecording> {
           ),
           const SizedBox(height: 12),
 
+          //starts/stops the recording button
           ElevatedButton(
             onPressed: isRecording ? _stopRecording : _startRecording,
             style: ElevatedButton.styleFrom(
@@ -138,3 +147,4 @@ class GuidedRecorderState extends State<GuidedVideoRecording> {
     );
   }
 }
+//EOF video_recording_section.dart

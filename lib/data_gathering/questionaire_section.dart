@@ -3,6 +3,9 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+//Stateful Widget that displays a series of video recording sections that the user must complete
+// The user records data for one section, moves on to the next section, and etc
+// after the user completes this section, they move unto the video_recording_section
 class GuidedQuestionaire extends StatefulWidget {
   final List<String> urls;
   final CameraDescription camera;
@@ -54,3 +57,4 @@ class _GuidedQuestionaireState extends State<GuidedQuestionaire> {
     );
   }
 }
+//EOF questionaire_section.dart

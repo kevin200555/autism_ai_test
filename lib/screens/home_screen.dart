@@ -8,13 +8,13 @@ class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key, required this.camera});
   @override
   Widget build(BuildContext context) {
-    //Use this list to display different instructions to the user
+    //Use this list to display different instructions to the user, these are used in the video_recording_section
     var videoInstructions = [
       'Take a video of yourself seeing how many lines of text could this widget support before it starts to look a bit too weird.',
       '1. Read this line of instruction out loud\n 2. Jump up and down\n3. Wave to the camera\n4. Clap your hands together',
       'Scale of the Dragon\nTwin Metours\nRecoil',
     ];
-    //Change this list with survey monkey urls to display different surveys
+    //Change this list with survey monkey urls to display different web surveys
     var surveyURLs = ['https://www.surveymonkey.com/r/LT6DG35'];
 
     return Scaffold(
@@ -33,9 +33,10 @@ class HomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            //The Start button, starts the test
             SizedBox(
-              width: 200, // Set desired width
-              height: 200, // Set desired height
+              width: 200, 
+              height: 200, 
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(
@@ -64,6 +65,7 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
+      //Displays a help menu 
       floatingActionButton: FloatingActionButton.large(
         onPressed: () {
           Navigator.push(
@@ -78,3 +80,4 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+//EOF home_screen.dart
