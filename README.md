@@ -1,16 +1,5 @@
 # autism_ai_test
+# About
+A flutter project whose purpose is to integrate an AI model that is training to detect autism.  The AI model takes data from videos and questionaires and based on that data, it can detect how whether or not someone has autism.  This program collects that data.  It takes videos that the user records  and gets questionaires through integrated surveys on the app.
 
-A new Flutter project.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
