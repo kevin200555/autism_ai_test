@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
+import 'package:autism_ai_test/screens/video_player_screen.dart';
 
 //Stateful Widget that displays a series of video recording sections that the user must complete
 // The user records data for one section, moves on to the next section, and etc
@@ -62,7 +63,7 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(SnackBar(content: Text('Video Saved!')));
-
+      /*
       if (currentStep < widget.instructions.length - 1) {
         setState(() => currentStep++);
       } else {
@@ -83,6 +84,17 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
           ),
         );
       }
+      */
+    }
+  }
+
+  nextVideo() {
+    if (currentStep < widget.instructions.length - 1) {
+      setState(() {
+        currentStep++;
+      });
+    } else {
+      Navigator.of(context).popUntil((route) => route.isFirst);
     }
   }
 
@@ -159,7 +171,7 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
             child: isRecording
                 ? Icon(
                     Icons.motion_photos_pause_outlined,
-                    size: 96,
+                    size: 48,
                     color: Colors.white,
                   )
                 : Icon(Icons.not_started, size: 96, color: Colors.white),
@@ -172,28 +184,48 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              FloatingActionButton(
-                onPressed: () {
-                  deleteVideo(recordedVideos[currentStep].path);
-                },
-                backgroundColor: Colors.red,
-                foregroundColor: Colors.white,
-                child: const Icon(Icons.delete),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  FloatingActionButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => VideoPlayerScreen(
+                            videoPath: recordedVideos[currentStep].path,
+                          ),
+                        ),
+                      );
+                    },
+                    backgroundColor: const Color.fromARGB(255, 95, 230, 64),
+                    foregroundColor: Colors.white,
+                    child: const Icon(Icons.remove_red_eye),
+                  ),
+                  SizedBox(height: 12),
+                  FloatingActionButton(
+                    onPressed: () {
+                      deleteVideo(recordedVideos[currentStep].path);
+                    },
+                    backgroundColor: Colors.red,
+                    foregroundColor: Colors.white,
+                    child: const Icon(Icons.delete),
+                  ),
+                ],
               ),
               FloatingActionButton(
-                onPressed: () {
-                  // Your preview logic here
-                },
-                backgroundColor: const Color.fromARGB(255, 95, 230, 64),
+                onPressed: nextVideo,
+                backgroundColor: const Color.fromARGB(255, 1, 51, 93),
                 foregroundColor: Colors.white,
-                child: const Icon(Icons.remove_red_eye),
+                child: const Icon(Icons.navigate_next),
               ),
             ],
           ),
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
