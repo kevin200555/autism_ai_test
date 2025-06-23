@@ -61,7 +61,7 @@ class GuidedRecorderState extends State<GuidedVideoRecording> {
           context: context,
           builder: (_) => AlertDialog(
             title: const Text('All Done'),
-            content: const Text('You have completed all recording steps!'),
+            content: const Text('You have completed all steps!'),
             actions: [
               TextButton(
                 onPressed: () =>
@@ -84,7 +84,7 @@ class GuidedRecorderState extends State<GuidedVideoRecording> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Step ${currentStep + 1} of ${widget.instructions.length}',
+          'Video ${currentStep + 1} of ${widget.instructions.length}',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
@@ -98,7 +98,7 @@ class GuidedRecorderState extends State<GuidedVideoRecording> {
             padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
             child: Text(
               textAlign: TextAlign.center,
-              "Instructions:",
+              'Instructions:',
               style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ),

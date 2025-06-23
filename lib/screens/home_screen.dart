@@ -9,15 +9,13 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //Use this list to display different instructions to the user
-    var givenInstructionsToUser = [
-    'Take a video of yourself seeing how many lines of text could this widget support before it starts to look a bit too weird.',
-    '1. Read this line of instruction out loud\n 2. Jump up and down\n3. Wave to the camera\n4. Clap your hands together',
-    'Scale of the Dragon\nTwin Metours\nRecoil',
+    var videoInstructions = [
+      'Take a video of yourself seeing how many lines of text could this widget support before it starts to look a bit too weird.',
+      '1. Read this line of instruction out loud\n 2. Jump up and down\n3. Wave to the camera\n4. Clap your hands together',
+      'Scale of the Dragon\nTwin Metours\nRecoil',
     ];
     //Change this list with survey monkey urls to display different surveys
-    var surveyURLs = [
-      'https://www.surveymonkey.com/r/LT6DG35'
-    ];
+    var surveyURLs = ['https://www.surveymonkey.com/r/LT6DG35'];
 
     return Scaffold(
       appBar: AppBar(
@@ -43,7 +41,8 @@ class HomeScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => GuidedQuestionaire(urls: surveyURLs)
+                      builder: (context) =>
+                          GuidedQuestionaire(urls: surveyURLs, camera: camera, instructions: videoInstructions,),
                     ),
                   );
                 },
@@ -66,14 +65,12 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton.large(
-        onPressed: ()  {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => HelpScreen(),
-                    ),
-                  );
-                },
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => HelpScreen()),
+          );
+        },
         backgroundColor: const Color.fromARGB(255, 1, 51, 93),
         foregroundColor: Colors.white,
         child: const Icon(Icons.question_mark),
