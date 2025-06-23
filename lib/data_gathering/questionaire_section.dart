@@ -53,7 +53,7 @@ class _GuidedQuestionaireState extends State<GuidedQuestionaire> {
         onPressed: nextSurvey,
         backgroundColor: const Color.fromARGB(255, 1, 51, 93),
         foregroundColor: Colors.white,
-        child: const Icon(Icons.navigate_next),
+        child: const Icon(Icons.arrow_forward_sharp),
       ),
     );
   }

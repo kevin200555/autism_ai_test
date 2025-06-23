@@ -59,3 +59,4 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
     );
   }
 }
+//EOF video_player_screen.dart

@@ -118,7 +118,7 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
             child: Text(
               textAlign: TextAlign.center,
               'Instructions:',
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.black),
             ),
           ),
           //Displays instructions, these are different across different surveys
@@ -127,7 +127,7 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
             child: Text(
               textAlign: TextAlign.center,
               widget.instructions[currentStep],
-              style: const TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 18, color: Colors.black),
             ),
           ),
           const SizedBox(height: 12),
@@ -197,7 +197,7 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
                 onPressed: nextVideo,
                 backgroundColor: const Color.fromARGB(255, 1, 51, 93),
                 foregroundColor: Colors.white,
-                child: const Icon(Icons.navigate_next),
+                child: const Icon(Icons.arrow_forward_sharp),
               ),
             ],
           ),

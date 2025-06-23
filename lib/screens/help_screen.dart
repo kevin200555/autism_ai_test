@@ -25,11 +25,11 @@ class HelpScreen extends StatelessWidget {
           Padding(
             padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
             child: Text(
-              textAlign: TextAlign.center,
+              textAlign: TextAlign.left,
               //edit this string to change the instructions (I'm guessing this is bound to change)
               'Welcome! The purpose of this app is to integrate an AI model that is meant to '
               'determine whether or not the patient has autism or not.  To do that, we need you to'
-              'fill out some questionaires nad take a few videos of your child'
+              'fill out some questionaires and take a few videos of your child'
               'Because of this, we will need access to your camera and audio'
               'After that, your results will be uploaded to the AI model that will determine the likeihood'
               'that your child has autism.  To begin, go back to the home screen and click the start button.'

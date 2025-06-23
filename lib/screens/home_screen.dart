@@ -74,7 +74,7 @@ class HomeScreen extends StatelessWidget {
             MaterialPageRoute(builder: (context) => HelpScreen()),
           );
         },
-        backgroundColor: const Color.fromARGB(255, 49, 162, 255),
+        backgroundColor: const Color.fromARGB(255, 95, 230, 64),
         foregroundColor: Colors.white,
         child: const Icon(Icons.question_mark),
       ),
