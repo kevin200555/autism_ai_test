@@ -1,26 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 
-class VideoRecorder extends StatefulWidget {
+class GuidedVideoRecording extends StatefulWidget {
   final CameraDescription camera;
-  const VideoRecorder({Key? key, required this.camera}) : super(key: key);
+  final List<String> instructions;
+  const GuidedVideoRecording({
+    super.key,
+    required this.camera,
+    required this.instructions,
+  });
 
   @override
-  _VideoRecorderState createState() => _VideoRecorderState();
+  State<GuidedVideoRecording> createState() => GuidedRecorderState();
 }
 
-class _VideoRecorderState extends State<VideoRecorder> {
-  late CameraController _controller;
-  bool _isRecording = false;
+class GuidedRecorderState extends State<GuidedVideoRecording> {
+  int currentStep = 0;
+  late CameraController controller;
+  bool isRecording = false;
+  List<XFile> recordedVideos = [];
 
   @override
   void initState() {
     super.initState();
-    _controller = CameraController(
-      widget.camera,
-      ResolutionPreset.medium,
-    );
-    _controller.initialize().then((_) {
+    controller = CameraController(widget.camera, ResolutionPreset.medium);
+    controller.initialize().then((_) {
       if (!mounted) return;
       setState(() {});
     });
@@ -28,47 +32,114 @@ class _VideoRecorderState extends State<VideoRecorder> {
 
   @override
   void dispose() {
-    _controller.dispose();
+    controller.dispose();
     super.dispose();
   }
 
   Future<void> _startRecording() async {
-    if (!_controller.value.isRecordingVideo) {
-      await _controller.startVideoRecording();
-      setState(() => _isRecording = true);
+    if (!controller.value.isRecordingVideo) {
+      await controller.startVideoRecording();
+      setState(() => isRecording = true);
     }
   }
 
   Future<void> _stopRecording() async {
-    if (_controller.value.isRecordingVideo) {
-      final XFile videoFile = await _controller.stopVideoRecording();
-      setState(() => _isRecording = false);
-      print('Video saved to ${videoFile.path}');
+    if (controller.value.isRecordingVideo) {
+      final videoFile = await controller.stopVideoRecording();
+      setState(() {
+        isRecording = false;
+        recordedVideos.add(videoFile);
+      });
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Video Saved!')));
+
+      if (currentStep < widget.instructions.length - 1) {
+        setState(() => currentStep++);
+      } else {
+        showDialog(
+          context: context,
+          builder: (_) => AlertDialog(
+            title: const Text('All Done'),
+            content: const Text('You have completed all recording steps!'),
+            actions: [
+              TextButton(
+                onPressed: () =>
+                    Navigator.of(context).popUntil((route) => route.isFirst),
+                child: const Text('OK'),
+              ),
+            ],
+          ),
+        );
+      }
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    if (!_controller.value.isInitialized) {
-      return const Center(child: CircularProgressIndicator());
+    if (!controller.value.isInitialized) {
+      return Scaffold(body: Center(child: CircularProgressIndicator()));
     }
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Video Recorder')),
+      appBar: AppBar(
+        title: Text(
+          'Step ${currentStep + 1} of ${widget.instructions.length}',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
+        iconTheme: IconThemeData(color: Colors.white),
+        backgroundColor: const Color.fromARGB(255, 1, 51, 93),
+      ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          AspectRatio(
-            aspectRatio: _controller.value.aspectRatio,
-            child: CameraPreview(_controller),
+          Padding(
+            padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+            child: Text(
+              textAlign: TextAlign.center,
+              "Instructions:",
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(
-                onPressed: _isRecording ? _stopRecording : _startRecording,
-                child: Text(_isRecording ? 'Stop Recording' : 'Start Recording'),
-              ),
-            ],
+          Padding(
+            padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+            child: Text(
+              textAlign: TextAlign.center,
+              widget.instructions[currentStep],
+              style: const TextStyle(fontSize: 20),
+            ),
+          ),
+          const SizedBox(height: 12),
+          SizedBox(
+            width: double.infinity,
+            height: 500,
+            child: Expanded(child: CameraPreview(controller)),
+          ),
+          const SizedBox(height: 12),
+
+          ElevatedButton(
+            onPressed: isRecording ? _stopRecording : _startRecording,
+            style: ElevatedButton.styleFrom(
+              shape: const CircleBorder(),
+              padding: const EdgeInsets.all(1), // space inside the button
+              backgroundColor: const Color.fromARGB(255, 176, 220, 255),
+            ),
+            child: isRecording
+                ? Icon(
+                    Icons.motion_photos_pause_outlined,
+                    size: 96,
+                    color: Colors.white,
+                  )
+                : Icon(Icons.not_started, size: 96, color: Colors.white),
+            /*
+                child: Text(isRecording ? 'Stop' : 'Start',style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                */
           ),
         ],
       ),
