@@ -63,28 +63,6 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(SnackBar(content: Text('Video Saved!')));
-      /*
-      if (currentStep < widget.instructions.length - 1) {
-        setState(() => currentStep++);
-      } else {
-        showDialog(
-          context: context,
-          builder: (_) => AlertDialog(
-            title: const Text('All Done'),
-            content: const Text(
-              'Thank you for completing all of the steps! Your responses have been recorded',
-            ),
-            actions: [
-              TextButton(
-                onPressed: () =>
-                    Navigator.of(context).popUntil((route) => route.isFirst),
-                child: const Text('OK'),
-              ),
-            ],
-          ),
-        );
-      }
-      */
     }
   }
 
