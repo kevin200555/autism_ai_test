@@ -1,5 +1,5 @@
+import 'package:autism_ai_test/data_gathering/questionaire_section.dart';
 import 'package:autism_ai_test/screens/help_screen.dart';
-import 'package:autism_ai_test/data_gathering/video_recording_section.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 
@@ -8,11 +8,15 @@ class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key, required this.camera});
   @override
   Widget build(BuildContext context) {
-    //Use this variable to display different instructions to the user
+    //Use this list to display different instructions to the user
     var givenInstructionsToUser = [
     'Take a video of yourself seeing how many lines of text could this widget support before it starts to look a bit too weird.',
     '1. Read this line of instruction out loud\n 2. Jump up and down\n3. Wave to the camera\n4. Clap your hands together',
     'Scale of the Dragon\nTwin Metours\nRecoil',
+    ];
+    //Change this list with survey monkey urls to display different surveys
+    var surveyURLs = [
+      'https://www.surveymonkey.com/r/LT6DG35'
     ];
 
     return Scaffold(
@@ -24,7 +28,7 @@ class HomeScreen extends StatelessWidget {
         centerTitle: true,
         backgroundColor: const Color.fromARGB(255, 1, 51, 93),
       ),
-      body: Container(
+      body: SizedBox(
         width: double.infinity,
         height: double.infinity,
         child: Column(
@@ -39,10 +43,7 @@ class HomeScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => GuidedVideoRecording(
-                        camera: camera,
-                        instructions: givenInstructionsToUser,
-                      ),
+                      builder: (context) => GuidedQuestionaire(urls: surveyURLs)
                     ),
                   );
                 },
