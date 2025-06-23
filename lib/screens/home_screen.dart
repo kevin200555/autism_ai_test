@@ -1,5 +1,5 @@
-import 'package:autism_ai_test/help_screen.dart';
-import 'package:autism_ai_test/video_recorder.dart';
+import 'package:autism_ai_test/screens/help_screen.dart';
+import 'package:autism_ai_test/data_gathering/video_recording_section.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 

@@ -1,7 +1,7 @@
-import 'package:autism_ai_test/home_screen.dart';
+import 'package:autism_ai_test/screens/home_screen.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'video_recorder.dart';
+import 'data_gathering/video_recording_section.dart';
 
 late List<CameraDescription> cameras;
 Future<void> main() async {
