@@ -1,3 +1,4 @@
+import 'package:autism_ai_test/help_screen.dart';
 import 'package:autism_ai_test/video_recorder.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
@@ -64,7 +65,14 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton.large(
-        onPressed: () {},
+        onPressed: ()  {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => HelpScreen(),
+                    ),
+                  );
+                },
         backgroundColor: const Color.fromARGB(255, 1, 51, 93),
         foregroundColor: Colors.white,
         child: const Icon(Icons.question_mark),

@@ -132,14 +132,6 @@ class GuidedRecorderState extends State<GuidedVideoRecording> {
                     color: Colors.white,
                   )
                 : Icon(Icons.not_started, size: 96, color: Colors.white),
-            /*
-                child: Text(isRecording ? 'Stop' : 'Start',style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-                */
           ),
         ],
       ),
