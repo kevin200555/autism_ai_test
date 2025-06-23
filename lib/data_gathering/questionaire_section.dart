@@ -38,6 +38,7 @@ class _GuidedQuestionaireState extends State<GuidedQuestionaire> {
       ..setJavaScriptMode(JavaScriptMode.unrestricted);
 
     return Scaffold(
+      backgroundColor: Colors.blue[100],
       appBar: AppBar(
         title: Text(
           'Step ${currentSurvey + 1} of ${widget.urls.length}',

@@ -18,6 +18,7 @@ class HomeScreen extends StatelessWidget {
     var surveyURLs = ['https://www.surveymonkey.com/r/LT6DG35'];
 
     return Scaffold(
+      backgroundColor: Colors.blue[100],
       appBar: AppBar(
         title: Text(
           'The Autism Test',
@@ -73,7 +74,7 @@ class HomeScreen extends StatelessWidget {
             MaterialPageRoute(builder: (context) => HelpScreen()),
           );
         },
-        backgroundColor: const Color.fromARGB(255, 1, 51, 93),
+        backgroundColor: const Color.fromARGB(255, 49, 162, 255),
         foregroundColor: Colors.white,
         child: const Icon(Icons.question_mark),
       ),

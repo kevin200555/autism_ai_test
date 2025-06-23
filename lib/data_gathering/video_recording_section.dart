@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 
@@ -68,7 +70,9 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
           context: context,
           builder: (_) => AlertDialog(
             title: const Text('All Done'),
-            content: const Text('Thank you for completing all of the steps! Your responses have been recorded'),
+            content: const Text(
+              'Thank you for completing all of the steps! Your responses have been recorded',
+            ),
             actions: [
               TextButton(
                 onPressed: () =>
@@ -82,6 +86,23 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
     }
   }
 
+  Future<void> deleteVideo(String filePath) async {
+    final file = File(filePath);
+
+    if (await file.exists()) {
+      await file.delete();
+      showDialog(
+        context: context,
+        builder: (_) => AlertDialog(title: const Text('Video Deleted')),
+      );
+    } else {
+      showDialog(
+        context: context,
+        builder: (_) => AlertDialog(title: const Text('No video to delete!')),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     if (!controller.value.isInitialized) {
@@ -89,6 +110,7 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
     }
 
     return Scaffold(
+      backgroundColor: Colors.blue[100],
       appBar: AppBar(
         title: Text(
           'Video ${currentStep + 1} of ${widget.instructions.length}',
@@ -132,7 +154,7 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
             style: ElevatedButton.styleFrom(
               shape: const CircleBorder(),
               padding: const EdgeInsets.all(1), // space inside the button
-              backgroundColor: const Color.fromARGB(255, 176, 220, 255),
+              backgroundColor: const Color.fromARGB(255, 1, 51, 93),
             ),
             child: isRecording
                 ? Icon(
@@ -144,6 +166,34 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
           ),
         ],
       ),
+      floatingActionButton: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              FloatingActionButton(
+                onPressed: () {
+                  deleteVideo(recordedVideos[currentStep].path);
+                },
+                backgroundColor: Colors.red,
+                foregroundColor: Colors.white,
+                child: const Icon(Icons.delete),
+              ),
+              FloatingActionButton(
+                onPressed: () {
+                  // Your preview logic here
+                },
+                backgroundColor: const Color.fromARGB(255, 95, 230, 64),
+                foregroundColor: Colors.white,
+                child: const Icon(Icons.remove_red_eye),
+              ),
+            ],
+          ),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
