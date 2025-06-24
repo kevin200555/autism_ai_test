@@ -14,7 +14,7 @@ class HelpScreen extends StatelessWidget {
         ),
         centerTitle: true,
         iconTheme: IconThemeData(color: ColorTheme.textColor),
-        backgroundColor: ColorTheme.primary,
+        backgroundColor: ColorTheme.accent,
       ),
       body: Column(
          children: [

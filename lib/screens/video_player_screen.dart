@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:autism_ai_test/themes/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
@@ -17,11 +18,12 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.file(File(widget.videoPath)) // or .network()
-      ..initialize().then((_) {
-        setState(() {});
-        _controller.play(); // auto-play (optional)
-      });
+    _controller =
+        VideoPlayerController.file(File(widget.videoPath)) // or .network()
+          ..initialize().then((_) {
+            setState(() {});
+            _controller.play(); // auto-play (optional)
+          });
   }
 
   @override
@@ -30,12 +32,16 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
     super.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[100],
-      appBar: AppBar(title: const Text('Video Playback')),
+      backgroundColor: ColorTheme.background,
+      appBar: AppBar(
+        title: const Text('Video Playback'),
+        centerTitle: true,
+        iconTheme: IconThemeData(color: ColorTheme.textColor),
+        backgroundColor: ColorTheme.accent,
+      ),
       body: Center(
         child: _controller.value.isInitialized
             ? AspectRatio(

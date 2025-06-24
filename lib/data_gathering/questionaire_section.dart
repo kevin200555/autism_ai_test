@@ -53,23 +53,24 @@ class _GuidedQuestionaireState extends State<GuidedQuestionaire> {
       appBar: AppBar(
         title: Text(
           'Step ${currentSurvey + 1} of ${widget.urls.length}',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          style: TextStyle(color: ColorTheme.textColor, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
-        iconTheme: IconThemeData(color: Colors.white),
-        backgroundColor: const Color.fromARGB(255, 1, 51, 93),
-        automaticallyImplyLeading: false, // Prevents the default back button
+        iconTheme: IconThemeData(color: ColorTheme.textColor),
+        backgroundColor: ColorTheme.accent,
+        // This part overrides the default code of the appBar back button
+        // This would normally just go back to the previous widget (which is the start secion)
+        automaticallyImplyLeading: false, 
         leading: IconButton(
-          // Your custom leading widget
-          icon: Icon(Icons.arrow_back), // The desired icon
+          icon: Icon(Icons.arrow_back), 
           onPressed: previousSurvey,
         ),
       ),
       body: WebViewWidget(controller: controller),
       floatingActionButton: FloatingActionButton(
         onPressed: nextSurvey,
-        backgroundColor: const Color.fromARGB(255, 1, 51, 93),
-        foregroundColor: Colors.white,
+        backgroundColor: ColorTheme.primary,
+        foregroundColor: ColorTheme.textColor,
         child: const Icon(Icons.arrow_forward_sharp),
       ),
     );

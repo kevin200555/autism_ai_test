@@ -68,6 +68,7 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
     }
   }
 
+  //goes to the next video
   nextVideo() async {
     if (currentStep < widget.instructions.length - 1) {
       setState(() {
@@ -84,6 +85,7 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
     }
   }
 
+  //goes back to previous video
   previousVideo() {
     if (currentStep > 0) {
       setState(() {
@@ -168,8 +170,10 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
         ),
         centerTitle: true,
         iconTheme: IconThemeData(color: ColorTheme.textColor),
-        backgroundColor: ColorTheme.primary,
-        automaticallyImplyLeading: false, // Prevents the default back button
+        backgroundColor: ColorTheme.accent,
+        // This part overrides the default code of the appBar back button
+        // This would normally just go back to the previous widget (which is the questionaire secion)
+        automaticallyImplyLeading: false,
         leading: IconButton(
           // Your custom leading widget
           icon: Icon(Icons.arrow_back), // The desired icon
