@@ -60,18 +60,25 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
         isRecording = false;
         recordedVideos.add(videoFile);
       });
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text('Video Saved!')));
+      showDialog(
+        context: context,
+        builder: (_) =>
+            AlertDialog(title: const Text('Video Saved!')),
+      );
     }
   }
 
-  nextVideo() {
+  nextVideo() async {
     if (currentStep < widget.instructions.length - 1) {
       setState(() {
         currentStep++;
       });
     } else {
+      await showDialog(
+        context: context,
+        builder: (_) =>
+            AlertDialog(title: const Text('All Steps Completed! Thank You!')),
+      );
       Navigator.of(context).popUntil((route) => route.isFirst);
     }
   }
