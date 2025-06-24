@@ -61,10 +61,10 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
         isRecording = false;
         recordedVideos.add(videoFile);
       });
+      if (!mounted) return;
       showDialog(
         context: context,
-        builder: (_) =>
-            AlertDialog(title: const Text('Video Saved!')),
+        builder: (_) => const AlertDialog(title: Text('Video Saved!')),
       );
     }
   }
@@ -80,6 +80,7 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
         builder: (_) =>
             AlertDialog(title: const Text('All Steps Completed! Thank You!')),
       );
+      if(!mounted) return;
       Navigator.of(context).popUntil((route) => route.isFirst);
     }
   }
@@ -108,29 +109,32 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
 
     if (await file.exists()) {
       await file.delete();
+      if (!mounted) return;
       showDialog(
         context: context,
-        builder: (_) => AlertDialog(title: const Text('Video Deleted')),
+        builder: (_) => const AlertDialog(title: Text('Video deleted!')),
       );
     } else {
+      if (!mounted) return;
       showDialog(
         context: context,
-        builder: (_) => AlertDialog(title: const Text('No video to delete!')),
+        builder: (_) => const AlertDialog(title: Text('No video to delete!')),
       );
     }
   }
 
-  Future<void> ViewVideo(String filePath) async {
+  Future<void> viewVideo(String filePath) async {
     if (currentStep >= recordedVideos.length) {
-      showDialog(
+      if (!mounted) return;
+      await showDialog(
         context: context,
-        builder: (_) =>
-            AlertDialog(title: const Text('No video recorded yet!')),
+        builder: (_) => const AlertDialog(title: Text('No video to record!')),
       );
       return;
     }
     final file = File(filePath);
     if (await file.exists()) {
+      if(!mounted) return;
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -139,9 +143,10 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
         ),
       );
     } else {
+      if (!mounted) return;
       showDialog(
         context: context,
-        builder: (_) => AlertDialog(title: const Text('No video to view!')),
+        builder: (_) => const AlertDialog(title: Text('No video to view!')),
       );
     }
   }
@@ -157,7 +162,10 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
       appBar: AppBar(
         title: Text(
           'Video ${currentStep + 1} of ${widget.instructions.length}',
-          style: TextStyle(color: ColorTheme.textColor, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            color: ColorTheme.textColor,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         centerTitle: true,
         iconTheme: IconThemeData(color: ColorTheme.textColor),
@@ -190,7 +198,10 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
             child: Text(
               textAlign: TextAlign.center,
               widget.instructions[currentStep],
-              style: TextStyle(fontSize: 18, color: ColorTheme.alternateTextColor),
+              style: TextStyle(
+                fontSize: 18,
+                color: ColorTheme.alternateTextColor,
+              ),
             ),
           ),
           const SizedBox(height: 12),
@@ -203,7 +214,9 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
 
           //starts/stops the recording button
           ElevatedButton(
-            onPressed: !controller.value.isInitialized ? null : (isRecording ? _stopRecording : _startRecording),
+            onPressed: !controller.value.isInitialized
+                ? null
+                : (isRecording ? _stopRecording : _startRecording),
             style: ElevatedButton.styleFrom(
               shape: const CircleBorder(),
               padding: const EdgeInsets.all(1), // space inside the button
@@ -215,7 +228,11 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
                     size: 48,
                     color: ColorTheme.textColor,
                   )
-                : Icon(Icons.not_started, size: 96, color: ColorTheme.textColor),
+                : Icon(
+                    Icons.not_started,
+                    size: 96,
+                    color: ColorTheme.textColor,
+                  ),
           ),
         ],
       ),
@@ -232,7 +249,7 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
                 children: [
                   FloatingActionButton(
                     onPressed: () {
-                      ViewVideo(recordedVideos[currentStep].path);
+                      viewVideo(recordedVideos[currentStep].path);
                     },
                     backgroundColor: ColorTheme.green,
                     foregroundColor: ColorTheme.textColor,
