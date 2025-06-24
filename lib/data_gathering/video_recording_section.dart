@@ -76,7 +76,26 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
     }
   }
 
+  previousVideo() {
+    if (currentStep > 0) {
+      setState(() {
+        currentStep--;
+      });
+    } else {
+      Navigator.of(context).pop();
+    }
+  }
+
   Future<void> deleteVideo(String filePath) async {
+    if (currentStep >= recordedVideos.length) {
+      showDialog(
+        context: context,
+        builder: (_) =>
+            AlertDialog(title: const Text('No video recorded yet!')),
+      );
+      return;
+    }
+
     final file = File(filePath);
 
     if (await file.exists()) {
@@ -89,6 +108,32 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
       showDialog(
         context: context,
         builder: (_) => AlertDialog(title: const Text('No video to delete!')),
+      );
+    }
+  }
+
+  Future<void> ViewVideo(String filePath) async {
+    if (currentStep >= recordedVideos.length) {
+      showDialog(
+        context: context,
+        builder: (_) =>
+            AlertDialog(title: const Text('No video recorded yet!')),
+      );
+      return;
+    }
+    final file = File(filePath);
+    if (await file.exists()) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) =>
+              VideoPlayerScreen(videoPath: recordedVideos[currentStep].path),
+        ),
+      );
+    } else {
+      showDialog(
+        context: context,
+        builder: (_) => AlertDialog(title: const Text('No video to view!')),
       );
     }
   }
@@ -109,6 +154,12 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
         centerTitle: true,
         iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: const Color.fromARGB(255, 1, 51, 93),
+        automaticallyImplyLeading: false, // Prevents the default back button
+        leading: IconButton(
+          // Your custom leading widget
+          icon: Icon(Icons.arrow_back), // The desired icon
+          onPressed: previousVideo,
+        ),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -118,7 +169,11 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
             child: Text(
               textAlign: TextAlign.center,
               'Instructions:',
-              style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.black),
+              style: const TextStyle(
+                fontSize: 32,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
             ),
           ),
           //Displays instructions, these are different across different surveys
@@ -140,7 +195,7 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
 
           //starts/stops the recording button
           ElevatedButton(
-            onPressed: isRecording ? _stopRecording : _startRecording,
+            onPressed: !controller.value.isInitialized ? null : (isRecording ? _stopRecording : _startRecording),
             style: ElevatedButton.styleFrom(
               shape: const CircleBorder(),
               padding: const EdgeInsets.all(1), // space inside the button
@@ -169,14 +224,7 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
                 children: [
                   FloatingActionButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => VideoPlayerScreen(
-                            videoPath: recordedVideos[currentStep].path,
-                          ),
-                        ),
-                      );
+                      ViewVideo(recordedVideos[currentStep].path);
                     },
                     backgroundColor: const Color.fromARGB(255, 95, 230, 64),
                     foregroundColor: Colors.white,
