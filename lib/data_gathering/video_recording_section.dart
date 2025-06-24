@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:autism_ai_test/screens/video_player_screen.dart';
