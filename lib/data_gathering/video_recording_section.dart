@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:autism_ai_test/screens/video_player_screen.dart';
+import 'package:autism_ai_test/themes/colors.dart';
 
 //Stateful Widget that displays a series of video recording sections that the user must complete
 // The user records data for one section, moves on to the next section, and etc
@@ -152,15 +153,15 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
     }
 
     return Scaffold(
-      backgroundColor: Colors.blue[100],
+      backgroundColor: ColorTheme.background,
       appBar: AppBar(
         title: Text(
           'Video ${currentStep + 1} of ${widget.instructions.length}',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          style: TextStyle(color: ColorTheme.textColor, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
-        iconTheme: IconThemeData(color: Colors.white),
-        backgroundColor: const Color.fromARGB(255, 1, 51, 93),
+        iconTheme: IconThemeData(color: ColorTheme.textColor),
+        backgroundColor: ColorTheme.primary,
         automaticallyImplyLeading: false, // Prevents the default back button
         leading: IconButton(
           // Your custom leading widget
@@ -176,10 +177,10 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
             child: Text(
               textAlign: TextAlign.center,
               'Instructions:',
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
-                color: Colors.black,
+                color: ColorTheme.alternateTextColor,
               ),
             ),
           ),
@@ -189,7 +190,7 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
             child: Text(
               textAlign: TextAlign.center,
               widget.instructions[currentStep],
-              style: const TextStyle(fontSize: 18, color: Colors.black),
+              style: TextStyle(fontSize: 18, color: ColorTheme.alternateTextColor),
             ),
           ),
           const SizedBox(height: 12),
@@ -206,15 +207,15 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
             style: ElevatedButton.styleFrom(
               shape: const CircleBorder(),
               padding: const EdgeInsets.all(1), // space inside the button
-              backgroundColor: const Color.fromARGB(255, 1, 51, 93),
+              backgroundColor: ColorTheme.primary,
             ),
             child: isRecording
                 ? Icon(
                     Icons.motion_photos_pause_outlined,
                     size: 48,
-                    color: Colors.white,
+                    color: ColorTheme.textColor,
                   )
-                : Icon(Icons.not_started, size: 96, color: Colors.white),
+                : Icon(Icons.not_started, size: 96, color: ColorTheme.textColor),
           ),
         ],
       ),
@@ -233,8 +234,8 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
                     onPressed: () {
                       ViewVideo(recordedVideos[currentStep].path);
                     },
-                    backgroundColor: const Color.fromARGB(255, 95, 230, 64),
-                    foregroundColor: Colors.white,
+                    backgroundColor: ColorTheme.green,
+                    foregroundColor: ColorTheme.textColor,
                     child: const Icon(Icons.remove_red_eye),
                   ),
                   SizedBox(height: 12),
@@ -242,16 +243,16 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
                     onPressed: () {
                       deleteVideo(recordedVideos[currentStep].path);
                     },
-                    backgroundColor: Colors.red,
-                    foregroundColor: Colors.white,
+                    backgroundColor: ColorTheme.red,
+                    foregroundColor: ColorTheme.textColor,
                     child: const Icon(Icons.delete),
                   ),
                 ],
               ),
               FloatingActionButton(
                 onPressed: nextVideo,
-                backgroundColor: const Color.fromARGB(255, 1, 51, 93),
-                foregroundColor: Colors.white,
+                backgroundColor: ColorTheme.primary,
+                foregroundColor: ColorTheme.textColor,
                 child: const Icon(Icons.arrow_forward_sharp),
               ),
             ],

@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-
+import 'package:autism_ai_test/themes/colors.dart';
 //Just diaplays some information of the purpose of this app and how to use it to the user
 class HelpScreen extends StatelessWidget {
   const HelpScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[100],
+      backgroundColor: ColorTheme.background,
       appBar: AppBar(
         title: Text(
           'Help and Information',
-          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+          style: TextStyle(fontWeight: FontWeight.bold, color: ColorTheme.textColor),
         ),
         centerTitle: true,
-        iconTheme: IconThemeData(color: Colors.white),
-        backgroundColor: const Color.fromARGB(255, 1, 51, 93),
+        iconTheme: IconThemeData(color: ColorTheme.textColor),
+        backgroundColor: ColorTheme.primary,
       ),
       body: Column(
          children: [

@@ -2,7 +2,7 @@ import 'package:autism_ai_test/data_gathering/questionaire_section.dart';
 import 'package:autism_ai_test/screens/help_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
-
+import 'package:autism_ai_test/themes/colors.dart';
 class HomeScreen extends StatelessWidget {
   final CameraDescription camera;
   const HomeScreen({super.key, required this.camera});
@@ -14,19 +14,19 @@ class HomeScreen extends StatelessWidget {
       '1. Read this line of instruction out loud\n 2. Jump up and down\n3. Wave to the camera\n4. Clap your hands together',
       'Scale of the Dragon\nTwin Metours\nRecoil',
     ];
-    
+
     //Change this list with survey monkey urls to display different web surveys
     var surveyURLs = ['https://www.surveymonkey.com/r/LT6DG35'];
 
     return Scaffold(
-      backgroundColor: Colors.blue[100],
+      backgroundColor: ColorTheme.background,
       appBar: AppBar(
         title: Text(
           'The Autism Test',
-          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+          style: TextStyle(fontWeight: FontWeight.bold, color: ColorTheme.textColor),
         ),
         centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 1, 51, 93),
+        backgroundColor: ColorTheme.primary,
       ),
       body: SizedBox(
         width: double.infinity,
@@ -52,14 +52,14 @@ class HomeScreen extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   shape: const CircleBorder(),
                   padding: const EdgeInsets.all(20), // space inside the button
-                  backgroundColor: const Color.fromARGB(255, 1, 51, 93),
+                  backgroundColor: ColorTheme.primary,
                 ),
-                child: const Text(
+                child: Text(
                   'START',
                   style: TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: ColorTheme.textColor,
                   ),
                 ),
               ),
@@ -68,15 +68,15 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       //Displays a help menu 
-      floatingActionButton: FloatingActionButton.large(
+      floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => HelpScreen()),
           );
         },
-        backgroundColor: const Color.fromARGB(255, 95, 230, 64),
-        foregroundColor: Colors.white,
+        backgroundColor: ColorTheme.primary,
+        foregroundColor: ColorTheme.textColor,
         child: const Icon(Icons.question_mark),
       ),
     );
