@@ -52,7 +52,7 @@ class _GuidedQuestionaireState extends State<GuidedQuestionaire> {
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
         title: Text(
-          'Step ${currentSurvey + 1} of ${widget.urls.length}',
+          'Page ${currentSurvey + 1} of ${widget.urls.length}',
           style: TextStyle(color: ColorTheme.textColor, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
