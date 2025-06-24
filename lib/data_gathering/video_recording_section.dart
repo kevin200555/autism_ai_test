@@ -225,12 +225,12 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
             child: isRecording
                 ? Icon(
                     Icons.motion_photos_pause_outlined,
-                    size: 48,
+                    size: 72,
                     color: ColorTheme.textColor,
                   )
                 : Icon(
                     Icons.not_started,
-                    size: 96,
+                    size: 72,
                     color: ColorTheme.textColor,
                   ),
           ),
