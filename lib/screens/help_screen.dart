@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
-
+//Just diaplays some information of the purpose of this app and how to use it to the user
 class HelpScreen extends StatelessWidget {
   const HelpScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
