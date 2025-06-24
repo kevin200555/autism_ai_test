@@ -31,6 +31,16 @@ class _GuidedQuestionaireState extends State<GuidedQuestionaire> {
     }
   }
 
+    previousSurvey() {
+    if (currentSurvey > 0) {
+      setState(() {
+        currentSurvey--;
+      });
+    } else {
+      Navigator.of(context).pop();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final controller = WebViewController()
@@ -47,6 +57,12 @@ class _GuidedQuestionaireState extends State<GuidedQuestionaire> {
         centerTitle: true,
         iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: const Color.fromARGB(255, 1, 51, 93),
+        automaticallyImplyLeading: false, // Prevents the default back button
+        leading: IconButton(
+          // Your custom leading widget
+          icon: Icon(Icons.arrow_back), // The desired icon
+          onPressed: previousSurvey,
+        ),
       ),
       body: WebViewWidget(controller: controller),
       floatingActionButton: FloatingActionButton(

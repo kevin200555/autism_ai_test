@@ -10,13 +10,17 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     //Use this list to display different instructions to the user, these are used in the video_recording_section
     var videoInstructions = [
-      'Take a video of yourself seeing how many lines of text could this widget support before it starts to look a bit too weird.',
+      'I just want to see about how long I could make this one instruction until it starts to look a little werid'
+      'I think that it should be fine since there\'s no way one instruction could possibly be too long but I think'
+      'it is good to know the limits of this',
       '1. Read this line of instruction out loud\n 2. Jump up and down\n3. Wave to the camera\n4. Clap your hands together',
-      'Scale of the Dragon\nTwin Metours\nRecoil',
+      'Scale of the Dragon\nTwin Metours\nRecoil\nWORLD CUTTING SLASH',
     ];
 
     //Change this list with survey monkey urls to display different web surveys
-    var surveyURLs = ['https://www.surveymonkey.com/r/LT6DG35'];
+    var surveyURLs = ['https://www.surveymonkey.com/r/LT6DG35',
+    'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
+    'https://eecs.uci.edu/~liky4/'];
 
     return Scaffold(
       backgroundColor: ColorTheme.background,
