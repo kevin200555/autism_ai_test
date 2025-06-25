@@ -114,6 +114,8 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
     }
   }
 
+  //deletes Video, has to convert the recordedvideo from an XFILE to a File, This is why this code doesn't work on web applications
+  //since web applications can't use dart.io FIles
   Future<void> deleteVideo(int index) async {
     final filePath = recordedVideos[index].path;
     final file = File(filePath);
@@ -137,6 +139,7 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
     }
   }
 
+  //views video, 
   Future<void> viewVideo(XFile videoFile) async {
     if (!mounted) return;
     Navigator.push(
@@ -194,7 +197,7 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
               ),
             ),
           ),
-          //Displays instructions, these are different across different surveys
+          //Displays instructions, these are different across the vidoes
           Padding(
             padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
             child: Text(
@@ -214,7 +217,7 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
           ),
           const SizedBox(height: 12),
 
-          //starts/stops the recording button
+          // starts and stops the recording button
           ElevatedButton(
             onPressed: !controller.value.isInitialized
                 ? null

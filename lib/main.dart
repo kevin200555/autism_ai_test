@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:autism_ai_test/screens/home_screen.dart';
-import 'package:webview_flutter/webview_flutter.dart';
-import 'package:webview_flutter_android/webview_flutter_android.dart';
 
 // initizies the cameras, this is used accross all parts of the program
 late List<CameraDescription> cameras;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  WebViewPlatform.instance = AndroidWebViewPlatform();
   //This is NOT camerax, there may be a werid error so ensure it is not 
   cameras = await availableCameras(); 
   runApp(MyApp());

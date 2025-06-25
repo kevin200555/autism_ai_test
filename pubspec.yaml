@@ -37,9 +37,6 @@ dependencies:
   camera: ^0.10.5+2
   webview_flutter: ^4.2.2
   video_player: ^2.7.0
-  webview_flutter_android: ^3.10.2
-  webview_flutter_wkwebview: ^3.10.2
-  webview_flutter_platform_interface: any
 
 dev_dependencies:
   flutter_test:
