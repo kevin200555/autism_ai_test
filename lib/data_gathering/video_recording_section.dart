@@ -48,6 +48,7 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
   Future<void> _startRecording() async {
     if (!controller.value.isRecordingVideo) {
       await controller.startVideoRecording();
+      debugPrint('recording in progress');
       setState(() => isRecording = true);
     }
   }
@@ -55,21 +56,38 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
   //stops recording, moves onto next section automatically
   Future<void> _stopRecording() async {
     if (controller.value.isRecordingVideo) {
-      final videoFile = await controller.stopVideoRecording();
-      setState(() {
-        isRecording = false;
-        recordedVideos.add(videoFile);
-      });
-      if (!mounted) return;
-      showDialog(
-        context: context,
-        builder: (_) => const AlertDialog(title: Text('Video Saved!')),
-      );
+      try {
+        final videoFile = await controller.stopVideoRecording();
+        debugPrint('Video saved to: ${videoFile.path}');
+        setState(() {
+          isRecording = false;
+          if (recordedVideos.length > currentStep) {
+            recordedVideos[currentStep] = videoFile;
+          } else {
+            recordedVideos.add(videoFile);
+          }
+        });
+
+        if (!mounted) return;
+        await showDialog(
+          context: context,
+          builder: (_) => const AlertDialog(title: Text('Video Saved!')),
+        );
+      } catch (e) {
+        debugPrint('Error stopping video: $e');
+        if (!mounted) return;
+        await showDialog(
+          context: context,
+          builder: (_) =>
+              const AlertDialog(title: Text('Failed to stop recording!')),
+        );
+      }
     }
   }
 
   //goes to the next video
   nextVideo() async {
+    debugPrint('recording in progress');
     if (currentStep < widget.instructions.length - 1) {
       setState(() {
         currentStep++;
@@ -80,7 +98,7 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
         builder: (_) =>
             AlertDialog(title: const Text('All Steps Completed! Thank You!')),
       );
-      if(!mounted) return;
+      if (!mounted) return;
       Navigator.of(context).popUntil((route) => route.isFirst);
     }
   }
@@ -96,60 +114,37 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
     }
   }
 
-  Future<void> deleteVideo(String filePath) async {
-    if (currentStep >= recordedVideos.length) {
-      showDialog(
-        context: context,
-        builder: (_) =>
-            AlertDialog(title: const Text('No video recorded yet!')),
-      );
-      return;
-    }
-
+  Future<void> deleteVideo(int index) async {
+    final filePath = recordedVideos[index].path;
     final file = File(filePath);
 
     if (await file.exists()) {
       await file.delete();
-      if (!mounted) return;
-      showDialog(
-        context: context,
-        builder: (_) => const AlertDialog(title: Text('Video deleted!')),
-      );
+      setState(() => recordedVideos.removeAt(index));
+      if (mounted) {
+        await showDialog(
+          context: context,
+          builder: (_) => const AlertDialog(title: Text('Video deleted!')),
+        );
+      }
     } else {
-      if (!mounted) return;
-      showDialog(
-        context: context,
-        builder: (_) => const AlertDialog(title: Text('No video to delete!')),
-      );
+      if (mounted) {
+        await showDialog(
+          context: context,
+          builder: (_) => const AlertDialog(title: Text('No Video to Delete.')),
+        );
+      }
     }
   }
 
-  Future<void> viewVideo(String filePath) async {
-    if (currentStep >= recordedVideos.length) {
-      if (!mounted) return;
-      await showDialog(
-        context: context,
-        builder: (_) => const AlertDialog(title: Text('No video to record!')),
-      );
-      return;
-    }
-    final file = File(filePath);
-    if (await file.exists()) {
-      if(!mounted) return;
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) =>
-              VideoPlayerScreen(videoPath: recordedVideos[currentStep].path),
-        ),
-      );
-    } else {
-      if (!mounted) return;
-      showDialog(
-        context: context,
-        builder: (_) => const AlertDialog(title: Text('No video to view!')),
-      );
-    }
+  Future<void> viewVideo(XFile videoFile) async {
+    if (!mounted) return;
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => VideoPlayerScreen(videoPath: videoFile.path),
+      ),
+    );
   }
 
   @override
@@ -177,7 +172,11 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
         leading: IconButton(
           // Your custom leading widget
           icon: Icon(Icons.arrow_back), // The desired icon
-          onPressed: previousVideo,
+          onPressed: (){
+            if(!isRecording){
+              previousVideo();
+            }
+          },
         ),
       ),
       body: Column(
@@ -211,7 +210,7 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
           SizedBox(
             width: double.infinity,
             height: 500,
-            child: Expanded(child: CameraPreview(controller)),
+            child: CameraPreview(controller),
           ),
           const SizedBox(height: 12),
 
@@ -252,7 +251,18 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
                 children: [
                   FloatingActionButton(
                     onPressed: () {
-                      viewVideo(recordedVideos[currentStep].path);
+                      if (!isRecording) {
+                        if (currentStep < recordedVideos.length) {
+                          viewVideo(recordedVideos[currentStep]);
+                        } else {
+                          showDialog(
+                            context: context,
+                            builder: (_) => const AlertDialog(
+                              title: Text('No video to view!'),
+                            ),
+                          );
+                        }
+                      }
                     },
                     backgroundColor: ColorTheme.green,
                     foregroundColor: ColorTheme.textColor,
@@ -261,7 +271,18 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
                   SizedBox(height: 12),
                   FloatingActionButton(
                     onPressed: () {
-                      deleteVideo(recordedVideos[currentStep].path);
+                      if (!isRecording) {
+                        if (currentStep < recordedVideos.length) {
+                          deleteVideo(currentStep);
+                        } else {
+                          showDialog(
+                            context: context,
+                            builder: (_) => const AlertDialog(
+                              title: Text('No video to delete!'),
+                            ),
+                          );
+                        }
+                      }
                     },
                     backgroundColor: ColorTheme.red,
                     foregroundColor: ColorTheme.textColor,
@@ -270,7 +291,11 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
                 ],
               ),
               FloatingActionButton(
-                onPressed: nextVideo,
+                onPressed: (){
+                  if(!isRecording){
+                    nextVideo();
+                  }
+                },
                 backgroundColor: ColorTheme.primary,
                 foregroundColor: ColorTheme.textColor,
                 child: const Icon(Icons.arrow_forward_sharp),
