@@ -37,7 +37,13 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
-        title: const Text('Video Playback'),
+        title: Text(
+          'Video Playback',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: ColorTheme.textColor,
+          ),
+        ),
         centerTitle: true,
         iconTheme: IconThemeData(color: ColorTheme.textColor),
         backgroundColor: ColorTheme.accent,
@@ -58,10 +64,13 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                 : _controller.play();
           });
         },
+        backgroundColor: ColorTheme.primary,
+        foregroundColor: ColorTheme.textColor,
         child: Icon(
           _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
         ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
