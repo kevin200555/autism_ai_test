@@ -1,3 +1,5 @@
+import 'package:autism_ai_test/data_gathering/mutliple_choice_question_widget.dart';
+import 'package:autism_ai_test/data_gathering/short_answer_question_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -10,7 +12,7 @@ import 'package:autism_ai_test/themes/colors.dart';
 class GuidedQuestionaire extends StatefulWidget {
   final CameraDescription camera;
   final List<String> shortAnswerInstructions;
-  final List<String> multipleChoice;
+  final List<List<String>> multipleChoice;
   final List<String> videoInstructions;
   const GuidedQuestionaire({
     super.key,
@@ -26,7 +28,7 @@ class GuidedQuestionaire extends StatefulWidget {
 
 class _GuidedQuestionaireState extends State<GuidedQuestionaire> {
   int currentSurvey = 0;
-  void nextSurvey() {
+  void nextSection() {
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -44,7 +46,7 @@ class _GuidedQuestionaireState extends State<GuidedQuestionaire> {
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
         title: Text(
-          'Questionaire}',
+          'Questionaire',
           style: TextStyle(
             color: ColorTheme.textColor,
             fontWeight: FontWeight.bold,
@@ -54,12 +56,40 @@ class _GuidedQuestionaireState extends State<GuidedQuestionaire> {
         iconTheme: IconThemeData(color: ColorTheme.textColor),
         backgroundColor: ColorTheme.accent,
       ),
-      body: ListView(
+      body: ListView.builder(
         padding: const EdgeInsets.all(8),
-        children: [
-
-        ]
-      )
+        itemCount:
+            widget.shortAnswerInstructions.length +
+            widget.multipleChoice.length,
+        itemBuilder: (context, index) {
+          if (index < widget.shortAnswerInstructions.length) {
+            // It's a short answer question
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: ShortAnswerQuestionWidget(
+                shortAnswerInstructions: widget.shortAnswerInstructions[index],
+              ),
+            );
+          } else {
+            // It's a multiple choice question
+            final mcIndex = index - widget.shortAnswerInstructions.length;
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: MutlipleChoiceQuestionWidget(
+                multipleChoiceEntry: widget.multipleChoice[mcIndex],
+              ),
+            );
+          }
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          nextSection();
+        },
+        backgroundColor: ColorTheme.primary,
+        foregroundColor: ColorTheme.textColor,
+        child: const Icon(Icons.arrow_forward_sharp),
+      ),
     );
   }
 }

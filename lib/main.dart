@@ -8,8 +8,8 @@ late List<CameraDescription> cameras;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //This is NOT camerax, there may be a werid error so ensure it is not 
-  await Permission.camera.request();
-  await Permission.microphone.request();
+  //await Permission.camera.request();
+  //await Permission.microphone.request();
   
   cameras = await availableCameras(); 
   runApp(MyApp());

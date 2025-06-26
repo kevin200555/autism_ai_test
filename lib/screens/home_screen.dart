@@ -19,10 +19,19 @@ class HomeScreen extends StatelessWidget {
     ];
 
     //Change this list with survey monkey urls to display different web surveys
-    var surveyURLs = [
-      'https://www.surveymonkey.com/r/LT6DG35',
-      'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
-      'https://eecs.uci.edu/~liky4/',
+    var shortAnswerQuestions = [
+      'What is your favorite color?',
+      'How are you doing today?',
+      'Really Really Really Really Really Really Really Really Really Really'
+      'Really Really Really Really Really Really Really Really Really Really'
+      'Really Really Really Really Really Really Really Really Really Really'
+      'Really Really Really Really Really Really Really Really Really Really'
+      'Really Really Really Really Really Really Really Really long question?',
+    ];
+    var multipleChoice = [
+      ['How are you?', 'good', 'ok', 'bad'],
+      ['Chicken or Beef?', 'chicken', 'beef'],
+      [''],
     ];
 
     return Scaffold(
@@ -55,9 +64,10 @@ class HomeScreen extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) => GuidedQuestionaire(
-                        urls: surveyURLs,
                         camera: camera,
-                        instructions: videoInstructions,
+                        shortAnswerInstructions: shortAnswerQuestions,
+                        videoInstructions: videoInstructions,
+                        multipleChoice: multipleChoice,
                       ),
                     ),
                   );
