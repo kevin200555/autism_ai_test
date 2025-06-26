@@ -119,7 +119,7 @@ class _GuidedQuestionaireState extends State<GuidedQuestionaire> {
           print(multipleChoiceResponses);
           print(shortAnswerResponses);
 
-          //nextSection();
+          nextSection();
         },
         backgroundColor: ColorTheme.primary,
         foregroundColor: ColorTheme.textColor,

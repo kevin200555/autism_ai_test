@@ -139,7 +139,7 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
     }
   }
 
-  //views video, 
+  //views video,
   Future<void> viewVideo(XFile videoFile) async {
     if (!mounted) return;
     Navigator.push(
@@ -175,8 +175,8 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
         leading: IconButton(
           // Your custom leading widget
           icon: Icon(Icons.arrow_back), // The desired icon
-          onPressed: (){
-            if(!isRecording){
+          onPressed: () {
+            if (!isRecording) {
               previousVideo();
             }
           },
@@ -210,9 +210,16 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
             ),
           ),
           const SizedBox(height: 12),
+          Text(
+            (isRecording) ? 'RECORDING IN PROGRESS' : 'RECORDING STOPPED',
+            style: TextStyle(
+              color: ColorTheme.red,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           SizedBox(
             width: double.infinity,
-            height: 500,
+            height: 450,
             child: CameraPreview(controller),
           ),
           const SizedBox(height: 12),
@@ -294,8 +301,8 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
                 ],
               ),
               FloatingActionButton(
-                onPressed: (){
-                  if(!isRecording){
+                onPressed: () {
+                  if (!isRecording) {
                     nextVideo();
                   }
                 },
