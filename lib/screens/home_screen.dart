@@ -23,15 +23,27 @@ class HomeScreen extends StatelessWidget {
       'What is your favorite color?',
       'How are you doing today?',
       'Really Really Really Really Really Really Really Really Really Really'
-      'Really Really Really Really Really Really Really Really Really Really'
-      'Really Really Really Really Really Really Really Really Really Really'
-      'Really Really Really Really Really Really Really Really Really Really'
-      'Really Really Really Really Really Really Really Really long question?',
+          'Really Really Really Really Really Really Really Really Really Really'
+          'Really Really Really Really Really Really Really Really Really Really'
+          'Really Really Really Really Really Really Really Really Really Really'
+          'Really Really Really Really Really Really Really Really long question?',
     ];
     var multipleChoice = [
       ['How are you?', 'good', 'ok', 'bad'],
       ['Chicken or Beef?', 'chicken', 'beef'],
-      ['What is your favorite color','Red','Orange','Yellow','Green','Blue','Purple','Black','White','Brown','Grey']
+      [
+        'What is your favorite color',
+        'Red',
+        'Orange',
+        'Yellow',
+        'Green',
+        'Blue',
+        'Purple',
+        'Black',
+        'White',
+        'Brown',
+        'Grey',
+      ],
     ];
 
     return Scaffold(
@@ -54,6 +66,16 @@ class HomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Text(
+              'Welcome to The Autism Test',
+              style: TextStyle(fontSize: 28, fontWeight: FontWeight.w600),
+            ),
+            SizedBox(height: 10),
+            Text(
+              'Ready to begin?',
+              style: TextStyle(fontSize: 18, color: Colors.grey),
+            ),
+            const SizedBox(height:200),
             //The Start button, starts the test
             SizedBox(
               width: 200,
@@ -75,10 +97,10 @@ class HomeScreen extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(35),
-                    side: BorderSide(color: Colors.red),
                   ),
-                  padding: const EdgeInsets.all(20), // space inside the button
-                  backgroundColor: ColorTheme.primary,
+                  elevation: 10,
+                  backgroundColor: ColorTheme.accent,
+                  shadowColor: const Color.fromARGB(105, 155, 39, 176),
                 ),
                 child: Text(
                   'START',
@@ -90,6 +112,8 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(height:300),
+
           ],
         ),
       ),
@@ -101,7 +125,7 @@ class HomeScreen extends StatelessWidget {
             MaterialPageRoute(builder: (context) => HelpScreen()),
           );
         },
-        backgroundColor: ColorTheme.primary,
+        backgroundColor: ColorTheme.accent,
         foregroundColor: ColorTheme.textColor,
         child: const Icon(Icons.question_mark),
       ),
