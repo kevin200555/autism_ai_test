@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
           'I think that it should be fine since there\'s no way one instruction could possibly be too long but I think'
           'it is good to know the limits of this',
       '1. Read this line of instruction out loud\n 2. Jump up and down\n3. Wave to the camera\n4. Clap your hands together',
-      'Scale of the Dragon\nTwin Metours\nRecoil\nWORLD CUTTING SLASH',
+      'Smile :)',
     ];
 
     //Change this list with survey monkey urls to display different web surveys
@@ -31,6 +31,7 @@ class HomeScreen extends StatelessWidget {
     var multipleChoice = [
       ['How are you?', 'good', 'ok', 'bad'],
       ['Chicken or Beef?', 'chicken', 'beef'],
+      ['What is your favorite color','Red','Orange','Yellow','Green','Blue','Purple','Black','White','Brown','Grey']
     ];
 
     return Scaffold(
