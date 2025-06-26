@@ -31,7 +31,6 @@ class HomeScreen extends StatelessWidget {
     var multipleChoice = [
       ['How are you?', 'good', 'ok', 'bad'],
       ['Chicken or Beef?', 'chicken', 'beef'],
-      [''],
     ];
 
     return Scaffold(

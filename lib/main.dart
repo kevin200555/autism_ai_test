@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:autism_ai_test/screens/home_screen.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 // initizies the cameras, this is used accross all parts of the program
 late List<CameraDescription> cameras;

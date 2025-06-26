@@ -2,7 +2,6 @@ import 'package:autism_ai_test/data_gathering/mutliple_choice_question_widget.da
 import 'package:autism_ai_test/data_gathering/short_answer_question_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 import 'package:autism_ai_test/data_gathering/video_recording_section.dart';
 import 'package:autism_ai_test/themes/colors.dart';
 
@@ -59,11 +58,19 @@ class _GuidedQuestionaireState extends State<GuidedQuestionaire> {
       body: ListView.builder(
         padding: const EdgeInsets.all(8),
         itemCount:
+            //the plus 1 is to add a sizedBox (extra space at the end)
             widget.shortAnswerInstructions.length +
-            widget.multipleChoice.length,
+            widget.multipleChoice.length +
+            1,
         itemBuilder: (context, index) {
+          //adds the sizedBox at the end (it would cover the next button otherwise)
+          if (index ==
+              widget.shortAnswerInstructions.length +
+                  widget.multipleChoice.length) {
+            return const SizedBox(height: 80); 
+          }
           if (index < widget.shortAnswerInstructions.length) {
-            // It's a short answer question
+            // short answer question
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: ShortAnswerQuestionWidget(
@@ -71,7 +78,7 @@ class _GuidedQuestionaireState extends State<GuidedQuestionaire> {
               ),
             );
           } else {
-            // It's a multiple choice question
+            // multiple choice question
             final mcIndex = index - widget.shortAnswerInstructions.length;
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
