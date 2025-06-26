@@ -3,13 +3,17 @@ import 'package:flutter/material.dart';
 
 class ShortAnswerQuestionWidget extends StatefulWidget {
   final String shortAnswerInstructions;
+  final Function(String) onChanged;
+
   const ShortAnswerQuestionWidget({
     super.key,
     required this.shortAnswerInstructions,
+    required this.onChanged,
   });
 
   @override
-  State<ShortAnswerQuestionWidget> createState() => _ShortAnswerQuestionWidgetState();
+  State<ShortAnswerQuestionWidget> createState() =>
+      _ShortAnswerQuestionWidgetState();
 }
 
 class _ShortAnswerQuestionWidgetState extends State<ShortAnswerQuestionWidget> {
@@ -32,10 +36,9 @@ class _ShortAnswerQuestionWidgetState extends State<ShortAnswerQuestionWidget> {
           const SizedBox(height: 4),
           TextFormField(
             onChanged: (value) {
-              setState(() {
-                userInput = value;
-              });
+              widget.onChanged(value);
             },
+
             decoration: const InputDecoration(
               border: UnderlineInputBorder(),
               labelText: 'Enter your answer',

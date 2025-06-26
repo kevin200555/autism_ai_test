@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 
 class MutlipleChoiceQuestionWidget extends StatefulWidget {
   final List<String> multipleChoiceEntry;
+  final Function(String) onChanged;
   const MutlipleChoiceQuestionWidget({
     super.key,
     required this.multipleChoiceEntry,
+    required this.onChanged,
   });
 
   @override
@@ -25,7 +27,7 @@ class _MutlipleChoiceQuestionWidgetState
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            widget.multipleChoiceEntry[0], 
+            widget.multipleChoiceEntry[0],
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
@@ -37,14 +39,19 @@ class _MutlipleChoiceQuestionWidgetState
             value: selectedValue,
             icon: const Icon(Icons.keyboard_arrow_down),
             isExpanded: true,
-            items: widget.multipleChoiceEntry.sublist(1,widget.multipleChoiceEntry.length).map((String item) {
-              return DropdownMenuItem<String>(value: item, child: Text(item));
-            }).toList(),
-            onChanged: (String? newValue) {
-              setState(() {
-                selectedValue = newValue;
-              });
-            },
+            items: widget.multipleChoiceEntry
+                .sublist(1, widget.multipleChoiceEntry.length)
+                .map((String item) {
+                  return DropdownMenuItem<String>(
+                    value: item,
+                    child: Text(item),
+                  );
+                })
+                .toList(),
+            onChanged: (value) {
+              selectedValue = value;
+              widget.onChanged(value ?? '');
+            }
           ),
         ],
       ),

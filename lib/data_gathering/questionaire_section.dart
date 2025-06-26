@@ -26,7 +26,22 @@ class GuidedQuestionaire extends StatefulWidget {
 }
 
 class _GuidedQuestionaireState extends State<GuidedQuestionaire> {
-  int currentSurvey = 0;
+  List<String?> shortAnswerResponses = [];
+  List<String?> multipleChoiceResponses = [];
+
+  @override
+  void initState() {
+    super.initState();
+    shortAnswerResponses = List<String?>.filled(
+      widget.shortAnswerInstructions.length,
+      null,
+    );
+    multipleChoiceResponses = List<String?>.filled(
+      widget.multipleChoice.length,
+      null,
+    );
+  }
+
   void nextSection() {
     Navigator.push(
       context,
@@ -67,7 +82,7 @@ class _GuidedQuestionaireState extends State<GuidedQuestionaire> {
           if (index ==
               widget.shortAnswerInstructions.length +
                   widget.multipleChoice.length) {
-            return const SizedBox(height: 80); 
+            return const SizedBox(height: 80);
           }
           if (index < widget.shortAnswerInstructions.length) {
             // short answer question
@@ -75,6 +90,11 @@ class _GuidedQuestionaireState extends State<GuidedQuestionaire> {
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: ShortAnswerQuestionWidget(
                 shortAnswerInstructions: widget.shortAnswerInstructions[index],
+                onChanged: (value) {
+                  setState(() {
+                    shortAnswerResponses[index] = value;
+                  });
+                },
               ),
             );
           } else {
@@ -84,6 +104,11 @@ class _GuidedQuestionaireState extends State<GuidedQuestionaire> {
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: MutlipleChoiceQuestionWidget(
                 multipleChoiceEntry: widget.multipleChoice[mcIndex],
+                onChanged: (value) {
+                  setState(() {
+                    multipleChoiceResponses[mcIndex] = value;
+                  });
+                },
               ),
             );
           }
@@ -91,7 +116,10 @@ class _GuidedQuestionaireState extends State<GuidedQuestionaire> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          nextSection();
+          print(multipleChoiceResponses);
+          print(shortAnswerResponses);
+
+          //nextSection();
         },
         backgroundColor: ColorTheme.primary,
         foregroundColor: ColorTheme.textColor,
