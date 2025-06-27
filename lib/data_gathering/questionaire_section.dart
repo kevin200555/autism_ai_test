@@ -109,6 +109,7 @@ class _GuidedQuestionaireState extends State<GuidedQuestionaire> {
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: ShortAnswerQuestionWidget(
                 shortAnswerInstructions: widget.shortAnswerInstructions[index],
+                value: shortAnswerResponses[index],
                 onChanged: (value) {
                   setState(() {
                     shortAnswerResponses[index] = value;
@@ -123,6 +124,7 @@ class _GuidedQuestionaireState extends State<GuidedQuestionaire> {
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: MutlipleChoiceQuestionWidget(
                 multipleChoiceEntry: widget.multipleChoice[mcIndex],
+                value: multipleChoiceResponses[mcIndex], // NEW LINE
                 onChanged: (value) {
                   setState(() {
                     multipleChoiceResponses[mcIndex] = value;
@@ -136,8 +138,6 @@ class _GuidedQuestionaireState extends State<GuidedQuestionaire> {
       //Next button
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          debugPrint(multipleChoiceResponses as String?);
-          debugPrint(shortAnswerResponses as String?);
           nextSection();
         },
         backgroundColor: ColorTheme.primary,

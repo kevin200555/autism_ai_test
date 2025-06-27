@@ -7,10 +7,11 @@ class MutlipleChoiceQuestionWidget extends StatefulWidget {
   final List<String> multipleChoiceEntry;
   //A list must be passed to this widget, the question is the first item in the list, the choices are the rest of the items
   final Function(String) onChanged;
+  final String? value;
   const MutlipleChoiceQuestionWidget({
     super.key,
     required this.multipleChoiceEntry,
-    required this.onChanged,
+    required this.onChanged, required this.value,
   });
 
   @override

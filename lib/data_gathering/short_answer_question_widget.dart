@@ -5,11 +5,13 @@ import 'package:flutter/material.dart';
 class ShortAnswerQuestionWidget extends StatefulWidget {
   final String shortAnswerInstructions;
   final Function(String) onChanged;
+  final String? value;
 
   const ShortAnswerQuestionWidget({
     super.key,
     required this.shortAnswerInstructions,
     required this.onChanged,
+    required this.value,
   });
 
   @override
@@ -33,7 +35,7 @@ class _ShortAnswerQuestionWidgetState extends State<ShortAnswerQuestionWidget> {
               fontWeight: FontWeight.bold,
               color: ColorTheme.alternateTextColor,
             ),
-          ),//displays the question
+          ), //displays the question
           const SizedBox(height: 4),
           //displays answer box
           TextFormField(
