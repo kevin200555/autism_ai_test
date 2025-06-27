@@ -69,6 +69,7 @@ class _ShortAnswerQuestionWidgetState
             ),
             style: const TextStyle(fontSize: 18),
             maxLines: 5,
+            minLines: 1,
           ),
         ],
       ),
