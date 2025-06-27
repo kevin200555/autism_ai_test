@@ -1,7 +1,6 @@
-import 'package:autism_ai_test/themes/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:autism_ai_test/themes/colors.dart';
 
-//makes a widget that lets the user type out an answer to a question
 class ShortAnswerQuestionWidget extends StatefulWidget {
   final String shortAnswerInstructions;
   final Function(String) onChanged;
@@ -19,8 +18,30 @@ class ShortAnswerQuestionWidget extends StatefulWidget {
       _ShortAnswerQuestionWidgetState();
 }
 
-class _ShortAnswerQuestionWidgetState extends State<ShortAnswerQuestionWidget> {
-  String userInput = ''; //stores user input
+class _ShortAnswerQuestionWidgetState
+    extends State<ShortAnswerQuestionWidget> {
+  late TextEditingController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController(text: widget.value ?? '');
+  }
+
+  @override
+  void didUpdateWidget(covariant ShortAnswerQuestionWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.value != _controller.text) {
+      _controller.text = widget.value ?? '';
+    }
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,6 +49,7 @@ class _ShortAnswerQuestionWidgetState extends State<ShortAnswerQuestionWidget> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Question prompt
           Text(
             widget.shortAnswerInstructions,
             style: TextStyle(
@@ -35,22 +57,21 @@ class _ShortAnswerQuestionWidgetState extends State<ShortAnswerQuestionWidget> {
               fontWeight: FontWeight.bold,
               color: ColorTheme.alternateTextColor,
             ),
-          ), //displays the question
-          const SizedBox(height: 4),
-          //displays answer box
-          TextFormField(
-            onChanged: (value) {
-              widget.onChanged(value);
-            },
+          ),
+          const SizedBox(height: 12),
+          // Answer input field
+          TextField(
+            controller: _controller,
+            onChanged: widget.onChanged,
             decoration: const InputDecoration(
               border: UnderlineInputBorder(),
-              labelText: 'Enter your answer',
+              hintText: 'Enter your answer here',
             ),
+            style: const TextStyle(fontSize: 18),
+            maxLines: 5,
           ),
-          const SizedBox(height: 16),
         ],
       ),
     );
   }
 }
-//EOF short_answer_question.dart

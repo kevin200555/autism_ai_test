@@ -138,6 +138,8 @@ class _GuidedQuestionaireState extends State<GuidedQuestionaire> {
       //Next button
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          print(multipleChoiceResponses);
+          print(shortAnswerResponses);
           nextSection();
         },
         backgroundColor: ColorTheme.primary,
