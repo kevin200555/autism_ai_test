@@ -1,5 +1,6 @@
 import 'package:autism_ai_test/data_gathering/mutliple_choice_question_widget.dart';
 import 'package:autism_ai_test/data_gathering/short_answer_question_widget.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:autism_ai_test/data_gathering/video_recording_section.dart';
@@ -91,7 +92,14 @@ class _GuidedQuestionaireState extends State<GuidedQuestionaire> {
           if (index ==
               widget.shortAnswerInstructions.length +
                   widget.multipleChoice.length) {
-            return const SizedBox(height: 80);
+            return Column(
+              children: [
+                AutoSizeText(
+                  'hit the next button when you\'re ready to move on',
+                ),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+              ],
+            );
           }
           if (index < widget.shortAnswerInstructions.length) {
             // short answer question

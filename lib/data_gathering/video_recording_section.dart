@@ -234,13 +234,13 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
               minFontSize: 8,
               maxLines: 1,
             ),
-            SizedBox(height:  MediaQuery.of(context).size.height * 0.01),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.01),
             SizedBox(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 0.55,
               child: CameraPreview(controller),
             ),
-            SizedBox(height:  MediaQuery.of(context).size.height * 0.025),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.025),
             // starts and stops the recording button
             ElevatedButton(
               onPressed: !controller.value.isInitialized
@@ -263,7 +263,7 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
                       color: ColorTheme.textColor,
                     ),
             ),
-            SizedBox(height:  MediaQuery.of(context).size.height * 0.05),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.05),
           ],
         ),
       ),
