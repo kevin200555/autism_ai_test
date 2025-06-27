@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:autism_ai_test/themes/colors.dart';
@@ -63,19 +64,19 @@ class HomeScreen extends StatelessWidget {
         width: double.infinity,
         height: double.infinity,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 10),
-            Text(
+            AutoSizeText(
               'Ready to begin?',
-              style: TextStyle(fontSize: 18, color: Colors.grey),
+              style: TextStyle(fontSize: 18, color: ColorTheme.alternateTextColor),
               textAlign: TextAlign.center,
+              maxLines: 1,
             ),
-            const SizedBox(height:200),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.3),
             //The Start button, starts the test
             SizedBox(
-              width: 150,
+              width: MediaQuery.of(context).size.width * 0.4,
               height: 150,
               child: ElevatedButton(
                 onPressed: () {
@@ -99,18 +100,20 @@ class HomeScreen extends StatelessWidget {
                   backgroundColor: ColorTheme.accent,
                   shadowColor: const Color.fromARGB(105, 155, 39, 176),
                 ),
-                child: Text(
+                child: AutoSizeText(
                   'START',
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                     color: ColorTheme.textColor,
                   ),
+                  maxLines: 1,
+                  minFontSize: 12,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
             ),
-            const SizedBox(height:300),
-
+            SizedBox(height: MediaQuery.of(context).size.width * 0.2),
           ],
         ),
       ),
