@@ -87,8 +87,16 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
 
   //goes to the next video
   nextVideo() async {
-    debugPrint('recording in progress');
-    if (currentStep < widget.instructions.length - 1) {
+    print(currentStep);
+    if (!(currentStep >= 0 && currentStep < recordedVideos.length)){
+      await showDialog(
+        context: context,
+        builder: (_) =>
+            AlertDialog(title: const Text('please record a video first')),
+      );
+      return;
+    }
+    if (currentStep < widget.instructions.length - 1 ) {
       setState(() {
         currentStep++;
       });

@@ -66,20 +66,17 @@ class HomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              'Welcome to The Autism Test',
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.w600),
-            ),
             SizedBox(height: 10),
             Text(
               'Ready to begin?',
               style: TextStyle(fontSize: 18, color: Colors.grey),
+              textAlign: TextAlign.center,
             ),
             const SizedBox(height:200),
             //The Start button, starts the test
             SizedBox(
-              width: 200,
-              height: 200,
+              width: 150,
+              height: 150,
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(
@@ -105,7 +102,7 @@ class HomeScreen extends StatelessWidget {
                 child: Text(
                   'START',
                   style: TextStyle(
-                    fontSize: 48,
+                    fontSize: 24,
                     fontWeight: FontWeight.bold,
                     color: ColorTheme.textColor,
                   ),
