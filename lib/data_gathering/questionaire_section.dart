@@ -43,7 +43,9 @@ class _GuidedQuestionaireState extends State<GuidedQuestionaire> {
     );
   }
 
+  //goes to the video section 
   Future<void> nextSection() async {
+    //checks for missing answers before moving on
     if (multipleChoiceResponses.contains(null) ||
         shortAnswerResponses.contains(null)) {
       await showDialog(
@@ -131,10 +133,11 @@ class _GuidedQuestionaireState extends State<GuidedQuestionaire> {
           }
         },
       ),
+      //Next button
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          print(multipleChoiceResponses);
-          print(shortAnswerResponses);
+          debugPrint(multipleChoiceResponses as String?);
+          debugPrint(shortAnswerResponses as String?);
           nextSection();
         },
         backgroundColor: ColorTheme.primary,

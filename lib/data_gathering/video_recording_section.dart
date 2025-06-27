@@ -22,10 +22,10 @@ class GuidedVideoRecording extends StatefulWidget {
 }
 
 class _GuidedRecorderState extends State<GuidedVideoRecording> {
-  int currentStep = 0;
+  int currentStep = 0; //keeps track of page
   late CameraController controller;
   bool isRecording = false;
-  List<XFile> recordedVideos = [];
+  List<XFile> recordedVideos = []; //stores recorded videos
 
   //initlize the camera controller
   @override
@@ -60,6 +60,7 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
       try {
         final videoFile = await controller.stopVideoRecording();
         debugPrint('Video saved to: ${videoFile.path}');
+        //stores recording in the Xfile list
         setState(() {
           isRecording = false;
           if (recordedVideos.length > currentStep) {
@@ -88,7 +89,7 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
 
   //goes to the next video
   nextVideo() async {
-    print(currentStep);
+    //check to make sure that the user recorded somthing before moving on
     if (!(currentStep >= 0 && currentStep < recordedVideos.length)) {
       await showDialog(
         context: context,
@@ -101,6 +102,7 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
       setState(() {
         currentStep++;
       });
+    //goes back to main menu
     } else {
       await showDialog(
         context: context,
@@ -161,7 +163,7 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
 
   @override
   Widget build(BuildContext context) {
-    if (!controller.value.isInitialized) {
+    if (!controller.value.isInitialized) { //loading screen, needed since this section has to ask user for camera/mic access first
       return Scaffold(body: Center(child: CircularProgressIndicator()));
     }
 
@@ -191,6 +193,7 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
           },
         ),
       ),
+      //makes screen scrollable to account for different phone screens
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,

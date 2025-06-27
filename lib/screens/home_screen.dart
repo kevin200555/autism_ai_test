@@ -10,7 +10,7 @@ class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key, required this.camera});
   @override
   Widget build(BuildContext context) {
-    //Use this list to display different instructions to the user, these are used in the video_recording_section
+    //Edit this list to display different instructions to the user, these are used in the video_recording_section
     var videoInstructions = [
       'I just want to see about how long I could make this one instruction until it starts to look a little werid'
           'I think that it should be fine since there\'s no way one instruction could possibly be too long but I think'
@@ -20,7 +20,7 @@ class HomeScreen extends StatelessWidget {
       'Smile :)',
     ];
 
-    //Change this list with survey monkey urls to display different web surveys
+    //Edit this list to change the questions for the short answers
     var shortAnswerQuestions = [
       'What is your favorite color?',
       'How are you doing today?',
@@ -30,6 +30,8 @@ class HomeScreen extends StatelessWidget {
           'Really Really Really Really Really Really Really Really Really Really'
           'Really Really Really Really Really Really Really Really long question?',
     ];
+    //Edit this list to change the questions and answers for the multipleChoice
+    //question is the first list item, answers are the rest of the items
     var multipleChoice = [
       ['How are you?', 'good', 'ok', 'bad'],
       ['Chicken or Beef?', 'chicken', 'beef'],

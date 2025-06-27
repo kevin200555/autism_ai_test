@@ -56,6 +56,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
               )
             : const CircularProgressIndicator(),
       ),
+      //play/pause button
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           setState(() {
