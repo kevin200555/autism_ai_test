@@ -42,16 +42,25 @@ class _GuidedQuestionaireState extends State<GuidedQuestionaire> {
     );
   }
 
-  void nextSection() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => GuidedVideoRecording(
-          camera: widget.camera,
-          instructions: widget.videoInstructions,
+  Future<void> nextSection() async {
+    if (multipleChoiceResponses.contains(null) ||
+        shortAnswerResponses.contains(null)) {
+      await showDialog(
+        context: context,
+        builder: (_) =>
+            AlertDialog(title: const Text('Please answer all questions')),
+      );
+    } else {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => GuidedVideoRecording(
+            camera: widget.camera,
+            instructions: widget.videoInstructions,
+          ),
         ),
-      ),
-    );
+      );
+    }
   }
 
   @override
@@ -116,10 +125,8 @@ class _GuidedQuestionaireState extends State<GuidedQuestionaire> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          
           print(multipleChoiceResponses);
           print(shortAnswerResponses);
-
           nextSection();
         },
         backgroundColor: ColorTheme.primary,

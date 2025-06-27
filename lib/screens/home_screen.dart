@@ -14,7 +14,8 @@ class HomeScreen extends StatelessWidget {
     var videoInstructions = [
       'I just want to see about how long I could make this one instruction until it starts to look a little werid'
           'I think that it should be fine since there\'s no way one instruction could possibly be too long but I think'
-          'it is good to know the limits of this',
+          'it is good to know the limits of this.  More text, More text, More text, More text, More text,More text, More text, More text,More text,'
+          'More text, More text, More text, More text, More text, More text,More text, More text,',
       '1. Read this line of instruction out loud\n 2. Jump up and down\n3. Wave to the camera\n4. Clap your hands together',
       'Smile :)',
     ];

@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:autism_ai_test/screens/video_player_screen.dart';
@@ -88,7 +89,7 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
   //goes to the next video
   nextVideo() async {
     print(currentStep);
-    if (!(currentStep >= 0 && currentStep < recordedVideos.length)){
+    if (!(currentStep >= 0 && currentStep < recordedVideos.length)) {
       await showDialog(
         context: context,
         builder: (_) =>
@@ -96,7 +97,7 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
       );
       return;
     }
-    if (currentStep < widget.instructions.length - 1 ) {
+    if (currentStep < widget.instructions.length - 1) {
       setState(() {
         currentStep++;
       });
@@ -190,71 +191,81 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
           },
         ),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Padding(
-            padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-            child: Text(
-              textAlign: TextAlign.center,
-              'Instructions:',
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+              child: AutoSizeText(
+                textAlign: TextAlign.center,
+                'Instructions:',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: ColorTheme.alternateTextColor,
+                ),
+                maxLines: 1,
+                minFontSize: 12,
+              ),
+            ),
+            //Displays instructions, these are different across the vidoes
+            Padding(
+              padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+              child: AutoSizeText(
+                textAlign: TextAlign.center,
+                widget.instructions[currentStep],
+                style: TextStyle(
+                  fontSize: 18,
+                  color: ColorTheme.alternateTextColor,
+                ),
+                maxLines: 10,
+                minFontSize: 12,
+              ),
+            ),
+            const SizedBox(height: 12),
+            AutoSizeText(
+              (isRecording) ? 'RECORDING IN PROGRESS' : 'RECORDING STOPPED',
               style: TextStyle(
-                fontSize: 32,
+                fontSize: 12,
+                color: ColorTheme.red,
                 fontWeight: FontWeight.bold,
-                color: ColorTheme.alternateTextColor,
               ),
+              minFontSize: 8,
+              maxLines: 1,
             ),
-          ),
-          //Displays instructions, these are different across the vidoes
-          Padding(
-            padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-            child: Text(
-              textAlign: TextAlign.center,
-              widget.instructions[currentStep],
-              style: TextStyle(
-                fontSize: 18,
-                color: ColorTheme.alternateTextColor,
+            SizedBox(height:  MediaQuery.of(context).size.height * 0.01),
+            SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height * 0.55,
+              child: CameraPreview(controller),
+            ),
+            SizedBox(height:  MediaQuery.of(context).size.height * 0.025),
+            // starts and stops the recording button
+            ElevatedButton(
+              onPressed: !controller.value.isInitialized
+                  ? null
+                  : (isRecording ? _stopRecording : _startRecording),
+              style: ElevatedButton.styleFrom(
+                shape: const CircleBorder(),
+                padding: const EdgeInsets.all(1), // space inside the button
+                backgroundColor: ColorTheme.primary,
               ),
+              child: isRecording
+                  ? Icon(
+                      Icons.motion_photos_pause_outlined,
+                      size: 72,
+                      color: ColorTheme.textColor,
+                    )
+                  : Icon(
+                      Icons.not_started,
+                      size: 72,
+                      color: ColorTheme.textColor,
+                    ),
             ),
-          ),
-          const SizedBox(height: 12),
-          Text(
-            (isRecording) ? 'RECORDING IN PROGRESS' : 'RECORDING STOPPED',
-            style: TextStyle(
-              color: ColorTheme.red,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          SizedBox(
-            width: double.infinity,
-            height: 450,
-            child: CameraPreview(controller),
-          ),
-          const SizedBox(height: 12),
-
-          // starts and stops the recording button
-          ElevatedButton(
-            onPressed: !controller.value.isInitialized
-                ? null
-                : (isRecording ? _stopRecording : _startRecording),
-            style: ElevatedButton.styleFrom(
-              shape: const CircleBorder(),
-              padding: const EdgeInsets.all(1), // space inside the button
-              backgroundColor: ColorTheme.primary,
-            ),
-            child: isRecording
-                ? Icon(
-                    Icons.motion_photos_pause_outlined,
-                    size: 72,
-                    color: ColorTheme.textColor,
-                  )
-                : Icon(
-                    Icons.not_started,
-                    size: 72,
-                    color: ColorTheme.textColor,
-                  ),
-          ),
-        ],
+            SizedBox(height:  MediaQuery.of(context).size.height * 0.05),
+          ],
+        ),
       ),
       floatingActionButton: SizedBox(
         width: MediaQuery.of(context).size.width,
