@@ -84,28 +84,191 @@ class InstructionAndQuestions {
         '\tb) If s/he never requests bubbles or tries to get your attention after 30 seconds, just end the bubbles task. Again, not all children like bubbles and not all kids will respond.',
   ];
 
-  //Edit this list to change the questions for the short answers
-  static final autismIntakeForm = [
+  //This List contains the SAQ and MCQ for the "Intake Form for Autism Video Project"
+  static final List<List<String>> autismIntakeForm = [
     ['SAQ', 'What is your child\'s full name?'],
-    ['SAQ','What is your child\'s middle name? (if they have one)'],
+    ['SAQ', 'What is your child\'s middle name? (Enter N/A if not applicable)'],
     ['SAQ', 'What is your child\'s last name?'],
-    ['SAQ','What is their date of birth? (MM/DD/YYYY)'],
+    ['SAQ', 'What is their date of birth? (MM/DD/YYYY)'],
     ['MCQ', 'What is their gender?', 'Male', 'Female'],
+    ['SAQ', 'What is the date of their Diagnosis?'],
+    [
+      'MCQ',
+      'Has your child received any type of psychiatric diagnosis',
+      'yes',
+      'no',
+    ],
+    [
+      'MCQ',
+      'Does your child received any visual impairment that cannot be corrected?',
+      'yes',
+      'no',
+    ],
+    ['MCQ', 'Does your child have severe hearing loss', 'yes', 'no'],
+    [
+      'MCQ',
+      'Child\'s Race',
+      'White',
+      'Asian',
+      'American Indian/Alaska Native',
+      'Native Hawaiian/Other Pacific Islander',
+      'Unknown or not reported',
+    ],
+    ['MCQ', 'Child\'s Ethnicity', 'Hispanic', 'Not Hispanic'],
+    [
+      'MCQ',
+      'Household Income',
+      'less than \$24,999',
+      '\$25,000 - 34,999',
+      '\$35,000 - 49,999',
+      '\$50,000 - 74,999',
+      '\$75,000 - 99,999',
+      '\$100,000 - 149,999',
+      '\$150,000 - 199,999',
+      'over \$200,000',
+      'Do not wish to say',
+    ],
+    ['SAQ', 'What is the Parent/Guardian\'s first Name'],
+    [
+      'SAQ',
+      'What is the Parent/Guardian\'s Middle Name (Enter N/A if not applicable)',
+    ],
+    ['SAQ', 'What is the Parent/Guardian\'s Last Name?'],
+    ['SAQ', 'What is the Parent/Guardian\'s Cell Phone?'],
+    ['SAQ', 'What is the Parent/Guardian\'s Home Phone?'],
+    ['SAQ', 'What is the Parent/Guardian\'s E-mail address?'],
+    ['SAQ', 'Street Addresss'],
+    ['SAQ', 'City'],
+    ['SAQ', 'State'],
+    ['SAQ', 'Zip Code'],
+    [
+      'SAQ',
+      'What is Parent/Guardian\'s Relationship to Child',
+      'Mother',
+      'Father',
+      'Guardian',
+    ],
   ];
 
-  static final autismIntakeForm2 = [
-    ['What is your Child\'s Gender?','Male','Female'],
-    ['Autism Diagnosis','Diagnosed with Autism','Autism suspected, but no formal diagnosis','No known/suspected autism diagnosis']
+  static final List<List<String>> mChatRQuestions = [
+    [
+      'MCQ',
+      'If you point at something across the room, does your child look at it?',
+      'yes',
+      'no',
+    ],
+    ['MCQ', 'Have you ever wondered if your child might be deaf?', 'yes', 'no'],
+    [
+      'MCQ',
+      'Does your child play pretend or make-believe? (e.g., pretend to drink from an empty cup or feed a doll)',
+      'yes',
+      'no',
+    ],
+    [
+      'MCQ',
+      'Does your child like climbing on things? (e.g., furniture, playground equipment, or stairs)',
+      'yes',
+      'no',
+    ],
+    [
+      'MCQ',
+      'Does your child make unusual finger movements near his or her eyes?',
+      'yes',
+      'no',
+    ],
+    [
+      'MCQ',
+      'Does your child point with one finger to ask for something or to get help?',
+      'yes',
+      'no',
+    ],
+    [
+      'MCQ',
+      'Does your child point with one finger to show you something interesting?',
+      'yes',
+      'no',
+    ],
+    [
+      'MCQ',
+      'Is your child interested in other children? (e.g., watching, smiling at, or approaching them)',
+      'yes',
+      'no',
+    ],
+    [
+      'MCQ',
+      'Does your child show you things to share them (not to get help)? (e.g., holding up a toy or flower)',
+      'yes',
+      'no',
+    ],
+    [
+      'MCQ',
+      'Does your child respond when you call his or her name? (e.g., looks up, babbles, or stops what they are doing)',
+      'yes',
+      'no',
+    ],
+    [
+      'MCQ',
+      'When you smile at your child, does he or she smile back at you?',
+      'yes',
+      'no',
+    ],
+    [
+      'MCQ',
+      'Does your child get upset by everyday noises? (e.g., cries at a vacuum cleaner or loud music)',
+      'yes',
+      'no',
+    ],
+    ['MCQ', 'Does your child walk?', 'yes', 'no'],
+    [
+      'MCQ',
+      'Does your child look you in the eye when talking, playing, or during care?',
+      'yes',
+      'no',
+    ],
+    [
+      'MCQ',
+      'Does your child try to copy what you do? (e.g., wave bye-bye, clap, or mimic sounds)',
+      'yes',
+      'no',
+    ],
+    [
+      'MCQ',
+      'If you turn your head to look at something, does your child look to see what you\'re looking at?',
+      'yes',
+      'no',
+    ],
+    [
+      'MCQ',
+      'Does your child try to get you to watch him or her? (e.g., looks for praise or says "look" or "watch me")',
+      'yes',
+      'no',
+    ],
+    [
+      'MCQ',
+      'Does your child understand verbal instructions without gestures? (e.g., "put the book on the chair")',
+      'yes',
+      'no',
+    ],
+    [
+      'MCQ',
+      'If something new happens, does your child look at your face to see your reaction?',
+      'yes',
+      'no',
+    ],
+    [
+      'MCQ',
+      'Does your child enjoy movement activities? (e.g., swinging or being bounced on your knee)',
+      'yes',
+      'no',
+    ],
   ];
-
-  static final autismIntakeForm3 = [];
 
   static List<String> getVideoInstructios() {
     return videoInstructions;
   }
-  static List<List<String>> getIntakeForm(){
+
+  static List<List<String>> getIntakeForm() {
     return autismIntakeForm;
   }
-
 }
 //EOF instruction_and_questions.dart
