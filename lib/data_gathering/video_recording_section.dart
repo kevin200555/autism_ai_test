@@ -216,7 +216,7 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
             Padding(
               padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
               child: AutoSizeText(
-                textAlign: TextAlign.center,
+                textAlign: TextAlign.left,
                 widget.instructions[currentStep],
                 style: TextStyle(
                   fontSize: 18,
