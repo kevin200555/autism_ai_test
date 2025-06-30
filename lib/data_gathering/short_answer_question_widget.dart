@@ -20,6 +20,7 @@ class ShortAnswerQuestionWidget extends StatefulWidget {
 
 class _ShortAnswerQuestionWidgetState
     extends State<ShortAnswerQuestionWidget> {
+  //controller is used because when you scroll, it removes the list item, removing whatever the user put in there
   late TextEditingController _controller;
 
   @override
@@ -76,3 +77,4 @@ class _ShortAnswerQuestionWidgetState
     );
   }
 }
+//EOF short_answer_question_widget.dart

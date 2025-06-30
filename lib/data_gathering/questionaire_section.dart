@@ -90,7 +90,7 @@ class _GuidedQuestionaireState extends State<GuidedQuestionaire> {
             widget.multipleChoice.length +
             1,
         itemBuilder: (context, index) {
-          //adds the sizedBox at the end (it would cover the next button otherwise)
+          //adds a blank sizedBox at the end (the next button would cover the questions otherwise)
           if (index ==
               widget.shortAnswerInstructions.length +
                   widget.multipleChoice.length) {
@@ -124,7 +124,7 @@ class _GuidedQuestionaireState extends State<GuidedQuestionaire> {
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: MutlipleChoiceQuestionWidget(
                 multipleChoiceEntry: widget.multipleChoice[mcIndex],
-                value: multipleChoiceResponses[mcIndex], // NEW LINE
+                value: multipleChoiceResponses[mcIndex], 
                 onChanged: (value) {
                   setState(() {
                     multipleChoiceResponses[mcIndex] = value;
@@ -138,8 +138,9 @@ class _GuidedQuestionaireState extends State<GuidedQuestionaire> {
       //Next button
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          print(multipleChoiceResponses);
-          print(shortAnswerResponses);
+          //Prints to debug console, only enable when using the emulator
+          //print(multipleChoiceResponses);
+          //print(shortAnswerResponses);
           nextSection();
         },
         backgroundColor: ColorTheme.primary,

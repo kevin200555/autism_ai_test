@@ -3,6 +3,7 @@ import 'package:autism_ai_test/themes/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
+//Lets the user view the video they just recorded
 class VideoPlayerScreen extends StatefulWidget {
   final String videoPath; // Can be file path or network URL
 

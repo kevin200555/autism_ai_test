@@ -1,4 +1,5 @@
-
+//class to store the instructions and questions given to the user
+//change as needed
 class InstructionAndQuestions {
    //Edit this list to display different instructions to the user, these are used in the video_recording_section
     static final videoInstructions = [
@@ -50,3 +51,4 @@ class InstructionAndQuestions {
       return multipleChoice;
     }
 }
+//EOF instruction_and_questions.dart
