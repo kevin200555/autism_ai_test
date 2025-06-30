@@ -4,7 +4,7 @@ import 'package:camera/camera.dart';
 import 'package:autism_ai_test/themes/colors.dart';
 import 'package:autism_ai_test/screens/help_screen.dart';
 import 'package:autism_ai_test/data_gathering/questionaire_section.dart';
-import 'package:autism_ai_test/instruction_and_questions.dart';
+import 'package:autism_ai_test/data_gathering/instruction_and_questions.dart';
 class HomeScreen extends StatelessWidget {
   final CameraDescription camera;
   const HomeScreen({super.key, required this.camera});
