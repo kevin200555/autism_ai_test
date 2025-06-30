@@ -270,5 +270,9 @@ class InstructionAndQuestions {
   static List<List<String>> getIntakeForm() {
     return autismIntakeForm;
   }
+  
+  static List<List<String>> getMChatR() {
+    return mChatRQuestions;
+  }
 }
 //EOF instruction_and_questions.dart
