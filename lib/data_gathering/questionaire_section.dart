@@ -11,14 +11,12 @@ import 'package:autism_ai_test/themes/colors.dart';
 // after the user completes this section, they move unto the video_recording_section
 class GuidedQuestionaire extends StatefulWidget {
   final CameraDescription camera;
-  final List<String> shortAnswerInstructions;
-  final List<List<String>> multipleChoice;
+  final List<List<String>> questionList;
   final List<String> videoInstructions;
   const GuidedQuestionaire({
     super.key,
     required this.camera,
-    required this.shortAnswerInstructions,
-    required this.multipleChoice,
+    required this.questionList,
     required this.videoInstructions,
   });
 
@@ -27,27 +25,18 @@ class GuidedQuestionaire extends StatefulWidget {
 }
 
 class _GuidedQuestionaireState extends State<GuidedQuestionaire> {
-  List<String?> shortAnswerResponses = [];
-  List<String?> multipleChoiceResponses = [];
+  List<String?> responses = [];
 
   @override
   void initState() {
     super.initState();
-    shortAnswerResponses = List<String?>.filled(
-      widget.shortAnswerInstructions.length,
-      null,
-    );
-    multipleChoiceResponses = List<String?>.filled(
-      widget.multipleChoice.length,
-      null,
-    );
+    responses = List<String?>.filled(widget.questionList.length, null);
   }
 
-  //goes to the video section 
+  //goes to the video section
   Future<void> nextSection() async {
     //checks for missing answers before moving on
-    if (multipleChoiceResponses.contains(null) ||
-        shortAnswerResponses.contains(null)) {
+    if (responses.contains(null)) {
       await showDialog(
         context: context,
         builder: (_) =>
@@ -86,14 +75,11 @@ class _GuidedQuestionaireState extends State<GuidedQuestionaire> {
         padding: const EdgeInsets.all(8),
         itemCount:
             //the plus 1 is to add a sizedBox (extra space at the end)
-            widget.shortAnswerInstructions.length +
-            widget.multipleChoice.length +
-            1,
+            widget.questionList.length + 1,
         itemBuilder: (context, index) {
           //adds a blank sizedBox at the end (the next button would cover the questions otherwise)
           if (index ==
-              widget.shortAnswerInstructions.length +
-                  widget.multipleChoice.length) {
+              widget.questionList.length) {
             return Column(
               children: [
                 AutoSizeText(
@@ -103,31 +89,31 @@ class _GuidedQuestionaireState extends State<GuidedQuestionaire> {
               ],
             );
           }
-          if (index < widget.shortAnswerInstructions.length) {
+          if (widget.questionList[index][0] == 'SAQ') {
             // short answer question
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: ShortAnswerQuestionWidget(
-                shortAnswerInstructions: widget.shortAnswerInstructions[index],
-                value: shortAnswerResponses[index],
+                shortAnswerInstructions: widget.questionList[index],
+                value: responses[index],
                 onChanged: (value) {
                   setState(() {
-                    shortAnswerResponses[index] = value;
+                    responses[index] = value;
                   });
                 },
               ),
             );
-          } else {
+          } 
+          else {
             // multiple choice question
-            final mcIndex = index - widget.shortAnswerInstructions.length;
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: MutlipleChoiceQuestionWidget(
-                multipleChoiceEntry: widget.multipleChoice[mcIndex],
-                value: multipleChoiceResponses[mcIndex], 
+                multipleChoiceEntry: widget.questionList[index],
+                value: responses[index],
                 onChanged: (value) {
                   setState(() {
-                    multipleChoiceResponses[mcIndex] = value;
+                    responses[index] = value;
                   });
                 },
               ),

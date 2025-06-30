@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:autism_ai_test/themes/colors.dart';
 
 class ShortAnswerQuestionWidget extends StatefulWidget {
-  final String shortAnswerInstructions;
+  final List<String> shortAnswerInstructions;
   final Function(String) onChanged;
   final String? value;
 
@@ -52,7 +52,7 @@ class _ShortAnswerQuestionWidgetState
         children: [
           // Question prompt
           Text(
-            widget.shortAnswerInstructions,
+            widget.shortAnswerInstructions[1],
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,

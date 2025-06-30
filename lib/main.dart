@@ -25,3 +25,5 @@ class MyApp extends StatelessWidget {
 }
 //EOF main.dart
 
+//unqiue User ID
+//cloud services: AWS, Oracle, Google cloud services, (HIPA complinent)

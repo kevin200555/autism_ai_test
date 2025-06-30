@@ -14,8 +14,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
 
     var videoInstructions = InstructionAndQuestions.getVideoInstructios();
-    var shortAnswerQuestions = InstructionAndQuestions.getShortAnswerQuestions();
-    var multipleChoice = InstructionAndQuestions.getMultipleChoice();
+    var questionList = InstructionAndQuestions.getIntakeForm();
 
     return Scaffold(
       backgroundColor: ColorTheme.background,
@@ -55,9 +54,8 @@ class HomeScreen extends StatelessWidget {
                     MaterialPageRoute(
                       builder: (context) => GuidedQuestionaire(
                         camera: camera,
-                        shortAnswerInstructions: shortAnswerQuestions,
                         videoInstructions: videoInstructions,
-                        multipleChoice: multipleChoice,
+                        questionList: questionList,
                       ),
                     ),
                   );

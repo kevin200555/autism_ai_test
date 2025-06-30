@@ -22,7 +22,7 @@ class MutlipleChoiceQuestionWidget extends StatelessWidget {
         children: [
           // Question
           Text(
-            multipleChoiceEntry[0],
+            multipleChoiceEntry[1],
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
@@ -36,7 +36,7 @@ class MutlipleChoiceQuestionWidget extends StatelessWidget {
             isExpanded: true,
             icon: const Icon(Icons.keyboard_arrow_down),
             items: multipleChoiceEntry
-                .sublist(1)
+                .sublist(2)
                 .map((item) => DropdownMenuItem<String>(
                       value: item,
                       child: Text(item),
