@@ -7,6 +7,7 @@
 import 'package:autism_ai_test/data_gathering/instruction_and_questions.dart';
 import 'package:autism_ai_test/data_gathering/mutliple_choice_question_widget.dart';
 import 'package:autism_ai_test/data_gathering/short_answer_question_widget.dart';
+import 'package:autism_ai_test/screens/m_chatR_form_screen.dart';
 import 'package:autism_ai_test/themes/colors.dart';
 import 'package:autism_ai_test/themes/next_button.dart';
 import 'package:autism_ai_test/themes/text_types.dart';
@@ -49,7 +50,18 @@ class _IntakeFormScreenState extends State<IntakeFormScreen> {
         itemBuilder: (context, index) {
           //adds a blank sizedBox at the end (the next button would cover the questions otherwise)
           if (index == intakeFormQuestions.length) {
-            return NextButton(label: 'NEXT', onPressed: (){});
+            return NextButton(
+              label: 'NEXT',
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        MChatRFormScreen(camera: widget.camera),
+                  ),
+                );
+              },
+            );
           }
           if (intakeFormQuestions[index][0] == 'SAQ') {
             // short answer question

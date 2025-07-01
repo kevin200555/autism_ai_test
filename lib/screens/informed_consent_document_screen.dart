@@ -44,12 +44,18 @@ class _InformedConsentDocumentScreenState
             BodyText(
               'Please click the link here to fill out the Informted Consent Document',
             ),
-            NextButton(label: 'Next', onPressed: () {
+            NextButton(
+              label: 'Next',
+              onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => IntakeFormScreen(camera: widget.camera,)),
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        IntakeFormScreen(camera: widget.camera),
+                  ),
                 );
-              },),
+              },
+            ),
           ],
         ),
       ),
