@@ -207,17 +207,18 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
             BodyText(widget.instructions[currentStep]),
             BodyText(''),
             SubTitle('Recording Section (Scroll Down)'),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.05),
             SizedBox(
               width: double.infinity,
               child: AutoSizeText(
                 (isRecording) ? 'RECORDING IN PROGRESS' : 'RECORDING STOPPED',
                 style: TextStyle(
-                  fontSize: 12,
+                  fontSize: 16,
                   color: (isRecording) ? ColorTheme.green : ColorTheme.red,
                   fontWeight: FontWeight.bold,
                 ),
                 textAlign: TextAlign.center,
-                minFontSize: 8,
+                minFontSize: 12,
                 maxLines: 1,
               ),
             ),

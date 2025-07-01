@@ -45,7 +45,7 @@ class _VideoSectionInfoScreenState
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             BodyText(
-              'Please click the link here to fill out the Informted Consent Document',
+              'Please click the link here to fill out the Informed Consent Document',
             ),
             NextButton(
               label: 'Next',
