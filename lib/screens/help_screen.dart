@@ -1,3 +1,4 @@
+import 'package:autism_ai_test/themes/text_types.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:autism_ai_test/themes/colors.dart';
@@ -10,40 +11,42 @@ class HelpScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
-        title: Text(
-          'Help and Information',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: ColorTheme.textColor,
-          ),
-        ),
+        title: Text('HELP MENU', style: TextStyle(fontSize: 24)),
         centerTitle: true,
-        iconTheme: IconThemeData(color: ColorTheme.textColor),
-        backgroundColor: ColorTheme.accent,
+        backgroundColor: ColorTheme.background,
+        actions: <Widget>[
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => HelpScreen()),
+              );
+            },
+            icon: const Icon(Icons.question_mark_outlined),
+          ),
+        ],
       ),
-      body: SingleChildScrollView(
+
+      body: SizedBox(
+        width: double.infinity,
+        height: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
-              child: AutoSizeText(
-                textAlign: TextAlign.left,
-                //edit this string to change the instructions (I'm guessing this is bound to change)
-                'Welcome! The purpose of this app is to integrate an AI model that is meant to '
-                'determine whether or not the patient has autism or not.  To do that, we need you to'
-                'fill out some questionaires and take a few videos of your child'
-                'Because of this, we will need access to your camera and audio'
-                'After that, your results will be uploaded to the AI model that will determine the likeihood'
-                'that your child has autism.  To begin, go back to the home screen and click the start button.'
-                'Thank you for helping us, we appreicate your support!',
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-                minFontSize: 10,
-              ),
+            SubTitle('Questions?', textAlign: TextAlign.left),
+            BodyText(
+              'If you have any questions regarding how to record and upload your videos, please feel free to e-mail Daniel '
+              'Gray (drgray@wustl.edu) and Jerry Yu (xiangxu@wustl.edu). Jerry is also available via text/phone at 737-'
+              '529-5080. After you upload videos, we will review the videos and let you know if there are any problems.',
             ),
+            SizedBox(height: MediaQuery.of(context).size.width * 0.05),
+            BodyText(
+              'For any questions reguarding the app itself, Contact Kevin Li (kevinli200555@gmail.com)'
+              'if their are any problems.'
+            ),
+            SizedBox(height: MediaQuery.of(context).size.width * 0.05),
+            BodyText('Any suggestions, recommendations or comments you have are also welcome!')
           ],
         ),
       ),
