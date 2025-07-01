@@ -1,6 +1,5 @@
 import 'package:autism_ai_test/themes/text_types.dart';
 import 'package:flutter/material.dart';
-import 'package:autism_ai_test/themes/colors.dart';
 
 class ShortAnswerQuestionWidget extends StatefulWidget {
   final List<String> shortAnswerInstructions;

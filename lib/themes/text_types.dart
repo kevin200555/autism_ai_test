@@ -2,10 +2,8 @@ import 'package:autism_ai_test/themes/colors.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/material.dart';
-
-
+//The purpose of this class is to store various configuations for AutoSizedText
+//With this, I should be able to type out text, without having to worry about the text not fitting
 class SubTitle extends StatelessWidget {
   final String text;
   final TextAlign textAlign;

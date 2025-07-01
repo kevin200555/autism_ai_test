@@ -2,7 +2,6 @@
 // may need to implement a feature that lets people draw their signiture
 // has some MCQ and SAQ questions
 
-import 'package:autism_ai_test/main.dart';
 import 'package:autism_ai_test/screens/intake_form_screen.dart';
 import 'package:autism_ai_test/themes/colors.dart';
 import 'package:autism_ai_test/themes/next_button.dart';

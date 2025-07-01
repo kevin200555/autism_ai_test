@@ -13,8 +13,6 @@ import 'package:autism_ai_test/data_gathering/short_answer_question_widget.dart'
 import 'package:autism_ai_test/screens/video_section_info_screen.dart';
 import 'package:autism_ai_test/themes/colors.dart';
 import 'package:autism_ai_test/themes/next_button.dart';
-import 'package:autism_ai_test/themes/text_types.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 

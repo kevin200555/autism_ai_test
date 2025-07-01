@@ -7,8 +7,6 @@
 
 import 'package:autism_ai_test/data_gathering/instruction_and_questions.dart';
 import 'package:autism_ai_test/data_gathering/video_recording_section.dart';
-import 'package:autism_ai_test/main.dart';
-import 'package:autism_ai_test/screens/intake_form_screen.dart';
 import 'package:autism_ai_test/themes/colors.dart';
 import 'package:autism_ai_test/themes/next_button.dart';
 import 'package:autism_ai_test/themes/text_types.dart';

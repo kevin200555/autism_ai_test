@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:autism_ai_test/themes/colors.dart';
 import 'package:autism_ai_test/screens/help_screen.dart';
-import 'package:autism_ai_test/data_gathering/questionaire_section.dart';
-import 'package:autism_ai_test/data_gathering/instruction_and_questions.dart';
+
 
 //The very first screen that a user will see
 class HomeScreen extends StatelessWidget {
