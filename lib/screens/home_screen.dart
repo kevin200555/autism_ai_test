@@ -1,3 +1,4 @@
+import 'package:autism_ai_test/screens/informed_consent_document_screen.dart';
 import 'package:autism_ai_test/themes/text_types.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -13,8 +14,6 @@ class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key, required this.camera});
   @override
   Widget build(BuildContext context) {
-    var videoInstructions = InstructionAndQuestions.getVideoInstructios();
-    var questionList = InstructionAndQuestions.getIntakeForm();
 
     return Scaffold(
       backgroundColor: ColorTheme.background,
@@ -88,7 +87,11 @@ class HomeScreen extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => HelpScreen()),
+                MaterialPageRoute(
+                  builder: (context) => InformedConsentDocumentScreen(
+                    camera: camera,
+                  ),
+                ),
               );
             },
             label: AutoSizeText(
@@ -106,7 +109,7 @@ class HomeScreen extends StatelessWidget {
               foregroundColor: ColorTheme.alternateTextColor,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(
-                  16,
+                  0,
                 ), // rounded corners like FAB
               ),
               padding: const EdgeInsets.symmetric(vertical: 16),
