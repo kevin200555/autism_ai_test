@@ -1,3 +1,4 @@
+import 'package:autism_ai_test/themes/text_types.dart';
 import 'package:flutter/material.dart';
 import 'package:autism_ai_test/themes/colors.dart';
 
@@ -18,8 +19,7 @@ class ShortAnswerQuestionWidget extends StatefulWidget {
       _ShortAnswerQuestionWidgetState();
 }
 
-class _ShortAnswerQuestionWidgetState
-    extends State<ShortAnswerQuestionWidget> {
+class _ShortAnswerQuestionWidgetState extends State<ShortAnswerQuestionWidget> {
   //controller is used because when you scroll, it removes the list item, removing whatever the user put in there
   late TextEditingController _controller;
 
@@ -45,35 +45,27 @@ class _ShortAnswerQuestionWidgetState
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Question prompt
-          Text(
-            widget.shortAnswerInstructions[1],
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: ColorTheme.alternateTextColor,
-            ),
-          ),
-          const SizedBox(height: 12),
-          // Answer input field
-          TextField(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // Question prompt
+        SubTitle(widget.shortAnswerInstructions[1]),
+        // Answer input field
+        Padding(
+          padding: EdgeInsets.fromLTRB(16, 2, 16, 2),
+          child: TextField(
             controller: _controller,
             onChanged: widget.onChanged,
             decoration: const InputDecoration(
               border: UnderlineInputBorder(),
               hintText: 'Enter your answer here',
             ),
-            style: const TextStyle(fontSize: 18),
+            style: const TextStyle(fontSize: 16),
             maxLines: 5,
             minLines: 1,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

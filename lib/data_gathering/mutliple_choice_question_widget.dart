@@ -1,4 +1,5 @@
 import 'package:autism_ai_test/themes/colors.dart';
+import 'package:autism_ai_test/themes/text_types.dart';
 import 'package:flutter/material.dart';
 
 class MutlipleChoiceQuestionWidget extends StatelessWidget {
@@ -21,15 +22,7 @@ class MutlipleChoiceQuestionWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Question
-          Text(
-            multipleChoiceEntry[1],
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: ColorTheme.alternateTextColor,
-            ),
-          ),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+          SubTitle(multipleChoiceEntry[1]),
           // Dropdown menu
           DropdownButton<String>(
             value: value,
@@ -37,10 +30,10 @@ class MutlipleChoiceQuestionWidget extends StatelessWidget {
             icon: const Icon(Icons.keyboard_arrow_down),
             items: multipleChoiceEntry
                 .sublist(2)
-                .map((item) => DropdownMenuItem<String>(
-                      value: item,
-                      child: Text(item),
-                    ))
+                .map(
+                  (item) =>
+                      DropdownMenuItem<String>(value: item, child: Text(item)),
+                )
                 .toList(),
             onChanged: (val) {
               if (val != null) onChanged(val);

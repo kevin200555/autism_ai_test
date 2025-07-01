@@ -2,6 +2,8 @@
 // may need to implement a feature that lets people draw their signiture
 // has some MCQ and SAQ questions
 
+import 'package:autism_ai_test/main.dart';
+import 'package:autism_ai_test/screens/intake_form_screen.dart';
 import 'package:autism_ai_test/themes/colors.dart';
 import 'package:autism_ai_test/themes/next_button.dart';
 import 'package:autism_ai_test/themes/text_types.dart';
@@ -26,23 +28,10 @@ class _InformedConsentDocumentScreenState
       appBar: AppBar(
         title: Text(
           'INFORMED CONSENT DOCUMENT',
-          style: TextStyle(fontSize: 24),
+          style: TextStyle(fontSize: 18),
         ),
         centerTitle: true,
         backgroundColor: ColorTheme.background,
-        actions: <Widget>[
-          IconButton(
-            onPressed: () {
-              /*
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => HelpScreen()),
-              );
-              */
-            },
-            icon: const Icon(Icons.question_mark_outlined),
-          ),
-        ],
       ),
 
       body: SizedBox(
@@ -55,7 +44,12 @@ class _InformedConsentDocumentScreenState
             BodyText(
               'Please click the link here to fill out the Informted Consent Document',
             ),
-            NextButton(label: 'Next', onPressed: () {}),
+            NextButton(label: 'Next', onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => IntakeFormScreen(camera: widget.camera,)),
+                );
+              },),
           ],
         ),
       ),
