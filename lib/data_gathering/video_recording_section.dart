@@ -1,4 +1,7 @@
 import 'dart:io';
+import 'package:autism_ai_test/data_gathering/instruction_and_questions.dart';
+import 'package:autism_ai_test/themes/next_button.dart';
+import 'package:autism_ai_test/themes/text_types.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
@@ -102,7 +105,7 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
       setState(() {
         currentStep++;
       });
-    //goes back to main menu
+      //goes back to main menu
     } else {
       await showDialog(
         context: context,
@@ -163,7 +166,8 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
 
   @override
   Widget build(BuildContext context) {
-    if (!controller.value.isInitialized) { //loading screen, needed since this section has to ask user for camera/mic access first
+    if (!controller.value.isInitialized) {
+      //loading screen, needed since this section has to ask user for camera/mic access first
       return Scaffold(body: Center(child: CircularProgressIndicator()));
     }
 
@@ -171,7 +175,7 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
         title: Text(
-          'Video ${currentStep + 1} of ${widget.instructions.length}',
+          'Task ${currentStep + 1} of ${widget.instructions.length}: "${InstructionAndQuestions.getVideoNames()[currentStep]}"',
           style: TextStyle(
             color: ColorTheme.textColor,
             fontWeight: FontWeight.bold,
@@ -179,7 +183,7 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
         ),
         centerTitle: true,
         iconTheme: IconThemeData(color: ColorTheme.textColor),
-        backgroundColor: ColorTheme.accent,
+        backgroundColor: ColorTheme.background,
         // This part overrides the default code of the appBar back button
         // This would normally just go back to the previous widget (which is the questionaire secion)
         automaticallyImplyLeading: false,
@@ -197,46 +201,27 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+            SubTitle('Instructions'),
+            BodyText(widget.instructions[currentStep]),
+            BodyText(''),
+            SubTitle('Recording Section (Scroll Down)'),
+            SizedBox(
+              width: double.infinity,
               child: AutoSizeText(
-                textAlign: TextAlign.center,
-                'Instructions:',
+                (isRecording) ? 'RECORDING IN PROGRESS' : 'RECORDING STOPPED',
                 style: TextStyle(
-                  fontSize: 24,
+                  fontSize: 12,
+                  color: (isRecording) ? ColorTheme.green : ColorTheme.red,
                   fontWeight: FontWeight.bold,
-                  color: ColorTheme.alternateTextColor,
                 ),
+                textAlign: TextAlign.center,
+                minFontSize: 8,
                 maxLines: 1,
-                minFontSize: 12,
               ),
             ),
-            //Displays instructions, these are different across the vidoes
-            Padding(
-              padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-              child: AutoSizeText(
-                textAlign: TextAlign.left,
-                widget.instructions[currentStep],
-                style: TextStyle(
-                  fontSize: 18,
-                  color: ColorTheme.alternateTextColor,
-                ),
-                maxLines: 10,
-                minFontSize: 12,
-              ),
-            ),
-            const SizedBox(height: 12),
-            AutoSizeText(
-              (isRecording) ? 'RECORDING IN PROGRESS' : 'RECORDING STOPPED',
-              style: TextStyle(
-                fontSize: 12,
-                color: ColorTheme.red,
-                fontWeight: FontWeight.bold,
-              ),
-              minFontSize: 8,
-              maxLines: 1,
-            ),
+
             SizedBox(height: MediaQuery.of(context).size.height * 0.01),
             SizedBox(
               width: MediaQuery.of(context).size.width,
@@ -245,98 +230,96 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.025),
             // starts and stops the recording button
-            ElevatedButton(
-              onPressed: !controller.value.isInitialized
-                  ? null
-                  : (isRecording ? _stopRecording : _startRecording),
-              style: ElevatedButton.styleFrom(
-                shape: const CircleBorder(),
-                padding: const EdgeInsets.all(1), // space inside the button
-                backgroundColor: ColorTheme.primary,
-              ),
-              child: isRecording
-                  ? Icon(
-                      Icons.motion_photos_pause_outlined,
-                      size: 72,
-                      color: ColorTheme.textColor,
-                    )
-                  : Icon(
-                      Icons.not_started,
-                      size: 72,
-                      color: ColorTheme.textColor,
-                    ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    if (!isRecording) {
+                      if (currentStep < recordedVideos.length) {
+                        viewVideo(recordedVideos[currentStep]);
+                      } else {
+                        showDialog(
+                          context: context,
+                          builder: (_) => const AlertDialog(
+                            title: Text('No video to view!'),
+                          ),
+                        );
+                      }
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                    shape: const CircleBorder(),
+                    padding: const EdgeInsets.all(1), // space inside the button
+                    backgroundColor: ColorTheme.background,
+                    foregroundColor: ColorTheme.textColor,
+                  ),
+                  child: const Icon(Icons.remove_red_eye, size: 50),
+                ),
+                SizedBox(width: MediaQuery.of(context).size.width * 0.2),
+                ElevatedButton(
+                  onPressed: !controller.value.isInitialized
+                      ? null
+                      : (isRecording ? _stopRecording : _startRecording),
+                  style: ElevatedButton.styleFrom(
+                    shape: const CircleBorder(),
+                    padding: const EdgeInsets.all(1), // space inside the button
+                    backgroundColor: (isRecording)
+                        ? ColorTheme.green
+                        : ColorTheme.red,
+                  ),
+                  child: isRecording
+                      ? Icon(
+                          Icons.motion_photos_pause_outlined,
+                          size: 72,
+                          color: ColorTheme.background,
+                        )
+                      : Icon(
+                          Icons.not_started,
+                          size: 72,
+                          color: ColorTheme.background,
+                        ),
+                ),
+                SizedBox(width: MediaQuery.of(context).size.width * 0.2),
+                ElevatedButton(
+                  onPressed: () {
+                    if (!isRecording) {
+                      if (currentStep < recordedVideos.length) {
+                        deleteVideo(currentStep);
+                      } else {
+                        showDialog(
+                          context: context,
+                          builder: (_) => const AlertDialog(
+                            title: Text('No video to delete!'),
+                          ),
+                        );
+                      }
+                    }
+                  },
+
+                  style: ElevatedButton.styleFrom(
+                    shape: const CircleBorder(),
+                    padding: const EdgeInsets.all(1), // space inside the button
+                    backgroundColor: ColorTheme.background,
+                    foregroundColor: ColorTheme.textColor,
+                  ),
+                  child: const Icon(Icons.delete, size: 50),
+                ),
+              ],
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+            NextButton(
+              label: 'SUBMIT VIDEO',
+              onPressed: () {
+                if (!isRecording) {
+                  nextVideo();
+                }
+              },
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.05),
           ],
         ),
       ),
-      floatingActionButton: SizedBox(
-        width: MediaQuery.of(context).size.width,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  FloatingActionButton(
-                    onPressed: () {
-                      if (!isRecording) {
-                        if (currentStep < recordedVideos.length) {
-                          viewVideo(recordedVideos[currentStep]);
-                        } else {
-                          showDialog(
-                            context: context,
-                            builder: (_) => const AlertDialog(
-                              title: Text('No video to view!'),
-                            ),
-                          );
-                        }
-                      }
-                    },
-                    backgroundColor: ColorTheme.green,
-                    foregroundColor: ColorTheme.textColor,
-                    child: const Icon(Icons.remove_red_eye),
-                  ),
-                  SizedBox(height: 12),
-                  FloatingActionButton(
-                    onPressed: () {
-                      if (!isRecording) {
-                        if (currentStep < recordedVideos.length) {
-                          deleteVideo(currentStep);
-                        } else {
-                          showDialog(
-                            context: context,
-                            builder: (_) => const AlertDialog(
-                              title: Text('No video to delete!'),
-                            ),
-                          );
-                        }
-                      }
-                    },
-                    backgroundColor: ColorTheme.red,
-                    foregroundColor: ColorTheme.textColor,
-                    child: const Icon(Icons.delete),
-                  ),
-                ],
-              ),
-              FloatingActionButton(
-                onPressed: () {
-                  if (!isRecording) {
-                    nextVideo();
-                  }
-                },
-                backgroundColor: ColorTheme.primary,
-                foregroundColor: ColorTheme.textColor,
-                child: const Icon(Icons.arrow_forward_sharp),
-              ),
-            ],
-          ),
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }

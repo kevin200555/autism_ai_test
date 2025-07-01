@@ -274,5 +274,9 @@ class InstructionAndQuestions {
   static List<List<String>> getMChatR() {
     return mChatRQuestions;
   }
+
+  static List<String> getVideoNames() {
+    return videoNames;
+  }
 }
 //EOF instruction_and_questions.dart
