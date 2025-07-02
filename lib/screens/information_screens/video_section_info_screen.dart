@@ -184,7 +184,7 @@ class VideoSectionInfoScreen3 extends StatelessWidget {
               'Make sure to enable your camera and microphone when prompted.\n',
             ),
             SubTitle('SWIPE>>>'),
-            //INSERT Image of example Camera placement
+            Image.asset('assets/my_image.png')
           ],
         ),
       ),
