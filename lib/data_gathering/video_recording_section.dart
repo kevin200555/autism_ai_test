@@ -177,13 +177,13 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
         title: Text(
           'Task ${currentStep + 1} of ${widget.instructions.length}: "${InstructionAndQuestions.getVideoNames()[currentStep]}"',
           style: TextStyle(
-            color: ColorTheme.textColor,
+            color: ColorTheme.alternateTextColor,
             fontWeight: FontWeight.bold,
           ),
         ),
         centerTitle: true,
-        iconTheme: IconThemeData(color: ColorTheme.textColor),
-        backgroundColor: ColorTheme.background,
+        iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),
+        backgroundColor: ColorTheme.accent,
         // This part overrides the default code of the appBar back button
         // This would normally just go back to the previous widget (which is the questionaire secion)
         automaticallyImplyLeading: false,
