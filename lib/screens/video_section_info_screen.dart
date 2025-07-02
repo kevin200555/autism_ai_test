@@ -2,11 +2,11 @@
 // They are connected by swipping and this is done in order to make the instructions
 // easier to digest
 
-import 'package:autism_ai_test/data_gathering/instruction_and_questions.dart';
-import 'package:autism_ai_test/data_gathering/video_recording_section.dart';
-import 'package:autism_ai_test/themes/colors.dart';
-import 'package:autism_ai_test/themes/next_button.dart';
-import 'package:autism_ai_test/themes/text_types.dart';
+import 'package:autism_ai_test/constants/instruction_and_questions.dart';
+import 'package:autism_ai_test/screens/video_recording_section_screen.dart';
+import 'package:autism_ai_test/constants/colors.dart';
+import 'package:autism_ai_test/widgets/next_button.dart';
+import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
@@ -248,7 +248,7 @@ class _VideoSectionInfoScreen4State extends State<VideoSectionInfoScreen4> {
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        GuidedVideoRecording(camera: widget.camera, instructions: InstructionAndQuestions.getVideoInstructios(),),
+                        VideoRecordingSectionScreen(camera: widget.camera, instructions: InstructionAndQuestions.getVideoInstructios(),),
                   ),
                 );
               })

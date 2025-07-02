@@ -1,4 +1,4 @@
-import 'package:autism_ai_test/themes/text_types.dart';
+import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:flutter/material.dart';
 
 class MutlipleChoiceQuestionWidget extends StatelessWidget {

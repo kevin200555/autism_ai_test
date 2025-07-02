@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:autism_ai_test/themes/colors.dart';
+import 'package:autism_ai_test/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
@@ -42,7 +42,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
           'Video Playback',
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            color: ColorTheme.textColor,
+            color: ColorTheme.alternateTextColor,
           ),
         ),
         centerTitle: true,
@@ -66,7 +66,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                 : _controller.play();
           });
         },
-        backgroundColor: ColorTheme.primary,
+        backgroundColor: ColorTheme.accent,
         foregroundColor: ColorTheme.textColor,
         child: Icon(
           _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,

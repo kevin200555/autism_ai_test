@@ -1,30 +1,30 @@
 import 'dart:io';
-import 'package:autism_ai_test/data_gathering/instruction_and_questions.dart';
-import 'package:autism_ai_test/themes/next_button.dart';
-import 'package:autism_ai_test/themes/text_types.dart';
+import 'package:autism_ai_test/constants/instruction_and_questions.dart';
+import 'package:autism_ai_test/widgets/next_button.dart';
+import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:autism_ai_test/screens/video_player_screen.dart';
-import 'package:autism_ai_test/themes/colors.dart';
+import 'package:autism_ai_test/constants/colors.dart';
 
 //Stateful Widget that displays a series of video recording sections that the user must complete
 // The user records data for one section, moves on to the next section, and etc
-class GuidedVideoRecording extends StatefulWidget {
+class VideoRecordingSectionScreen extends StatefulWidget {
   //Takes in the camera from main and the instructions are from home_screen
   final CameraDescription camera;
   final List<String> instructions;
-  const GuidedVideoRecording({
+  const VideoRecordingSectionScreen({
     super.key,
     required this.camera,
     required this.instructions,
   });
 
   @override
-  State<GuidedVideoRecording> createState() => _GuidedRecorderState();
+  State<VideoRecordingSectionScreen> createState() => _GuidedRecorderState();
 }
 
-class _GuidedRecorderState extends State<GuidedVideoRecording> {
+class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
   int currentStep = 0; //keeps track of page
   late CameraController controller;
   bool isRecording = false;

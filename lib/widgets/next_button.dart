@@ -1,6 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:autism_ai_test/themes/colors.dart';
+import 'package:autism_ai_test/constants/colors.dart';
 
 class NextButton extends StatelessWidget {
   final String label;

@@ -1,6 +1,6 @@
-import 'package:autism_ai_test/themes/text_types.dart';
+import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:flutter/material.dart';
-import 'package:autism_ai_test/themes/colors.dart';
+import 'package:autism_ai_test/constants/colors.dart';
 
 //Just diaplays some information of the purpose of this app and how to use it to the user
 class HelpScreen extends StatelessWidget {
