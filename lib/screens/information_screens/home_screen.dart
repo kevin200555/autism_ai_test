@@ -68,7 +68,7 @@ class HomeScreen extends StatelessWidget {
             SizedBox(height: MediaQuery.of(context).size.width * 0.05),
             SubTitle('What\'s in the Test?', textAlign: TextAlign.left),
             BodyText('\t\t- Informed Consent Document'),
-            BodyText('\t\t- Demographic Information Form'),
+            BodyText('\t\t- Autism Intake Form'),
             BodyText('\t\t- M-ChatR Form'),
             BodyText('\t\t- Recorded Video Section'),
             SizedBox(height: MediaQuery.of(context).size.width * 0.05),

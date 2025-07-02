@@ -3,7 +3,7 @@
 // has some MCQ and SAQ questions
 
 import 'package:autism_ai_test/constants/colors.dart';
-import 'package:autism_ai_test/screens/information_screens/intake_form_screen.dart';
+import 'package:autism_ai_test/screens/data_gathering/intake_form_screen.dart';
 import 'package:autism_ai_test/widgets/next_button.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:camera/camera.dart';
