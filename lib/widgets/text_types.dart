@@ -8,7 +8,7 @@ class SubTitle extends StatelessWidget {
   final String text;
   final TextAlign textAlign;
   final double minFontSize;
-  final double maxLines;
+  final int maxLines;
   final TextStyle? style;
 
   const SubTitle(

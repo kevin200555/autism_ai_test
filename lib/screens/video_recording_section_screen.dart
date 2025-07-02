@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
+import 'package:autism_ai_test/screens/final_screen.dart';
 import 'package:autism_ai_test/widgets/next_button.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:auto_size_text/auto_size_text.dart';
@@ -107,13 +108,10 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
       });
       //goes back to main menu
     } else {
-      await showDialog(
-        context: context,
-        builder: (_) =>
-            AlertDialog(title: const Text('All Steps Completed! Thank You!')),
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => FinalScreen()),
       );
-      if (!mounted) return;
-      Navigator.of(context).popUntil((route) => route.isFirst);
     }
   }
 
@@ -310,7 +308,9 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.05),
             NextButton(
-              label: (currentStep == widget.instructions.length - 1) ? 'FINISH' : 'SUBMIT VIDEO',
+              label: (currentStep == widget.instructions.length - 1)
+                  ? 'FINISH'
+                  : 'SUBMIT VIDEO',
               onPressed: () {
                 if (!isRecording) {
                   nextVideo();

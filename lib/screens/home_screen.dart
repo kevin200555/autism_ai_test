@@ -76,7 +76,6 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-      //Displays a help menu
       floatingActionButton: SizedBox(
         width: double.infinity,
         height: 56,

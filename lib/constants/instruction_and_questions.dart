@@ -8,7 +8,7 @@ class InstructionAndQuestions {
     'What\'s that?',
     'Bring me the bear',
     'Snack time',
-    'Feeding the beaer',
+    'Feeding the bear',
     'Free playing',
     'What do you hear?',
     'Bubbles',
