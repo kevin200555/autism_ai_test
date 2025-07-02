@@ -124,7 +124,7 @@ class VideoSectionInfoScreen2 extends StatelessWidget {
             BodyText(
               '(the front facing camera is usually lower quality and could also distract your child.)',
             ),
-            //INSERT Image of example Camera placement
+            Image.asset('assets/camera_placement_example.png'),
             SubTitle('\nSWIPE>>>'),
           ],
         ),
@@ -184,7 +184,7 @@ class VideoSectionInfoScreen3 extends StatelessWidget {
               'Make sure to enable your camera and microphone when prompted.\n',
             ),
             SubTitle('SWIPE>>>'),
-            Image.asset('assets/my_image.png')
+            
           ],
         ),
       ),
