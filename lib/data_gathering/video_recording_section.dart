@@ -310,7 +310,7 @@ class _GuidedRecorderState extends State<GuidedVideoRecording> {
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.05),
             NextButton(
-              label: 'SUBMIT VIDEO',
+              label: (currentStep == widget.instructions.length - 1) ? 'FINISH' : 'SUBMIT VIDEO',
               onPressed: () {
                 if (!isRecording) {
                   nextVideo();
