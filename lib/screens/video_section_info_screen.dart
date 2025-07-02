@@ -1,9 +1,6 @@
-// This screen shows right before the video section, it just gives some basic info that the user must read before recording
-// Depending how low this is, I may need to make a second page.
-
-// Screen that basically shows terms and conditions
-// may need to implement a feature that lets people draw their signiture
-// has some MCQ and SAQ questions
+// This is section is actually a series of pages linked together
+// They are connected by swipping and this is done in order to make the instructions
+// easier to digest
 
 import 'package:autism_ai_test/data_gathering/instruction_and_questions.dart';
 import 'package:autism_ai_test/data_gathering/video_recording_section.dart';
@@ -11,7 +8,6 @@ import 'package:autism_ai_test/themes/colors.dart';
 import 'package:autism_ai_test/themes/next_button.dart';
 import 'package:autism_ai_test/themes/text_types.dart';
 import 'package:camera/camera.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 
 class VideoSectionInfoScreen extends StatelessWidget {
@@ -21,20 +17,18 @@ class VideoSectionInfoScreen extends StatelessWidget {
   VideoSectionInfoScreen({
     super.key,
     required this.camera,
-  }); // Start at first page
+  });
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: PageView(
-        controller: _pageController,
-        children: [
-          VideoSectionInfoScreen1(camera: camera),
-          VideoSectionInfoScreen2(camera: camera),
-          VideoSectionInfoScreen3(camera: camera),
-          VideoSectionInfoScreen4(camera: camera),
-        ],
-      ),
+    return PageView(
+      controller: _pageController,
+      children: [
+        VideoSectionInfoScreen1(camera: camera),
+        VideoSectionInfoScreen2(camera: camera),
+        VideoSectionInfoScreen3(camera: camera),
+        VideoSectionInfoScreen4(camera: camera),
+      ],
     );
   }
 }
@@ -79,7 +73,8 @@ class VideoSectionInfoScreen1 extends StatelessWidget {
               'Make sure you have the teddy bear, camera stand, and bubbles before we begin!\n',
             ),
             //INSERT IMAGES HERE
-            SubTitle('Swipe Left on your phone screen to go to the next page'),
+            SubTitle('Swipe Left on your phone screen to go to the next page, you can also swipe right to go back.\n'),
+            SubTitle('SWIPE>>>'),
           ],
         ),
       ),
@@ -102,6 +97,7 @@ class VideoSectionInfoScreen2 extends StatelessWidget {
         ),
         centerTitle: true,
         backgroundColor: ColorTheme.background,
+        automaticallyImplyLeading: false,
       ),
 
       body: SizedBox(
@@ -152,6 +148,7 @@ class VideoSectionInfoScreen3 extends StatelessWidget {
         ),
         centerTitle: true,
         backgroundColor: ColorTheme.background,
+        automaticallyImplyLeading: false
       ),
 
       body: SizedBox(
@@ -216,6 +213,7 @@ class _VideoSectionInfoScreen4State extends State<VideoSectionInfoScreen4> {
         ),
         centerTitle: true,
         backgroundColor: ColorTheme.background,
+        automaticallyImplyLeading: false
       ),
 
       body: SizedBox(
@@ -245,7 +243,7 @@ class _VideoSectionInfoScreen4State extends State<VideoSectionInfoScreen4> {
             BodyText(
               'When you are ready to begin the test, click the below button\n',
             ),
-            NextButton(label: 'NEXT', onPressed: () {
+            NextButton(label: 'BEGIN TEST', onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
