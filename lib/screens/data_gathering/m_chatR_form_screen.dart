@@ -10,7 +10,7 @@
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/widgets/mutliple_choice_question_widget.dart';
 import 'package:autism_ai_test/widgets/short_answer_question_widget.dart';
-import 'package:autism_ai_test/screens/video_section_info_screen.dart';
+import 'package:autism_ai_test/screens/data_gathering/video_section_info_screen.dart';
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/widgets/next_button.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';

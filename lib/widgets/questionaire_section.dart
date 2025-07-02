@@ -3,7 +3,7 @@ import 'package:autism_ai_test/widgets/short_answer_question_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
-import 'package:autism_ai_test/screens/video_recording_section_screen.dart';
+import 'package:autism_ai_test/screens/data_gathering/video_recording_section_screen.dart';
 import 'package:autism_ai_test/constants/colors.dart';
 
 //Stateful Widget that displays a series of video recording sections that the user must complete

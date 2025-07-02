@@ -3,7 +3,7 @@
 // easier to digest
 
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
-import 'package:autism_ai_test/screens/video_recording_section_screen.dart';
+import 'package:autism_ai_test/screens/data_gathering/video_recording_section_screen.dart';
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/widgets/next_button.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';
