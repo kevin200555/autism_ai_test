@@ -13,6 +13,7 @@ import 'package:autism_ai_test/data_gathering/short_answer_question_widget.dart'
 import 'package:autism_ai_test/screens/video_section_info_screen.dart';
 import 'package:autism_ai_test/themes/colors.dart';
 import 'package:autism_ai_test/themes/next_button.dart';
+import 'package:autism_ai_test/themes/text_types.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
@@ -40,9 +41,10 @@ class _MChatRFormScreenState extends State<MChatRFormScreen> {
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
-        title: Text('M-CHATR FORM', style: TextStyle(fontSize: 20)),
+        title: SubTitle('M-CHATR FORM', style: TextStyle(fontSize: 20, color: ColorTheme.alternateTextColor)),
         centerTitle: true,
-        backgroundColor: ColorTheme.background,
+        backgroundColor: ColorTheme.accent,
+        iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),
       ),
 
       body: ListView.builder(

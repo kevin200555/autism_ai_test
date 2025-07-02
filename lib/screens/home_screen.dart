@@ -108,7 +108,7 @@ class HomeScreen extends StatelessWidget {
               foregroundColor: ColorTheme.alternateTextColor,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(
-                  0,
+                  8,
                 ), // rounded corners like FAB
               ),
               padding: const EdgeInsets.symmetric(vertical: 16),
