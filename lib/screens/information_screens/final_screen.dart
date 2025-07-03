@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 // Later, I may what to put the results onto this screen too
 class FinalScreen extends StatelessWidget {
   const FinalScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

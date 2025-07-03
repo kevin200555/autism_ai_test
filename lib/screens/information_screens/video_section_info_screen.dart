@@ -7,7 +7,6 @@ import 'package:autism_ai_test/screens/data_gathering/video_recording_section_sc
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/widgets/next_button.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
@@ -32,6 +31,7 @@ class VideoSectionInfoScreen extends StatelessWidget {
 }
 
 class GeneralInstructionsScreen extends StatelessWidget {
+
   final CameraDescription camera;
   const GeneralInstructionsScreen({super.key, required this.camera});
 
@@ -89,6 +89,7 @@ class GeneralInstructionsScreen extends StatelessWidget {
     );
   }
 }
+
 class FewTipsBeforeStart extends StatelessWidget {
   final CameraDescription camera;
   const FewTipsBeforeStart({super.key, required this.camera});
