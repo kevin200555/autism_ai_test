@@ -6,14 +6,12 @@ import 'package:camera/camera.dart';
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/screens/information_screens/help_screen.dart';
 
-
 //The very first screen that a user will see
 class HomeScreen extends StatelessWidget {
   final CameraDescription camera;
   const HomeScreen({super.key, required this.camera});
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
@@ -42,37 +40,30 @@ class HomeScreen extends StatelessWidget {
           children: [
             SubTitle('Background', textAlign: TextAlign.left),
             BodyText(
-              'While there’s much more awareness of autism today, the '
-              'cost of diagnosing autism in young children is still '
-              'very high, and not all pediatricians are quick to make referrals for evaluation. ',
+              'Getting an autism diagnosis for young children can still be slow and expensive.'
+              'Many families miss the chance to get early support when it matters most.\n',
             ),
-            SizedBox(height: MediaQuery.of(context).size.width * 0.05),
-            BodyTextBold(
-              'This means many families of '
-              'children miss out on opportunities for intervention/support'
-              ' during critical years of early development!',
-            ),
-            SizedBox(height: MediaQuery.of(context).size.width * 0.05),
             BodyText(
-              'Through collecting and analyzing various video-based interactions,'
-              ' our research group at Washington University is working on developing a low-cost'
-              ' but convenient and effective tool that is suitable for ordinary families to'
-              'conduct preliminary detection of autism in young children.',
+              'Our team at Washington University is working on a simple, low-cost tool '
+              'that families can use at home to help spot early signs of autism.\n',
             ),
-            SizedBox(height: MediaQuery.of(context).size.width * 0.05),
             BodyText(
-              'If you haven’t already, you will receive a gift box with items to help'
-              ' you take the videos including a phone stand, a teddy bear, and bubbles. These are'
-              ' yours to keep! You\'ll also need them in this test',
+              'To make this possible, we need videos of real kids—playing, interacting, and'
+              'just being themselves.\n',
             ),
-            SizedBox(height: MediaQuery.of(context).size.width * 0.05),
+            BodyText(
+              'That\'s where you come in. By doing a few short tasks and recording them'
+              ', you\'re helping us build something that could help many other families in the future.\n',
+            ),
             SubTitle('What\'s in the Test?', textAlign: TextAlign.left),
             BodyText('\t\t- Informed Consent Document'),
             BodyText('\t\t- Autism Intake Form'),
             BodyText('\t\t- M-ChatR Form'),
-            BodyText('\t\t- Recorded Video Section'),
-            SizedBox(height: MediaQuery.of(context).size.width * 0.05),
-            BodyText('We are excited that you have agreed to help us!'),
+            BodyText('\t\t- Recorded Video Section\n\n'),
+            BodyText(
+              'We really appreciate your time and support!'
+              ' These tasks are quick and simple, and your child might even think they’re just playing with you!',
+            ),
           ],
         ),
       ),
@@ -86,9 +77,8 @@ class HomeScreen extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => InformedConsentDocumentScreen(
-                    camera: camera,
-                  ),
+                  builder: (context) =>
+                      InformedConsentDocumentScreen(camera: camera),
                 ),
               );
             },

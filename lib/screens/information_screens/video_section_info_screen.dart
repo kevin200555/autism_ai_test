@@ -72,7 +72,6 @@ class VideoSectionInfoScreen1 extends StatelessWidget {
             BodyText(
               'Make sure you have the teddy bear, camera stand, and bubbles before we begin!\n',
             ),
-            //INSERT IMAGES HERE
             SubTitle('Swipe Left on your phone screen to go to the next page, you can also swipe right to go back.\n'),
             SubTitle('SWIPE>>>'),
           ],
@@ -124,7 +123,7 @@ class VideoSectionInfoScreen2 extends StatelessWidget {
             BodyText(
               '(the front facing camera is usually lower quality and could also distract your child.)',
             ),
-            Image.asset('assets/camera_placement_example.png'),
+            Image(image: AssetImage('assets/camera_placement_example.png')),
             SubTitle('\nSWIPE>>>'),
           ],
         ),
