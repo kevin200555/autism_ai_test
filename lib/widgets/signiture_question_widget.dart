@@ -6,7 +6,8 @@ class DrawingQuestionWidget extends StatefulWidget {
   const DrawingQuestionWidget({super.key, required this.question});
 
   @override
-  _DrawingQuestionWidgetState createState() => _DrawingQuestionWidgetState();
+  State<DrawingQuestionWidget> createState() =>
+      _DrawingQuestionWidgetState();
 }
 
 class _DrawingQuestionWidgetState extends State<DrawingQuestionWidget> {
