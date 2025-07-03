@@ -1,5 +1,5 @@
 import 'package:autism_ai_test/screens/data_gathering/informed_consent_document_screen.dart';
-import 'package:autism_ai_test/screens/pdf_draw_screen.dart';
+import 'package:autism_ai_test/screens/ic_document_screen.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -79,7 +79,7 @@ class HomeScreen extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) =>
-                      PdfDrawScreen(camera: camera),
+                      PdfViewerScreen(camera: camera),
                 ),
               );
             },

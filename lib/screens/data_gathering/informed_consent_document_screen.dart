@@ -29,8 +29,9 @@ class _InformedConsentDocumentScreenState
           'INFORMED CONSENT DOCUMENT',
           style: TextStyle(fontSize: 18),
         ),
+        foregroundColor: ColorTheme.background,
         centerTitle: true,
-        backgroundColor: ColorTheme.background,
+        backgroundColor: ColorTheme.accent,
       ),
 
       body: SizedBox(
