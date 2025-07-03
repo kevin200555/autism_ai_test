@@ -40,9 +40,8 @@ dependencies:
   video_player: ^2.7.0
   permission_handler: ^11.0.0
   auto_size_text: ^3.0.0
-  syncfusion_flutter_pdf: ^24.1.41
   path_provider: ^2.1.1
-  syncfusion_flutter_pdfviewer: ^24.1.41
+  pdfx: ^2.6.0
 
 dev_dependencies:
   flutter_test:
@@ -60,8 +59,8 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-  assets: 
-    - Autism_Video_IC_v1_11.16.2023.pdf
+  assets:
+    - assets/test.pdf
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
