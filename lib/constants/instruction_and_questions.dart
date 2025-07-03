@@ -237,6 +237,16 @@ class InstructionAndQuestions {
     ],
   ];
 
+  static final List<List<String>> iCQuestions = [
+    ['SAQ', 'Child\'s name - printed'],
+    ['SQ', 'Signature of Parent/Guardian'],
+    ['SAQ', 'Date'],
+    ['SAQ', 'Name of Parent/Guradian - printed'],
+    ['SAQ', 'Relationship to paticipant - printed'],
+    ['SQ', 'Signature of Person who Obtained Consent'],
+    ['SAQ', 'Name of Person who Obtained Consent - printed']
+  ];
+
   static List<String> getVideoInstructios() {
     return videoInstructions;
   }
@@ -251,6 +261,10 @@ class InstructionAndQuestions {
 
   static List<String> getVideoNames() {
     return videoNames;
+  }
+
+  static List<List<String>> getIC() {
+    return iCQuestions;
   }
 }
 //EOF instruction_and_questions.dart

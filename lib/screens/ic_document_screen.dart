@@ -1,5 +1,5 @@
 import 'package:autism_ai_test/constants/colors.dart';
-import 'package:autism_ai_test/screens/data_gathering/informed_consent_document_screen.dart';
+import 'package:autism_ai_test/screens/data_gathering/ic_document_signing.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
@@ -50,7 +50,7 @@ class _PdfViewerScreenState extends State<PdfViewerScreen> {
                 context,
                 MaterialPageRoute(
                   builder: (context) =>
-                      InformedConsentDocumentScreen(camera: widget.camera),
+                      InformedConsentSigningScreen(camera: widget.camera),
                 ),
               );
             },
