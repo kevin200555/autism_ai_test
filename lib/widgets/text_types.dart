@@ -74,6 +74,41 @@ class BodyText extends StatelessWidget {
   }
 }
 
+class RichBodyText extends StatelessWidget {
+  final TextSpan textSpan;
+  final TextAlign textAlign;
+  final double minFontSize;
+  final TextStyle? style;
+
+  const RichBodyText(
+    this.textSpan, {
+    super.key,
+    this.textAlign = TextAlign.left,
+    this.minFontSize = 8,
+    this.style,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(16, 1, 16, 1),
+      child: AutoSizeText.rich(
+        textSpan,
+        textAlign: textAlign,
+        minFontSize: minFontSize,
+        style:
+            style ??
+            Theme.of(context).textTheme.titleMedium?.copyWith(
+              color: ColorTheme.textColor,
+              fontSize: 16,
+              fontWeight: FontWeight.normal,
+            ),
+      ),
+    );
+  }
+}
+
+
 class BodyTextBold extends StatelessWidget {
   final String text;
   final TextAlign textAlign;

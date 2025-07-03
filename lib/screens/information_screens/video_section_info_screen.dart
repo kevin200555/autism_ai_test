@@ -7,6 +7,7 @@ import 'package:autism_ai_test/screens/data_gathering/video_recording_section_sc
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/widgets/next_button.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
@@ -14,10 +15,7 @@ class VideoSectionInfoScreen extends StatelessWidget {
   final CameraDescription camera;
   final PageController _pageController = PageController(initialPage: 0);
 
-  VideoSectionInfoScreen({
-    super.key,
-    required this.camera,
-  });
+  VideoSectionInfoScreen({super.key, required this.camera});
 
   @override
   Widget build(BuildContext context) {
@@ -58,22 +56,143 @@ class VideoSectionInfoScreen1 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SubTitle('General Instructions'),
-            BodyText(
-              'Using your cell phone camera, you are going to record 9 simple tasks.'
-              ' Record each task separately and you should have 9 different video files when complete. '
-              'The instructions below will help you with how to set up the recording with your child.\n',
+            RichBodyText(
+              TextSpan(
+                children: [
+                  TextSpan(text: 'You\'ll be recording '),
+                  TextSpan(
+                    text: '3 short tasks',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  TextSpan(
+                    text:
+                        ' using your phone. Each task should be recorded as a',
+                  ),
+                  TextSpan(
+                    text: ' separate video.',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  TextSpan(
+                    text:
+                        ' You can upload the videos directly through the app when you\'re done.\n',
+                  ),
+                ],
+              ),
             ),
-            BodyText(
-              'Please follow these instructions exactly (including use of the camera stand), as '
-              'this will ensure we get good/consistent quality data across all families and will help avoid '
-              'the need to re-record videos.\n',
+            SubTitle('Here are a few tips before you start:'),
+            Padding(
+              padding: EdgeInsetsGeometry.fromLTRB(16, 0, 0, 0),
+              child: RichBodyText(
+                TextSpan(
+                  children: [
+                    TextSpan(text: '- Make sure your child\'s '),
+                    TextSpan(
+                      text: 'face is not covered ',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    TextSpan(text: '(no hats or sunglasses).'),
+                  ],
+                ),
+              ),
             ),
-            SubTitle('Items Needed'),
-            BodyText(
-              'Make sure you have the teddy bear, camera stand, and bubbles before we begin!\n',
+            Padding(
+              padding: EdgeInsetsGeometry.fromLTRB(16, 0, 0, 0),
+              child: RichBodyText(
+                TextSpan(
+                  children: [
+                    TextSpan(text: '- Try to record in a '),
+                    TextSpan(
+                      text: 'quiet',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    TextSpan(text: 'place—turn off the TV or music.'),
+                  ],
+                ),
+              ),
             ),
-            SubTitle('Swipe Left on your phone screen to go to the next page, you can also swipe right to go back.\n'),
-            SubTitle('SWIPE>>>'),
+            Padding(
+              padding: EdgeInsetsGeometry.fromLTRB(16, 0, 0, 0),
+              child: RichBodyText(
+                TextSpan(
+                  children: [
+                    TextSpan(text: '- '),
+                    TextSpan(
+                      text: 'Good lighting',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    TextSpan(
+                      text:
+                          ' is important! Daytime is best so we can clearly see your child\'s face and body.',
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsetsGeometry.fromLTRB(16, 0, 0, 0),
+              child: RichBodyText(
+                TextSpan(
+                  children: [
+                    TextSpan(
+                      text:
+                          'It\'s okay if you\'re in the video too—we want to see how your child interacts with you.',
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsetsGeometry.fromLTRB(16, 0, 0, 0),
+              child: RichBodyText(
+                TextSpan(
+                  children: [
+                    TextSpan(text: '- '),
+                    TextSpan(
+                      text: 'There\'s no right or wrong response.',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    TextSpan(
+                      text:
+                          ' Even if your child doesn\'t respond at all,'
+                          'that\'s totally fine. Every video helps our research.',
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsetsGeometry.fromLTRB(16, 0, 0, 0),
+              child: RichBodyText(
+                TextSpan(
+                  children: [
+                    TextSpan(
+                      text:
+                          '- You don’t have to finish everything at once. Feel free to',
+                    ),
+                    TextSpan(
+                      text: 'take breaks or spread the tasks out',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    TextSpan(text: ' over a few days.'),
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsetsGeometry.fromLTRB(16, 0, 0, 0),
+              child: RichBodyText(
+                TextSpan(
+                  children: [
+                    TextSpan(
+                      text:
+                          '- You’ll find the task instructions on the next page. Please read each one before recording\n',
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            BodyText('Thanks again for being part of this—we\'re excited to see what you and your child share with us!\n'),
+            SubTitle('Swipe Right on your phone to continue reading>>>>', style: TextStyle(color: ColorTheme.red))
           ],
         ),
       ),
@@ -147,7 +266,7 @@ class VideoSectionInfoScreen3 extends StatelessWidget {
         ),
         centerTitle: true,
         backgroundColor: ColorTheme.background,
-        automaticallyImplyLeading: false
+        automaticallyImplyLeading: false,
       ),
 
       body: SizedBox(
@@ -183,7 +302,6 @@ class VideoSectionInfoScreen3 extends StatelessWidget {
               'Make sure to enable your camera and microphone when prompted.\n',
             ),
             SubTitle('SWIPE>>>'),
-            
           ],
         ),
       ),
@@ -212,7 +330,7 @@ class _VideoSectionInfoScreen4State extends State<VideoSectionInfoScreen4> {
         ),
         centerTitle: true,
         backgroundColor: ColorTheme.background,
-        automaticallyImplyLeading: false
+        automaticallyImplyLeading: false,
       ),
 
       body: SizedBox(
@@ -235,22 +353,29 @@ class _VideoSectionInfoScreen4State extends State<VideoSectionInfoScreen4> {
               'speak the exact same sentence (this will help us design a cool audio detection tool!).\n',
             ),
             BodyText(
-              'After you complete the verbal portion of each task, please continue to record your child' 
+              'After you complete the verbal portion of each task, please continue to record your child'
               '(and interact with them) for at least 30 seconds more before stopping each recording.'
-              '(Note task 7 is a little different).\n\n\n', style: TextStyle(fontWeight: FontWeight.bold),
+              '(Note task 7 is a little different).\n\n\n',
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
             BodyText(
               'When you are ready to begin the test, click the below button\n',
             ),
-            NextButton(label: 'BEGIN TEST', onPressed: () {
+            NextButton(
+              label: 'BEGIN TEST',
+              onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>
-                        VideoRecordingSectionScreen(camera: widget.camera, instructions: InstructionAndQuestions.getVideoInstructios(),),
+                    builder: (context) => VideoRecordingSectionScreen(
+                      camera: widget.camera,
+                      instructions:
+                          InstructionAndQuestions.getVideoInstructios(),
+                    ),
                   ),
                 );
-              })
+              },
+            ),
           ],
         ),
       ),
