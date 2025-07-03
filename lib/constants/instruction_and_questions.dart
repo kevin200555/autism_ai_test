@@ -238,12 +238,12 @@ class InstructionAndQuestions {
   ];
 
   static final List<List<String>> iCQuestions = [
+    ['MCQ', 'Do you agree to allow us to send your health information via email?', 'yes', 'no'],
+    ['MCQ', 'Do you agree to allow us to send your health information via text?', 'yes', 'no'],
     ['SAQ', 'Child\'s name - printed'],
-    ['SQ', 'Signature of Parent/Guardian'],
     ['SAQ', 'Date'],
     ['SAQ', 'Name of Parent/Guradian - printed'],
     ['SAQ', 'Relationship to paticipant - printed'],
-    ['SQ', 'Signature of Person who Obtained Consent'],
     ['SAQ', 'Name of Person who Obtained Consent - printed']
   ];
 
