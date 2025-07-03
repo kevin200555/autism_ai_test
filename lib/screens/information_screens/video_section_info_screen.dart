@@ -22,7 +22,7 @@ class VideoSectionInfoScreen extends StatelessWidget {
     return PageView(
       controller: _pageController,
       children: [
-        VideoSectionInfoScreen1(camera: camera),
+        GeneralInstructionsScreen(camera: camera),
         VideoSectionInfoScreen2(camera: camera),
         VideoSectionInfoScreen3(camera: camera),
         VideoSectionInfoScreen4(camera: camera),
@@ -31,9 +31,9 @@ class VideoSectionInfoScreen extends StatelessWidget {
   }
 }
 
-class VideoSectionInfoScreen1 extends StatelessWidget {
+class GeneralInstructionsScreen extends StatelessWidget {
   final CameraDescription camera;
-  const VideoSectionInfoScreen1({super.key, required this.camera});
+  const GeneralInstructionsScreen({super.key, required this.camera});
 
   @override
   Widget build(BuildContext context) {
