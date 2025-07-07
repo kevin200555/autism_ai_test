@@ -17,7 +17,8 @@ import 'package:flutter/material.dart';
 
 class InformedConsentSigningScreen extends StatefulWidget {
   final CameraDescription camera;
-  const InformedConsentSigningScreen({super.key, required this.camera});
+  late String userId;
+  InformedConsentSigningScreen({super.key, required this.camera});
 
   @override
   State<InformedConsentSigningScreen> createState() => _InformedConsentSigningScreenState();
@@ -32,6 +33,14 @@ class _InformedConsentSigningScreenState extends State<InformedConsentSigningScr
   void initState() {
     super.initState();
     responses = List<String?>.filled(icQuestions.length, null);
+  }
+  // given a sample set of responses like [yes, yes, Sarah Jones, 07/07/2025, null, Tom Jones, Mother, null, Tom Jones]
+  // generate a unquie user id sarahjones-20250707-tomjones
+  void generateUserId(){
+    final name = responses[2]?.toLowerCase().replaceAll(' ', '');
+    final date = responses[3]?.replaceAll('/', '');
+    final parent = responses[5]?.toLowerCase().replaceAll(' ', '');
+    widget.userId = "$name-$date-$parent"; 
   }
 
   @override
@@ -54,6 +63,8 @@ class _InformedConsentSigningScreenState extends State<InformedConsentSigningScr
             return NextButton(
               label: 'NEXT',
               onPressed: () {
+                generateUserId();
+                print(widget.userId);
                 Navigator.push(
                   context,
                   MaterialPageRoute(

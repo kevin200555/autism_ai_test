@@ -252,7 +252,7 @@ class InstructionAndQuestions {
     ['MCQ', 'Do you agree to allow us to send your health information via email?', 'yes', 'no'],
     ['MCQ', 'Do you agree to allow us to send your health information via text?', 'yes', 'no'],
     ['SAQ', 'Child\'s name - printed'],
-    ['SAQ', 'Date'],
+    ['SAQ', 'Date (MM/DD/YYYY)'],
     ['SQ', 'Signiture of Parent/Guardian'],
     ['SAQ', 'Name of Parent/Guardian - printed'],
     ['SAQ', 'Relationship to paticipant - printed'],
