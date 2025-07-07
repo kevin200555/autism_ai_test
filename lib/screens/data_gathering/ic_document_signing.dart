@@ -39,7 +39,7 @@ class _InformedConsentSigningScreenState extends State<InformedConsentSigningScr
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
-        title: SubTitle('Informed Consent Signing', style: TextStyle(fontSize: 18, color: ColorTheme.alternateTextColor)),
+        title: SubTitle('INFORMED CONSENT SIGNING', style: TextStyle(fontSize: 18, color: ColorTheme.alternateTextColor)),
         centerTitle: true,
         backgroundColor: ColorTheme.accent,
         iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),

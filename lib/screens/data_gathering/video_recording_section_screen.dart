@@ -205,7 +205,6 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
             BodyText(widget.instructions[currentStep]),
             BodyText(''),
             SubTitle('Recording Section (Scroll Down)'),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.05),
             SizedBox(
               width: double.infinity,
               child: AutoSizeText(

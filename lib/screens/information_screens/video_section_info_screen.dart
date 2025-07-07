@@ -80,8 +80,9 @@ class GeneralInstructionsScreen extends StatelessWidget {
               ),
             ),
             SubTitle(
-              'Swipe Right on your phone to continue reading>>>>',
-              style: TextStyle(color: ColorTheme.red),
+              'Swipe right on your phone to continue reading>>>>',
+              style: TextStyle(color: ColorTheme.red, fontWeight: FontWeight.bold),
+
             ),
           ],
         ),
@@ -230,8 +231,8 @@ class FewTipsBeforeStart extends StatelessWidget {
               'Thanks again for being part of this—we\'re excited to see what you and your child share with us!\n',
             ),
             SubTitle(
-              'Swipe Right on your phone to continue reading>>>>',
-              style: TextStyle(color: ColorTheme.red),
+              'Swipe right on your phone to continue reading>>>>',
+              style: TextStyle(color: ColorTheme.red, fontWeight: FontWeight.bold),
             ),
           ],
         ),
@@ -358,8 +359,8 @@ class BeforeYouStartScreen extends StatelessWidget {
               ' everyday moments—so please keep it relaxed and natural.\n',
             ),
             SubTitle(
-              'Swipe Right on your phone to continue reading>>>>',
-              style: TextStyle(color: ColorTheme.red),
+              'Swipe right on your phone to continue reading>>>>',
+              style: TextStyle(color: ColorTheme.red, fontWeight: FontWeight.bold),
             ),
           ],
         ),
@@ -472,8 +473,8 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
               ),
             ),
             SubTitle(
-              'Swipe Left on your phone to reread <<<<\n\n',
-              style: TextStyle(color: ColorTheme.red),
+              'Swipe left on your phone to reread <<<<\n\n',
+              style: TextStyle(color: ColorTheme.red, fontWeight: FontWeight.bold),
             ),
             NextButton(
               label: 'BEGIN TEST',
