@@ -3,7 +3,8 @@ import 'package:autism_ai_test/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
-//Lets the user view the video they just recorded
+// Lets the user view the video they just recorded
+// may be a good idea to add a fast forward/rewind button
 class VideoPlayerScreen extends StatefulWidget {
   final String videoPath; // Can be file path or network URL
 
@@ -20,10 +21,10 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   void initState() {
     super.initState();
     _controller =
-        VideoPlayerController.file(File(widget.videoPath)) // or .network()
+        VideoPlayerController.file(File(widget.videoPath))
           ..initialize().then((_) {
             setState(() {});
-            _controller.play(); // auto-play (optional)
+            _controller.play(); 
           });
   }
 
@@ -57,7 +58,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
               )
             : const CircularProgressIndicator(),
       ),
-      //play/pause button
+      // play/pause button
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           setState(() {
@@ -75,5 +76,4 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
-}
-//EOF video_player_screen.dart
+} //EOF video_player_screen.dart

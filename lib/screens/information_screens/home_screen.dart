@@ -82,6 +82,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               );
             },
+            //Start button
             label: AutoSizeText(
               'BEGIN TEST',
               style: TextStyle(

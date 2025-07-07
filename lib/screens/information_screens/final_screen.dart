@@ -33,6 +33,7 @@ class FinalScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SubTitle('All steps completed! We appreciate your time!\n', textAlign: TextAlign.left),
+            // Checkmark Icon
             SizedBox(
               width: double.infinity,
               child: Icon(Icons.check_circle, color: ColorTheme.green, size: MediaQuery.of(context).size.width * 0.3),
@@ -44,6 +45,7 @@ class FinalScreen extends StatelessWidget {
           ],
         ),
       ),
+      //Exit button to go back to the homescreen
       floatingActionButton: SizedBox(
         width: double.infinity,
         height: 56,
@@ -79,4 +81,4 @@ class FinalScreen extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
-}
+} // EOF final_screen.dart

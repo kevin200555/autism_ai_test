@@ -51,5 +51,4 @@ class HelpScreen extends StatelessWidget {
       ),
     );
   }
-}
-//EOF help_screen.dart
+} // EOF help_screen.dart

@@ -7,58 +7,68 @@ class InstructionAndQuestions {
     'Snack Time',
     'Free Play',
   ];
+  //These are the instructions for the video_recording_scection, The user reads these and then records.
   static final List<String> videoInstructions = [
+// Task 1: ToyInteraction
     '''
 1. Set up
 \tChoose a toy your child likes that can be used for pretend feeding (e.g., a stuffed animal or doll).
 \tPlace the toy on the floor—either between you and your child, or near your child—depending on the moment.
-\tStand or sit about 5–10 feet away and, in a cheerful tone, call your child’s name (e.g., “Hey Billy!”).
+\tStand or sit about 5-10 feet away and, in a cheerful tone, call your child's name (e.g., “Hey Billy!”).
 \t\t• If your child looks at you or makes eye contact, smile and continue.
-\t\t• If they don’t respond, wait 5 seconds and try again. Do not call more than twice.
+\t\t• If they don't respond, wait 5 seconds and try again. Do not call more than twice.
 
-2. Ask: “What’s that?”
-\tPoint to the toy and ask, “What’s that?” (say it exactly once).
+2. Ask: “What's that?”
+\tPoint to the toy and ask, “What's that?” (say it exactly once).
 \tKeep pointing and looking at the toy, but make sure the camera stays on the child.
 \tIf they respond, interact naturally. Record for at least 30 seconds.
 
 3. Ask: “Bring me the toy”
 \tNext, ask “Bring me the toy” (say it exactly once).
-\tIf the child brings it to you, interact normally. If not, it’s okay—just keep recording.
+\tIf the child brings it to you, interact normally. If not, it's okay—just keep recording.
 
 4. Pretend feeding
 \tHold a spoon and say, “The toy is hungry, what should we do?”
 \t\t• If your child responds, follow their lead and keep recording for at least 30 seconds.
 \t\t• If no response after 5 seconds, ask: “Should we feed the toy?”
-\t\t• If still no response, pretend to feed the toy with the spoon, then offer the spoon to your child. If they don’t feed the toy, that’s totally fine.
+\t\t• If still no response, pretend to feed the toy with the spoon, then offer the spoon to your child. If they don't feed the toy, that's totally fine.
 ''',
+// Task 2: Snack time
     '''
 1. Set up
-\tPrepare two snacks your child likes and place them out of the child’s reach.
-\tStand or sit about 5–10 feet away. In a cheerful tone, call your child’s name (e.g., “Hey Billy!”).
+\tPrepare two snacks your child likes and place them out of the child's reach.
+\tStand or sit about 5-10 feet away. In a cheerful tone, call your child[s name (e.g., “Hey Billy!”).
 \t\t• If your child looks at you or makes eye contact, smile and continue.
-\t\t• If they don’t respond, wait 5 seconds and try calling once more. Don’t call more than twice.
+\t\t• If they don't respond, wait 5 seconds and try calling once more. Don't call more than twice.
 
 2. Offer the snacks
 \tHold up both snacks where your child can see them and ask once: “Which would you like to eat?”
 \t\t• If your child responds (by pointing, talking, reaching, etc.), you can interact naturally and give them the snack.
-\t\t• If they don’t respond, that’s totally fine—just keep recording.
+\t\t• If they don't respond, that's totally fine—just keep recording.
 ''',
+//Task 3: Free Play
     '''
 1. Free play
 \tLet your child play freely with their favorite toys for at least 3 minutes.
-\tYou don’t need to talk or interact—just record them playing naturally.
+\tYou don't need to talk or interact—just record them playing naturally.
 \tYou can hold the phone or place it somewhere stable. Since your child may move around, try to keep their full body and face in the video as much as possible.
 
 2. Natural prompt
-\tWhen your child is holding or playing with something, stand about 5–10 feet away and cheerfully call their name (e.g., “Hey Billy!”).
+\tWhen your child is holding or playing with something, stand about 5-10 feet away and cheerfully call their name (e.g., “Hey Billy!”).
 \t\t• If they look at you or make eye contact, move to the next step.
-\t\t• If they don’t respond, wait 5 seconds and try calling once more. Don’t call more than twice.
+\t\t• If they don't respond, wait 5 seconds and try calling once more. Don't call more than twice.
 \tThen ask once: “What do you have?”
-\tIt’s okay if your child doesn’t respond—just keep recording.
+\tIt's okay if your child doesn't respond—just keep recording.
 ''',
   ];
 
-  //This List contains the SAQ and MCQ for the "Intake Form for Autism Video Project"
+  // This 2D List contains the SAQ and MCQ for the "Intake Form for Autism Video Project"
+  // There are (3) different types of questions
+  // So I decided to organize them in this way:
+  // each question is a 2D List, the first item specifices what type of question it is: MCQ, SAQ, etc
+  // the next items in the list are relevant to the question itself, like question name and answer choices.
+  // The List items are then passed into the ListView builder and based on the first element in a list, the correct widget
+  // can be assigned to build the question
   static final List<List<String>> autismIntakeForm = [
     ['SAQ', 'What is your child\'s full name?'],
     ['SAQ', 'What is your child\'s middle name? (Enter N/A if not applicable)'],
@@ -123,7 +133,8 @@ class InstructionAndQuestions {
       'Guardian',
     ],
   ];
-
+  // This 2D List contains the SAQ and MCQ for the mChat-R form
+  // or the Modified Checklist for autism in toddlers (Revised)
   static final List<List<String>> mChatRQuestions = [
     [
       'MCQ',
@@ -236,7 +247,7 @@ class InstructionAndQuestions {
       'no',
     ],
   ];
-
+  // This 2D List contains the SAQ and MCQ for the "Autism_Video_Informed_Consent" document 
   static final List<List<String>> iCQuestions = [
     ['MCQ', 'Do you agree to allow us to send your health information via email?', 'yes', 'no'],
     ['MCQ', 'Do you agree to allow us to send your health information via text?', 'yes', 'no'],
@@ -248,7 +259,8 @@ class InstructionAndQuestions {
     ['SQ', 'Signiture of Person who Obtained Consetn'],
     ['SAQ', 'Name of Person who Obtained Consent - printed']
   ];
-
+  
+  //accessors (not strictly nesscessary, but I have them)
   static List<String> getVideoInstructios() {
     return videoInstructions;
   }
@@ -268,5 +280,4 @@ class InstructionAndQuestions {
   static List<List<String>> getIC() {
     return iCQuestions;
   }
-}
-//EOF instruction_and_questions.dart
+} //EOF instruction_and_questions.dart

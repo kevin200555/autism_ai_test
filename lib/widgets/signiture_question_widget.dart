@@ -123,4 +123,4 @@ class DrawingPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(DrawingPainter oldDelegate) => true;
-}
+} // EOF signiture_question_widget.dart

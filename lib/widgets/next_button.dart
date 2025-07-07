@@ -39,4 +39,4 @@ class NextButton extends StatelessWidget {
       ),
     );
   }
-}
+} // EOF next_button.dart

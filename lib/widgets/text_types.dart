@@ -141,4 +141,4 @@ class BodyTextBold extends StatelessWidget {
       ),
     );
   }
-}
+} // EOF text_types.dart

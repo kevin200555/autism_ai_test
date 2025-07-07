@@ -21,6 +21,7 @@ class _PdfViewerScreenState extends State<PdfViewerScreen> {
   void initState() {
     super.initState();
     _pdfController = PdfControllerPinch(
+      //change this if it gets updated or I change the name
       document: PdfDocument.openAsset('assets/icDocument.pdf'),
     );
   }
@@ -37,9 +38,11 @@ class _PdfViewerScreenState extends State<PdfViewerScreen> {
       appBar: AppBar(
         title: SubTitle('Informed Consent Document'),
       ),
+      //Views the PDF
       body: PdfViewPinch(
         controller: _pdfController,
       ),
+      //Next button
       floatingActionButton: SizedBox(
         width: double.infinity,
         height: 56,
@@ -81,4 +84,4 @@ class _PdfViewerScreenState extends State<PdfViewerScreen> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
-}
+} // ic_document_screen.dart

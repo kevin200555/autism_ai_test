@@ -496,4 +496,4 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
       ),
     );
   }
-}
+} // EOF video_section_info_screen.dart

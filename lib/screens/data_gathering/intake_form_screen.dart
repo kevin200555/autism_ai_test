@@ -48,7 +48,7 @@ class _IntakeFormScreenState extends State<IntakeFormScreen> {
         padding: const EdgeInsets.all(8),
         itemCount: intakeFormQuestions.length + 1,
         itemBuilder: (context, index) {
-          //adds a blank sizedBox at the end (the next button would cover the questions otherwise)
+          //adds a next button at the end of all the questions
           if (index == intakeFormQuestions.length) {
             return NextButton(
               label: 'NEXT',
@@ -96,4 +96,4 @@ class _IntakeFormScreenState extends State<IntakeFormScreen> {
       ),
     );
   }
-}
+} // EOF intake_form_screen.dart

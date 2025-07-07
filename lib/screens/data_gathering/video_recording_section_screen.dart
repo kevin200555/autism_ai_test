@@ -205,6 +205,7 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
             BodyText(widget.instructions[currentStep]),
             BodyText(''),
             SubTitle('Recording Section (Scroll Down)'),
+            // Text that indicates to the user if they're recording or not, synced with the recording button
             SizedBox(
               width: double.infinity,
               child: AutoSizeText(
@@ -219,8 +220,8 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
                 maxLines: 1,
               ),
             ),
-
             SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+            // display of the camera
             SizedBox(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 0.55,
@@ -231,6 +232,7 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                // button to let user view their video
                 ElevatedButton(
                   onPressed: () {
                     if (!isRecording) {
@@ -255,6 +257,7 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
                   child: const Icon(Icons.remove_red_eye, size: 50),
                 ),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.2),
+                //Recording button
                 ElevatedButton(
                   onPressed: !controller.value.isInitialized
                       ? null
@@ -279,6 +282,7 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
                         ),
                 ),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.2),
+                // Lets User delete video if they have a video
                 ElevatedButton(
                   onPressed: () {
                     if (!isRecording) {
@@ -306,8 +310,9 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
               ],
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+            // Next Task/Finish Test
             NextButton(
-              label: (currentStep == widget.instructions.length - 1)
+              label: (currentStep == widget.instructions.length - 1) // if on last step, change text to show the user is abou tto complete the test
                   ? 'FINISH'
                   : 'SUBMIT VIDEO',
               onPressed: () {
@@ -322,5 +327,4 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
       ),
     );
   }
-}
-//EOF video_recording_section.dart
+} // EOF video_recording_section.dart

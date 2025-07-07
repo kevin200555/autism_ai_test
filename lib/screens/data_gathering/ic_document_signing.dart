@@ -49,7 +49,7 @@ class _InformedConsentSigningScreenState extends State<InformedConsentSigningScr
         padding: const EdgeInsets.all(8),
         itemCount: icQuestions.length + 1,
         itemBuilder: (context, index) {
-          //adds a blank sizedBox at the end (the next button would cover the questions otherwise)
+          //adds a next button at the end
           if (index == icQuestions.length) {
             return NextButton(
               label: 'NEXT',
@@ -65,7 +65,7 @@ class _InformedConsentSigningScreenState extends State<InformedConsentSigningScr
             );
           }
           if (icQuestions[index][0] == 'SAQ') {
-            // short answer question
+            // make an SAQ question
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: ShortAnswerQuestionWidget(
@@ -79,6 +79,7 @@ class _InformedConsentSigningScreenState extends State<InformedConsentSigningScr
               ),
             );
           } 
+          // Signiture question
           else if (icQuestions[index][0] == 'SQ'){
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -88,7 +89,7 @@ class _InformedConsentSigningScreenState extends State<InformedConsentSigningScr
             );
           }
           else {
-            // multiple choice question
+            // make a multipel choice question
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: MutlipleChoiceQuestionWidget(
@@ -106,4 +107,4 @@ class _InformedConsentSigningScreenState extends State<InformedConsentSigningScr
       ),
     );
   }
-}
+} // EOF ic_document_signing.dart 

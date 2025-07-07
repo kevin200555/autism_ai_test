@@ -1,11 +1,6 @@
-// just some screening questions
+// This is the mchat-r form
+// It stands for "Modified Checklist for autism in toddlers - Revised"
 // only yes or no questions
-// consider making a serperate type of question that's just for yes or no questions
-// just some demographic questions
-// may need to make a "Choose all that apply type question"
-// Screen that basically shows terms and conditions
-// may need to implement a feature that lets people draw their signiture
-// has some MCQ and SAQ questions
 
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/widgets/mutliple_choice_question_widget.dart';
@@ -51,7 +46,7 @@ class _MChatRFormScreenState extends State<MChatRFormScreen> {
         padding: const EdgeInsets.all(8),
         itemCount: mChatRQuestions.length + 1,
         itemBuilder: (context, index) {
-          //adds a blank sizedBox at the end (the next button would cover the questions otherwise)
+          //adds a next button at the end of all the questions
           if (index == mChatRQuestions.length) {
             return NextButton(label: 'NEXT', onPressed: () {
                 Navigator.push(
@@ -96,4 +91,4 @@ class _MChatRFormScreenState extends State<MChatRFormScreen> {
       ),
     );
   }
-}
+} // EOF m_chatr_form_screen.dart 
