@@ -11,19 +11,17 @@ Future<void> main() async {
   //await Permission.microphone.request();
   
   cameras = await availableCameras(); 
-  runApp(MyApp());
+  runApp(AutismAITest());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class AutismAITest extends StatelessWidget {
+  const AutismAITest({super.key});
 
   @override
   Widget build(BuildContext context) {
     //camera is passed around through all widgets and screens in the program
     return MaterialApp(home: HomeScreen(camera: cameras[0]));
   } 
-}
-//EOF main.dart
-
-//unqiue User ID
-//cloud services: AWS, Oracle, Google cloud services, (HIPA complinent)
+} // EOF main.dart
+// unqiue User ID
+// cloud services: AWS, Oracle, Google cloud services, (HIPA complinent)
