@@ -36,7 +36,7 @@ class _PdfViewerScreenState extends State<PdfViewerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: SubTitle('Informed Consent Document'),
+        title: AppBarTitle('Informed Consent Document'),
         automaticallyImplyLeading: false
       ),
       //Views the PDF

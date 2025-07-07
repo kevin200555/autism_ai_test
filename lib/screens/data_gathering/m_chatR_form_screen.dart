@@ -36,7 +36,7 @@ class _MChatRFormScreenState extends State<MChatRFormScreen> {
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
-        title: SubTitle('M-CHATR FORM', style: TextStyle(fontSize: 20, color: ColorTheme.alternateTextColor)),
+        title: AppBarTitle('M-CHATR FORM', style: TextStyle(fontSize: 20, color: ColorTheme.alternateTextColor)),
         centerTitle: true,
         backgroundColor: ColorTheme.accent,
         iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),

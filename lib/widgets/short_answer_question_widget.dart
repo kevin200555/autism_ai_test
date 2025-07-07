@@ -48,7 +48,7 @@ class _ShortAnswerQuestionWidgetState extends State<ShortAnswerQuestionWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Question prompt
-        SubTitle(widget.shortAnswerInstructions[1]),
+        AppBarTitle(widget.shortAnswerInstructions[1]),
         // Answer input field
         Padding(
           padding: EdgeInsets.fromLTRB(16, 2, 16, 2),

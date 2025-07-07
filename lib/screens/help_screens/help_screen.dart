@@ -33,7 +33,7 @@ class HelpScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SubTitle('Questions?', textAlign: TextAlign.left),
+            AppBarTitle('Questions?', textAlign: TextAlign.left),
             BodyText(
               'If you have any questions regarding how to record and upload your videos, please feel free to e-mail Daniel '
               'Gray (drgray@wustl.edu) and Jerry Yu (xiangxu@wustl.edu). Jerry is also available via text/phone at 737-'

@@ -12,7 +12,7 @@ class FinalScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
-        title: SubTitle('Thank you for completing the test!', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+        title: AppBarTitle('Thank you for completing the test!', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
         centerTitle: true,
         backgroundColor: ColorTheme.background,
         actions: <Widget>[
@@ -32,13 +32,13 @@ class FinalScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SubTitle('All steps completed! We appreciate your time!\n', textAlign: TextAlign.left),
+            AppBarTitle('All steps completed! We appreciate your time!\n', textAlign: TextAlign.left),
             // Checkmark Icon
             SizedBox(
               width: double.infinity,
               child: Icon(Icons.check_circle, color: ColorTheme.green, size: MediaQuery.of(context).size.width * 0.3),
             ),
-            SubTitle('\nResults'),
+            AppBarTitle('\nResults'),
             BodyText(
               'Yeah idk what to put here (yet)',
             ),

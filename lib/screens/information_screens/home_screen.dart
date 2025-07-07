@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
-        title: Text('WELCOME!', style: TextStyle(fontSize: 24)),
+        title: AppBarTitle('WELCOME!'),
         centerTitle: true,
         backgroundColor: ColorTheme.background,
         actions: <Widget>[
@@ -38,10 +38,10 @@ class HomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SubTitle('Background', textAlign: TextAlign.left),
+            AppBarTitle('Background', textAlign: TextAlign.left),
             BodyText(
               'Getting an autism diagnosis for young children can still be slow and expensive.'
-              'Many families miss the chance to get early support when it matters most.\n',
+              ' Many families miss the chance to get early support when it matters most.\n',
             ),
             BodyText(
               'Our team at Washington University is working on a simple, low-cost tool '
@@ -55,7 +55,7 @@ class HomeScreen extends StatelessWidget {
               'That\'s where you come in. By doing a few short tasks and recording them'
               ', you\'re helping us build something that could help many other families in the future.\n',
             ),
-            SubTitle('What\'s in the Test?', textAlign: TextAlign.left),
+            AppBarTitle('What\'s in the Test?', textAlign: TextAlign.left),
             BodyText('\t\t- Informed Consent Document'),
             BodyText('\t\t- Autism Intake Form'),
             BodyText('\t\t- M-ChatR Form'),
@@ -77,8 +77,7 @@ class HomeScreen extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) =>
-                      PdfViewerScreen(camera: camera),
+                  builder: (context) => PdfViewerScreen(camera: camera),
                 ),
               );
             },

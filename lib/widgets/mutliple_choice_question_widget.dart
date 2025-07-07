@@ -21,7 +21,7 @@ class MutlipleChoiceQuestionWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Question
-          SubTitle(multipleChoiceEntry[1]),
+          AppBarTitle(multipleChoiceEntry[1]),
           // Dropdown menu
           DropdownButton<String>(
             value: value,

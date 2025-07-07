@@ -55,7 +55,7 @@ class GeneralInstructionsScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SubTitle('General Instructions'),
+            AppBarTitle('General Instructions'),
             RichBodyText(
               TextSpan(
                 children: [
@@ -79,7 +79,7 @@ class GeneralInstructionsScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SubTitle(
+            AppBarTitle(
               'Swipe right on your phone to continue reading>>>>',
               style: TextStyle(color: ColorTheme.red, fontWeight: FontWeight.bold),
 
@@ -115,7 +115,7 @@ class FewTipsBeforeStart extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SubTitle('Here are a few tips before you start:'),
+            AppBarTitle('Here are a few tips before you start:'),
             Padding(
               padding: EdgeInsetsGeometry.fromLTRB(16, 0, 0, 0),
               child: RichBodyText(
@@ -230,7 +230,7 @@ class FewTipsBeforeStart extends StatelessWidget {
             BodyText(
               'Thanks again for being part of this—we\'re excited to see what you and your child share with us!\n',
             ),
-            SubTitle(
+            AppBarTitle(
               'Swipe right on your phone to continue reading>>>>',
               style: TextStyle(color: ColorTheme.red, fontWeight: FontWeight.bold),
             ),
@@ -266,7 +266,7 @@ class BeforeYouStartScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SubTitle('Before You Start'),
+            AppBarTitle('Before You Start'),
             BodyText(
               'Please read through all three tasks before recording. This will help you prepare '
               'the right items and understand what to say or do during each activity.\n',
@@ -358,7 +358,7 @@ class BeforeYouStartScreen extends StatelessWidget {
               'There are 3 tasks in total. They are meant to feel like playful,'
               ' everyday moments—so please keep it relaxed and natural.\n',
             ),
-            SubTitle(
+            AppBarTitle(
               'Swipe right on your phone to continue reading>>>>',
               style: TextStyle(color: ColorTheme.red, fontWeight: FontWeight.bold),
             ),
@@ -399,7 +399,7 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SubTitle('Filming Tips'),
+            AppBarTitle('Filming Tips'),
             RichBodyText(
               TextSpan(
                 children: [
@@ -472,7 +472,7 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                 ),
               ),
             ),
-            SubTitle(
+            AppBarTitle(
               'Swipe left on your phone to reread <<<<\n\n',
               style: TextStyle(color: ColorTheme.red, fontWeight: FontWeight.bold),
             ),

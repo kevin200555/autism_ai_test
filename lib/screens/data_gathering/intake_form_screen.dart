@@ -38,7 +38,7 @@ class _IntakeFormScreenState extends State<IntakeFormScreen> {
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
-        title: SubTitle('INTAKE FORM', style: TextStyle(fontSize: 18, color: ColorTheme.alternateTextColor)),
+        title: AppBarTitle('INTAKE FORM', style: TextStyle(fontSize: 18, color: ColorTheme.alternateTextColor)),
         centerTitle: true,
         backgroundColor: ColorTheme.accent,
         iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),
