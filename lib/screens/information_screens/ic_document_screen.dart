@@ -37,6 +37,7 @@ class _PdfViewerScreenState extends State<PdfViewerScreen> {
     return Scaffold(
       appBar: AppBar(
         title: SubTitle('Informed Consent Document'),
+        automaticallyImplyLeading: false
       ),
       //Views the PDF
       body: PdfViewPinch(
