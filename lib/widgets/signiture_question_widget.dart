@@ -1,3 +1,5 @@
+import 'package:autism_ai_test/constants/colors.dart';
+import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:flutter/material.dart';
 
 class DrawingQuestionWidget extends StatefulWidget {
@@ -6,13 +8,12 @@ class DrawingQuestionWidget extends StatefulWidget {
   const DrawingQuestionWidget({super.key, required this.question});
 
   @override
-  State<DrawingQuestionWidget> createState() =>
-      _DrawingQuestionWidgetState();
+  State<DrawingQuestionWidget> createState() => _DrawingQuestionWidgetState();
 }
 
 class _DrawingQuestionWidgetState extends State<DrawingQuestionWidget> {
   List<Offset?> points = [];
-
+  bool isDrawing = false;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -26,8 +27,17 @@ class _DrawingQuestionWidgetState extends State<DrawingQuestionWidget> {
         GestureDetector(
           onPanUpdate: (details) {
             setState(() {
-              RenderBox box = context.findRenderObject() as RenderBox;
-              points.add(box.globalToLocal(details.globalPosition));
+              final box = context.findRenderObject() as RenderBox;
+              final localPosition = box.globalToLocal(details.globalPosition);
+
+              // Only add points within the drawing canvas bounds and if isDrawing
+              if (localPosition.dy >= 0 &&
+                  localPosition.dy <= 300 &&
+                  localPosition.dx >= 0 &&
+                  localPosition.dx <= box.size.width &&
+                  isDrawing) {
+                points.add(localPosition);
+              }
             });
           },
           onPanEnd: (_) => points.add(null), // Separate strokes
@@ -38,17 +48,54 @@ class _DrawingQuestionWidgetState extends State<DrawingQuestionWidget> {
               border: Border.all(color: Colors.grey),
               color: Colors.white,
             ),
-            child: CustomPaint(
-              painter: DrawingPainter(points),
-            ),
+            child: CustomPaint(painter: DrawingPainter(points)),
           ),
         ),
         const SizedBox(height: 10),
-        ElevatedButton(
-          onPressed: () {
-            setState(() => points.clear());
-          },
-          child: const Text("Clear Drawing"),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                setState(() => isDrawing = !isDrawing);
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: ColorTheme.accent,
+                foregroundColor: ColorTheme.alternateTextColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                padding: const EdgeInsets.symmetric(vertical: 16),
+              ),
+              child: (isDrawing)
+                  ? BodyText(
+                      "Stop Signing",
+                      style: TextStyle(color: ColorTheme.alternateTextColor),
+                    )
+                  : BodyText(
+                      "Start Signing",
+                      style: TextStyle(color: ColorTheme.alternateTextColor),
+                    ),
+            ),
+            SizedBox(height: MediaQuery.of(context).size.width * .3),
+            ElevatedButton(
+              onPressed: () {
+                setState(() => points.clear());
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: ColorTheme.accent,
+                foregroundColor: ColorTheme.alternateTextColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                padding: const EdgeInsets.symmetric(vertical: 16),
+              ),
+              child: BodyText(
+                "Clear Signing",
+                style: TextStyle(color: ColorTheme.alternateTextColor),
+              ),
+            ),
+          ],
         ),
       ],
     );
