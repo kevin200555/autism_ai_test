@@ -242,8 +242,10 @@ class InstructionAndQuestions {
     ['MCQ', 'Do you agree to allow us to send your health information via text?', 'yes', 'no'],
     ['SAQ', 'Child\'s name - printed'],
     ['SAQ', 'Date'],
-    ['SAQ', 'Name of Parent/Guradian - printed'],
+    ['SQ', 'Signiture of Parent/Guardian'],
+    ['SAQ', 'Name of Parent/Guardian - printed'],
     ['SAQ', 'Relationship to paticipant - printed'],
+    ['SQ', 'Signiture of Person who Obtained Consetn'],
     ['SAQ', 'Name of Person who Obtained Consent - printed']
   ];
 

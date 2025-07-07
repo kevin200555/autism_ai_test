@@ -20,7 +20,7 @@ class _PdfViewerScreenState extends State<PdfViewerScreen> {
   void initState() {
     super.initState();
     _pdfController = PdfControllerPinch(
-      document: PdfDocument.openAsset('assets/test.pdf'),
+      document: PdfDocument.openAsset('assets/icDocument.pdf'),
     );
   }
 

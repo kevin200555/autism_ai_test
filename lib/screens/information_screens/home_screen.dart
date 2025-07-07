@@ -1,5 +1,5 @@
 import 'package:autism_ai_test/screens/data_gathering/ic_document_signing.dart';
-import 'package:autism_ai_test/screens/ic_document_screen.dart';
+import 'package:autism_ai_test/screens/information_screens/ic_document_screen.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
