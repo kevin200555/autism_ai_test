@@ -47,7 +47,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
           ),
         ),
         centerTitle: true,
-        iconTheme: IconThemeData(color: ColorTheme.textColor),
+        iconTheme: IconThemeData(color: ColorTheme.background),
         backgroundColor: ColorTheme.accent,
       ),
       body: Center(
@@ -68,7 +68,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
           });
         },
         backgroundColor: ColorTheme.accent,
-        foregroundColor: ColorTheme.textColor,
+        foregroundColor: ColorTheme.background,
         child: Icon(
           _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
         ),
