@@ -77,6 +77,7 @@ class GeneralInstructionsScreen extends StatelessWidget {
                   ),
                 ],
               ),
+              maxLines: 5,
             ),
             BodyText(
               'Swipe right on your phone to continue reading>>>>',
@@ -131,6 +132,7 @@ class FewTipsBeforeStart extends StatelessWidget {
                     TextSpan(text: '(no hats or sunglasses).'),
                   ],
                 ),
+                maxLines: 2
               ),
             ),
             Padding(
@@ -146,6 +148,7 @@ class FewTipsBeforeStart extends StatelessWidget {
                     TextSpan(text: 'place—turn off the TV or music.'),
                   ],
                 ),
+                maxLines: 2
               ),
             ),
             Padding(
@@ -164,6 +167,7 @@ class FewTipsBeforeStart extends StatelessWidget {
                     ),
                   ],
                 ),
+                maxLines: 4
               ),
             ),
             Padding(
@@ -173,10 +177,11 @@ class FewTipsBeforeStart extends StatelessWidget {
                   children: [
                     TextSpan(
                       text:
-                          'It\'s okay if you\'re in the video too—we want to see how your child interacts with you.',
+                          '- It\'s okay if you\'re in the video too—we want to see how your child interacts with you.',
                     ),
                   ],
                 ),
+                maxLines: 3
               ),
             ),
             Padding(
@@ -192,10 +197,11 @@ class FewTipsBeforeStart extends StatelessWidget {
                     TextSpan(
                       text:
                           ' Even if your child doesn\'t respond at all,'
-                          'that\'s totally fine. Every video helps our research.',
+                          ' that\'s totally fine. Every video helps our research.',
                     ),
                   ],
                 ),
+                maxLines: 3
               ),
             ),
             Padding(
@@ -205,15 +211,16 @@ class FewTipsBeforeStart extends StatelessWidget {
                   children: [
                     TextSpan(
                       text:
-                          '- You don’t have to finish everything at once. Feel free to',
+                          '- You don\'t have to finish everything at once. Feel free to',
                     ),
                     TextSpan(
-                      text: 'take breaks or spread the tasks out',
+                      text: ' take breaks or spread the tasks out',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     TextSpan(text: ' over a few days.'),
                   ],
                 ),
+                maxLines: 3
               ),
             ),
             Padding(
@@ -223,10 +230,15 @@ class FewTipsBeforeStart extends StatelessWidget {
                   children: [
                     TextSpan(
                       text:
-                          '- You’ll find the task instructions on the next page. Please read each one before recording\n',
+                          '- You\'ll find the task instructions on the next page.',
                     ),
+                    TextSpan(
+                      text: ' Please read each one before recording.\n',
+                      style: TextStyle(fontWeight: FontWeight.bold)
+                    )
                   ],
                 ),
+                maxLines: 3,
               ),
             ),
             BodyText(
@@ -277,7 +289,7 @@ class BeforeYouStartScreen extends StatelessWidget {
             BodyText(
               'Please read through all three tasks before recording. This will help you prepare '
               'the right items and understand what to say or do during each activity.\n',
-              maxLines: 3,
+              maxLines: 4,
             ),
             Padding(
               padding: EdgeInsetsGeometry.fromLTRB(16, 0, 0, 0),
@@ -291,7 +303,7 @@ class BeforeYouStartScreen extends StatelessWidget {
                     ),
                     TextSpan(
                       text:
-                          ' especially when calling your child’s name or saying a'
+                          ' especially when calling your child\'s name or saying a'
                           'specific sentence (e.g., “Bring me the toy”). Using the',
                     ),
                     TextSpan(
@@ -304,6 +316,7 @@ class BeforeYouStartScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+                maxLines: 6,
               ),
             ),
             Padding(
@@ -322,6 +335,7 @@ class BeforeYouStartScreen extends StatelessWidget {
                     TextSpan(text: ' as instructed in the task.\n'),
                   ],
                 ),
+                maxLines: 4,
               ),
             ),
             Padding(
@@ -342,6 +356,7 @@ class BeforeYouStartScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+                maxLines: 4,
               ),
             ),
             Padding(
@@ -349,7 +364,7 @@ class BeforeYouStartScreen extends StatelessWidget {
               child: RichBodyText(
                 TextSpan(
                   children: [
-                    TextSpan(text: '- Make sure your child’s'),
+                    TextSpan(text: '- Make sure your child\'s'),
                     TextSpan(
                       text: ' face and body',
                       style: TextStyle(fontWeight: FontWeight.bold),
@@ -360,6 +375,7 @@ class BeforeYouStartScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+                maxLines: 3,
               ),
             ),
             BodyText(
@@ -416,9 +432,9 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
             RichBodyText(
               TextSpan(
                 children: [
-                  TextSpan(text: 'Try to keep your child’s'),
+                  TextSpan(text: 'Try to keep your child\'s'),
                   TextSpan(
-                    text: ' full body and face',
+                    text: ' full body and face ',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   TextSpan(
@@ -428,6 +444,7 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                   ),
                 ],
               ),
+              maxLines: 5,
             ),
             Padding(
               padding: EdgeInsetsGeometry.fromLTRB(16, 0, 0, 0),
@@ -446,6 +463,7 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                     ),
                   ],
                 ),
+                maxLines: 6,
               ),
             ),
             Padding(
@@ -461,10 +479,11 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                       text:
                           ' If your hands are needed for part of the task (e.g., using a'
                           ' spoon), you can briefly place the phone somewhere steady. '
-                          'Just make sure the angle captures your child’s body and face.\n',
+                          'Just make sure the angle captures your child\'s body and face.\n',
                     ),
                   ],
                 ),
+                maxLines: 6,
               ),
             ),
             Padding(
@@ -479,10 +498,11 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                     TextSpan(
                       text:
                           ' This helps you focus on interacting with your child while someone else'
-                          'holds the phone and follows the child’s movement.\n',
+                          'holds the phone and follows the child\'s movement.\n',
                     ),
                   ],
                 ),
+                maxLines: 5,
               ),
             ),
             BodyText(

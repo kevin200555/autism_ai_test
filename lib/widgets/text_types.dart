@@ -163,13 +163,14 @@ class RichBodyText extends StatelessWidget {
   final TextAlign textAlign;
   final double minFontSize;
   final TextStyle? style;
+  final int maxLines;
 
   const RichBodyText(
     this.textSpan, {
     super.key,
     this.textAlign = TextAlign.left,
     this.minFontSize = 8,
-    this.style,
+    this.style, required this.maxLines,
   });
 
   @override
@@ -180,6 +181,7 @@ class RichBodyText extends StatelessWidget {
         textSpan,
         textAlign: textAlign,
         minFontSize: minFontSize,
+        maxLines: maxLines,
         style:
             style ??
             Theme.of(context).textTheme.titleMedium?.copyWith(
