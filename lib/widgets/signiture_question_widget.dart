@@ -13,107 +13,87 @@ class DrawingQuestionWidget extends StatefulWidget {
 
 class _DrawingQuestionWidgetState extends State<DrawingQuestionWidget> {
   List<Offset?> points = [];
-  bool isDrawing = false;
+  final GlobalKey _canvasKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        QuestionText(widget.question),
-        const SizedBox(height: 10),
-        GestureDetector(
-          onPanUpdate: (details) {
-            setState(() {
-              final box = context.findRenderObject() as RenderBox;
-              final localPosition = box.globalToLocal(details.globalPosition);
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          QuestionText(widget.question),
+          const SizedBox(height: 10),
+          GestureDetector(
+            onPanUpdate: (details) {
+              final box = _canvasKey.currentContext?.findRenderObject();
+              if (box is RenderBox) {
+                final localPosition = box.globalToLocal(details.globalPosition);
 
-              // Only add points within the drawing canvas bounds and if isDrawing
-              if (localPosition.dy >= 0 &&
-                  localPosition.dy <= 300 &&
-                  localPosition.dx >= 0 &&
-                  localPosition.dx <= box.size.width &&
-                  isDrawing) {
-                points.add(localPosition);
+                final withinBounds =
+                    localPosition.dy >= 0 &&
+                    localPosition.dy <= box.size.height &&
+                    localPosition.dx >= 0 &&
+                    localPosition.dx <= box.size.width;
+
+                if (withinBounds) {
+                  setState(() => points.add(localPosition));
+                }
               }
-            });
-          },
-          onPanEnd: (_) => points.add(null), // Separate strokes
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(16, 1, 16, 1),
+            },
+            onPanEnd: (_) => points.add(null),
             child: Container(
+              key: _canvasKey,
               width: double.infinity,
-              height: 300,
+              height: MediaQuery.sizeOf(context).height * 0.15,
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey),
-                color: Colors.white,
+                border: Border.all(color: ColorTheme.textColor),
+                color: ColorTheme.background,
               ),
               child: CustomPaint(painter: DrawingPainter(points)),
             ),
           ),
-        ),
-        const SizedBox(height: 10),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                setState(() => isDrawing = !isDrawing);
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: ColorTheme.accent,
-                foregroundColor: ColorTheme.alternateTextColor,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                padding: const EdgeInsets.symmetric(vertical: 16),
-              ),
-              child: (isDrawing)
-                  ? BodyText(
-                      "Stop Signing",
-                      style: TextStyle(color: ColorTheme.alternateTextColor),
-                      maxLines: 1,
-                    )
-                  : BodyText(
-                      "Start Signing",
-                      style: TextStyle(color: ColorTheme.alternateTextColor),
-                      maxLines: 1,
+          const SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              SizedBox(
+                height: MediaQuery.sizeOf(context).height * 0.05,
+                width: MediaQuery.sizeOf(context).width * 0.30,
+                child: ElevatedButton(
+                  onPressed: () {
+                    setState(() => points.clear());
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: ColorTheme.red,
+                    foregroundColor: ColorTheme.alternateTextColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
                     ),
-            ),
-            SizedBox(height: MediaQuery.of(context).size.height * .3),
-            ElevatedButton(
-              onPressed: () {
-                setState(() => points.clear());
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: ColorTheme.accent,
-                foregroundColor: ColorTheme.alternateTextColor,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                padding: const EdgeInsets.symmetric(vertical: 16),
+                  ),
+                    child: AppBarTitle(
+                      "CLEAR",
+                      color: ColorTheme.background,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
               ),
-              child: BodyText(
-                "Clear Signing",
-                style: TextStyle(color: ColorTheme.alternateTextColor),
-                maxLines: 1,
-              ),
-            ),
-          ],
-        ),
-      ],
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
 
 class DrawingPainter extends CustomPainter {
   final List<Offset?> points;
-
   DrawingPainter(this.points);
 
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = Colors.black
+      ..color = ColorTheme.textColor
       ..strokeWidth = 4.0
       ..strokeCap = StrokeCap.round;
 
@@ -126,4 +106,4 @@ class DrawingPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(DrawingPainter oldDelegate) => true;
-} // EOF signiture_question_widget.dart
+}

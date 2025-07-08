@@ -37,7 +37,7 @@ class _InformedConsentSigningScreenState extends State<InformedConsentSigningScr
   void generateUserId(){
     final name = responses[2]?.toLowerCase().replaceAll(' ', '');
     final date = responses[3]?.replaceAll('/', '');
-    final parent = responses[5]?.toLowerCase().replaceAll(' ', '');
+    final parent = responses[4]?.toLowerCase().replaceAll(' ', '');
     userId = "$name-$date-$parent"; 
   }
 
@@ -62,7 +62,7 @@ class _InformedConsentSigningScreenState extends State<InformedConsentSigningScr
               label: 'NEXT',
               onPressed: () {
                 generateUserId();
-                //print(widget.userId);
+                print(userId);
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -88,15 +88,6 @@ class _InformedConsentSigningScreenState extends State<InformedConsentSigningScr
               ),
             );
           } 
-          /* Signiture question
-          else if (icQuestions[index][0] == 'SQ'){
-            return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: DrawingQuestionWidget(
-                question: icQuestions[index][1],
-              ),
-            );
-          }*/
           else {
             // make a multipel choice question
             return Padding(
