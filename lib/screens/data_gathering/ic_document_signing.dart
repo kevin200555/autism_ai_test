@@ -89,7 +89,7 @@ class _InformedConsentSigningScreenState extends State<InformedConsentSigningScr
               ),
             );
           } 
-          // Signiture question
+          /* Signiture question
           else if (icQuestions[index][0] == 'SQ'){
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -97,7 +97,7 @@ class _InformedConsentSigningScreenState extends State<InformedConsentSigningScr
                 question: icQuestions[index][1],
               ),
             );
-          }
+          }*/
           else {
             // make a multipel choice question
             return Padding(

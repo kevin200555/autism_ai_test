@@ -34,7 +34,7 @@ class AppBarTitle extends StatelessWidget {
             style ??
             GoogleFonts.lato(
               textStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
-                color: ColorTheme.textColor,
+                color: color,
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
@@ -65,20 +65,24 @@ class SubTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 1, 16, 1),
-      child: AutoSizeText(
-        text,
-        textAlign: textAlign,
-        minFontSize: minFontSize,
-        maxLines: 1,
-        style:
-            style ??
-            GoogleFonts.lato(
-              textStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
-                color: ColorTheme.textColor,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+      child: SizedBox(
+        width: double.infinity,
+        height: MediaQuery.sizeOf(context).height * 0.035,
+        child: AutoSizeText(
+          text,
+          textAlign: textAlign,
+          minFontSize: minFontSize,
+          maxLines: 1,
+          style:
+              style ??
+              GoogleFonts.lato(
+                textStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  color: ColorTheme.textColor,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
+        ),
       ),
     );
   }
@@ -103,19 +107,23 @@ class QuestionText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 1, 16, 1),
-      child: AutoSizeText(
-        text,
-        textAlign: textAlign,
-        minFontSize: minFontSize,
-        maxLines: 3,
-        style:
-            style ??
-            GoogleFonts.lato(
-              textStyle: Theme.of(context).textTheme.titleMedium,
-              color: ColorTheme.textColor,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
+      child: SizedBox(
+        width: double.infinity,
+        height: MediaQuery.sizeOf(context).height * 0.035 * 3,
+        child: AutoSizeText(
+          text,
+          textAlign: textAlign,
+          minFontSize: minFontSize,
+          maxLines: 3,
+          style:
+              style ??
+              GoogleFonts.lato(
+                textStyle: Theme.of(context).textTheme.titleMedium,
+                color: ColorTheme.textColor,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+        ),
       ),
     );
   }
@@ -141,19 +149,23 @@ class BodyText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 1, 16, 1),
-      child: AutoSizeText(
-        text,
-        textAlign: textAlign,
-        minFontSize: minFontSize,
-        maxLines: maxLines,
-        style:
-            style ??
-            GoogleFonts.lato(
-              textStyle: Theme.of(context).textTheme.titleMedium,
-              color: ColorTheme.textColor,
-              fontSize: 16,
-              fontWeight: FontWeight.w400,
-            ),
+      child: SizedBox(
+        width: double.infinity,
+        height: MediaQuery.sizeOf(context).height * 0.025 * maxLines,
+        child: AutoSizeText(
+          text,
+          textAlign: textAlign,
+          minFontSize: minFontSize,
+          maxLines: maxLines,
+          style:
+              style ??
+              GoogleFonts.lato(
+                textStyle: Theme.of(context).textTheme.titleMedium,
+                color: ColorTheme.textColor,
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+              ),
+        ),
       ),
     );
   }
@@ -179,54 +191,24 @@ class RichBodyText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(16, 1, 16, 1),
-      child: AutoSizeText.rich(
-        textSpan,
-        textAlign: textAlign,
-        minFontSize: minFontSize,
-        maxLines: maxLines,
-        style:
-            style ??
-            Theme.of(context).textTheme.titleMedium?.copyWith(
-              color: ColorTheme.textColor,
-              fontSize: 16,
-              fontWeight: FontWeight.normal,
-            ),
+      child: SizedBox(
+        width: double.infinity,
+        height: MediaQuery.sizeOf(context).height * 0.025 * maxLines,
+        child: AutoSizeText.rich(
+          textSpan,
+          textAlign: textAlign,
+          minFontSize: minFontSize,
+          maxLines: maxLines,
+          style:
+              style ??
+              GoogleFonts.lato(
+                textStyle: Theme.of(context).textTheme.titleMedium,
+                color: ColorTheme.textColor,
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+              ),
+        ),
       ),
     );
   }
 }
-
-class BoldBodyText extends StatelessWidget {
-  final String text;
-  final TextAlign textAlign;
-  final double minFontSize;
-  final TextStyle? style;
-
-  const BoldBodyText(
-    this.text, {
-    super.key,
-    this.textAlign = TextAlign.left,
-    this.minFontSize = 8,
-    this.style,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 1, 16, 1),
-      child: AutoSizeText(
-        text,
-        textAlign: textAlign,
-        minFontSize: minFontSize,
-        style:
-            style ??
-            GoogleFonts.lato(
-              textStyle: Theme.of(context).textTheme.titleMedium,
-              color: ColorTheme.textColor,
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
-      ),
-    );
-  }
-} // EOF text_types.dart
