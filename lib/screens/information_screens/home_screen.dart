@@ -51,7 +51,7 @@ class HomeScreen extends StatelessWidget {
             ),
             BodyText(
               'To make this possible, we need videos of real kids—playing, interacting, and'
-              'just being themselves.\n',
+              ' just being themselves.\n',
               maxLines: 3,
             ),
             BodyText(

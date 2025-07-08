@@ -275,10 +275,10 @@ class InstructionAndQuestions {
     ['SAQ', 'Child\'s name - printed'],
     ['SAQ', 'Date (MM/DD/YYYY)'],
 
-    ['SAQ', 'Name of Parent/Guardian - printed'],
+    ['SAQ', 'Name of parent/guardian - printed'],
     ['SAQ', 'Relationship to paticipant - printed'],
 
-    ['SAQ', 'Name of Person who Obtained Consent - printed'],
+    ['SAQ', 'Name of person who obtained consent - printed'],
   ];
 
   static final List<List<String>> signitureQuestions = [

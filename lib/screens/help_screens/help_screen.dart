@@ -27,7 +27,7 @@ class HelpScreen extends StatelessWidget {
               'If you have any questions regarding how to record and upload your videos, please feel free to e-mail Daniel '
               'Gray (drgray@wustl.edu) and Jerry Yu (xiangxu@wustl.edu). Jerry is also available via text/phone at 737-'
               '529-5080. After you upload videos, we will review the videos and let you know if there are any problems.',
-              maxLines: 4,
+              maxLines: 7,
             ),
             SizedBox(height: MediaQuery.of(context).size.width * 0.05),
             BodyText(
