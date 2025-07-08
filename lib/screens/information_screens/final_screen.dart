@@ -15,14 +15,6 @@ class FinalScreen extends StatelessWidget {
         title: AppBarTitle('Thank you for completing the test!', color: ColorTheme.textColor),
         centerTitle: true,
         backgroundColor: ColorTheme.background,
-        actions: <Widget>[
-          IconButton(
-            onPressed: () {
-              Navigator.of(context).popUntil((route) => route.isFirst);
-            },
-            icon: const Icon(Icons.question_mark_outlined),
-          ),
-        ],
       ),
 
       body: SizedBox(
