@@ -35,14 +35,9 @@ class _PdfViewerScreenState extends State<PdfViewerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: AppBarTitle('Informed Consent Document'),
-        automaticallyImplyLeading: false
-      ),
+      appBar: AppBar(title: AppBarTitle('Informed Consent Document', color: ColorTheme.textColor)),
       //Views the PDF
-      body: PdfViewPinch(
-        controller: _pdfController,
-      ),
+      body: PdfViewPinch(controller: _pdfController),
       //Next button
       floatingActionButton: SizedBox(
         width: double.infinity,

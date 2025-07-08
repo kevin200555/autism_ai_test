@@ -25,5 +25,5 @@ class AutismAITest extends StatelessWidget {
     );
   }
 } // EOF main.dart
-// unqiue User ID
+// unqiue User ID *done*
 // cloud services: AWS, Oracle, Google cloud services, (HIPA complinent)
