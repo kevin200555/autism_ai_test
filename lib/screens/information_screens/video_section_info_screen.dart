@@ -31,7 +31,6 @@ class VideoSectionInfoScreen extends StatelessWidget {
 }
 
 class GeneralInstructionsScreen extends StatelessWidget {
-
   final CameraDescription camera;
   const GeneralInstructionsScreen({super.key, required this.camera});
 
@@ -79,9 +78,13 @@ class GeneralInstructionsScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SubTitle(
+            BodyText(
               'Swipe right on your phone to continue reading>>>>',
-              style: TextStyle(color: ColorTheme.red, fontWeight: FontWeight.bold),
+              maxLines: 1,
+              style: TextStyle(
+                color: ColorTheme.red,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ],
         ),
@@ -227,11 +230,16 @@ class FewTipsBeforeStart extends StatelessWidget {
               ),
             ),
             BodyText(
-              'Thanks again for being part of this—we\'re excited to see what you and your child share with us!\n', maxLines: 2,
+              'Thanks again for being part of this—we\'re excited to see what you and your child share with us!\n',
+              maxLines: 3,
             ),
-            SubTitle(
+            BodyText(
               'Swipe right on your phone to continue reading>>>>',
-              style: TextStyle(color: ColorTheme.red, fontWeight: FontWeight.bold),
+              maxLines: 1,
+              style: TextStyle(
+                color: ColorTheme.red,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ],
         ),
@@ -357,11 +365,15 @@ class BeforeYouStartScreen extends StatelessWidget {
             BodyText(
               'There are 3 tasks in total. They are meant to feel like playful,'
               ' everyday moments—so please keep it relaxed and natural.\n',
-              maxLines: 3,
+              maxLines: 4,
             ),
-            SubTitle(
-              'Swipe right on your phone to continue reading>>>>',
-              style: TextStyle(color: ColorTheme.red, fontWeight: FontWeight.bold),
+            BodyText(
+              'Swipe left on your phone to reread <<<<',
+              maxLines: 1,
+              style: TextStyle(
+                color: ColorTheme.red,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ],
         ),
@@ -473,9 +485,13 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                 ),
               ),
             ),
-            SubTitle(
+            BodyText(
               'Swipe left on your phone to reread <<<<\n\n',
-              style: TextStyle(color: ColorTheme.red, fontWeight: FontWeight.bold),
+              maxLines: 3,
+              style: TextStyle(
+                color: ColorTheme.red,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             NextButton(
               label: 'BEGIN TEST',
