@@ -16,12 +16,14 @@ class MutlipleChoiceQuestionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Question
-          QuestionText(multipleChoiceEntry[1]),
-          // Dropdown menu
-          DropdownButton<String>(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // Question
+        QuestionText(multipleChoiceEntry[1]),
+        // Dropdown menu
+        Padding(
+          padding: EdgeInsets.fromLTRB(16, 2, 16, 2),
+          child: DropdownButton<String>(
             value: value,
             isExpanded: true,
             icon: const Icon(Icons.keyboard_arrow_down),
@@ -36,8 +38,9 @@ class MutlipleChoiceQuestionWidget extends StatelessWidget {
               if (val != null) onChanged(val);
             },
           ),
-        ],
-      );
+        ),
+      ],
+    );
   }
 }
 //EOF multiple_choice_question_widget.dart

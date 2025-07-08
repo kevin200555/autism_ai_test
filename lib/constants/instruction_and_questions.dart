@@ -9,7 +9,7 @@ class InstructionAndQuestions {
   ];
   //These are the instructions for the video_recording_scection, The user reads these and then records.
   static final List<String> videoInstructions = [
-// Task 1: ToyInteraction
+    // Task 1: ToyInteraction
     '''
 1. Set up
 \tChoose a toy your child likes that can be used for pretend feeding (e.g., a stuffed animal or doll).
@@ -33,7 +33,7 @@ class InstructionAndQuestions {
 \t\t• If no response after 5 seconds, ask: “Should we feed the toy?”
 \t\t• If still no response, pretend to feed the toy with the spoon, then offer the spoon to your child. If they don't feed the toy, that's totally fine.
 ''',
-// Task 2: Snack time
+    // Task 2: Snack time
     '''
 1. Set up
 \tPrepare two snacks your child likes and place them out of the child's reach.
@@ -46,7 +46,7 @@ class InstructionAndQuestions {
 \t\t• If your child responds (by pointing, talking, reaching, etc.), you can interact naturally and give them the snack.
 \t\t• If they don't respond, that's totally fine—just keep recording.
 ''',
-//Task 3: Free Play
+    //Task 3: Free Play
     '''
 1. Free play
 \tLet your child play freely with their favorite toys for at least 3 minutes.
@@ -138,50 +138,55 @@ class InstructionAndQuestions {
   static final List<List<String>> mChatRQuestions = [
     [
       'MCQ',
-      'If you point at something across the room, does your child look at it?',
-      'yes',
-      'no',
-    ],
-    ['MCQ', 'Have you ever wondered if your child might be deaf?', 'yes', 'no'],
-    [
-      'MCQ',
-      'Does your child play pretend or make-believe? (e.g., pretend to drink from an empty cup or feed a doll)',
+      'If you point at something across the room, does your child look at it?                                        ',
       'yes',
       'no',
     ],
     [
       'MCQ',
-      'Does your child like climbing on things? (e.g., furniture, playground equipment, or stairs)',
+      'Have you ever wondered if your child might be deaf?                                                           ',
       'yes',
       'no',
     ],
     [
       'MCQ',
-      'Does your child make unusual finger movements near his or her eyes?',
+      'Does your child play pretend or make-believe? (e.g., pretend to drink from an empty cup or feed a doll)       ',
       'yes',
       'no',
     ],
     [
       'MCQ',
-      'Does your child point with one finger to ask for something or to get help?',
+      'Does your child like climbing on things? (e.g., furniture, playground equipment, or stairs)                   ',
       'yes',
       'no',
     ],
     [
       'MCQ',
-      'Does your child point with one finger to show you something interesting?',
+      'Does your child make unusual finger movements near his or her eyes?                                           ',
       'yes',
       'no',
     ],
     [
       'MCQ',
-      'Is your child interested in other children? (e.g., watching, smiling at, or approaching them)',
+      'Does your child point with one finger to ask for something or to get help?                                    ',
       'yes',
       'no',
     ],
     [
       'MCQ',
-      'Does your child show you things to share them (not to get help)? (e.g., holding up a toy or flower)',
+      'Does your child point with one finger to show you something interesting?                                      ',
+      'yes',
+      'no',
+    ],
+    [
+      'MCQ',
+      'Is your child interested in other children? (e.g., watching, smiling at, or approaching them)                 ',
+      'yes',
+      'no',
+    ],
+    [
+      'MCQ',
+      'Does your child show you things to share them (not to get help)? (e.g., holding up a toy or flower)           ',
       'yes',
       'no',
     ],
@@ -193,73 +198,94 @@ class InstructionAndQuestions {
     ],
     [
       'MCQ',
-      'When you smile at your child, does he or she smile back at you?',
+      'When you smile at your child, does he or she smile back at you?                                               ',
       'yes',
       'no',
     ],
     [
       'MCQ',
-      'Does your child get upset by everyday noises? (e.g., cries at a vacuum cleaner or loud music)',
-      'yes',
-      'no',
-    ],
-    ['MCQ', 'Does your child walk?', 'yes', 'no'],
-    [
-      'MCQ',
-      'Does your child look you in the eye when talking, playing, or during care?',
+      'Does your child get upset by everyday noises? (e.g., cries at a vacuum cleaner or loud music)                 ',
       'yes',
       'no',
     ],
     [
       'MCQ',
-      'Does your child try to copy what you do? (e.g., wave bye-bye, clap, or mimic sounds)',
+      'Does your child walk?                                                                                         ',
       'yes',
       'no',
     ],
     [
       'MCQ',
-      'If you turn your head to look at something, does your child look to see what you\'re looking at?',
+      'Does your child look you in the eye when talking, playing, or during care?                                    ',
       'yes',
       'no',
     ],
     [
       'MCQ',
-      'Does your child try to get you to watch him or her? (e.g., looks for praise or says "look" or "watch me")',
+      'Does your child try to copy what you do? (e.g., wave bye-bye, clap, or mimic sounds)                          ',
       'yes',
       'no',
     ],
     [
       'MCQ',
-      'Does your child understand verbal instructions without gestures? (e.g., "put the book on the chair")',
+      'If you turn your head to look at something, does your child look to see what you\'re looking at?               ',
       'yes',
       'no',
     ],
     [
       'MCQ',
-      'If something new happens, does your child look at your face to see your reaction?',
+      'Does your child try to get you to watch him or her? (e.g., looks for praise or says "look" or "watch me")     ',
       'yes',
       'no',
     ],
     [
       'MCQ',
-      'Does your child enjoy movement activities? (e.g., swinging or being bounced on your knee)',
+      'Does your child understand verbal instructions without gestures? (e.g., "put the book on the chair")          ',
+      'yes',
+      'no',
+    ],
+    [
+      'MCQ',
+      'If something new happens, does your child look at your face to see your reaction?                             ',
+      'yes',
+      'no',
+    ],
+    [
+      'MCQ',
+      'Does your child enjoy movement activities? (e.g., swinging or being bounced on your knee)                     ',
       'yes',
       'no',
     ],
   ];
-  // This 2D List contains the SAQ and MCQ for the "Autism_Video_Informed_Consent" document 
+
+  // This 2D List contains the SAQ and MCQ for the "Autism_Video_Informed_Consent" document
   static final List<List<String>> iCQuestions = [
-    ['MCQ', 'Do you agree to allow us to send your health information via email?', 'yes', 'no'],
-    ['MCQ', 'Do you agree to allow us to send your health information via text?', 'yes', 'no'],
+    [
+      'MCQ',
+      'Do you agree to allow us to send your health information via email?',
+      'yes',
+      'no',
+    ],
+    [
+      'MCQ',
+      'Do you agree to allow us to send your health information via text?',
+      'yes',
+      'no',
+    ],
     ['SAQ', 'Child\'s name - printed'],
     ['SAQ', 'Date (MM/DD/YYYY)'],
-    ['SQ', 'Signiture of Parent/Guardian'],
+
     ['SAQ', 'Name of Parent/Guardian - printed'],
     ['SAQ', 'Relationship to paticipant - printed'],
-    ['SQ', 'Signiture of Person who Obtained Consetn'],
-    ['SAQ', 'Name of Person who Obtained Consent - printed']
+
+    ['SAQ', 'Name of Person who Obtained Consent - printed'],
   ];
-  
+
+  static final List<List<String>> signitureQuestions = [
+    ['SQ', 'Signiture of Parent/Guardian'],
+    ['SQ', 'Signiture of Person who Obtained Consent'],
+  ];
+
   //accessors (not strictly nesscessary, but I have them)
   static List<String> getVideoInstructios() {
     return videoInstructions;

@@ -109,8 +109,7 @@ class QuestionText extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(16, 1, 16, 1),
       child: SizedBox(
         width: double.infinity,
-        height: MediaQuery.sizeOf(context).height * 0.035 * 3,
-        child: AutoSizeText(
+                child: AutoSizeText(
           text,
           textAlign: textAlign,
           minFontSize: minFontSize,
