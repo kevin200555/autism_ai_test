@@ -57,7 +57,7 @@ class HomeScreen extends StatelessWidget {
             BodyText(
               'That\'s where you come in. By doing a few short tasks and recording them'
               ', you\'re helping us build something that could help many other families in the future.\n',
-              maxLines: 5,
+              maxLines: 4,
             ),
             SubTitle('What\'s in the Test?', textAlign: TextAlign.left),
             BodyText('\t\t- Informed Consent Document', maxLines: 1),

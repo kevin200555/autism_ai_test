@@ -129,10 +129,10 @@ class FewTipsBeforeStart extends StatelessWidget {
                       text: 'face is not covered ',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    TextSpan(text: '(no hats or sunglasses).'),
+                    TextSpan(text: '(no hats or sunglasses).\n'),
                   ],
                 ),
-                maxLines: 2
+                maxLines: 3
               ),
             ),
             Padding(
@@ -163,11 +163,11 @@ class FewTipsBeforeStart extends StatelessWidget {
                     ),
                     TextSpan(
                       text:
-                          ' is important! Daytime is best so we can clearly see your child\'s face and body.',
+                          ' is important! Daytime is best so we can clearly see your child\'s face and body.\n',
                     ),
                   ],
                 ),
-                maxLines: 4
+                maxLines: 3
               ),
             ),
             Padding(
@@ -177,7 +177,7 @@ class FewTipsBeforeStart extends StatelessWidget {
                   children: [
                     TextSpan(
                       text:
-                          '- It\'s okay if you\'re in the video too—we want to see how your child interacts with you.',
+                          '- It\'s okay if you\'re in the video too—we want to see how your child interacts with you.\n',
                     ),
                   ],
                 ),
@@ -197,11 +197,11 @@ class FewTipsBeforeStart extends StatelessWidget {
                     TextSpan(
                       text:
                           ' Even if your child doesn\'t respond at all,'
-                          ' that\'s totally fine. Every video helps our research.',
+                          ' that\'s totally fine. Every video helps our research.\n',
                     ),
                   ],
                 ),
-                maxLines: 3
+                maxLines: 4
               ),
             ),
             Padding(
@@ -217,7 +217,7 @@ class FewTipsBeforeStart extends StatelessWidget {
                       text: ' take breaks or spread the tasks out',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    TextSpan(text: ' over a few days.'),
+                    TextSpan(text: ' over a few days.\n'),
                   ],
                 ),
                 maxLines: 3
@@ -243,7 +243,7 @@ class FewTipsBeforeStart extends StatelessWidget {
             ),
             BodyText(
               'Thanks again for being part of this—we\'re excited to see what you and your child share with us!\n',
-              maxLines: 3,
+              maxLines: 4,
             ),
             BodyText(
               'Swipe right on your phone to continue reading>>>>',
