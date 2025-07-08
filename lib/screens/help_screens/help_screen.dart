@@ -13,17 +13,6 @@ class HelpScreen extends StatelessWidget {
         title: Text('HELP MENU', style: TextStyle(fontSize: 24)),
         centerTitle: true,
         backgroundColor: ColorTheme.background,
-        actions: <Widget>[
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => HelpScreen()),
-              );
-            },
-            icon: const Icon(Icons.question_mark_outlined),
-          ),
-        ],
       ),
 
       body: SizedBox(
