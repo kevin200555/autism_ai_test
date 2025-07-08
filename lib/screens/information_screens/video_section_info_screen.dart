@@ -109,7 +109,7 @@ class FewTipsBeforeStart extends StatelessWidget {
         ),
         centerTitle: true,
         backgroundColor: ColorTheme.background,
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
       ),
 
       body: SizedBox(
@@ -276,7 +276,7 @@ class BeforeYouStartScreen extends StatelessWidget {
         ),
         centerTitle: true,
         backgroundColor: ColorTheme.background,
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
       ),
 
       body: SizedBox(
@@ -419,7 +419,7 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
         ),
         centerTitle: true,
         backgroundColor: ColorTheme.background,
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
       ),
 
       body: SizedBox(

@@ -23,9 +23,7 @@ class AppBarTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 1, 16, 1),
-      child: AutoSizeText(
+    return AutoSizeText(
         text,
         textAlign: textAlign,
         maxLines: maxLines,
@@ -35,12 +33,11 @@ class AppBarTitle extends StatelessWidget {
             GoogleFonts.lato(
               textStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
                 color: color,
-                fontSize: 20,
+                fontSize: 30,
                 fontWeight: FontWeight.bold,
               ),
             ),
-      ),
-    );
+      );
   }
 }
 

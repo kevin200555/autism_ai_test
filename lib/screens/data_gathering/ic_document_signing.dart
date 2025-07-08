@@ -89,7 +89,7 @@ class _InformedConsentSigningScreenState extends State<InformedConsentSigningScr
             );
           } 
           else {
-            // make a multipel choice question
+            // make a multiple choice question
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: MutlipleChoiceQuestionWidget(

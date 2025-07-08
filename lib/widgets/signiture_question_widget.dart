@@ -59,7 +59,7 @@ class _DrawingQuestionWidgetState extends State<DrawingQuestionWidget> {
             children: [
               SizedBox(
                 height: MediaQuery.sizeOf(context).height * 0.05,
-                width: MediaQuery.sizeOf(context).width * 0.30,
+                width: MediaQuery.sizeOf(context).width * 0.20,
                 child: ElevatedButton(
                   onPressed: () {
                     setState(() => points.clear());
@@ -71,11 +71,7 @@ class _DrawingQuestionWidgetState extends State<DrawingQuestionWidget> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                    child: AppBarTitle(
-                      "CLEAR",
-                      color: ColorTheme.background,
-                      textAlign: TextAlign.center,
-                    ),
+                    child: Icon(Icons.delete, size: 30,)
                   ),
               ),
             ],
