@@ -306,4 +306,7 @@ class InstructionAndQuestions {
   static List<List<String>> getIC() {
     return iCQuestions;
   }
+  static List<List<String>> getSigniture(){
+    return signitureQuestions;
+  }
 } //EOF instruction_and_questions.dart

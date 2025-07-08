@@ -5,12 +5,11 @@
 // has some MCQ and SAQ questions
 
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
+import 'package:autism_ai_test/screens/data_gathering/ic_signiture.dart';
 import 'package:autism_ai_test/widgets/mutliple_choice_question_widget.dart';
 import 'package:autism_ai_test/widgets/short_answer_question_widget.dart';
-import 'package:autism_ai_test/screens/data_gathering/m_chatr_form_screen.dart';
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/widgets/next_button.dart';
-import 'package:autism_ai_test/widgets/signiture_question_widget.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
@@ -68,7 +67,7 @@ class _InformedConsentSigningScreenState extends State<InformedConsentSigningScr
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        MChatRFormScreen(camera: widget.camera),
+                        InformedConsentSignitureScreen(camera: widget.camera),
                   ),
                 );
               },
