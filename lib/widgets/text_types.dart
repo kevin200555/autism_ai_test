@@ -3,12 +3,13 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
 class AppBarTitle extends StatelessWidget {
   final String text;
   final TextAlign textAlign;
+  final int maxLines;
   final double minFontSize;
   final TextStyle? style;
+  final Color color;
 
   const AppBarTitle(
     this.text, {
@@ -16,6 +17,8 @@ class AppBarTitle extends StatelessWidget {
     this.textAlign = TextAlign.left,
     this.minFontSize = 12,
     this.style,
+    this.maxLines = 1,
+    required this.color,
   });
 
   @override
@@ -25,8 +28,10 @@ class AppBarTitle extends StatelessWidget {
       child: AutoSizeText(
         text,
         textAlign: textAlign,
+        maxLines: maxLines,
         minFontSize: minFontSize,
-        style: style ??
+        style:
+            style ??
             GoogleFonts.lato(
               textStyle: Theme.of(context).textTheme.titleMedium,
               color: ColorTheme.textColor,
@@ -44,13 +49,14 @@ class SubTitle extends StatelessWidget {
   final String text;
   final TextAlign textAlign;
   final double minFontSize;
+
   final TextStyle? style;
 
   const SubTitle(
     this.text, {
     super.key,
     this.textAlign = TextAlign.left,
-    this.minFontSize = 12,
+    this.minFontSize = 10,
     this.style,
   });
 
@@ -58,17 +64,22 @@ class SubTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 1, 16, 1),
-      child: AutoSizeText(
-        text,
-        textAlign: textAlign,
-        minFontSize: minFontSize,
-        style: style ??
-            GoogleFonts.lato(
-              textStyle: Theme.of(context).textTheme.titleMedium,
-              color: ColorTheme.textColor,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
+      child: SizedBox(
+        width: double.infinity,
+        height: MediaQuery.of(context).size.height * 0.03,
+        child: AutoSizeText(
+          text,
+          textAlign: textAlign,
+          minFontSize: minFontSize,
+          style:
+              style ??
+              GoogleFonts.lato(
+                textStyle: Theme.of(context).textTheme.titleMedium,
+                color: ColorTheme.textColor,
+                fontSize: 50,
+                fontWeight: FontWeight.bold,
+              ),
+        ),
       ),
     );
   }
@@ -79,24 +90,30 @@ class BodyText extends StatelessWidget {
   final TextAlign textAlign;
   final double minFontSize;
   final TextStyle? style;
+  final int maxLines;
 
   const BodyText(
     this.text, {
     super.key,
     this.textAlign = TextAlign.left,
     this.minFontSize = 8,
-    this.style,
+    this.style, required this.maxLines,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 1, 16, 1),
-      child: AutoSizeText(
+      child: SizedBox(
+        height: MediaQuery.of(context).size.height * 0.25 * maxLines,
+        width: double.infinity,
+        child: AutoSizeText(
         text,
         textAlign: textAlign,
         minFontSize: minFontSize,
-        style: style ??
+        maxLines: maxLines,
+        style:
+            style ??
             GoogleFonts.lato(
               textStyle: Theme.of(context).textTheme.titleMedium,
               color: ColorTheme.textColor,
@@ -104,6 +121,7 @@ class BodyText extends StatelessWidget {
               fontWeight: FontWeight.w400,
             ),
       ),
+      ) 
     );
   }
 }
@@ -142,7 +160,6 @@ class RichBodyText extends StatelessWidget {
   }
 }
 
-
 class BoldBodyText extends StatelessWidget {
   final String text;
   final TextAlign textAlign;
@@ -165,7 +182,8 @@ class BoldBodyText extends StatelessWidget {
         text,
         textAlign: textAlign,
         minFontSize: minFontSize,
-        style: style ??
+        style:
+            style ??
             GoogleFonts.lato(
               textStyle: Theme.of(context).textTheme.titleMedium,
               color: ColorTheme.textColor,
