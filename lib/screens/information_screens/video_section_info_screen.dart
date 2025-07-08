@@ -39,9 +39,9 @@ class GeneralInstructionsScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
-        title: Text(
+        title: AppBarTitle(
           'Video Section Information Page 1 of 4',
-          style: TextStyle(fontSize: 18),
+          color: ColorTheme.textColor,
         ),
         centerTitle: true,
         backgroundColor: ColorTheme.background,
@@ -103,12 +103,13 @@ class FewTipsBeforeStart extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
-        title: Text(
+        title: AppBarTitle(
           'Video Section Information Page 2 of 4',
-          style: TextStyle(fontSize: 18),
+          color: ColorTheme.textColor,
         ),
         centerTitle: true,
         backgroundColor: ColorTheme.background,
+        automaticallyImplyLeading: false,
       ),
 
       body: SizedBox(
@@ -132,7 +133,7 @@ class FewTipsBeforeStart extends StatelessWidget {
                     TextSpan(text: '(no hats or sunglasses).\n'),
                   ],
                 ),
-                maxLines: 3
+                maxLines: 3,
               ),
             ),
             Padding(
@@ -148,7 +149,7 @@ class FewTipsBeforeStart extends StatelessWidget {
                     TextSpan(text: 'place—turn off the TV or music.'),
                   ],
                 ),
-                maxLines: 2
+                maxLines: 2,
               ),
             ),
             Padding(
@@ -167,7 +168,7 @@ class FewTipsBeforeStart extends StatelessWidget {
                     ),
                   ],
                 ),
-                maxLines: 3
+                maxLines: 3,
               ),
             ),
             Padding(
@@ -181,7 +182,7 @@ class FewTipsBeforeStart extends StatelessWidget {
                     ),
                   ],
                 ),
-                maxLines: 3
+                maxLines: 3,
               ),
             ),
             Padding(
@@ -201,7 +202,7 @@ class FewTipsBeforeStart extends StatelessWidget {
                     ),
                   ],
                 ),
-                maxLines: 4
+                maxLines: 4,
               ),
             ),
             Padding(
@@ -220,7 +221,7 @@ class FewTipsBeforeStart extends StatelessWidget {
                     TextSpan(text: ' over a few days.\n'),
                   ],
                 ),
-                maxLines: 3
+                maxLines: 3,
               ),
             ),
             Padding(
@@ -234,8 +235,8 @@ class FewTipsBeforeStart extends StatelessWidget {
                     ),
                     TextSpan(
                       text: ' Please read each one before recording.\n',
-                      style: TextStyle(fontWeight: FontWeight.bold)
-                    )
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                   ],
                 ),
                 maxLines: 3,
@@ -269,9 +270,9 @@ class BeforeYouStartScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
-        title: Text(
+        title: AppBarTitle(
           'Video Section Information Page 3 of 4',
-          style: TextStyle(fontSize: 18),
+          color: ColorTheme.textColor
         ),
         centerTitle: true,
         backgroundColor: ColorTheme.background,
@@ -412,9 +413,9 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
-        title: Text(
+        title: AppBarTitle(
           'Video Section Information Page 4 of 4',
-          style: TextStyle(fontSize: 18),
+          color: ColorTheme.textColor,
         ),
         centerTitle: true,
         backgroundColor: ColorTheme.background,

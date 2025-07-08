@@ -117,10 +117,11 @@ class QuestionText extends StatelessWidget {
           style:
               style ??
               GoogleFonts.lato(
-                textStyle: Theme.of(context).textTheme.titleMedium,
-                color: ColorTheme.textColor,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+                textStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  color: ColorTheme.textColor,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
         ),
       ),
@@ -201,10 +202,11 @@ class RichBodyText extends StatelessWidget {
           style:
               style ??
               GoogleFonts.lato(
-                textStyle: Theme.of(context).textTheme.titleMedium,
-                color: ColorTheme.textColor,
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
+                textStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  color: ColorTheme.textColor,
+                  fontSize: 20,
+                  fontWeight: FontWeight.normal,
+                ),
               ),
         ),
       ),
