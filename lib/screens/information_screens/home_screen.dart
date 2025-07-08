@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
-        title: AppBarTitle('WELCOME!'),
+        title: AppBarTitle('WELCOME!', color:ColorTheme.textColor),
         centerTitle: true,
         backgroundColor: ColorTheme.background,
         actions: <Widget>[
@@ -38,31 +38,36 @@ class HomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            AppBarTitle('Background', textAlign: TextAlign.left),
+            SubTitle('Background', textAlign: TextAlign.left),
             BodyText(
               'Getting an autism diagnosis for young children can still be slow and expensive.'
               ' Many families miss the chance to get early support when it matters most.\n',
+              maxLines: 3,
             ),
             BodyText(
               'Our team at Washington University is working on a simple, low-cost tool '
               'that families can use at home to help spot early signs of autism.\n',
+              maxLines: 3,
             ),
             BodyText(
               'To make this possible, we need videos of real kids—playing, interacting, and'
               'just being themselves.\n',
+              maxLines: 2,
             ),
             BodyText(
               'That\'s where you come in. By doing a few short tasks and recording them'
               ', you\'re helping us build something that could help many other families in the future.\n',
+              maxLines: 4,
             ),
-            AppBarTitle('What\'s in the Test?', textAlign: TextAlign.left),
-            BodyText('\t\t- Informed Consent Document'),
-            BodyText('\t\t- Autism Intake Form'),
-            BodyText('\t\t- M-ChatR Form'),
-            BodyText('\t\t- Recorded Video Section\n\n'),
+            SubTitle('What\'s in the Test?', textAlign: TextAlign.left),
+            BodyText('\t\t- Informed Consent Document',maxLines: 1),
+            BodyText('\t\t- Autism Intake Form',maxLines: 1),
+            BodyText('\t\t- M-ChatR Form',maxLines: 1),
+            BodyText('\t\t- Recorded Video Section\n\n',maxLines: 1),
             BodyText(
               'We really appreciate your time and support!'
               ' These tasks are quick and simple, and your child might even think they’re just playing with you!',
+              maxLines: 3
             ),
           ],
         ),
