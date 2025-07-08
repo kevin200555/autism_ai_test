@@ -33,10 +33,11 @@ class AppBarTitle extends StatelessWidget {
         style:
             style ??
             GoogleFonts.lato(
-              textStyle: Theme.of(context).textTheme.titleMedium,
-              color: color,
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
+              textStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
+                color: ColorTheme.textColor,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
             ),
       ),
     );
@@ -65,19 +66,20 @@ class SubTitle extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 1, 16, 1),
       child: AutoSizeText(
-          text,
-          textAlign: textAlign,
-          minFontSize: minFontSize,
-          maxLines: 1,
-          style:
-              style ??
-              GoogleFonts.lato(
-                textStyle: Theme.of(context).textTheme.titleMedium,
+        text,
+        textAlign: textAlign,
+        minFontSize: minFontSize,
+        maxLines: 1,
+        style:
+            style ??
+            GoogleFonts.lato(
+              textStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
                 color: ColorTheme.textColor,
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
-        ),
+            ),
+      ),
     );
   }
 }
@@ -102,20 +104,20 @@ class QuestionText extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 1, 16, 1),
       child: AutoSizeText(
-          text,
-          textAlign: textAlign,
-          minFontSize: minFontSize,
-          maxLines: 3,
-          style:
-              style ??
-              GoogleFonts.lato(
-                textStyle: Theme.of(context).textTheme.titleMedium,
-                color: ColorTheme.textColor,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-        ),
-      );
+        text,
+        textAlign: textAlign,
+        minFontSize: minFontSize,
+        maxLines: 3,
+        style:
+            style ??
+            GoogleFonts.lato(
+              textStyle: Theme.of(context).textTheme.titleMedium,
+              color: ColorTheme.textColor,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+      ),
+    );
   }
 }
 
@@ -157,7 +159,6 @@ class BodyText extends StatelessWidget {
   }
 }
 
-
 class RichBodyText extends StatelessWidget {
   final TextSpan textSpan;
   final TextAlign textAlign;
@@ -170,7 +171,8 @@ class RichBodyText extends StatelessWidget {
     super.key,
     this.textAlign = TextAlign.left,
     this.minFontSize = 8,
-    this.style, required this.maxLines,
+    this.style,
+    required this.maxLines,
   });
 
   @override
