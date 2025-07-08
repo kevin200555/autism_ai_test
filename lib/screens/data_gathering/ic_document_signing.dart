@@ -62,7 +62,7 @@ class _InformedConsentSigningScreenState extends State<InformedConsentSigningScr
               label: 'NEXT',
               onPressed: () {
                 generateUserId();
-                print(userId);
+                //print(userId);
                 Navigator.push(
                   context,
                   MaterialPageRoute(
