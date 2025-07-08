@@ -335,7 +335,7 @@ class BeforeYouStartScreen extends StatelessWidget {
                     TextSpan(text: ' as instructed in the task.\n'),
                   ],
                 ),
-                maxLines: 4,
+                maxLines: 3,
               ),
             ),
             Padding(
@@ -444,7 +444,7 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                   ),
                 ],
               ),
-              maxLines: 5,
+              maxLines: 4,
             ),
             Padding(
               padding: EdgeInsetsGeometry.fromLTRB(16, 0, 0, 0),
@@ -463,7 +463,7 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                     ),
                   ],
                 ),
-                maxLines: 6,
+                maxLines: 5,
               ),
             ),
             Padding(
@@ -483,7 +483,7 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                     ),
                   ],
                 ),
-                maxLines: 6,
+                maxLines: 5,
               ),
             ),
             Padding(
@@ -502,7 +502,7 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                     ),
                   ],
                 ),
-                maxLines: 5,
+                maxLines: 4,
               ),
             ),
             BodyText(
