@@ -24,13 +24,13 @@ class FinalScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            AppBarTitle('All steps completed! We appreciate your time!\n', color: ColorTheme.textColor),
+            SubTitle('All steps completed! We appreciate your time!\n'),
             // Checkmark Icon
             SizedBox(
               width: double.infinity,
               child: Icon(Icons.check_circle, color: ColorTheme.green, size: MediaQuery.of(context).size.width * 0.3),
             ),
-            AppBarTitle('\nResults', color: ColorTheme.textColor),
+            SubTitle('\nResults'),
             BodyText(
               'Yeah idk what to put here (yet)', maxLines: 1,
             ),

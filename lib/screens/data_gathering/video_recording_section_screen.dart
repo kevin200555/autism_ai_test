@@ -172,12 +172,9 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
-        title: Text(
+        title: AppBarTitle(
           'Task ${currentStep + 1} of ${widget.instructions.length}: "${InstructionAndQuestions.getVideoNames()[currentStep]}"',
-          style: TextStyle(
-            color: ColorTheme.alternateTextColor,
-            fontWeight: FontWeight.bold,
-          ),
+          color: ColorTheme.background
         ),
         centerTitle: true,
         iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),
