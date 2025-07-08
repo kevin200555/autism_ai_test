@@ -38,7 +38,7 @@ class _IntakeFormScreenState extends State<IntakeFormScreen> {
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
-        title: AppBarTitle('INTAKE FORM', style: TextStyle(fontSize: 18, color: ColorTheme.alternateTextColor)),
+        title: AppBarTitle('INTAKE FORM', color: ColorTheme.alternateTextColor),
         centerTitle: true,
         backgroundColor: ColorTheme.accent,
         iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),
@@ -65,9 +65,7 @@ class _IntakeFormScreenState extends State<IntakeFormScreen> {
           }
           if (intakeFormQuestions[index][0] == 'SAQ') {
             // short answer question
-            return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: ShortAnswerQuestionWidget(
+            return ShortAnswerQuestionWidget(
                 shortAnswerInstructions: intakeFormQuestions[index],
                 value: responses[index],
                 onChanged: (value) {
@@ -75,21 +73,17 @@ class _IntakeFormScreenState extends State<IntakeFormScreen> {
                     responses[index] = value;
                   });
                 },
-              ),
-            );
+              );
           } else {
             // multiple choice question
-            return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: MutlipleChoiceQuestionWidget(
+            return MutlipleChoiceQuestionWidget(
                 multipleChoiceEntry: intakeFormQuestions[index],
                 value: responses[index],
                 onChanged: (value) {
                   setState(() {
                     responses[index] = value;
                   });
-                },
-              ),
+                }
             );
           }
         },

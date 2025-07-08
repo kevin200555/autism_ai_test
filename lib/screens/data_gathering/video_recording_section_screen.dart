@@ -201,10 +201,10 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            AppBarTitle('Instructions'),
-            BodyText(widget.instructions[currentStep]),
-            BodyText(''),
-            AppBarTitle('Recording Section (Scroll Down)'),
+            SubTitle('Instructions'),
+            BodyText(widget.instructions[currentStep],maxLines: 40,),
+            BodyText('',maxLines: 1,),
+            SubTitle('Recording Section (Scroll Down)'),
             // Text that indicates to the user if they're recording or not, synced with the recording button
             SizedBox(
               width: double.infinity,
