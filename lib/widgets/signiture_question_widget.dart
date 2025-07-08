@@ -19,9 +19,8 @@ class _DrawingQuestionWidgetState extends State<DrawingQuestionWidget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        QuestionText(
           widget.question,
-          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 10),
         GestureDetector(
@@ -41,7 +40,8 @@ class _DrawingQuestionWidgetState extends State<DrawingQuestionWidget> {
             });
           },
           onPanEnd: (_) => points.add(null), // Separate strokes
-          child: Container(
+          child: Padding(padding: EdgeInsetsGeometry.fromLTRB(16, 1, 16, 1),
+          child:Container(
             width: double.infinity,
             height: 300,
             decoration: BoxDecoration(
@@ -49,7 +49,7 @@ class _DrawingQuestionWidgetState extends State<DrawingQuestionWidget> {
               color: Colors.white,
             ),
             child: CustomPaint(painter: DrawingPainter(points)),
-          ),
+          ),)
         ),
         const SizedBox(height: 10),
         Row(
@@ -70,11 +70,11 @@ class _DrawingQuestionWidgetState extends State<DrawingQuestionWidget> {
               child: (isDrawing)
                   ? BodyText(
                       "Stop Signing",
-                      style: TextStyle(color: ColorTheme.alternateTextColor),
+                      style: TextStyle(color: ColorTheme.alternateTextColor), maxLines: 1,
                     )
                   : BodyText(
                       "Start Signing",
-                      style: TextStyle(color: ColorTheme.alternateTextColor),
+                      style: TextStyle(color: ColorTheme.alternateTextColor), maxLines: 1,
                     ),
             ),
             SizedBox(height: MediaQuery.of(context).size.width * .3),
@@ -92,7 +92,7 @@ class _DrawingQuestionWidgetState extends State<DrawingQuestionWidget> {
               ),
               child: BodyText(
                 "Clear Signing",
-                style: TextStyle(color: ColorTheme.alternateTextColor),
+                style: TextStyle(color: ColorTheme.alternateTextColor), maxLines: 1,
               ),
             ),
           ],

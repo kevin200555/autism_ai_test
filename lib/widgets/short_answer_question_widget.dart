@@ -48,7 +48,7 @@ class _ShortAnswerQuestionWidgetState extends State<ShortAnswerQuestionWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Question prompt
-        AppBarTitle(widget.shortAnswerInstructions[1]),
+        QuestionText(widget.shortAnswerInstructions[1]),
         // Answer input field
         Padding(
           padding: EdgeInsets.fromLTRB(16, 2, 16, 2),
@@ -59,7 +59,7 @@ class _ShortAnswerQuestionWidgetState extends State<ShortAnswerQuestionWidget> {
               border: UnderlineInputBorder(),
               hintText: 'Enter your answer here',
             ),
-            style: const TextStyle(fontSize: 16),
+            style: const TextStyle(fontSize: 14),
             maxLines: 5,
             minLines: 1,
           ),

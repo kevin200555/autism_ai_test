@@ -15,13 +15,11 @@ class MutlipleChoiceQuestionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: Column(
+    return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Question
-          AppBarTitle(multipleChoiceEntry[1]),
+          QuestionText(multipleChoiceEntry[1]),
           // Dropdown menu
           DropdownButton<String>(
             value: value,
@@ -39,8 +37,7 @@ class MutlipleChoiceQuestionWidget extends StatelessWidget {
             },
           ),
         ],
-      ),
-    );
+      );
   }
 }
 //EOF multiple_choice_question_widget.dart
