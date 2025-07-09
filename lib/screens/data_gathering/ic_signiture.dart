@@ -30,7 +30,7 @@ class InformedConsentSignitureScreen extends StatefulWidget {
 class _InformedConsentSignitureScreenState
     extends State<InformedConsentSignitureScreen> {
   var signitureQuestions = InstructionAndQuestions.getSigniture();
-  List<bool?> responses = [false,false];
+  List<bool?> responses = [false, false];
   // added a way to jsut screenshot the whole signiture screen in order to get user signitures
   final GlobalKey _screenShotKey = GlobalKey();
 
@@ -105,15 +105,25 @@ class _InformedConsentSignitureScreenState
             ),
             NextButton(
               label: 'SUBMIT SIGNITURES',
-              onPressed: () {
-                screenShot();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) =>
-                        IntakeFormScreen(camera: widget.camera),
-                  ),
-                );
+              onPressed: () async {
+                if (responses[0] == false && responses[1] == false) {
+                  await showDialog(
+                    context: context,
+                    builder: (_) => AlertDialog(
+                      title: const Text('Please sign signitures first'),
+                    ),
+                  );
+                  return;
+                } else {
+                  screenShot();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          IntakeFormScreen(camera: widget.camera),
+                    ),
+                  );
+                }
               },
             ),
           ],
