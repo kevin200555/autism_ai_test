@@ -31,9 +31,8 @@ class _InformedConsentSignitureScreenState
     extends State<InformedConsentSignitureScreen> {
   var signitureQuestions = InstructionAndQuestions.getSigniture();
   var userId = '';
+  // added a way to jsut screenshot the whole signiture screen in order to get user signitures
   final GlobalKey _screenShotKey = GlobalKey();
-  //List<String?> responses = [];
-  //Honestly not sure how I should handle responses here, I think I'll just wait
 
   @override
   void initState() {

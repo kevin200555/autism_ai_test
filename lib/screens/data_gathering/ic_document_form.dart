@@ -50,7 +50,7 @@ class _InformedConsentSigningScreenState
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
         title: AppBarTitle(
-          'INFORMED CONSENT SIGNING',
+          'INFORMED CONSENT FORM',
           color: ColorTheme.alternateTextColor,
         ),
         centerTitle: true,
