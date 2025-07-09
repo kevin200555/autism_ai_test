@@ -6,6 +6,7 @@
 
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/constants/colors.dart';
+import 'package:autism_ai_test/screens/data_gathering/m_chatr_form_screen.dart';
 import 'package:autism_ai_test/screens/information_screens/video_section_info_screen.dart';
 import 'package:autism_ai_test/widgets/next_button.dart';
 import 'package:autism_ai_test/widgets/signiture_question_widget.dart';
@@ -94,7 +95,7 @@ class _InformedConsentSignitureScreenState
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        VideoSectionInfoScreen(camera: widget.camera),
+                        MChatRFormScreen(camera: widget.camera),
                   ),
                 );
               },
