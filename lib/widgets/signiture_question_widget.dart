@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 class DrawingQuestionWidget extends StatefulWidget {
   final String question;
   final Function(bool) onChanged;
-  bool? value;
-  DrawingQuestionWidget({
+  final bool? value;
+  const DrawingQuestionWidget({
     super.key,
     required this.question,
     required this.onChanged,

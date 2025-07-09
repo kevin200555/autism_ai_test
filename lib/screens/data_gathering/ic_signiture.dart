@@ -61,15 +61,13 @@ class _InformedConsentSignitureScreenState
       final file = File(filePath);
       await file.writeAsBytes(pngBytes);
 
-      print('Screenshot saved to $filePath');
     } catch (e) {
-      print('Error saving screenshot: $e');
+      FlutterError.reportError(FlutterErrorDetails(exception: e));
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final ready = responses.length >= 2;
 
     return RepaintBoundary(
       key: _screenShotKey,
@@ -106,7 +104,7 @@ class _InformedConsentSignitureScreenState
             NextButton(
               label: 'SUBMIT SIGNITURES',
               onPressed: () async {
-                if (responses[0] == false && responses[1] == false) {
+                if (responses[0] == false || responses[1] == false) {
                   await showDialog(
                     context: context,
                     builder: (_) => AlertDialog(
