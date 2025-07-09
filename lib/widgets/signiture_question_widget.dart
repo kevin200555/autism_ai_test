@@ -71,8 +71,8 @@ class _DrawingQuestionWidgetState extends State<DrawingQuestionWidget> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                    child: Icon(Icons.delete, size: 30,)
-                  ),
+                  child: Icon(Icons.delete, size: 30),
+                ),
               ),
             ],
           ),

@@ -32,10 +32,14 @@ class HelpScreen extends StatelessWidget {
             SizedBox(height: MediaQuery.of(context).size.width * 0.05),
             BodyText(
               'For any questions reguarding the app itself, Contact Kevin Li (kevinli200555@gmail.com)'
-              'if their are any problems.',maxLines: 4,
+              'if their are any problems.',
+              maxLines: 4,
             ),
             SizedBox(height: MediaQuery.of(context).size.width * 0.05),
-            BodyText('Any suggestions, recommendations or comments you have are also welcome!',maxLines: 4,)
+            BodyText(
+              'Any suggestions, recommendations or comments you have are also welcome!',
+              maxLines: 4,
+            ),
           ],
         ),
       ),

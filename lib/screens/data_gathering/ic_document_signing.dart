@@ -19,10 +19,12 @@ class InformedConsentSigningScreen extends StatefulWidget {
   const InformedConsentSigningScreen({super.key, required this.camera});
 
   @override
-  State<InformedConsentSigningScreen> createState() => _InformedConsentSigningScreenState();
+  State<InformedConsentSigningScreen> createState() =>
+      _InformedConsentSigningScreenState();
 }
 
-class _InformedConsentSigningScreenState extends State<InformedConsentSigningScreen> {
+class _InformedConsentSigningScreenState
+    extends State<InformedConsentSigningScreen> {
   var icQuestions = InstructionAndQuestions.getIC();
   var userId = '';
   List<String?> responses = [];
@@ -32,13 +34,14 @@ class _InformedConsentSigningScreenState extends State<InformedConsentSigningScr
     super.initState();
     responses = List<String?>.filled(icQuestions.length, null);
   }
+
   // given a sample set of responses like [yes, yes, Sarah Jones, 07/07/2025, null, Tom Jones, Mother, null, Tom Jones]
   // generate a unquie user id sarahjones-20250707-tomjones
-  void generateUserId(){
+  void generateUserId() {
     final name = responses[2]?.toLowerCase().replaceAll(' ', '');
     final date = responses[3]?.replaceAll('/', '');
     final parent = responses[4]?.toLowerCase().replaceAll(' ', '');
-    userId = "$name-$date-$parent"; 
+    userId = "$name-$date-$parent";
   }
 
   @override
@@ -46,7 +49,10 @@ class _InformedConsentSigningScreenState extends State<InformedConsentSigningScr
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
-        title: AppBarTitle('INFORMED CONSENT SIGNING', color: ColorTheme.alternateTextColor),
+        title: AppBarTitle(
+          'INFORMED CONSENT SIGNING',
+          color: ColorTheme.alternateTextColor,
+        ),
         centerTitle: true,
         backgroundColor: ColorTheme.accent,
         iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),
@@ -87,8 +93,7 @@ class _InformedConsentSigningScreenState extends State<InformedConsentSigningScr
                 },
               ),
             );
-          } 
-          else {
+          } else {
             // make a multiple choice question
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -107,4 +112,4 @@ class _InformedConsentSigningScreenState extends State<InformedConsentSigningScr
       ),
     );
   }
-} // EOF ic_document_signing.dart 
+} // EOF ic_document_signing.dart

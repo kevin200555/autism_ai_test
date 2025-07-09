@@ -24,20 +24,20 @@ class AppBarTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AutoSizeText(
-        text,
-        textAlign: textAlign,
-        maxLines: maxLines,
-        minFontSize: minFontSize,
-        style:
-            style ??
-            GoogleFonts.lato(
-              textStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
-                color: color,
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-              ),
+      text,
+      textAlign: textAlign,
+      maxLines: maxLines,
+      minFontSize: minFontSize,
+      style:
+          style ??
+          GoogleFonts.lato(
+            textStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
+              color: color,
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
             ),
-      );
+          ),
+    );
   }
 }
 
@@ -106,7 +106,7 @@ class QuestionText extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(16, 1, 16, 1),
       child: SizedBox(
         width: double.infinity,
-                child: AutoSizeText(
+        child: AutoSizeText(
           text,
           textAlign: textAlign,
           minFontSize: minFontSize,

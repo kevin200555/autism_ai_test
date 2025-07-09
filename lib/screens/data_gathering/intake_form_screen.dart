@@ -66,24 +66,24 @@ class _IntakeFormScreenState extends State<IntakeFormScreen> {
           if (intakeFormQuestions[index][0] == 'SAQ') {
             // short answer question
             return ShortAnswerQuestionWidget(
-                shortAnswerInstructions: intakeFormQuestions[index],
-                value: responses[index],
-                onChanged: (value) {
-                  setState(() {
-                    responses[index] = value;
-                  });
-                },
-              );
+              shortAnswerInstructions: intakeFormQuestions[index],
+              value: responses[index],
+              onChanged: (value) {
+                setState(() {
+                  responses[index] = value;
+                });
+              },
+            );
           } else {
             // multiple choice question
             return MutlipleChoiceQuestionWidget(
-                multipleChoiceEntry: intakeFormQuestions[index],
-                value: responses[index],
-                onChanged: (value) {
-                  setState(() {
-                    responses[index] = value;
-                  });
-                }
+              multipleChoiceEntry: intakeFormQuestions[index],
+              value: responses[index],
+              onChanged: (value) {
+                setState(() {
+                  responses[index] = value;
+                });
+              },
             );
           }
         },

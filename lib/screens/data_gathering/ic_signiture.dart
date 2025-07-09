@@ -27,7 +27,7 @@ class _InformedConsentSignitureScreenState
   var signitureQuestions = InstructionAndQuestions.getSigniture();
   var userId = '';
   //List<String?> responses = [];
-  //Honestly not sure how I should handle responses here, I think I'll just wait 
+  //Honestly not sure how I should handle responses here, I think I'll just wait
   @override
   void initState() {
     super.initState();

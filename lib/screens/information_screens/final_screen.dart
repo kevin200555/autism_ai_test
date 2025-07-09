@@ -12,7 +12,10 @@ class FinalScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
-        title: AppBarTitle('Thank you for completing the test!', color: ColorTheme.textColor),
+        title: AppBarTitle(
+          'Thank you for completing the test!',
+          color: ColorTheme.textColor,
+        ),
         centerTitle: true,
         backgroundColor: ColorTheme.background,
       ),
@@ -28,12 +31,14 @@ class FinalScreen extends StatelessWidget {
             // Checkmark Icon
             SizedBox(
               width: double.infinity,
-              child: Icon(Icons.check_circle, color: ColorTheme.green, size: MediaQuery.of(context).size.width * 0.3),
+              child: Icon(
+                Icons.check_circle,
+                color: ColorTheme.green,
+                size: MediaQuery.of(context).size.width * 0.3,
+              ),
             ),
             SubTitle('\nResults'),
-            BodyText(
-              'Yeah idk what to put here (yet)', maxLines: 1,
-            ),
+            BodyText('Yeah idk what to put here (yet)', maxLines: 1),
           ],
         ),
       ),

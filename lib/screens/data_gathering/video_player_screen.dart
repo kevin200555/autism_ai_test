@@ -20,12 +20,11 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   @override
   void initState() {
     super.initState();
-    _controller =
-        VideoPlayerController.file(File(widget.videoPath))
-          ..initialize().then((_) {
-            setState(() {});
-            _controller.play(); 
-          });
+    _controller = VideoPlayerController.file(File(widget.videoPath))
+      ..initialize().then((_) {
+        setState(() {});
+        _controller.play();
+      });
   }
 
   @override

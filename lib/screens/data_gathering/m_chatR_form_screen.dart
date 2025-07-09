@@ -36,7 +36,10 @@ class _MChatRFormScreenState extends State<MChatRFormScreen> {
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
-        title: AppBarTitle('M-CHATR FORM', color: ColorTheme.alternateTextColor),
+        title: AppBarTitle(
+          'M-CHATR FORM',
+          color: ColorTheme.alternateTextColor,
+        ),
         centerTitle: true,
         backgroundColor: ColorTheme.accent,
         iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),
@@ -48,7 +51,9 @@ class _MChatRFormScreenState extends State<MChatRFormScreen> {
         itemBuilder: (context, index) {
           //adds a next button at the end of all the questions
           if (index == mChatRQuestions.length) {
-            return NextButton(label: 'NEXT', onPressed: () {
+            return NextButton(
+              label: 'NEXT',
+              onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -56,7 +61,8 @@ class _MChatRFormScreenState extends State<MChatRFormScreen> {
                         VideoSectionInfoScreen(camera: widget.camera),
                   ),
                 );
-              },);
+              },
+            );
           }
           if (mChatRQuestions[index][0] == 'SAQ') {
             // short answer question
@@ -91,4 +97,4 @@ class _MChatRFormScreenState extends State<MChatRFormScreen> {
       ),
     );
   }
-} // EOF m_chatr_form_screen.dart 
+} // EOF m_chatr_form_screen.dart

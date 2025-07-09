@@ -174,7 +174,7 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
       appBar: AppBar(
         title: AppBarTitle(
           'Task ${currentStep + 1} of ${widget.instructions.length}: "${InstructionAndQuestions.getVideoNames()[currentStep]}"',
-          color: ColorTheme.background
+          color: ColorTheme.background,
         ),
         centerTitle: true,
         iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),
@@ -199,8 +199,8 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SubTitle('Instructions'),
-            BodyText(widget.instructions[currentStep],maxLines: 40,),
-            BodyText('',maxLines: 1,),
+            BodyText(widget.instructions[currentStep], maxLines: 40),
+            BodyText('', maxLines: 1),
             SubTitle('Recording Section (Scroll Down)'),
             // Text that indicates to the user if they're recording or not, synced with the recording button
             SizedBox(
@@ -309,7 +309,10 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
             SizedBox(height: MediaQuery.of(context).size.height * 0.05),
             // Next Task/Finish Test
             NextButton(
-              label: (currentStep == widget.instructions.length - 1) // if on last step, change text to show the user is abou tto complete the test
+              label:
+                  (currentStep ==
+                      widget.instructions.length -
+                          1) // if on last step, change text to show the user is abou tto complete the test
                   ? 'FINISH'
                   : 'SUBMIT VIDEO',
               onPressed: () {

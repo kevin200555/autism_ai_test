@@ -272,7 +272,7 @@ class BeforeYouStartScreen extends StatelessWidget {
       appBar: AppBar(
         title: AppBarTitle(
           'Video Section Information Page 3 of 4',
-          color: ColorTheme.textColor
+          color: ColorTheme.textColor,
         ),
         centerTitle: true,
         backgroundColor: ColorTheme.background,

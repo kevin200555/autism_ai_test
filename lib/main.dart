@@ -20,9 +20,7 @@ class AutismAITest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //camera is passed around through all widgets and screens in the program
-    return MaterialApp(
-      home: HomeScreen(camera: cameras[0]),
-    );
+    return MaterialApp(home: HomeScreen(camera: cameras[0]));
   }
 } // EOF main.dart
 // unqiue User ID *done*
