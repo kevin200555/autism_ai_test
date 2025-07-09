@@ -7,8 +7,6 @@
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/screens/data_gathering/intake_form_screen.dart';
-import 'package:autism_ai_test/screens/data_gathering/m_chatr_form_screen.dart';
-import 'package:autism_ai_test/screens/information_screens/video_section_info_screen.dart';
 import 'package:autism_ai_test/widgets/next_button.dart';
 import 'package:autism_ai_test/widgets/signiture_question_widget.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';
@@ -32,14 +30,13 @@ class InformedConsentSignitureScreen extends StatefulWidget {
 class _InformedConsentSignitureScreenState
     extends State<InformedConsentSignitureScreen> {
   var signitureQuestions = InstructionAndQuestions.getSigniture();
-  var userId = '';
+  List<bool?> responses = [false,false];
   // added a way to jsut screenshot the whole signiture screen in order to get user signitures
   final GlobalKey _screenShotKey = GlobalKey();
 
   @override
   void initState() {
     super.initState();
-    //responses = List<String?>.filled(signitureQuestions.length, null);
   }
 
   Future<void> screenShot() async {
@@ -72,6 +69,8 @@ class _InformedConsentSignitureScreenState
 
   @override
   Widget build(BuildContext context) {
+    final ready = responses.length >= 2;
+
     return RepaintBoundary(
       key: _screenShotKey,
       child: Scaffold(
@@ -86,8 +85,24 @@ class _InformedConsentSignitureScreenState
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            DrawingQuestionWidget(question: signitureQuestions[0][1]),
-            DrawingQuestionWidget(question: signitureQuestions[1][1]),
+            DrawingQuestionWidget(
+              question: signitureQuestions[0][1],
+              value: responses[0],
+              onChanged: (value) {
+                setState(() {
+                  responses[0] = value;
+                });
+              },
+            ),
+            DrawingQuestionWidget(
+              question: signitureQuestions[1][1],
+              value: responses[1],
+              onChanged: (value) {
+                setState(() {
+                  responses[1] = value;
+                });
+              },
+            ),
             NextButton(
               label: 'SUBMIT SIGNITURES',
               onPressed: () {

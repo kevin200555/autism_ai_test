@@ -4,8 +4,14 @@ import 'package:flutter/material.dart';
 
 class DrawingQuestionWidget extends StatefulWidget {
   final String question;
-
-  const DrawingQuestionWidget({super.key, required this.question});
+  final Function(bool) onChanged;
+  bool? value;
+  DrawingQuestionWidget({
+    super.key,
+    required this.question,
+    required this.onChanged,
+    this.value,
+  });
 
   @override
   State<DrawingQuestionWidget> createState() => _DrawingQuestionWidgetState();
@@ -37,6 +43,7 @@ class _DrawingQuestionWidgetState extends State<DrawingQuestionWidget> {
                     localPosition.dx <= box.size.width;
 
                 if (withinBounds) {
+                  widget.onChanged(true);
                   setState(() => points.add(localPosition));
                 }
               }
@@ -62,6 +69,7 @@ class _DrawingQuestionWidgetState extends State<DrawingQuestionWidget> {
                 width: MediaQuery.sizeOf(context).width * 0.20,
                 child: ElevatedButton(
                   onPressed: () {
+                    widget.onChanged(false);
                     setState(() => points.clear());
                   },
                   style: ElevatedButton.styleFrom(
