@@ -73,11 +73,9 @@ class SubTitle extends StatelessWidget {
           style:
               style ??
               GoogleFonts.lato(
-                textStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  color: ColorTheme.textColor,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
+                color: ColorTheme.textColor,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
               ),
         ),
       ),
@@ -114,11 +112,11 @@ class QuestionText extends StatelessWidget {
           style:
               style ??
               GoogleFonts.lato(
-                textStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
+
                   color: ColorTheme.textColor,
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                ),
+
               ),
         ),
       ),
@@ -157,7 +155,6 @@ class BodyText extends StatelessWidget {
           style:
               style ??
               GoogleFonts.lato(
-                textStyle: Theme.of(context).textTheme.titleMedium,
                 color: ColorTheme.textColor,
                 fontSize: 16,
                 fontWeight: FontWeight.w400,
@@ -199,11 +196,9 @@ class RichBodyText extends StatelessWidget {
           style:
               style ??
               GoogleFonts.lato(
-                textStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
                   color: ColorTheme.textColor,
                   fontSize: 20,
                   fontWeight: FontWeight.normal,
-                ),
               ),
         ),
       ),
