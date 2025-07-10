@@ -66,7 +66,7 @@ class GeneralInstructionsScreen extends StatelessWidget {
                   TextSpan(
                     text:
                         ' using your phone. Each task should be recorded as a',
-                  ),
+                  ), 
                   TextSpan(
                     text: ' separate video.',
                     style: TextStyle(fontFamily: "Lato-Bold", fontSize: 16, fontWeight: FontWeight.w700)
