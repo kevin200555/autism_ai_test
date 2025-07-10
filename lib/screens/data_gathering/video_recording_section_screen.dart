@@ -79,6 +79,7 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
           context: context,
           builder: (_) => const AlertDialog(title: Text('Video Saved!')),
         );
+        // checks to make sure the video actually stopped recording
       } catch (e) {
         debugPrint('Error stopping video: $e');
         if (!mounted) return;

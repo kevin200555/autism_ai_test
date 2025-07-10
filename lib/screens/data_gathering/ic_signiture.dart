@@ -12,6 +12,8 @@ import 'package:autism_ai_test/widgets/signiture_question_widget.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+
+// this was all the stuff I needed for the screenshot
 import 'dart:ui' as ui;
 import 'dart:typed_data';
 import 'dart:io';
@@ -30,6 +32,8 @@ class InformedConsentSignitureScreen extends StatefulWidget {
 class _InformedConsentSignitureScreenState
     extends State<InformedConsentSignitureScreen> {
   var signitureQuestions = InstructionAndQuestions.getSigniture();
+  // responses keeps track of whether or not the user actually wrote something in the signiture boxes
+  // It will not go to the next page until the user has wrote something
   List<bool?> responses = [false, false];
   // added a way to jsut screenshot the whole signiture screen in order to get user signitures
   final GlobalKey _screenShotKey = GlobalKey();
@@ -83,6 +87,7 @@ class _InformedConsentSignitureScreenState
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            // Signiture of Parent/Guardian
             DrawingQuestionWidget(
               question: signitureQuestions[0][1],
               value: responses[0],
@@ -92,6 +97,7 @@ class _InformedConsentSignitureScreenState
                 });
               },
             ),
+            // Signiture of Person who obtained Consent
             DrawingQuestionWidget(
               question: signitureQuestions[1][1],
               value: responses[1],
@@ -101,6 +107,7 @@ class _InformedConsentSignitureScreenState
                 });
               },
             ),
+            // Next Button
             NextButton(
               label: 'SUBMIT SIGNITURES',
               onPressed: () async {
