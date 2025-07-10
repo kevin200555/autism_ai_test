@@ -27,7 +27,7 @@ class AppBarTitle extends StatelessWidget {
       textAlign: textAlign,
       maxLines: maxLines,
       minFontSize: minFontSize,
-      style: GoogleFonts.lato(fontSize: 30, fontWeight: FontWeight.w700, color: color),
+      style: GoogleFonts.lato(fontSize: 30, fontWeight: FontWeight.bold, color: color),
     );
   }
 }
@@ -61,7 +61,7 @@ class SubTitle extends StatelessWidget {
           textAlign: textAlign,
           minFontSize: minFontSize,
           maxLines: 1,
-          style: GoogleFonts.lato(fontSize: 20, fontWeight: FontWeight.w700),
+          style: GoogleFonts.lato(fontSize: 20, fontWeight: FontWeight.bold),
         ),
       ),
     );
@@ -94,7 +94,7 @@ class QuestionText extends StatelessWidget {
           textAlign: textAlign,
           minFontSize: minFontSize,
           maxLines: 3,
-          style: GoogleFonts.lato(fontSize: 20, fontWeight: FontWeight.w700),
+          style: GoogleFonts.lato(fontSize: 20, fontWeight: FontWeight.bold),
         ),
       ),
     );
