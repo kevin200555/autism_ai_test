@@ -29,7 +29,7 @@ class AppBarTitle extends StatelessWidget {
       maxLines: maxLines,
       minFontSize: minFontSize,
       style: TextStyle(
-        fontFamily: "Lato",
+        fontFamily: "Lato-Bold",
         color: color,
         fontSize: 30,
         fontWeight: FontWeight.w700,
@@ -68,7 +68,7 @@ class SubTitle extends StatelessWidget {
           minFontSize: minFontSize,
           maxLines: 1,
           style: TextStyle(
-            fontFamily: "Lato",
+            fontFamily: "Lato-Bold",
             fontSize: 20,
             fontWeight: FontWeight.w700,
           ),
@@ -105,7 +105,7 @@ class QuestionText extends StatelessWidget {
           minFontSize: minFontSize,
           maxLines: 3,
           style: TextStyle(
-            fontFamily: "Lato",
+            fontFamily: "Lato-Bold",
             fontSize: 20,
             fontWeight: FontWeight.w700,
           ),
@@ -143,7 +143,7 @@ class BodyText extends StatelessWidget {
           textAlign: textAlign,
           minFontSize: minFontSize,
           maxLines: maxLines,
-          style: TextStyle(fontFamily: "Lato", fontSize: 16, fontWeight: FontWeight.w400),
+          style: TextStyle(fontFamily: "Lato-Regular", fontSize: 16, fontWeight: FontWeight.w400),
         ),
       ),
     );
@@ -178,7 +178,7 @@ class RichBodyText extends StatelessWidget {
           textAlign: textAlign,
           minFontSize: minFontSize,
           maxLines: maxLines,
-          style: TextStyle(fontFamily: "Lato", fontSize: 16, fontWeight: FontWeight.w400),
+          style: TextStyle(fontFamily: "Lato-Regular", fontSize: 16, fontWeight: FontWeight.w400),
         ),
       ),
     );

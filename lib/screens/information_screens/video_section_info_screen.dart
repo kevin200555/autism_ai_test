@@ -336,7 +336,7 @@ class BeforeYouStartScreen extends StatelessWidget {
                     TextSpan(text: ' as instructed in the task.\n'),
                   ],
                 ),
-                maxLines: 3,
+                maxLines: 4,
               ),
             ),
             Padding(
