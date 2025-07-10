@@ -169,4 +169,5 @@ class RichBodyText extends StatelessWidget {
       ),
     );
   }
-}
+} // EOF text_types.dart
+
