@@ -1,7 +1,7 @@
-import 'package:autism_ai_test/constants/colors.dart';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 
 class AppBarTitle extends StatelessWidget {
   final String text;
@@ -28,15 +28,12 @@ class AppBarTitle extends StatelessWidget {
       textAlign: textAlign,
       maxLines: maxLines,
       minFontSize: minFontSize,
-      style:
-          style ??
-          GoogleFonts.lato(
-            textStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
-              color: color,
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+      style: TextStyle(
+        fontFamily: "Lato-Bold",
+        color: color,
+        fontSize: 30,
+        fontWeight: FontWeight.w700,
+      ),
     );
   }
 }
@@ -70,13 +67,11 @@ class SubTitle extends StatelessWidget {
           textAlign: textAlign,
           minFontSize: minFontSize,
           maxLines: 1,
-          style:
-              style ??
-              GoogleFonts.lato(
-                color: ColorTheme.textColor,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+          style: TextStyle(
+            fontFamily: "Lato-Bold",
+            fontSize: 20,
+            fontWeight: FontWeight.w700,
+          ),
         ),
       ),
     );
@@ -109,15 +104,11 @@ class QuestionText extends StatelessWidget {
           textAlign: textAlign,
           minFontSize: minFontSize,
           maxLines: 3,
-          style:
-              style ??
-              GoogleFonts.lato(
-
-                  color: ColorTheme.textColor,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-
-              ),
+          style: TextStyle(
+            fontFamily: "Lato-Bold",
+            fontSize: 20,
+            fontWeight: FontWeight.w700,
+          ),
         ),
       ),
     );
@@ -152,13 +143,7 @@ class BodyText extends StatelessWidget {
           textAlign: textAlign,
           minFontSize: minFontSize,
           maxLines: maxLines,
-          style:
-              style ??
-              GoogleFonts.lato(
-                color: ColorTheme.textColor,
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
-              ),
+          style: TextStyle(fontFamily: "Lato-Regular", fontSize: 16),
         ),
       ),
     );
@@ -193,13 +178,7 @@ class RichBodyText extends StatelessWidget {
           textAlign: textAlign,
           minFontSize: minFontSize,
           maxLines: maxLines,
-          style:
-              style ??
-              GoogleFonts.lato(
-                  color: ColorTheme.textColor,
-                  fontSize: 20,
-                  fontWeight: FontWeight.normal,
-              ),
+          style: TextStyle(fontFamily: "Lato-Regular", fontSize: 16),
         ),
       ),
     );

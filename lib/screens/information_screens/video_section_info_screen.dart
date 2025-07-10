@@ -9,7 +9,6 @@ import 'package:autism_ai_test/widgets/next_button.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class VideoSectionInfoScreen extends StatelessWidget {
   final CameraDescription camera;
@@ -62,10 +61,7 @@ class GeneralInstructionsScreen extends StatelessWidget {
                   TextSpan(text: 'You\'ll be recording '),
                   TextSpan(
                     text: '3 short tasks',
-                    style: GoogleFonts.lato(
-                      fontWeight: FontWeight.bold,
-                      color: ColorTheme.textColor, 
-                    ),
+                    style: TextStyle(fontFamily: "Lato-Bold", fontSize: 16, fontWeight: FontWeight.w700)
                   ),
                   TextSpan(
                     text:
@@ -73,10 +69,7 @@ class GeneralInstructionsScreen extends StatelessWidget {
                   ),
                   TextSpan(
                     text: ' separate video.',
-                    style: GoogleFonts.lato(
-                      fontWeight: FontWeight.bold,
-                      color: ColorTheme.textColor, 
-                    ),
+                    style: TextStyle(fontFamily: "Lato-Bold", fontSize: 16, fontWeight: FontWeight.w700)
                   ),
                   TextSpan(
                     text:
@@ -135,7 +128,7 @@ class FewTipsBeforeStart extends StatelessWidget {
                     TextSpan(text: '- Make sure your child\'s '),
                     TextSpan(
                       text: 'face is not covered ',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(fontFamily: "Lato-Bold", fontSize: 16, fontWeight: FontWeight.w700)
                     ),
                     TextSpan(text: '(no hats or sunglasses).\n'),
                   ],
@@ -151,7 +144,7 @@ class FewTipsBeforeStart extends StatelessWidget {
                     TextSpan(text: '- Try to record in a '),
                     TextSpan(
                       text: 'quiet ',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(fontFamily: "Lato-Bold", fontSize: 16, fontWeight: FontWeight.w700)
                     ),
                     TextSpan(text: 'place—turn off the TV or music.'),
                   ],
@@ -167,7 +160,7 @@ class FewTipsBeforeStart extends StatelessWidget {
                     TextSpan(text: '- '),
                     TextSpan(
                       text: 'Good lighting',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(fontFamily: "Lato-Bold", fontSize: 16, fontWeight: FontWeight.w700)
                     ),
                     TextSpan(
                       text:
@@ -200,7 +193,7 @@ class FewTipsBeforeStart extends StatelessWidget {
                     TextSpan(text: '- '),
                     TextSpan(
                       text: 'There\'s no right or wrong response.',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(fontFamily: "Lato-Bold", fontSize: 16, fontWeight: FontWeight.w700)
                     ),
                     TextSpan(
                       text:
@@ -223,7 +216,7 @@ class FewTipsBeforeStart extends StatelessWidget {
                     ),
                     TextSpan(
                       text: ' take breaks or spread the tasks out',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(fontFamily: "Lato-Bold", fontSize: 16, fontWeight: FontWeight.w700)
                     ),
                     TextSpan(text: ' over a few days.\n'),
                   ],
@@ -242,7 +235,7 @@ class FewTipsBeforeStart extends StatelessWidget {
                     ),
                     TextSpan(
                       text: ' Please read each one before recording.\n',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(fontFamily: "Lato-Bold", fontSize: 16, fontWeight: FontWeight.w700)
                     ),
                   ],
                 ),
@@ -307,7 +300,7 @@ class BeforeYouStartScreen extends StatelessWidget {
                     TextSpan(text: '- Try to follow the steps'),
                     TextSpan(
                       text: ' exactly as written,',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(fontFamily: "Lato-Bold", fontSize: 16, fontWeight: FontWeight.w700)
                     ),
                     TextSpan(
                       text:
@@ -316,7 +309,7 @@ class BeforeYouStartScreen extends StatelessWidget {
                     ),
                     TextSpan(
                       text: ' exact wording ',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(fontFamily: "Lato-Bold", fontSize: 16, fontWeight: FontWeight.w700)
                     ),
                     TextSpan(
                       text:
@@ -338,7 +331,7 @@ class BeforeYouStartScreen extends StatelessWidget {
                     ),
                     TextSpan(
                       text: ' that exact sentence only once,',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(fontFamily: "Lato-Bold", fontSize: 16, fontWeight: FontWeight.w700)
                     ),
                     TextSpan(text: ' as instructed in the task.\n'),
                   ],
@@ -357,7 +350,7 @@ class BeforeYouStartScreen extends StatelessWidget {
                     ),
                     TextSpan(
                       text: ' keep recording for at least 30 seconds',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(fontFamily: "Lato-Bold", fontSize: 16, fontWeight: FontWeight.w700)
                     ),
                     TextSpan(
                       text: ' or until the interaction ends naturally.\n',
@@ -375,7 +368,7 @@ class BeforeYouStartScreen extends StatelessWidget {
                     TextSpan(text: '- Make sure your child\'s'),
                     TextSpan(
                       text: ' face and body',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(fontFamily: "Lato-Bold", fontSize: 16, fontWeight: FontWeight.w700)
                     ),
                     TextSpan(
                       text:
@@ -443,7 +436,7 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                   TextSpan(text: 'Try to keep your child\'s'),
                   TextSpan(
                     text: ' full body and face ',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: TextStyle(fontFamily: "Lato-Bold", fontSize: 16, fontWeight: FontWeight.w700)
                   ),
                   TextSpan(
                     text:
@@ -461,7 +454,7 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                   children: [
                     TextSpan(
                       text: '- Hold the phone yourself',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(fontFamily: "Lato-Bold", fontSize: 16, fontWeight: FontWeight.w700)
                     ),
                     TextSpan(
                       text:
@@ -481,7 +474,7 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                   children: [
                     TextSpan(
                       text: '- Place the phone on a stable surface:',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(fontFamily: "Lato-Bold", fontSize: 16, fontWeight: FontWeight.w700)
                     ),
                     TextSpan(
                       text:
@@ -501,7 +494,7 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                   children: [
                     TextSpan(
                       text: '- Have a second person film:',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(fontFamily: "Lato-Bold", fontSize: 16, fontWeight: FontWeight.w700)
                     ),
                     TextSpan(
                       text:
