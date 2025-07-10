@@ -21,6 +21,7 @@ class HomeScreen extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             onPressed: () {
+              debugPrint(DefaultTextStyle.of(context).style.toString());
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => HelpScreen()),
