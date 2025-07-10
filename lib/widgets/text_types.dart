@@ -143,7 +143,7 @@ class BodyText extends StatelessWidget {
           textAlign: textAlign,
           minFontSize: minFontSize,
           maxLines: maxLines,
-          style: TextStyle(fontFamily: "Lato-Regular", fontSize: 16),
+          style: TextStyle(fontFamily: "Lato-Regular", fontSize: 16, fontWeight: FontWeight.w400),
         ),
       ),
     );
@@ -178,7 +178,7 @@ class RichBodyText extends StatelessWidget {
           textAlign: textAlign,
           minFontSize: minFontSize,
           maxLines: maxLines,
-          style: TextStyle(fontFamily: "Lato-Regular", fontSize: 16),
+          style: TextStyle(fontFamily: "Lato-Regular", fontSize: 16, fontWeight: FontWeight.w400),
         ),
       ),
     );
