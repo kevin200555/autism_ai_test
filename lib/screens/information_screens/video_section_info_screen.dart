@@ -9,6 +9,7 @@ import 'package:autism_ai_test/widgets/next_button.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class VideoSectionInfoScreen extends StatelessWidget {
   final CameraDescription camera;
@@ -61,7 +62,10 @@ class GeneralInstructionsScreen extends StatelessWidget {
                   TextSpan(text: 'You\'ll be recording '),
                   TextSpan(
                     text: '3 short tasks',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: GoogleFonts.lato(
+                      fontWeight: FontWeight.bold,
+                      color: ColorTheme.textColor, 
+                    ),
                   ),
                   TextSpan(
                     text:
@@ -69,7 +73,10 @@ class GeneralInstructionsScreen extends StatelessWidget {
                   ),
                   TextSpan(
                     text: ' separate video.',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: GoogleFonts.lato(
+                      fontWeight: FontWeight.bold,
+                      color: ColorTheme.textColor, 
+                    ),
                   ),
                   TextSpan(
                     text:
