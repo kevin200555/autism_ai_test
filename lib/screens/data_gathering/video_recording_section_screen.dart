@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/screens/information_screens/final_screen.dart';
+import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/next_button.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:auto_size_text/auto_size_text.dart';
@@ -103,6 +104,8 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
       );
       return;
     }
+    UserClass.recordedVideos?[currentStep] = recordedVideos[currentStep];
+    UserClass.printSummary();
     if (currentStep < widget.instructions.length - 1) {
       setState(() {
         currentStep++;

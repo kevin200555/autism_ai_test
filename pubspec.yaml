@@ -60,14 +60,23 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  uses-material-design: true
+
   assets:
     - assets/documents/icDocument.pdf
     - assets/icDocument.pdf
     - assets/fonts/
+  fonts:
+    - family: Lato
+      fonts:
+        - asset: assets/fonts/Lato-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Lato-Bold.ttf
+          weight: 700
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
-  uses-material-design: true
+  
 
   # To add assets to your application, add an assets section, like this:
   # assets:
@@ -85,13 +94,7 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts:
-    - family: Lato
-      fonts:
-        - asset: assets/fonts/Lato-Regular.ttf
-          weight: 400
-        - asset: assets/fonts/Lato-Bold.ttf
-          weight: 700
+
 
   #
   # For details regarding fonts from package dependencies,
