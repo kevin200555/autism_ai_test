@@ -4,7 +4,9 @@
 // may need to implement a feature that lets people draw their signiture
 // has some MCQ and SAQ questions
 
+
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
+import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/mutliple_choice_question_widget.dart';
 import 'package:autism_ai_test/widgets/short_answer_question_widget.dart';
 import 'package:autism_ai_test/screens/data_gathering/m_chatr_form_screen.dart';
@@ -53,6 +55,7 @@ class _IntakeFormScreenState extends State<IntakeFormScreen> {
             return NextButton(
               label: 'NEXT',
               onPressed: () {
+                UserClass.intakeResponses = responses;
                 Navigator.push(
                   context,
                   MaterialPageRoute(

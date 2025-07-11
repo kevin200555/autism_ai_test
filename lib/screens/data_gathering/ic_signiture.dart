@@ -64,6 +64,7 @@ class _InformedConsentSignitureScreenState
           '${directory.path}/screenshot_${DateTime.now().millisecondsSinceEpoch}.png';
 
       final file = File(filePath);
+      UserClass.signiture = file;
       await file.writeAsBytes(pngBytes);
 
     } catch (e) {
