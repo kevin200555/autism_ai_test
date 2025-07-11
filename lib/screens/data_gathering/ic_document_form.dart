@@ -6,6 +6,7 @@
 
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/screens/data_gathering/ic_signiture.dart';
+import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/mutliple_choice_question_widget.dart';
 import 'package:autism_ai_test/widgets/short_answer_question_widget.dart';
 import 'package:autism_ai_test/constants/colors.dart';
@@ -26,7 +27,6 @@ class InformedConsentSigningScreen extends StatefulWidget {
 class _InformedConsentSigningScreenState
     extends State<InformedConsentSigningScreen> {
   var icQuestions = InstructionAndQuestions.getIC();
-  var userId = '';
   List<String?> responses = [];
 
   @override
@@ -37,11 +37,12 @@ class _InformedConsentSigningScreenState
 
   // given a sample set of responses like [yes, yes, Sarah Jones, 07/07/2025, null, Tom Jones, Mother, null, Tom Jones]
   // generate a unquie user id sarahjones-20250707-tomjones
-  void generateUserId() {
+  String generateUserId() {
     final name = responses[2]?.toLowerCase().replaceAll(' ', '');
     final date = responses[3]?.replaceAll('/', '');
     final parent = responses[4]?.toLowerCase().replaceAll(' ', '');
-    userId = "$name-$date-$parent";
+    String userId = "$name-$date-$parent";
+    return userId;
   }
 
   @override
@@ -67,12 +68,14 @@ class _InformedConsentSigningScreenState
             return NextButton(
               label: 'NEXT',
               onPressed: () {
-                generateUserId();
-                //print(userId);
+                //makes a new UserClass in order to save the information this user has done
+                UserClass.userId = generateUserId();
+                UserClass.iCResponses = responses;
+
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>
+                    builder: (context) => // The user class will be passed from sc
                         InformedConsentSignitureScreen(camera: widget.camera),
                   ),
                 );

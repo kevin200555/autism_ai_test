@@ -7,6 +7,7 @@
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/screens/data_gathering/intake_form_screen.dart';
+import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/next_button.dart';
 import 'package:autism_ai_test/widgets/signiture_question_widget.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';

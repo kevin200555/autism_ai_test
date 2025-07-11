@@ -1,14 +1,13 @@
+import 'dart:io';
+
 import 'package:camera/camera.dart';
 
 class UserClass {
-  final String userId;
-  final String mChatRresponses;
-  final String intakeResponses;
-  final List<XFile> recordedVideos;
-  const UserClass(
-    this.userId,
-    this.mChatRresponses,
-    this.intakeResponses,
-    this.recordedVideos,
-  );
+   static String? userId;
+   static List<String?>? iCResponses;
+   static File? signiture;
+   static List<String>? mChatRresponses;
+   static List<String>? intakeResponses;
+   static List<XFile>? recordedVideos;
+
 } // EOF user
