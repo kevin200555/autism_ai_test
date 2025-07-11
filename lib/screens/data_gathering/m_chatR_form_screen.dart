@@ -3,6 +3,7 @@
 // only yes or no questions
 
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
+import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/mutliple_choice_question_widget.dart';
 import 'package:autism_ai_test/widgets/short_answer_question_widget.dart';
 import 'package:autism_ai_test/screens/information_screens/video_section_info_screen.dart';
@@ -54,6 +55,8 @@ class _MChatRFormScreenState extends State<MChatRFormScreen> {
             return NextButton(
               label: 'NEXT',
               onPressed: () {
+                UserClass.mChatRresponses = responses;
+                UserClass.printSummary();
                 Navigator.push(
                   context,
                   MaterialPageRoute(
