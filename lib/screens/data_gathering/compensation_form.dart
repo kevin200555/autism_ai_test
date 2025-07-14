@@ -1,13 +1,11 @@
 // Technically, these questions are part of the intake form, but since that screen is getting crowded
 // and this page could potentially include some sensetive information, I decided to make it its own seperate screen
 
-
 // just some demographic questions
 // may need to make a "Choose all that apply type question"
 // Screen that basically shows terms and conditions
 // may need to implement a feature that lets people draw their signiture
 // has some MCQ and SAQ questions
-
 
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
@@ -29,7 +27,7 @@ class CompensationFormScreen extends StatefulWidget {
 }
 
 class _CompensationFormScreenState extends State<CompensationFormScreen> {
-  var compensationFormQuestions = InstructionAndQuestions.getIntakeForm();
+  var compensationFormQuestions = InstructionAndQuestions.getCQuestions();
 
   List<String?> responses = [];
 
@@ -44,7 +42,10 @@ class _CompensationFormScreenState extends State<CompensationFormScreen> {
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
-        title: AppBarTitle('INTAKE FORM', color: ColorTheme.alternateTextColor),
+        title: AppBarTitle(
+          'COMPENSATION FORM',
+          color: ColorTheme.alternateTextColor,
+        ),
         centerTitle: true,
         backgroundColor: ColorTheme.accent,
         iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),
@@ -52,10 +53,16 @@ class _CompensationFormScreenState extends State<CompensationFormScreen> {
 
       body: ListView.builder(
         padding: const EdgeInsets.all(8),
-        itemCount: compensationFormQuestions.length + 1,
+        itemCount: compensationFormQuestions.length + 2,
         itemBuilder: (context, index) {
-          //adds a next button at the end of all the questions
-          if (index == compensationFormQuestions.length) {
+          if (index == 0) {
+            return RedBodyText(
+              'This information is required for compensation. '
+              'If you wish to decline payment, you can leave these fields blank.\n\n',
+              maxLines: 6,
+            );
+          } else if (index == compensationFormQuestions.length + 1) {
+            // LAST index (after all questions)
             return NextButton(
               label: 'NEXT',
               onPressed: () {
@@ -69,29 +76,32 @@ class _CompensationFormScreenState extends State<CompensationFormScreen> {
                 );
               },
             );
-          }
-          if (compensationFormQuestions[index][0] == 'SAQ') {
-            // short answer question
-            return ShortAnswerQuestionWidget(
-              shortAnswerInstructions: compensationFormQuestions[index],
-              value: responses[index],
-              onChanged: (value) {
-                setState(() {
-                  responses[index] = value;
-                });
-              },
-            );
           } else {
-            // multiple choice question
-            return MutlipleChoiceQuestionWidget(
-              multipleChoiceEntry: compensationFormQuestions[index],
-              value: responses[index],
-              onChanged: (value) {
-                setState(() {
-                  responses[index] = value;
-                });
-              },
-            );
+            // Adjusted question index
+            int questionIndex = index - 1;
+
+            if (compensationFormQuestions[questionIndex][0] == 'SAQ') {
+              return ShortAnswerQuestionWidget(
+                shortAnswerInstructions:
+                    compensationFormQuestions[questionIndex],
+                value: responses[questionIndex],
+                onChanged: (value) {
+                  setState(() {
+                    responses[questionIndex] = value;
+                  });
+                },
+              );
+            } else {
+              return MutlipleChoiceQuestionWidget(
+                multipleChoiceEntry: compensationFormQuestions[questionIndex],
+                value: responses[questionIndex],
+                onChanged: (value) {
+                  setState(() {
+                    responses[questionIndex] = value;
+                  });
+                },
+              );
+            }
           }
         },
       ),

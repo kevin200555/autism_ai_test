@@ -6,10 +6,10 @@
 
 
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
+import 'package:autism_ai_test/screens/data_gathering/compensation_form.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/mutliple_choice_question_widget.dart';
 import 'package:autism_ai_test/widgets/short_answer_question_widget.dart';
-import 'package:autism_ai_test/screens/data_gathering/m_chatr_form_screen.dart';
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/widgets/next_button.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';
@@ -60,7 +60,7 @@ class _IntakeFormScreenState extends State<IntakeFormScreen> {
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        MChatRFormScreen(camera: widget.camera),
+                        CompensationFormScreen(camera: widget.camera),
                   ),
                 );
               },
