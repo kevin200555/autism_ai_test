@@ -62,4 +62,4 @@ class UserClass {
     final file = await _localFile;
     await file.writeAsString(content);
   }
-} // EOF user
+} // EOF user_class.dart
