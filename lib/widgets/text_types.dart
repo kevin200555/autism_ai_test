@@ -1,3 +1,4 @@
+import 'package:autism_ai_test/constants/colors.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -130,6 +131,41 @@ class BodyText extends StatelessWidget {
           minFontSize: minFontSize,
           maxLines: maxLines,
           style: GoogleFonts.lato(fontSize: 16, fontWeight: FontWeight.w400),
+        ),
+      ),
+    );
+  }
+}
+
+class RedBodyText extends StatelessWidget {
+  final String text;
+  final TextAlign textAlign;
+  final double minFontSize;
+  final TextStyle? style;
+  final int maxLines;
+
+  const RedBodyText(
+    this.text, {
+    super.key,
+    this.textAlign = TextAlign.left,
+    this.minFontSize = 8,
+    this.style,
+    required this.maxLines,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 1, 16, 1),
+      child: SizedBox(
+        width: double.infinity,
+        height: MediaQuery.sizeOf(context).height * 0.035 * maxLines,
+        child: AutoSizeText(
+          text,
+          textAlign: textAlign,
+          minFontSize: minFontSize,
+          maxLines: maxLines,
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: ColorTheme.red),
         ),
       ),
     );
