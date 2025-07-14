@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 // Just a class containing color themes to keep the theme consistent
 class ColorTheme {
-  static Color primary = const Color.fromARGB(255, 5, 50, 90);
+  static Color primary = const Color.fromARGB(255, 161, 211, 255);
   static Color accent = const Color.fromARGB(255, 40, 28, 165);
   static Color background = Colors.white;
   static Color textColor = Colors.black;

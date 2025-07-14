@@ -1,3 +1,4 @@
+import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:flutter/material.dart';
 
@@ -36,6 +37,7 @@ class ChooseAllThatApplyQuestionWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
             child: CheckboxListTile(
               title: Text(option),
+              activeColor: ColorTheme.accent,
               value: selected.contains(option),
               controlAffinity: ListTileControlAffinity.leading,
               //check/remove if updated
