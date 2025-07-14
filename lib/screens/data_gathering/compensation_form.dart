@@ -66,7 +66,7 @@ class _CompensationFormScreenState extends State<CompensationFormScreen> {
             return NextButton(
               label: 'NEXT',
               onPressed: () {
-                UserClass.intakeResponses = responses;
+                UserClass.compensationResponses = responses;
                 Navigator.push(
                   context,
                   MaterialPageRoute(
