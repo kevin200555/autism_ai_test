@@ -23,4 +23,9 @@ class UserClass {
       print("Recorded Video 3: ${recordedVideos?[2]?.path}");
     }
   }
+
+  static void generateUserReport(){
+    // function that will take all responses from the the questionaires and compile them into a .txt file
+
+  }
 } // EOF user
