@@ -57,7 +57,7 @@ class _MChatRFormScreenState extends State<MChatRFormScreen> {
               onPressed: () {
                 UserClass.mChatRresponses = responses;
                 UserClass.printSummary();
-                debugPrint(UserClass.generateUserReport());
+                //debugPrint(UserClass.generateUserReport());
                 Navigator.push(
                   context,
                   MaterialPageRoute(

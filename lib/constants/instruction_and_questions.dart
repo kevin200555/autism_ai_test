@@ -89,8 +89,9 @@ class InstructionAndQuestions {
       'no',
     ],
     ['MCQ', 'Does your child have severe hearing loss', 'yes', 'no'],
+    // The one choose all that apply question
     [
-      'MCQ',
+      'CATAQ',
       'Child\'s Race',
       'White',
       'Asian',
