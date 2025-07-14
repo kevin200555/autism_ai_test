@@ -87,13 +87,9 @@ class GeneralInstructionsScreen extends StatelessWidget {
               ),
               maxLines: 5,
             ),
-            BodyText(
-              'Swipe right on your phone to continue reading>>>>',
-              maxLines: 1,
-              style: GoogleFonts.lato(
-                color: ColorTheme.red,
-                fontWeight: FontWeight.bold,
-              ),
+            RedBodyText(
+              'Swipe right on your phone to continue reading >>>>\n',
+              maxLines: 2,
             ),
           ],
         ),
@@ -272,13 +268,10 @@ class FewTipsBeforeStart extends StatelessWidget {
               'Thanks again for being part of this—we\'re excited to see what you and your child share with us!\n',
               maxLines: 4,
             ),
-            BodyText(
-              'Swipe right on your phone to continue reading>>>>',
-              maxLines: 1,
-              style: GoogleFonts.lato(
-                color: ColorTheme.red,
-                fontWeight: FontWeight.bold,
-              ),
+            RedBodyText(
+              'Swipe right on your phone to continue reading >>>>\n',
+              maxLines: 2,
+
             ),
           ],
         ),
@@ -430,14 +423,9 @@ class BeforeYouStartScreen extends StatelessWidget {
               ' everyday moments—so please keep it relaxed and natural.\n',
               maxLines: 4,
             ),
-            BodyText(
-              'Swipe left on your phone to reread <<<<',
-              maxLines: 1,
-              style: GoogleFonts.lato(
-                color: ColorTheme.red,
-                fontWeight: FontWeight.bold,
-                
-              ),
+            RedBodyText(
+              'Swipe right on your phone to continue reading >>>>\n',
+              maxLines: 2,
             ),
           ],
         ),
@@ -569,14 +557,9 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                 maxLines: 4,
               ),
             ),
-            BodyText(
+            RedBodyText(
               'Swipe left on your phone to reread <<<<\n\n',
               maxLines: 3,
-              style: GoogleFonts.lato(
-                color: ColorTheme.red,
-                fontWeight: FontWeight.bold,
-                
-              ),
             ),
             NextButton(
               label: 'BEGIN TEST',
