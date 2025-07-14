@@ -39,11 +39,16 @@ class UserClass {
       intakeString += "A: ${intakeResponses?[i]?[1]}\n";
     }
 
-    List<List<String>> compensation= InstructionAndQuestions.getMChatR();
+    List<List<String>> compensation = InstructionAndQuestions.getMChatR();
     String cString = '';
     for (int i = 0; i < compensation.length; i++) {
-      cString += "Q: ${compensation[i][1]}\n";
-      cString += "A: ${mChatRresponses?[i]?[1]}\n";
+      if (compensation[i][1] == 'Social Security Number: ') {
+        cString += "Q: ${compensation[i][1]}\n";
+        cString += "Q: ###-###-####";
+      } else {
+        cString += "Q: ${compensation[i][1]}\n";
+        cString += "A: ${mChatRresponses?[i]?[1]}\n";
+      }
     }
 
     List<List<String>> mChatR = InstructionAndQuestions.getMChatR();
@@ -53,7 +58,7 @@ class UserClass {
       mString += "A: ${mChatRresponses?[i]?[1]}\n";
     }
 
-    return 'User-ID: $userId\nChild-Name: ${iCResponses?[2]}\nDate: ${iCResponses?[3]}\n'
+    return 'User-ID: $userId\n$linebreak Child-Name: ${iCResponses?[2]}\nDate: ${iCResponses?[3]}\n'
         'Parent-Name: ${iCResponses?[4]}\nRelationship-to-Participant: ${iCResponses?[5]}\n'
         'Name-of-person-who-obtained-consent: ${iCResponses?[6]}\n'
         '$linebreak $intakeString $linebreak $cString $linebreak $mString';

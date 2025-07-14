@@ -135,6 +135,7 @@ class InstructionAndQuestions {
     ],
   ];
   static final List<List<String>> compensationQuestions = [
+    // Potentionally dangerous question
     ['SAQ','Social Security Number: '],
     ['MCQ','I am currently employed by Washington University', 'yes','no'],
     ['MCQ','I have received a payment from WU in the last 4 months', 'yes','no'],
