@@ -12,15 +12,14 @@ import 'package:autism_ai_test/widgets/next_button.dart';
 import 'package:autism_ai_test/widgets/signiture_question_widget.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:camera/camera.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 // this was all the stuff I needed for the screenshot
 import 'dart:ui' as ui;
-import 'dart:typed_data';
 import 'dart:io';
 import 'package:flutter/rendering.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:autism_ai_test/uploading/upload_to_firebase.dart';
 
 class InformedConsentSignitureScreen extends StatefulWidget {
   final CameraDescription camera;
@@ -67,10 +66,7 @@ class _InformedConsentSignitureScreenState
       final file = File(filePath);
       UserClass.signiture = file;
       await file.writeAsBytes(pngBytes);
-      final url = await uploadFile(file.path);
-      if (url != null) {
-        print('Uploaded file URL: $url');
-      }
+
     } catch (e) {
       FlutterError.reportError(FlutterErrorDetails(exception: e));
     }
