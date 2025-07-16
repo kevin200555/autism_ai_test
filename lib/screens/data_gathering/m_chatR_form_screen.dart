@@ -9,7 +9,6 @@ import 'package:autism_ai_test/uploading/upload_to_firebase.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/mutliple_choice_question_widget.dart';
 import 'package:autism_ai_test/widgets/short_answer_question_widget.dart';
-import 'package:autism_ai_test/screens/information_screens/video_section_info_screen.dart';
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/widgets/next_button.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';
@@ -59,7 +58,6 @@ class _MChatRFormScreenState extends State<MChatRFormScreen> {
               label: 'NEXT',
               onPressed: () async {
                 UserClass.mChatRresponses = responses;
-                UserClass.printSummary();
                 File file = await UserClass.writeToFile(
                   UserClass.generateUserReport(),
                 );

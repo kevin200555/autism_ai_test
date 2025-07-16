@@ -45,7 +45,6 @@ dependencies:
   pdfx: ^2.6.0
   firebase_core: ^2.31.0
   firebase_storage: ^11.6.0
-  file_picker: ^6.2.1
 
 dev_dependencies:
   flutter_test:

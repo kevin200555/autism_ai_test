@@ -20,6 +20,7 @@ import 'dart:typed_data';
 import 'dart:io';
 import 'package:flutter/rendering.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:autism_ai_test/uploading/upload_to_firebase.dart';
 
 class InformedConsentSignitureScreen extends StatefulWidget {
   final CameraDescription camera;
@@ -61,12 +62,15 @@ class _InformedConsentSignitureScreenState
       // Get app directory to save the file
       final directory = await getApplicationDocumentsDirectory();
       final filePath =
-          '${directory.path}/screenshot_${DateTime.now().millisecondsSinceEpoch}.png';
+          '${directory.path}/signiture_screenshot_${DateTime.now().millisecondsSinceEpoch}.png';
 
       final file = File(filePath);
       UserClass.signiture = file;
       await file.writeAsBytes(pngBytes);
-
+      final url = await uploadFile(file.path);
+      if (url != null) {
+        print('Uploaded file URL: $url');
+      }
     } catch (e) {
       FlutterError.reportError(FlutterErrorDetails(exception: e));
     }
@@ -74,7 +78,6 @@ class _InformedConsentSignitureScreenState
 
   @override
   Widget build(BuildContext context) {
-
     return RepaintBoundary(
       key: _screenShotKey,
       child: Scaffold(
@@ -122,7 +125,7 @@ class _InformedConsentSignitureScreenState
                   );
                   return;
                 } else {
-                  screenShot();
+                  await screenShot();
                   Navigator.push(
                     context,
                     MaterialPageRoute(

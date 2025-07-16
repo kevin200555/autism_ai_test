@@ -2,25 +2,36 @@ import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 
 Future<String?> uploadFile(String filePath) async {
-  File file = File(filePath);
+  print('Uploading file: $filePath');
+
+  final file = File(filePath);
+  if (!await file.exists()) {
+    print('File does not exist at path: $filePath');
+    return null;
+  }
 
   try {
-    // Create a reference to the location you want to upload to
-    final storageRef = FirebaseStorage.instance.ref().child('uploads/${file.uri.pathSegments.last}');
+    final storageRef = FirebaseStorage.instance
+        .ref()
+        .child('uploads/${file.uri.pathSegments.last}');
 
-    // Start upload task
-    UploadTask uploadTask = storageRef.putFile(file);
+    print('Storage ref created: ${storageRef.fullPath}');
 
-    // Wait for the upload to complete
-    TaskSnapshot snapshot = await uploadTask;
+    // Provide an empty SettableMetadata to prevent null pointer errors
+    final uploadTask = storageRef.putFile(file, SettableMetadata());
 
-    // Get the download URL
-    String downloadURL = await snapshot.ref.getDownloadURL();
+    print('Upload started...');
+    final snapshot = await uploadTask;
+    print('Upload completed');
 
-    print('File uploaded successfully. Download URL: $downloadURL');
+    final downloadURL = await snapshot.ref.getDownloadURL();
+    print('Download URL: $downloadURL');
     return downloadURL;
   } on FirebaseException catch (e) {
-    print('Upload failed: $e');
+    print('FirebaseException: $e');
+    return null;
+  } catch (e) {
+    print('Unknown error: $e');
     return null;
   }
 }
