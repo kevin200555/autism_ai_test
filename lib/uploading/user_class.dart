@@ -70,8 +70,8 @@ class UserClass {
     return File('$path/user_report.txt'); // Change filename as needed
   }
 
-  static Future<void> writeToFile(String content) async {
+  static Future<File> writeToFile(String content) async {
     final file = await _localFile;
-    await file.writeAsString(content);
+    return file.writeAsString(content);
   }
 } // EOF user_class.dart
