@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "799090432903",
+    "project_id": "aiautismtestupload",
+    "storage_bucket": "aiautismtestupload.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:799090432903:android:2545c30a93673b31e61122",
+        "android_client_info": {
+          "package_name": "com.example.autism_ai_test"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOiFWMVeXVnmqU7uLvis8-0aD0nW7qoXI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

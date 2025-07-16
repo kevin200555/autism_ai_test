@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:autism_ai_test/screens/information_screens/home_screen.dart';
@@ -9,7 +10,7 @@ Future<void> main() async {
   //This is NOT camerax, there may be a werid error so ensure it is not
   //await Permission.camera.request();
   //await Permission.microphone.request();
-
+  await Firebase.initializeApp();
   cameras = await availableCameras();
   runApp(AutismAITest());
 }
