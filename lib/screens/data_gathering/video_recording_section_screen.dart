@@ -114,6 +114,7 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
     } else {
       File userReport = await UserClass.writeToReportFile(UserClass.generateUserReport());
       UserClass.uploadAllFiles(userReport);
+      if (!mounted) return;
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => FinalScreen()),

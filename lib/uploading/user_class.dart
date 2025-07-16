@@ -99,8 +99,8 @@ class UserClass {
     for (int i = 0; i < 3; i++) {
       final video = recordedVideos?[i];
       if (video != null) {
-        final file = File(video.path!);
-        final dest = File(path.join(folder.path, path.basename(video.path!)));
+        final file = File(video.path);
+        final dest = File(path.join(folder.path, path.basename(video.path)));
         await file.copy(dest.path);
       }
     }
