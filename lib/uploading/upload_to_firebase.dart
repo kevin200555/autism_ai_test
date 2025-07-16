@@ -1,12 +1,16 @@
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
 
 Future<String?> uploadFile(String filePath) async {
-  print('Uploading file: $filePath');
-
+  if (kDebugMode){
+    print('Uploading file: $filePath');
+  }
   final file = File(filePath);
   if (!await file.exists()) {
-    print('File does not exist at path: $filePath');
+    if (kDebugMode){
+      print('File does not exist at path: $filePath');
+    }
     return null;
   }
 
@@ -14,24 +18,32 @@ Future<String?> uploadFile(String filePath) async {
     final storageRef = FirebaseStorage.instance
         .ref()
         .child('uploads/${file.uri.pathSegments.last}');
-
-    print('Storage ref created: ${storageRef.fullPath}');
-
+    if (kDebugMode){
+      print('Storage ref created: ${storageRef.fullPath}');
+    }
     // Provide an empty SettableMetadata to prevent null pointer errors
     final uploadTask = storageRef.putFile(file, SettableMetadata());
-
-    print('Upload started...');
+    if (kDebugMode){
+      print('Upload started...');
+    }
     final snapshot = await uploadTask;
-    print('Upload completed');
-
+    if (kDebugMode){
+      print('Upload completed');
+    }
     final downloadURL = await snapshot.ref.getDownloadURL();
-    print('Download URL: $downloadURL');
+    if (kDebugMode){
+      print('Download URL: $downloadURL');
+    }
     return downloadURL;
   } on FirebaseException catch (e) {
-    print('FirebaseException: $e');
+    if (kDebugMode){
+      print('FirebaseException: $e');
+    }
     return null;
   } catch (e) {
-    print('Unknown error: $e');
+    if (kDebugMode){
+      print('Unknown error: $e');
+    }
     return null;
   }
 }

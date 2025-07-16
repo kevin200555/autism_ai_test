@@ -112,6 +112,8 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
       });
       //goes back to main menu
     } else {
+      UserClass.writeToReportFile(UserClass.generateUserReport());
+      
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => FinalScreen()),

@@ -1,8 +1,10 @@
 import 'dart:io';
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
+import 'package:autism_ai_test/uploading/upload_to_firebase.dart';
 import 'package:flutter/foundation.dart';
 import 'package:camera/camera.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:path/path.dart' as path;
 
 class UserClass {
   static String? userId;
@@ -28,8 +30,10 @@ class UserClass {
     }
   }
 
+  // function that will take all responses from the the questionaires and turn them into a string,
+  // this string will then be written to a file
   static String generateUserReport() {
-    // function that will take all responses from the the questionaires and compile them into a .txt file
+    
     String linebreak = '===============================================\n';
 
     List<List<String>> intake = InstructionAndQuestions.getIntakeForm();
@@ -64,14 +68,49 @@ class UserClass {
         '$linebreak $intakeString $linebreak $cString $linebreak $mString';
   }
 
+  // makes the user_report.txt file
   static Future<File> get _localFile async {
     final directory = await getApplicationDocumentsDirectory();
     final path = directory.path;
-    return File('$path/user_report.txt'); // Change filename as needed
+    return File('$path/${userId}_user_report.txt');
   }
 
-  static Future<File> writeToFile(String content) async {
+  // writes to user_report.txt file
+  static Future<File> writeToReportFile(String content) async {
     final file = await _localFile;
     return file.writeAsString(content);
   }
+
+  Future<void> saveFilesToMasterFolder(File userReport, List<File?> recordedVideos, String userId) async {
+  final directory = await getApplicationDocumentsDirectory();
+  final folder = Directory(path.join(directory.path, userId));
+
+  if (!(await folder.exists())) {
+    await folder.create(recursive: true);
+  }
+
+  // Copy user report
+  final userReportDest = File(path.join(folder.path, path.basename(userReport.path)));
+  await userReport.copy(userReportDest.path);
+
+  // Copy each recorded video (assuming you have 3 and they're not null)
+  for (int i = 0; i < recordedVideos.length; i++) {
+    final video = recordedVideos[i];
+    if (video != null) {
+      final dest = File(path.join(folder.path, path.basename(video.path)));
+      await video.copy(dest.path);
+    }
+  }
+  
+  final url = await uploadFile(folder.path);
+      if (url != null) {
+        if (kDebugMode){
+          print('Uploaded file URL: $url');
+        }
+        // You can now use this URL to display the file or save it in your database
+      }
+  if (kDebugMode){
+    print('Saved files to ${folder.path}');
+  }
+}
 } // EOF user_class.dart
