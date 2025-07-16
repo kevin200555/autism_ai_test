@@ -67,6 +67,7 @@ class _MChatRFormScreenState extends State<MChatRFormScreen> {
                 if (url != null) {
                   print('Uploaded file URL: $url');
                 }
+                /*
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -74,6 +75,7 @@ class _MChatRFormScreenState extends State<MChatRFormScreen> {
                         VideoSectionInfoScreen(camera: widget.camera),
                   ),
                 );
+                */
               },
             );
           }
