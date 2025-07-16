@@ -126,7 +126,7 @@ class UserClass {
       print('Saved files to ${folder.path}');
     }
   }
-
+  //zips folder
   static Future<File> zipFolder(Directory folder) async {
     final encoder = ZipFileEncoder();
     final zipPath = path.join(

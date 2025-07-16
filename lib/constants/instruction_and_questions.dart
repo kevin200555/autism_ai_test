@@ -296,7 +296,7 @@ class InstructionAndQuestions {
     ['SQ', 'Signiture of Person who Obtained Consent'],
   ];
 
-  //accessors (not strictly nesscessary, but I have them)
+  //accessors (not really nesscessary, but I have them)
   static List<String> getVideoInstructios() {
     return videoInstructions;
   }
