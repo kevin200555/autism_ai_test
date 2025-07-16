@@ -2,10 +2,9 @@
 // It stands for "Modified Checklist for autism in toddlers - Revised"
 // only yes or no questions
 
-import 'dart:io';
 
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
-import 'package:autism_ai_test/uploading/upload_to_firebase.dart';
+import 'package:autism_ai_test/screens/information_screens/video_section_info_screen.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/mutliple_choice_question_widget.dart';
 import 'package:autism_ai_test/widgets/short_answer_question_widget.dart';
@@ -56,16 +55,8 @@ class _MChatRFormScreenState extends State<MChatRFormScreen> {
           if (index == mChatRQuestions.length) {
             return NextButton(
               label: 'NEXT',
-              onPressed: () async {
+              onPressed: () {
                 UserClass.mChatRresponses = responses;
-                File file = await UserClass.writeToFile(
-                  UserClass.generateUserReport(),
-                );
-                final url = await uploadFile(file.path);
-                if (url != null) {
-                  print('Uploaded file URL: $url');
-                }
-                /*
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -73,7 +64,6 @@ class _MChatRFormScreenState extends State<MChatRFormScreen> {
                         VideoSectionInfoScreen(camera: widget.camera),
                   ),
                 );
-                */
               },
             );
           }
