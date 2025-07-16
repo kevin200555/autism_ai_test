@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:camera/camera.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as path;
+import 'package:archive/archive_io.dart';
 
 class UserClass {
   static String? userId;
@@ -33,7 +34,6 @@ class UserClass {
   // function that will take all responses from the the questionaires and turn them into a string,
   // this string will then be written to a file
   static String generateUserReport() {
-    
     String linebreak = '===============================================\n';
 
     List<List<String>> intake = InstructionAndQuestions.getIntakeForm();
@@ -81,36 +81,59 @@ class UserClass {
     return file.writeAsString(content);
   }
 
-  Future<void> saveFilesToMasterFolder(File userReport, List<File?> recordedVideos, String userId) async {
-  final directory = await getApplicationDocumentsDirectory();
-  final folder = Directory(path.join(directory.path, userId));
+  static Future<void> uploadAllFiles(File userReport) async {
+    final directory = await getApplicationDocumentsDirectory();
+    final folder = Directory(path.join(directory.path, userId));
 
-  if (!(await folder.exists())) {
-    await folder.create(recursive: true);
-  }
+    if (!(await folder.exists())) {
+      await folder.create(recursive: true);
+    }
 
-  // Copy user report
-  final userReportDest = File(path.join(folder.path, path.basename(userReport.path)));
-  await userReport.copy(userReportDest.path);
+    // Copy user report
+    final userReportDest = File(
+      path.join(folder.path, path.basename(userReport.path)),
+    );
+    await userReport.copy(userReportDest.path);
 
-  // Copy each recorded video (assuming you have 3 and they're not null)
-  for (int i = 0; i < recordedVideos.length; i++) {
-    final video = recordedVideos[i];
-    if (video != null) {
-      final dest = File(path.join(folder.path, path.basename(video.path)));
-      await video.copy(dest.path);
+    // Copy each recorded video (assuming you have 3 and they're not null)
+    for (int i = 0; i < 3; i++) {
+      final video = recordedVideos?[i];
+      if (video != null) {
+        final file = File(video.path!);
+        final dest = File(path.join(folder.path, path.basename(video.path!)));
+        await file.copy(dest.path);
+      }
+    }
+
+    File? imageFile = File(signiture!.path);
+    final imageDest = File(
+      path.join(folder.path, path.basename(imageFile.path)),
+    );
+    await imageFile.copy(imageDest.path);
+
+    final zipFile = await zipFolder(folder);
+    final url = await uploadFile(zipFile.path);
+
+    if (url != null) {
+      if (kDebugMode) {
+        print('Uploaded file URL: $url');
+      }
+      // You can now use this URL to display the file or save it in your database
+    }
+    if (kDebugMode) {
+      print('Saved files to ${folder.path}');
     }
   }
-  
-  final url = await uploadFile(folder.path);
-      if (url != null) {
-        if (kDebugMode){
-          print('Uploaded file URL: $url');
-        }
-        // You can now use this URL to display the file or save it in your database
-      }
-  if (kDebugMode){
-    print('Saved files to ${folder.path}');
+
+  static Future<File> zipFolder(Directory folder) async {
+    final encoder = ZipFileEncoder();
+    final zipPath = path.join(
+      folder.parent.path,
+      '${path.basename(folder.path)}.zip',
+    );
+    encoder.create(zipPath);
+    encoder.addDirectory(folder);
+    encoder.close();
+    return File(zipPath);
   }
-}
 } // EOF user_class.dart
