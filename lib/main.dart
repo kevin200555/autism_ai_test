@@ -24,5 +24,3 @@ class AutismAITest extends StatelessWidget {
     return MaterialApp(home: HomeScreen(camera: cameras[0]));
   }
 } // EOF main.dart
-// unqiue User ID *done*
-// cloud services: AWS, Oracle, Google cloud services, (HIPA complinent)

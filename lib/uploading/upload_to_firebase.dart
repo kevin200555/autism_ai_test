@@ -46,4 +46,4 @@ Future<String?> uploadFile(String filePath) async {
     }
     return null;
   }
-}
+} // EOF upload_to_firebase.dart

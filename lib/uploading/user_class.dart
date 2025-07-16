@@ -7,6 +7,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as path;
 import 'package:archive/archive_io.dart';
 
+// Class that stores information about the User
+// May want to use HiveObject in order to save the information if the user disconnects
 class UserClass {
   static String? userId;
   static List<String?>? iCResponses;

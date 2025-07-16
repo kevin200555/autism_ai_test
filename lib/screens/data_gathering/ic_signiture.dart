@@ -1,7 +1,6 @@
 // just some demographic questions
 // may need to make a "Choose all that apply type question"
 // Screen that basically shows terms and conditions
-// may need to implement a feature that lets people draw their signiture
 // has some MCQ and SAQ questions
 
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
