@@ -1,0 +1,22 @@
+workflows:
+  ios-build:
+    name: iOS Build
+    environment:
+      flutter: stable
+    scripts:
+      - name: Flutter Clean
+        script: flutter clean
+
+      - name: Get Flutter Dependencies
+        script: flutter pub get
+
+      - name: Install CocoaPods
+        script: |
+          cd ios
+          pod install
+
+      - name: Build IPA
+        script: |
+          flutter build ipa \
+            --release \
+            --export-options-plist=/Users/builder/export_options.plist
