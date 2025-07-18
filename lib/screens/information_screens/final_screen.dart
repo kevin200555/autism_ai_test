@@ -38,7 +38,7 @@ class FinalScreen extends StatelessWidget {
               ),
             ),
             SubTitle('\nResults'),
-            BodyText('Yeah idk what to put here (yet)', maxLines: 1),
+            BodyText('...)', maxLines: 1),
           ],
         ),
       ),
