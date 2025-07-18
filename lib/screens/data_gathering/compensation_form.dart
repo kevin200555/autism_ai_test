@@ -1,11 +1,3 @@
-// Technically, these questions are part of the intake form, but since that screen is getting crowded
-// and this page could potentially include some sensetive information, I decided to make it its own seperate screen
-
-// just some demographic questions
-// may need to make a "Choose all that apply type question"
-// Screen that basically shows terms and conditions
-// may need to implement a feature that lets people draw their signiture
-// has some MCQ and SAQ questions
 
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
@@ -17,7 +9,9 @@ import 'package:autism_ai_test/widgets/next_button.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-
+// Technically, these questions are part of the intake form, but since that screen is getting crowded
+// and this page could potentially include some sensetive information, I decided to make it its own seperate screen
+// This screen asks the user if they would like to be compensated for the experiment, to do this it 
 class CompensationFormScreen extends StatefulWidget {
   final CameraDescription camera;
   const CompensationFormScreen({super.key, required this.camera});
