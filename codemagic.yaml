@@ -1,22 +1,25 @@
 workflows:
-  ios-build:
-    name: iOS Build
+  ios-release:
+    name: iOS Release
     environment:
       flutter: stable
+      xcode: latest
     scripts:
-      - name: Flutter Clean
-        script: flutter clean
-
-      - name: Get Flutter Dependencies
+      - name: Install dependencies
         script: flutter pub get
-
-      - name: Install CocoaPods
+      - name: Prebuild iOS (no codesign)
+        script: flutter build ios --release --no-codesign
+      - name: Pod install
         script: |
           cd ios
           pod install
-
-      - name: Build IPA
+      - name: Archive
         script: |
-          flutter build ipa \
-            --release \
-            --export-options-plist=/Users/builder/export_options.plist
+          xcodebuild -workspace Runner.xcworkspace \
+            -scheme Runner \
+            -configuration Release \
+            -sdk iphoneos \
+            -archivePath $CM_BUILD_DIR/Runner.xcarchive \
+            archive
+    artifacts:
+      - build/ios/ipa/*.ipa
