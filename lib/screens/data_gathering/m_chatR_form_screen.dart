@@ -61,7 +61,7 @@ class _MChatRFormScreenState extends State<MChatRFormScreen> {
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        VideoSectionInfoScreen(camera: widget.camera),
+                        GeneralInstructionsScreen(camera: widget.camera),
                   ),
                 );
               },
