@@ -28,7 +28,11 @@ class AppBarTitle extends StatelessWidget {
       textAlign: textAlign,
       maxLines: maxLines,
       minFontSize: minFontSize,
-      style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: color),
+      style: GoogleFonts.lato(
+        fontSize: 30,
+        fontWeight: FontWeight.bold,
+        color: color,
+      ),
     );
   }
 }
@@ -62,7 +66,7 @@ class SubTitle extends StatelessWidget {
           textAlign: textAlign,
           minFontSize: minFontSize,
           maxLines: 1,
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          style: GoogleFonts.lato(fontSize: 20, fontWeight: FontWeight.w800)
         ),
       ),
     );
@@ -95,7 +99,7 @@ class QuestionText extends StatelessWidget {
           textAlign: textAlign,
           minFontSize: minFontSize,
           maxLines: 3,
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          style: GoogleFonts.lato(fontSize: 20, fontWeight: FontWeight.w800),
         ),
       ),
     );
@@ -165,7 +169,11 @@ class RedBodyText extends StatelessWidget {
           textAlign: textAlign,
           minFontSize: minFontSize,
           maxLines: maxLines,
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: ColorTheme.red),
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: ColorTheme.red,
+          ),
         ),
       ),
     );
@@ -206,4 +214,3 @@ class RichBodyText extends StatelessWidget {
     );
   }
 } // EOF text_types.dart
-
