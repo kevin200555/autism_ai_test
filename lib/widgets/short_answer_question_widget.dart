@@ -1,6 +1,7 @@
 import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:flutter/material.dart';
 
+// used to get a written response to a question from the user
 class ShortAnswerQuestionWidget extends StatefulWidget {
   final List<String> shortAnswerInstructions;
   final Function(String) onChanged;

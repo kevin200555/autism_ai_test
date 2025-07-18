@@ -1,7 +1,8 @@
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:flutter/material.dart';
-
+// This Widget is used to draw out answers to a given question
+// in this program it is used for the user to write signiture
 class DrawingQuestionWidget extends StatefulWidget {
   final String question;
   final Function(bool) onChanged;
@@ -72,6 +73,7 @@ class _DrawingQuestionWidgetState extends State<DrawingQuestionWidget> {
                     widget.onChanged(false);
                     setState(() => points.clear());
                   },
+                  // clear button, removes the drawing
                   style: ElevatedButton.styleFrom(
                     backgroundColor: ColorTheme.red,
                     foregroundColor: ColorTheme.alternateTextColor,
@@ -110,4 +112,4 @@ class DrawingPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(DrawingPainter oldDelegate) => true;
-}
+} // EOF signiture_question_widget.dart

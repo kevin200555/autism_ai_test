@@ -1,6 +1,7 @@
 import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:flutter/material.dart';
 
+// used to get a multiple choice response to a question from the user
 class MutlipleChoiceQuestionWidget extends StatelessWidget {
   final List<String> multipleChoiceEntry;
   final Function(String) onChanged;
