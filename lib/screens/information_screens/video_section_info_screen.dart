@@ -10,7 +10,7 @@ import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+/*
 class VideoSectionInfoScreen extends StatelessWidget {
   final CameraDescription camera;
   final PageController _pageController = PageController(initialPage: 0);
@@ -30,6 +30,7 @@ class VideoSectionInfoScreen extends StatelessWidget {
     );
   }
 }
+*/
 
 class GeneralInstructionsScreen extends StatelessWidget {
   final CameraDescription camera;
@@ -87,10 +88,18 @@ class GeneralInstructionsScreen extends StatelessWidget {
               ),
               maxLines: 5,
             ),
-            RedBodyText(
-              'Swipe right on your phone to continue reading >>>>\n',
-              maxLines: 2,
-            ),
+            NextButton(
+              label: 'NEXT',
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        FewTipsBeforeStart(camera: camera),
+                  ),
+                );
+              },
+            )
           ],
         ),
       ),
@@ -268,11 +277,18 @@ class FewTipsBeforeStart extends StatelessWidget {
               'Thanks again for being part of this—we\'re excited to see what you and your child share with us!\n',
               maxLines: 4,
             ),
-            RedBodyText(
-              'Swipe right on your phone to continue reading >>>>\n',
-              maxLines: 2,
-
-            ),
+            NextButton(
+              label: 'NEXT',
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        BeforeYouStartScreen(camera: camera),
+                  ),
+                );
+              },
+            )
           ],
         ),
       ),
@@ -423,10 +439,18 @@ class BeforeYouStartScreen extends StatelessWidget {
               ' everyday moments—so please keep it relaxed and natural.\n',
               maxLines: 4,
             ),
-            RedBodyText(
-              'Swipe right on your phone to continue reading >>>>\n',
-              maxLines: 2,
-            ),
+            NextButton(
+              label: 'NEXT',
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        FilmingTipsScreen(camera: camera),
+                  ),
+                );
+              },
+            )
           ],
         ),
       ),
@@ -556,10 +580,6 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                 ),
                 maxLines: 4,
               ),
-            ),
-            RedBodyText(
-              'Swipe left on your phone to reread <<<<\n\n',
-              maxLines: 3,
             ),
             NextButton(
               label: 'BEGIN TEST',
