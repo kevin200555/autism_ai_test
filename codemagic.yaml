@@ -11,22 +11,22 @@ workflows:
       cache_paths:
         - $HOME/.pub-cache
         - ios/Pods
-    code_signing:
-      certificates:
-        - certificate_url: ENCRYPTED_CERTIFICATE_URL
-          certificate_password: ENCRYPTED_CERTIFICATE_PASSWORD
-      provisioning_profiles:
-        - PROFILE_NAME.mobileprovision
     scripts:
-      - name: Install dependencies and CocoaPods
+      - name: Get Flutter Dependencies
         script: |
           flutter clean
           flutter pub get
+      - name: Build Flutter for iOS
+        script: |
+          flutter build ios --release --no-codesign
+      - name: Install CocoaPods
+        script: |
           cd ios
-          pod install --repo-update
+          pod install
           cd ..
-      - name: Build iOS release
-        script: flutter build ipa
+      - name: Export IPA
+        script: |
+          flutter build ipa --export-options-plist=ios/ExportOptions.plist
     artifacts:
       - build/ios/ipa/*.ipa
       - build/ios/ipa/*.dSYM.zip
