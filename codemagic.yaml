@@ -20,7 +20,13 @@ workflows:
     scripts:
       - name: Get Flutter dependencies
         script: flutter pub get
-
+      - name: Clean and install pods
+        script: |
+          flutter clean
+          flutter pub get
+          cd ios
+          pod install --repo-update
+          cd ..
       - name: Install CocoaPods
         script: |
           cd ios
