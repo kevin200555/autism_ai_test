@@ -1,31 +1,35 @@
 platform :ios, '13.0'
 
-install! 'cocoapods'
-
+# CocoaPods disables stats
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
 
+# Use verbose installation for better debugging
+install! 'cocoapods', :verbose => true
+
+# Setup Xcode build configuration
 project 'Runner', {
   'Debug' => :debug,
   'Profile' => :release,
   'Release' => :release,
 }
 
+# Get the Flutter root
 def flutter_root
   generated_xcode_build_settings_path = File.expand_path(File.join('..', 'Flutter', 'Generated.xcconfig'), __FILE__)
   raise 'Generated.xcconfig must exist. Run "flutter pub get" first.' unless File.exist?(generated_xcode_build_settings_path)
 
-  File.readlines(generated_xcode_build_settings_path).each do |line|
+  File.foreach(generated_xcode_build_settings_path) do |line|
     matches = line.match(/FLUTTER_ROOT\=(.*)/)
     return matches[1].strip if matches
   end
   raise 'FLUTTER_ROOT not found in Generated.xcconfig'
 end
 
+# Load Flutter pod helper
 require File.expand_path(File.join('packages', 'flutter_tools', 'bin', 'podhelper'), flutter_root)
 
+# Only use flutter_install_all_ios_pods, do not declare 'pod Flutter' yourself!
 target 'Runner' do
   use_frameworks!
-  pod 'Flutter', :path => File.join(flutter_root, 'bin', 'cache', 'artifacts', 'engine', 'ios')
-  flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
-
+  flutter_install_all_ios_pods(File.dirname(File.realpath(__FILE__)))
 end
