@@ -2,6 +2,8 @@ platform :ios, '13.0'
 
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
 
+install! 'cocoapods', :verbose => true  # <-- MOVE THIS UP HERE
+
 project 'Runner', {
   'Debug' => :debug,
   'Profile' => :release,
@@ -26,9 +28,8 @@ target 'Runner' do
   use_modular_headers!
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
-  install! 'cocoapods', :verbose => true
+
   # Explicitly add Flutter as a pod, which helps Xcode find Flutter.h
   pod 'Flutter', :path => File.join(flutter_root, 'bin', 'cache', 'artifacts', 'engine', 'ios')
 
 end
-
