@@ -22,7 +22,13 @@ end
 require File.expand_path(File.join('packages', 'flutter_tools', 'bin', 'podhelper'), flutter_root)
 
 target 'Runner' do
+  # Use modular headers instead of frameworks
   use_modular_headers!
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
+  install! 'cocoapods', :verbose => true
+  # Explicitly add Flutter as a pod, which helps Xcode find Flutter.h
+  pod 'Flutter', :path => File.join(flutter_root, 'bin', 'cache', 'artifacts', 'engine', 'ios')
+
 end
+
