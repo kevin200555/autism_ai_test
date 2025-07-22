@@ -22,10 +22,7 @@ end
 require File.expand_path(File.join('packages', 'flutter_tools', 'bin', 'podhelper'), flutter_root)
 
 target 'Runner' do
-  use_frameworks!  # <-- REQUIRED for Firebase + Flutter
+  use_modular_headers!
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
-
-  # Add native Firebase pods if needed
-  # pod 'Firebase/Core'  # (Usually not needed with FlutterFire)
 end
