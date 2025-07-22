@@ -22,7 +22,7 @@ class CompensationFormScreen extends StatefulWidget {
 
 class _CompensationFormScreenState extends State<CompensationFormScreen> {
   var compensationFormQuestions = InstructionAndQuestions.getCQuestions();
-
+  // stores responses
   List<String?> responses = [];
 
   @override
