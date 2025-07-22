@@ -1,8 +1,8 @@
 platform :ios, '13.0'
 
-ENV['COCOAPODS_DISABLE_STATS'] = 'true'
+install! 'cocoapods', :verbose => true  
 
-install! 'cocoapods', :verbose => true  # <-- MOVE THIS UP HERE
+ENV['COCOAPODS_DISABLE_STATS'] = 'true'
 
 project 'Runner', {
   'Debug' => :debug,

@@ -18,37 +18,15 @@ workflows:
       provisioning_profiles:
         - PROFILE_NAME.mobileprovision
     scripts:
-      - name: Get Flutter dependencies
-        script: flutter pub get
-      - name: Clean and install pods
+      - name: Install dependencies and CocoaPods
         script: |
           flutter clean
           flutter pub get
           cd ios
           pod install --repo-update
           cd ..
-      - name: Install CocoaPods
-        script: |
-          cd ios
-          pod install
-          cd ..
-
-      - name: Build and archive with Xcode
-        script: |
-          flutter build ios --release
-          xcodebuild -workspace ios/Runner.xcworkspace \
-            -scheme Runner \
-            -configuration Release \
-            -archivePath build/Runner.xcarchive \
-            -destination 'generic/platform=iOS' \
-            archive CODE_SIGN_STYLE=Manual
-
-      - name: Export .ipa from archive
-        script: |
-          xcodebuild -exportArchive \
-            -archivePath build/Runner.xcarchive \
-            -exportOptionsPlist export_options.plist \
-            -exportPath build/ios_output
+      - name: Build iOS release
+        script: flutter build ipa
     artifacts:
-      - build/ios_output/*.ipa
-      - build/ios_output/Runner.app.dSYM.zip
+      - build/ios/ipa/*.ipa
+      - build/ios/ipa/*.dSYM.zip
