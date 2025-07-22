@@ -1,17 +1,48 @@
-scripts:
-  - name: Get dependencies
-    script: flutter pub get
+workflows:
+  ios-release-workflow:
+    name: iOS Release Build
+    environment:
+      flutter: stable
+      xcode: latest
+    triggering:
+      events:
+        - push
+    cache:
+      cache_paths:
+        - $HOME/.pub-cache
+        - ios/Pods
+    code_signing:
+      certificates:
+        - certificate_url: ENCRYPTED_CERTIFICATE_URL
+          certificate_password: ENCRYPTED_CERTIFICATE_PASSWORD
+      provisioning_profiles:
+        - PROFILE_NAME.mobileprovision
+    scripts:
+      - name: Get Flutter dependencies
+        script: flutter pub get
 
-  - name: Install CocoaPods
-    script: |
-      cd ios
-      pod install
+      - name: Install CocoaPods
+        script: |
+          cd ios
+          pod install
+          cd ..
 
-  - name: Archive iOS project
-    script: |
-      xcodebuild -workspace ios/Runner.xcworkspace \
-        -scheme Runner \
-        -configuration Release \
-        -archivePath build/Runner.xcarchive \
-        -destination 'generic/platform=iOS' \
-        archive
+      - name: Build and archive with Xcode
+        script: |
+          flutter build ios --release
+          xcodebuild -workspace ios/Runner.xcworkspace \
+            -scheme Runner \
+            -configuration Release \
+            -archivePath build/Runner.xcarchive \
+            -destination 'generic/platform=iOS' \
+            archive CODE_SIGN_STYLE=Manual
+
+      - name: Export .ipa from archive
+        script: |
+          xcodebuild -exportArchive \
+            -archivePath build/Runner.xcarchive \
+            -exportOptionsPlist export_options.plist \
+            -exportPath build/ios_output
+    artifacts:
+      - build/ios_output/*.ipa
+      - build/ios_output/Runner.app.dSYM.zip

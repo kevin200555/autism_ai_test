@@ -1,7 +1,5 @@
-# Uncomment this line to define a global platform for your project
-platform :ios, '13.0'  # <-- Set minimum iOS version to 13.0 or higher
+platform :ios, '13.0'
 
-# CocoaPods analytics sends network stats; disable if you want
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
 
 project 'Runner', {
@@ -9,7 +7,6 @@ project 'Runner', {
   'Profile' => :release,
   'Release' => :release,
 }
-
 
 def flutter_root
   generated_xcode_build_settings_path = File.expand_path(File.join('..', 'Flutter', 'Generated.xcconfig'), __FILE__)
@@ -25,10 +22,10 @@ end
 require File.expand_path(File.join('packages', 'flutter_tools', 'bin', 'podhelper'), flutter_root)
 
 target 'Runner' do
-  use_frameworks!  # or `use_modular_headers!` depending on your setup
+  use_frameworks!  # <-- REQUIRED for Firebase + Flutter
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 
-  # Add any other pods you need here, for example:
-  # pod 'Firebase/Core'
+  # Add native Firebase pods if needed
+  # pod 'Firebase/Core'  # (Usually not needed with FlutterFire)
 end
