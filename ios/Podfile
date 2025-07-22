@@ -29,7 +29,4 @@ target 'Runner' do
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 
-  # Explicitly add Flutter as a pod, which helps Xcode find Flutter.h
-  pod 'Flutter', :path => File.join(flutter_root, 'bin', 'cache', 'artifacts', 'engine', 'ios')
-
 end
