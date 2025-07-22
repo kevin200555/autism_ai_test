@@ -1,25 +1,17 @@
-workflows:
-  ios-release:
-    name: iOS Release
-    environment:
-      flutter: stable
-      xcode: latest
-    scripts:
-      - name: Install dependencies
-        script: flutter pub get
-      - name: Prebuild iOS (no codesign)
-        script: flutter build ios --release --no-codesign
-      - name: Pod install
-        script: |
-          cd ios
-          pod install
-      - name: Archive
-        script: |
-          xcodebuild -workspace Runner.xcworkspace \
-            -scheme Runner \
-            -configuration Release \
-            -sdk iphoneos \
-            -archivePath $CM_BUILD_DIR/Runner.xcarchive \
-            archive
-    artifacts:
-      - build/ios/ipa/*.ipa
+scripts:
+  - name: Get dependencies
+    script: flutter pub get
+
+  - name: Install CocoaPods
+    script: |
+      cd ios
+      pod install
+
+  - name: Archive iOS project
+    script: |
+      xcodebuild -workspace ios/Runner.xcworkspace \
+        -scheme Runner \
+        -configuration Release \
+        -archivePath build/Runner.xcarchive \
+        -destination 'generic/platform=iOS' \
+        archive
