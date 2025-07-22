@@ -1,44 +1,19 @@
-workflows:
-  ios-release-workflow:
-    name: iOS Release Build
-    environment:
-      flutter: stable
-      xcode: latest
-    triggering:
-      events:
-        - push
-    cache:
-      cache_paths:
-        - $HOME/.pub-cache
-        - ios/Pods
-    scripts:
-      - name: Get Flutter Dependencies
-        script: |
-          flutter clean
-          flutter pub get
-
-      - name: Set iOS deployment target to 13.0
-        script: |
-          echo "platform :ios, '13.0'" > ios/Podfile
-          echo "use_frameworks!" >> ios/Podfile
-          echo "target 'Runner' do" >> ios/Podfile
-          echo "  flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))" >> ios/Podfile
-          echo "end" >> ios/Podfile
-
-      - name: Build Flutter for iOS
-        script: |
-          flutter build ios --release --no-codesign
-
-      - name: Install CocoaPods
-        script: |
-          cd ios
-          pod install
-          cd ..
-
-      - name: Export IPA
-        script: |
-          flutter build ipa --export-options-plist=ios/ExportOptions.plist
-
-    artifacts:
-      - build/ios/ipa/*.ipa
-      - build/ios/ipa/*.dSYM.zip
+scripts:
+  - name: Get Flutter Dependencies
+    script: |
+      flutter clean
+      flutter pub get
+  - name: Set iOS Deployment Target to 13.0
+    script: |
+      sed -i '' 's/platform :ios, .*/platform :ios, "13.0"/' ios/Podfile || echo 'platform :ios, "13.0"' >> ios/Podfile
+  - name: Install CocoaPods
+    script: |
+      cd ios
+      pod install
+      cd ..
+  - name: Build Flutter for iOS
+    script: |
+      flutter build ios --release --no-codesign
+  - name: Export IPA
+    script: |
+      flutter build ipa --export-options-plist=ios/ExportOptions.plist
