@@ -1,6 +1,6 @@
 platform :ios, '13.0'
 
-install! 'cocoapods', :verbose => true  
+install! 'cocoapods'
 
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
 
