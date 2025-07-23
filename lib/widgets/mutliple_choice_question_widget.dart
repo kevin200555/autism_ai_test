@@ -16,14 +16,16 @@ class MutlipleChoiceQuestionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // returns a coloum of the quesetion on top, followed a box that contains a dropdown menu of the answer choices
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Question
         QuestionText(multipleChoiceEntry[1]),
-        // Dropdown menu
+        // adds spacing for the Dropdown menu
         Padding(
           padding: EdgeInsets.fromLTRB(16, 2, 16, 2),
+          // Dropdown menu
           child: DropdownButton<String>(
             value: value,
             isExpanded: true,
@@ -43,5 +45,4 @@ class MutlipleChoiceQuestionWidget extends StatelessWidget {
       ],
     );
   }
-}
-//EOF multiple_choice_question_widget.dart
+} // EOF multiple_choice_question_widget.dart

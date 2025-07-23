@@ -27,20 +27,22 @@ class ChooseAllThatApplyQuestionWidget extends StatelessWidget {
     // splits the string with |
     // I would do space, but the multiple choice options have spaces already
     final selected = value.split('|').where((s) => s.isNotEmpty).toList();
-
+    // returns a coloum of the quesetion on top, followed by a list of the answer choices
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         QuestionText(question),
         ...options.map((option) {
+          // adds spacing to the answer choices
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+            // answer choices
             child: CheckboxListTile(
               title: Text(option),
               activeColor: ColorTheme.accent,
               value: selected.contains(option),
               controlAffinity: ListTileControlAffinity.leading,
-              //check/remove if updated
+              // check/remove if updated
               onChanged: (bool? selectedFlag) {
                 final updated = [...selected];
                 if (selectedFlag == true) {
@@ -48,7 +50,7 @@ class ChooseAllThatApplyQuestionWidget extends StatelessWidget {
                 } else {
                   updated.remove(option);
                 }
-                onChanged(updated.join('|')); // Save as space-separated string
+                onChanged(updated.join('|')); // Save as space-separated string except instead of space it is '|'
               },
             ),
           );
