@@ -65,4 +65,4 @@ class DefaultFirebaseOptions {
     storageBucket: 'aiautismtestupload.firebasestorage.app',
     iosBundleId: 'com.autismresearch.aiapp',
   );
-}
+} // EOF firebase_options.dart
