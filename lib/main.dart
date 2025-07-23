@@ -24,3 +24,13 @@ class AutismAITest extends StatelessWidget {
     return MaterialApp(home: HomeScreen(camera: cameras[0]));
   }
 } // EOF main.dart
+
+// Things to add:
+// - progress bar (for forms)
+// - split questions into multiple pages
+// - figure out text consistency
+// - see if I can get them to split into 9 videos 
+// - make the MCQ questions more cleaner (dropdown button harder to see)
+// - for multiple choice questions, make it so there is like a "other option"
+// - keep in mind that all typoes of peopel look at this
+// - look at default text size and see if it is too small
