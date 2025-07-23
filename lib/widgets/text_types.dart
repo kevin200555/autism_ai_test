@@ -2,7 +2,13 @@ import 'package:autism_ai_test/constants/colors.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+// The purpose of this file is to store various configuations for AutoSizedText
+// With this, I should be able to type out text, without having to worry about the text not fitting
+// These are used heavily throughout the app, so I thought it would be best to put them in a separate file
+// There are various text types, such as AppBarTitle, SubTitle, QuestionText, BodyText, etc.
+// I feel each is self-explanatory for what each one is used for
 
+// AppBarTitle is used for the title of the app bar
 class AppBarTitle extends StatelessWidget {
   final String text;
   final TextAlign textAlign;
@@ -37,8 +43,8 @@ class AppBarTitle extends StatelessWidget {
   }
 }
 
-//The purpose of this class is to store various configuations for AutoSizedText
-//With this, I should be able to type out text, without having to worry about the text not fitting
+// Subtitle is used for subtitles or secondary titles
+// It is smaller than the AppBarTitle and is used for important text in the body of the app
 class SubTitle extends StatelessWidget {
   final String text;
   final TextAlign textAlign;
@@ -73,6 +79,8 @@ class SubTitle extends StatelessWidget {
   }
 }
 
+// QuestionText is used for questions in the app
+// similar to Subtitle, with slightly different styling
 class QuestionText extends StatelessWidget {
   final String text;
   final TextAlign textAlign;
@@ -106,6 +114,8 @@ class QuestionText extends StatelessWidget {
   }
 }
 
+// BodyText is used for general text in the app
+// It is the most commonly used text type and is used for paragraphs, instructions, etc.
 class BodyText extends StatelessWidget {
   final String text;
   final TextAlign textAlign;
@@ -141,6 +151,7 @@ class BodyText extends StatelessWidget {
   }
 }
 
+// like BodyText, but with a red color
 class RedBodyText extends StatelessWidget {
   final String text;
   final TextAlign textAlign;
@@ -180,6 +191,8 @@ class RedBodyText extends StatelessWidget {
   }
 }
 
+// used for text where some of the text is bolded
+// It is used for instructions or important text in the app
 class RichBodyText extends StatelessWidget {
   final TextSpan textSpan;
   final TextAlign textAlign;
