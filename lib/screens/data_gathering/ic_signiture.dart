@@ -9,6 +9,7 @@ import 'package:autism_ai_test/screens/data_gathering/intake_form_screen.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/back_button.dart';
 import 'package:autism_ai_test/widgets/next_button.dart';
+import 'package:autism_ai_test/widgets/progress_bar.dart';
 import 'package:autism_ai_test/widgets/questions/signiture_question_widget.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:camera/camera.dart';
@@ -113,7 +114,7 @@ class _InformedConsentSignitureScreenState
             NextButton(
               label: 'SUBMIT SIGNITURES',
               onPressed: () async {
-                UserClass.screenNumber++;
+                
                 if (responses[0] == false || responses[1] == false) {
                   await showDialog(
                     context: context,
@@ -124,6 +125,7 @@ class _InformedConsentSignitureScreenState
                   return;
                 } else {
                   await screenShot();
+                  UserClass.screenNumber++;
                   Navigator.push(
                     // ignore: use_build_context_synchronously
                     context,
@@ -137,6 +139,7 @@ class _InformedConsentSignitureScreenState
             ),
           ],
         ),
+        bottomNavigationBar: ProgressBar(),
       ),
     );
   }

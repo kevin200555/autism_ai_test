@@ -7,7 +7,8 @@
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/screens/data_gathering/ic_signiture.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
-import 'package:autism_ai_test/widgets/mutliple_choice_question_widget.dart';
+import 'package:autism_ai_test/widgets/progress_bar.dart';
+import 'package:autism_ai_test/widgets/questions/mutliple_choice_question_widget.dart';
 import 'package:autism_ai_test/widgets/questions/short_answer_question_widget.dart';
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/widgets/next_button.dart';
@@ -116,6 +117,7 @@ class _InformedConsentSigningScreenState
           }
         },
       ),
+      bottomNavigationBar: ProgressBar(),
     );
   }
 } // EOF ic_document_signing.dart

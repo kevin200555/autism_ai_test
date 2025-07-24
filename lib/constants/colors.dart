@@ -8,5 +8,8 @@ class ColorTheme {
   static Color textColor = Colors.black;
   static Color alternateTextColor = Colors.white;
   static Color red = const Color.fromARGB(255, 210, 5, 5);
-  static Color green =  const Color.fromARGB(255, 16, 159, 21);
+  static Color green =  const Color.fromARGB(255, 17, 155, 17);
+  static Color progressBar1 =  const Color.fromARGB(255, 242, 255, 60);
+  static Color progressBar2 =  const Color.fromARGB(255, 121, 255, 103);
+  static Color progressBar3 =  const Color.fromARGB(255, 21, 255, 21);
 } // EOF colors.dart

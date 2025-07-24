@@ -7,8 +7,9 @@ import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/screens/information_screens/video_section_info_screen.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/back_button.dart';
-import 'package:autism_ai_test/widgets/mutliple_choice_question_widget.dart';
-import 'package:autism_ai_test/widgets/short_answer_question_widget.dart';
+import 'package:autism_ai_test/widgets/progress_bar.dart';
+import 'package:autism_ai_test/widgets/questions/mutliple_choice_question_widget.dart';
+import 'package:autism_ai_test/widgets/questions/short_answer_question_widget.dart';
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/widgets/next_button.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';
@@ -101,6 +102,7 @@ class _MChatRFormScreenState extends State<MChatRFormScreen> {
           }
         },
       ),
+      bottomNavigationBar: ProgressBar(),
     );
   }
 } // EOF m_chatr_form_screen.dart
