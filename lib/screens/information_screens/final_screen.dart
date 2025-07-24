@@ -1,5 +1,6 @@
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
+import 'package:autism_ai_test/widgets/back_button.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,7 @@ class FinalScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
+        leading: BackButtonAppBar(),
         title: AppBarTitle(
           'Thank you for completing the test!',
           color: ColorTheme.textColor,

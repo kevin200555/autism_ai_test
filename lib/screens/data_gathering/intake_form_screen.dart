@@ -7,6 +7,7 @@
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/screens/data_gathering/compensation_form.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
+import 'package:autism_ai_test/widgets/back_button.dart';
 import 'package:autism_ai_test/widgets/choose_all_question_widget.dart';
 import 'package:autism_ai_test/widgets/mutliple_choice_question_widget.dart';
 import 'package:autism_ai_test/widgets/short_answer_question_widget.dart';
@@ -40,6 +41,7 @@ class _IntakeFormScreenState extends State<IntakeFormScreen> {
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
+        leading: BackButtonAppBar(),
         title: AppBarTitle('INTAKE FORM', color: ColorTheme.alternateTextColor),
         centerTitle: true,
         backgroundColor: ColorTheme.accent,

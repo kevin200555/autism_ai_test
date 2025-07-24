@@ -6,6 +6,7 @@ import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/screens/data_gathering/video_recording_section_screen.dart';
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
+import 'package:autism_ai_test/widgets/back_button.dart';
 import 'package:autism_ai_test/widgets/next_button.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:camera/camera.dart';
@@ -21,6 +22,7 @@ class GeneralInstructionsScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
+        leading: BackButtonAppBar(),
         title: AppBarTitle(
           'Video Section Information Page 1 of 4',
           color: ColorTheme.textColor,
@@ -97,6 +99,7 @@ class FewTipsBeforeStart extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
+        leading: BackButtonAppBar(),
         title: AppBarTitle(
           'Video Section Information Page 2 of 4',
           color: ColorTheme.textColor,
@@ -287,6 +290,7 @@ class BeforeYouStartScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
+        leading: BackButtonAppBar(),
         title: AppBarTitle(
           'Video Section Information Page 3 of 4',
           color: ColorTheme.textColor,
@@ -455,6 +459,7 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
+        leading: BackButtonAppBar(),
         title: AppBarTitle(
           'Video Section Information Page 4 of 4',
           color: ColorTheme.textColor,

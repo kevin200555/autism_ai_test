@@ -1,6 +1,7 @@
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/screens/data_gathering/ic_document_form.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
+import 'package:autism_ai_test/widgets/back_button.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:camera/camera.dart';
@@ -37,6 +38,7 @@ class _PdfViewerScreenState extends State<PdfViewerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: BackButtonAppBar(),
         title: AppBarTitle(
           'Informed Consent Document',
           color: ColorTheme.textColor,

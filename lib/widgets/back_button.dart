@@ -1,8 +1,8 @@
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:flutter/material.dart';
 
-class BackButton extends StatelessWidget {
-  const BackButton({super.key});
+class BackButtonAppBar extends StatelessWidget {
+  const BackButtonAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,6 +10,7 @@ class BackButton extends StatelessWidget {
       icon: const Icon(Icons.arrow_back),
       onPressed: () {
         UserClass.screenNumber--;
+        print('sybau');
         Navigator.of(context).pop();
       }
     );

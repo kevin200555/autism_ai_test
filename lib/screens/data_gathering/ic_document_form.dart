@@ -11,6 +11,7 @@ import 'package:autism_ai_test/widgets/mutliple_choice_question_widget.dart';
 import 'package:autism_ai_test/widgets/short_answer_question_widget.dart';
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/widgets/next_button.dart';
+import 'package:autism_ai_test/widgets/back_button.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
@@ -50,6 +51,7 @@ class _InformedConsentSigningScreenState
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
+        leading: BackButtonAppBar(),
         title: AppBarTitle(
           'INFORMED CONSENT FORM',
           color: ColorTheme.alternateTextColor,
