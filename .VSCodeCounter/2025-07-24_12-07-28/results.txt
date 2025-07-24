@@ -1,0 +1,60 @@
+Date : 2025-07-24 12:07:28
+Directory : c:\Users\kevin\flutter_apps\autismAIApp\autism_ai_test-1\lib
+Total : 26 files,  2835 codes, 221 comments, 217 blanks, all 3273 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| Dart     |         26 |      2,835 |        221 |        217 |      3,273 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                    | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                       |         26 |      2,835 |        221 |        217 |      3,273 |
+| . (Files)                                                                                                               |          1 |         18 |         14 |          4 |         36 |
+| constants                                                                                                               |          2 |        303 |         21 |         17 |        341 |
+| screens                                                                                                                 |         12 |      1,760 |         91 |        118 |      1,969 |
+| screens\data_gathering                                                                                                  |          7 |        869 |         77 |         78 |      1,024 |
+| screens\help_screens                                                                                                    |          1 |         45 |          1 |          3 |         49 |
+| screens\information_screens                                                                                             |          4 |        846 |         13 |         37 |        896 |
+| uploading                                                                                                               |          3 |        215 |         23 |         24 |        262 |
+| widgets                                                                                                                 |          8 |        539 |         72 |         54 |        665 |
+| widgets (Files)                                                                                                         |          4 |        290 |         25 |         31 |        346 |
+| widgets\questions                                                                                                       |          4 |        249 |         47 |         23 |        319 |
++-------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                                                                | language | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| c:\Users\kevin\flutter_apps\autismAIApp\autism_ai_test-1\lib\constants\colors.dart                                      | Dart     |         13 |          1 |          1 |         15 |
+| c:\Users\kevin\flutter_apps\autismAIApp\autism_ai_test-1\lib\constants\instruction_and_questions.dart                   | Dart     |        290 |         20 |         16 |        326 |
+| c:\Users\kevin\flutter_apps\autismAIApp\autism_ai_test-1\lib\main.dart                                                  | Dart     |         18 |         14 |          4 |         36 |
+| c:\Users\kevin\flutter_apps\autismAIApp\autism_ai_test-1\lib\screens\data_gathering\compensation_form.dart              | Dart     |         96 |          6 |          8 |        110 |
+| c:\Users\kevin\flutter_apps\autismAIApp\autism_ai_test-1\lib\screens\data_gathering\ic_document_form.dart               | Dart     |        103 |         11 |         10 |        124 |
+| c:\Users\kevin\flutter_apps\autismAIApp\autism_ai_test-1\lib\screens\data_gathering\ic_signiture.dart                   | Dart     |        117 |         14 |         16 |        147 |
+| c:\Users\kevin\flutter_apps\autismAIApp\autism_ai_test-1\lib\screens\data_gathering\intake_form_screen.dart             | Dart     |         95 |          9 |          9 |        113 |
+| c:\Users\kevin\flutter_apps\autismAIApp\autism_ai_test-1\lib\screens\data_gathering\m_chatr_form_screen.dart            | Dart     |         93 |          6 |         10 |        109 |
+| c:\Users\kevin\flutter_apps\autismAIApp\autism_ai_test-1\lib\screens\data_gathering\video_player_screen.dart            | Dart     |         68 |          3 |          8 |         79 |
+| c:\Users\kevin\flutter_apps\autismAIApp\autism_ai_test-1\lib\screens\data_gathering\video_recording_section_screen.dart | Dart     |        297 |         28 |         17 |        342 |
+| c:\Users\kevin\flutter_apps\autismAIApp\autism_ai_test-1\lib\screens\help_screens\help_screen.dart                      | Dart     |         45 |          1 |          3 |         49 |
+| c:\Users\kevin\flutter_apps\autismAIApp\autism_ai_test-1\lib\screens\information_screens\final_screen.dart              | Dart     |         79 |          4 |          3 |         86 |
+| c:\Users\kevin\flutter_apps\autismAIApp\autism_ai_test-1\lib\screens\information_screens\home_screen.dart               | Dart     |        113 |          3 |          2 |        118 |
+| c:\Users\kevin\flutter_apps\autismAIApp\autism_ai_test-1\lib\screens\information_screens\ic_document_screen.dart        | Dart     |         83 |          3 |          7 |         93 |
+| c:\Users\kevin\flutter_apps\autismAIApp\autism_ai_test-1\lib\screens\information_screens\video_section_info_screen.dart | Dart     |        571 |          3 |         25 |        599 |
+| c:\Users\kevin\flutter_apps\autismAIApp\autism_ai_test-1\lib\uploading\firebase_options.dart                            | Dart     |         53 |         12 |          4 |         69 |
+| c:\Users\kevin\flutter_apps\autismAIApp\autism_ai_test-1\lib\uploading\upload_to_firebase.dart                          | Dart     |         46 |          1 |          2 |         49 |
+| c:\Users\kevin\flutter_apps\autismAIApp\autism_ai_test-1\lib\uploading\user_class.dart                                  | Dart     |        116 |         10 |         18 |        144 |
+| c:\Users\kevin\flutter_apps\autismAIApp\autism_ai_test-1\lib\widgets\back_button.dart                                   | Dart     |         16 |          0 |          2 |         18 |
+| c:\Users\kevin\flutter_apps\autismAIApp\autism_ai_test-1\lib\widgets\next_button.dart                                   | Dart     |         39 |          7 |          3 |         49 |
+| c:\Users\kevin\flutter_apps\autismAIApp\autism_ai_test-1\lib\widgets\progress_bar.dart                                  | Dart     |         41 |          3 |          5 |         49 |
+| c:\Users\kevin\flutter_apps\autismAIApp\autism_ai_test-1\lib\widgets\questions\choose_all_question_widget.dart          | Dart     |         46 |         13 |          3 |         62 |
+| c:\Users\kevin\flutter_apps\autismAIApp\autism_ai_test-1\lib\widgets\questions\mutliple_choice_question_widget.dart     | Dart     |         40 |          5 |          4 |         49 |
+| c:\Users\kevin\flutter_apps\autismAIApp\autism_ai_test-1\lib\widgets\questions\short_answer_question_widget.dart        | Dart     |         59 |         13 |          8 |         80 |
+| c:\Users\kevin\flutter_apps\autismAIApp\autism_ai_test-1\lib\widgets\questions\signiture_question_widget.dart           | Dart     |        104 |         16 |          8 |        128 |
+| c:\Users\kevin\flutter_apps\autismAIApp\autism_ai_test-1\lib\widgets\text_types.dart                                    | Dart     |        194 |         15 |         21 |        230 |
+| Total                                                                                                                   |          |      2,835 |        221 |        217 |      3,273 |
++-------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
