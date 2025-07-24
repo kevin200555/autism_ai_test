@@ -16,19 +16,20 @@ class _ProgressBarState extends State<ProgressBar> {
       padding: EdgeInsets.all(16),
       color: Colors.blueGrey,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Stack(
             children: [
               // Bottom rectangle
               Container(
-                width: MediaQuery.sizeOf(context).width * 0.6,
+                width: MediaQuery.sizeOf(context).width * 0.65,
                 height: MediaQuery.sizeOf(context).height * 0.02,
                 color: ColorTheme.background,
               ),
 
               // Top rectangle (shows actual progress)
               Container(
-                width: MediaQuery.sizeOf(context).width * 0.6 * (UserClass.screenNumber/UserClass.totalScreenNumber),
+                width: MediaQuery.sizeOf(context).width * 0.65 * (UserClass.screenNumber/UserClass.totalScreenNumber),
                 height: MediaQuery.sizeOf(context).height * 0.02,
                 color: ColorTheme.green,
               ),
