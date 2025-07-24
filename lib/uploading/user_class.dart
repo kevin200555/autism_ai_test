@@ -11,6 +11,7 @@ import 'package:archive/archive_io.dart';
 // May want to use HiveObject in order to save the information if the user disconnects
 class UserClass {
   static String? userId;
+  static int screenNumber = 0; 
   static List<String?>? iCResponses;
   static File? signiture;
   static List<String?>? mChatRresponses;

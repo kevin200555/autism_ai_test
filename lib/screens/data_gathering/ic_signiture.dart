@@ -111,6 +111,7 @@ class _InformedConsentSignitureScreenState
             NextButton(
               label: 'SUBMIT SIGNITURES',
               onPressed: () async {
+                UserClass.screenNumber++;
                 if (responses[0] == false || responses[1] == false) {
                   await showDialog(
                     context: context,

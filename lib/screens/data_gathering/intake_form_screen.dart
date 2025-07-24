@@ -55,6 +55,7 @@ class _IntakeFormScreenState extends State<IntakeFormScreen> {
             return NextButton(
               label: 'NEXT',
               onPressed: () {
+                UserClass.screenNumber++;
                 UserClass.intakeResponses = responses;
                 Navigator.push(
                   context,

@@ -32,5 +32,5 @@ class AutismAITest extends StatelessWidget {
 // - see if I can get them to split into 9 videos 
 // - make the MCQ questions more cleaner (dropdown button harder to see)
 // - for multiple choice questions, make it so there is like a "other option"
-// - keep in mind that all typoes of peopel look at this
+// - keep in mind that all types of people look at this
 // - look at default text size and see if it is too small

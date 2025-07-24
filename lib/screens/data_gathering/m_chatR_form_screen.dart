@@ -56,6 +56,7 @@ class _MChatRFormScreenState extends State<MChatRFormScreen> {
             return NextButton(
               label: 'NEXT',
               onPressed: () {
+                UserClass.screenNumber++;
                 UserClass.mChatRresponses = responses;
                 Navigator.push(
                   context,

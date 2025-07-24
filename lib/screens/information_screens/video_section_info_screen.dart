@@ -5,32 +5,12 @@
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/screens/data_gathering/video_recording_section_screen.dart';
 import 'package:autism_ai_test/constants/colors.dart';
+import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/next_button.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-/*
-class VideoSectionInfoScreen extends StatelessWidget {
-  final CameraDescription camera;
-  final PageController _pageController = PageController(initialPage: 0);
-
-  VideoSectionInfoScreen({super.key, required this.camera});
-
-  @override
-  Widget build(BuildContext context) {
-    return PageView(
-      controller: _pageController,
-      children: [
-        GeneralInstructionsScreen(camera: camera),
-        FewTipsBeforeStart(camera: camera),
-        BeforeYouStartScreen(camera: camera),
-        FilmingTipsScreen(camera: camera),
-      ],
-    );
-  }
-}
-*/
 
 class GeneralInstructionsScreen extends StatelessWidget {
   final CameraDescription camera;
@@ -91,6 +71,7 @@ class GeneralInstructionsScreen extends StatelessWidget {
             NextButton(
               label: 'NEXT',
               onPressed: () {
+                UserClass.screenNumber++;
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -280,6 +261,7 @@ class FewTipsBeforeStart extends StatelessWidget {
             NextButton(
               label: 'NEXT',
               onPressed: () {
+                UserClass.screenNumber++;
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -442,6 +424,7 @@ class BeforeYouStartScreen extends StatelessWidget {
             NextButton(
               label: 'NEXT',
               onPressed: () {
+                UserClass.screenNumber++;
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -584,6 +567,7 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
             NextButton(
               label: 'BEGIN TEST',
               onPressed: () {
+                UserClass.screenNumber++;
                 Navigator.push(
                   context,
                   MaterialPageRoute(

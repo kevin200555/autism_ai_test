@@ -190,9 +190,10 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
         // This would normally just go back to the previous widget (which is the questionaire secion)
         automaticallyImplyLeading: false,
         leading: IconButton(
-          // Your custom leading widget
+          // Custom leading widget
           icon: Icon(Icons.arrow_back), // The desired icon
           onPressed: () {
+            UserClass.screenNumber--;
             if (!isRecording) {
               previousVideo();
             }

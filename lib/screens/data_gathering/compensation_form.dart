@@ -60,6 +60,7 @@ class _CompensationFormScreenState extends State<CompensationFormScreen> {
             return NextButton(
               label: 'NEXT',
               onPressed: () {
+                UserClass.screenNumber++;
                 UserClass.compensationResponses = responses;
                 Navigator.push(
                   context,

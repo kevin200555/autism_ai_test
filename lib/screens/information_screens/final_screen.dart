@@ -1,4 +1,5 @@
 import 'package:autism_ai_test/constants/colors.dart';
+import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -50,6 +51,7 @@ class FinalScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: ElevatedButton.icon(
             onPressed: () {
+              UserClass.screenNumber=0;
               Navigator.popUntil(context, (route) => route.isFirst);
             },
             label: AutoSizeText(
