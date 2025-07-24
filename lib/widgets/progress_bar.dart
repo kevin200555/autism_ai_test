@@ -2,9 +2,14 @@ import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:flutter/material.dart';
 
-class ProgressBar extends StatelessWidget {
+class ProgressBar extends StatefulWidget {
   const ProgressBar({super.key});
 
+  @override
+  State<ProgressBar> createState() => _ProgressBarState();
+}
+
+class _ProgressBarState extends State<ProgressBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -15,17 +20,26 @@ class ProgressBar extends StatelessWidget {
           Stack(
             children: [
               // Bottom rectangle
-              Container(width: MediaQuery.sizeOf(context).width * 0.7, height: MediaQuery.sizeOf(context).width * 0.05, color: ColorTheme.background),
+              Container(
+                width: MediaQuery.sizeOf(context).width * 0.6,
+                height: MediaQuery.sizeOf(context).height * 0.02,
+                color: ColorTheme.background,
+              ),
 
-              // Top rectangle (smaller and positioned)
-              Container(width: MediaQuery.sizeOf(context).width * 0.3, height: MediaQuery.sizeOf(context).width * 0.05, color: ColorTheme.green),
+              // Top rectangle (shows actual progress)
+              Container(
+                width: MediaQuery.sizeOf(context).width * 0.6 * (UserClass.screenNumber/UserClass.totalScreenNumber),
+                height: MediaQuery.sizeOf(context).height * 0.02,
+                color: ColorTheme.green,
+              ),
             ],
           ),
-          SizedBox(width: MediaQuery.sizeOf(context).width * 0.05,),
+          SizedBox(width: MediaQuery.sizeOf(context).width * 0.05),
           Text(
-            '${UserClass.screenNumber}',
+            //'${UserClass.screenNumber}',
+            '${(100*(UserClass.screenNumber/UserClass.totalScreenNumber)).toInt()}% Done',
             textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
         ],
       ),
