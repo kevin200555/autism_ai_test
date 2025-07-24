@@ -79,8 +79,11 @@ class _InformedConsentSigningScreenState
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => // The user class will be passed from sc
-                        InformedConsentSignitureScreen(camera: widget.camera),
+                    builder:
+                        (context) => // The user class will be passed from sc
+                        InformedConsentSignitureScreen(
+                          camera: widget.camera,
+                        ),
                   ),
                 );
               },

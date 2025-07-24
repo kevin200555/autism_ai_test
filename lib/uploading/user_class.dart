@@ -11,7 +11,7 @@ import 'package:archive/archive_io.dart';
 // May want to use HiveObject in order to save the information if the user disconnects
 class UserClass {
   static String? userId;
-  static int screenNumber = 0; 
+  static int screenNumber = 0;
   static int totalScreenNumber = 13;
   static List<String?>? iCResponses;
   static File? signiture;
@@ -128,6 +128,7 @@ class UserClass {
       print('Saved files to ${folder.path}');
     }
   }
+
   //zips folder
   static Future<File> zipFolder(Directory folder) async {
     final encoder = ZipFileEncoder();

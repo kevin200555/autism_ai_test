@@ -67,7 +67,6 @@ class _InformedConsentSignitureScreenState
       final file = File(filePath);
       UserClass.signiture = file;
       await file.writeAsBytes(pngBytes);
-
     } catch (e) {
       FlutterError.reportError(FlutterErrorDetails(exception: e));
     }
@@ -114,7 +113,6 @@ class _InformedConsentSignitureScreenState
             NextButton(
               label: 'SUBMIT SIGNITURES',
               onPressed: () async {
-                
                 if (responses[0] == false || responses[1] == false) {
                   await showDialog(
                     context: context,

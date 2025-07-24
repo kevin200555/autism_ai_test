@@ -2,7 +2,6 @@
 // It stands for "Modified Checklist for autism in toddlers - Revised"
 // only yes or no questions
 
-
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/screens/information_screens/video_section_info_screen.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';

@@ -2,16 +2,16 @@ import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:flutter/material.dart';
 
-// This is a question that lets the user choose all that apply 
+// This is a question that lets the user choose all that apply
 // this is only for one quesition about the user's race
-// The response is stored in a String like this: "white|asian|..." 
+// The response is stored in a String like this: "white|asian|..."
 // I wasn't going to make the response a 2D array becuase that would require I make a lot of other things a 2D array
-// this may be a bit much for one question 
+// this may be a bit much for one question
 class ChooseAllThatApplyQuestionWidget extends StatelessWidget {
   final List<String> multipleChoiceEntry;
   final Function(String) onChanged;
   final String value;
-  //formatted the same as multiple choice entry  
+  //formatted the same as multiple choice entry
   const ChooseAllThatApplyQuestionWidget({
     super.key,
     required this.multipleChoiceEntry,
@@ -50,7 +50,9 @@ class ChooseAllThatApplyQuestionWidget extends StatelessWidget {
                 } else {
                   updated.remove(option);
                 }
-                onChanged(updated.join('|')); // Save as space-separated string except instead of space it is '|'
+                onChanged(
+                  updated.join('|'),
+                ); // Save as space-separated string except instead of space it is '|'
               },
             ),
           );

@@ -49,7 +49,6 @@ class GeneralInstructionsScreen extends StatelessWidget {
                     style: GoogleFonts.lato(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      
                     ),
                   ),
                   TextSpan(
@@ -78,12 +77,11 @@ class GeneralInstructionsScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>
-                        FewTipsBeforeStart(camera: camera),
+                    builder: (context) => FewTipsBeforeStart(camera: camera),
                   ),
                 );
               },
-            )
+            ),
           ],
         ),
       ),
@@ -270,12 +268,11 @@ class FewTipsBeforeStart extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>
-                        BeforeYouStartScreen(camera: camera),
+                    builder: (context) => BeforeYouStartScreen(camera: camera),
                   ),
                 );
               },
-            )
+            ),
           ],
         ),
       ),
@@ -327,7 +324,6 @@ class BeforeYouStartScreen extends StatelessWidget {
                       style: GoogleFonts.lato(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        
                       ),
                     ),
                     TextSpan(
@@ -340,7 +336,6 @@ class BeforeYouStartScreen extends StatelessWidget {
                       style: GoogleFonts.lato(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        
                       ),
                     ),
                     TextSpan(
@@ -366,7 +361,6 @@ class BeforeYouStartScreen extends StatelessWidget {
                       style: GoogleFonts.lato(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        
                       ),
                     ),
                     TextSpan(text: ' as instructed in the task.\n'),
@@ -389,7 +383,6 @@ class BeforeYouStartScreen extends StatelessWidget {
                       style: GoogleFonts.lato(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        
                       ),
                     ),
                     TextSpan(
@@ -411,7 +404,6 @@ class BeforeYouStartScreen extends StatelessWidget {
                       style: GoogleFonts.lato(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        
                       ),
                     ),
                     TextSpan(
@@ -435,12 +427,11 @@ class BeforeYouStartScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>
-                        FilmingTipsScreen(camera: camera),
+                    builder: (context) => FilmingTipsScreen(camera: camera),
                   ),
                 );
               },
-            )
+            ),
           ],
         ),
       ),
@@ -490,7 +481,6 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                     style: GoogleFonts.lato(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      
                     ),
                   ),
                   TextSpan(
@@ -512,7 +502,6 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                       style: GoogleFonts.lato(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        
                       ),
                     ),
                     TextSpan(
@@ -536,7 +525,6 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                       style: GoogleFonts.lato(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        
                       ),
                     ),
                     TextSpan(
@@ -560,7 +548,6 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                       style: GoogleFonts.lato(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        
                       ),
                     ),
                     TextSpan(

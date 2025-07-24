@@ -53,7 +53,7 @@ class FinalScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: ElevatedButton.icon(
             onPressed: () {
-              UserClass.screenNumber=0;
+              UserClass.screenNumber = 0;
               Navigator.popUntil(context, (route) => route.isFirst);
             },
             label: AutoSizeText(

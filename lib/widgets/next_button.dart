@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:autism_ai_test/constants/colors.dart';
+
 // This class creates a next button that is reusable throughout all screens
 // It's purpose is to direct users to a new screen
 class NextButton extends StatelessWidget {

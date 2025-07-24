@@ -2,6 +2,8 @@ import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:flutter/material.dart';
 
+// This class introduces a widget that displays to the user how far along they are in their test
+// 
 class ProgressBar extends StatefulWidget {
   const ProgressBar({super.key});
 
@@ -35,7 +37,9 @@ class _ProgressBarState extends State<ProgressBar> {
               ),
             ],
           ),
+          // space
           SizedBox(width: MediaQuery.sizeOf(context).width * 0.05),
+          // Displays percent of exam completed
           Text(
             //'${UserClass.screenNumber}',
             '${(100*(UserClass.screenNumber/UserClass.totalScreenNumber)).toInt()}% Done',

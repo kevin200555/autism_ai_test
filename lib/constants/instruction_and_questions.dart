@@ -136,12 +136,17 @@ class InstructionAndQuestions {
   ];
   static final List<List<String>> compensationQuestions = [
     // Potentionally dangerous question
-    ['SAQ','Social Security Number: '],
-    ['MCQ','I am currently employed by Washington University', 'yes','no'],
-    ['MCQ','I have received a payment from WU in the last 4 months', 'yes','no'],
-    ['MCQ','I am currently a WU student', 'yes','no'],
-    ['MCQ','I am currently a non-academic employee of WU', 'yes','no'],
-    ['MCQ','I am currently an academic empoyee of WU', 'yes','no'],
+    ['SAQ', 'Social Security Number: '],
+    ['MCQ', 'I am currently employed by Washington University', 'yes', 'no'],
+    [
+      'MCQ',
+      'I have received a payment from WU in the last 4 months',
+      'yes',
+      'no',
+    ],
+    ['MCQ', 'I am currently a WU student', 'yes', 'no'],
+    ['MCQ', 'I am currently a non-academic employee of WU', 'yes', 'no'],
+    ['MCQ', 'I am currently an academic empoyee of WU', 'yes', 'no'],
   ];
   // This 2D List contains the SAQ and MCQ for the mChat-R form
   // or the Modified Checklist for autism in toddlers (Revised)
@@ -316,10 +321,12 @@ class InstructionAndQuestions {
   static List<List<String>> getIC() {
     return iCQuestions;
   }
-  static List<List<String>> getSigniture(){
+
+  static List<List<String>> getSigniture() {
     return signitureQuestions;
   }
-  static List<List<String>> getCQuestions(){
+
+  static List<List<String>> getCQuestions() {
     return compensationQuestions;
   }
 } //EOF instruction_and_questions.dart
