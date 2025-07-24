@@ -12,6 +12,7 @@ import 'package:archive/archive_io.dart';
 class UserClass {
   static String? userId;
   static int screenNumber = 0; 
+  static int totalScreenNumber = 13;
   static List<String?>? iCResponses;
   static File? signiture;
   static List<String?>? mChatRresponses;
