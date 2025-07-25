@@ -65,6 +65,7 @@ class _CompensationFormScreenState extends State<CompensationFormScreen> {
               onPressed: () {
                 UserClass.screenNumber++;
                 UserClass.compensationResponses = responses;
+                UserClass.saveToHive();
                 Navigator.push(
                   context,
                   MaterialPageRoute(

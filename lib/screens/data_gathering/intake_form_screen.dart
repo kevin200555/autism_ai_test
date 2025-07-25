@@ -60,6 +60,7 @@ class _IntakeFormScreenState extends State<IntakeFormScreen> {
               onPressed: () {
                 UserClass.screenNumber++;
                 UserClass.intakeResponses = responses;
+                UserClass.saveToHive();
                 Navigator.push(
                   context,
                   MaterialPageRoute(

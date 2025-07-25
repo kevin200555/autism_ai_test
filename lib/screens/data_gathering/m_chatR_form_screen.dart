@@ -60,6 +60,7 @@ class _MChatRFormScreenState extends State<MChatRFormScreen> {
               onPressed: () {
                 UserClass.screenNumber++;
                 UserClass.mChatRresponses = responses;
+                UserClass.saveToHive();
                 Navigator.push(
                   context,
                   MaterialPageRoute(

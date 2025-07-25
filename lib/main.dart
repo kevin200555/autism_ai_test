@@ -9,9 +9,9 @@ import 'package:hive_flutter/adapters.dart';
 late List<CameraDescription> cameras;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  //This is NOT camerax, there may be a werid error so ensure it is not
-  //await Permission.camera.request();
-  //await Permission.microphone.request();
+  // This is NOT camerax, there may be a werid error so ensure it is not
+  // await Permission.camera.request();
+  // await Permission.microphone.request();
   await Firebase.initializeApp();
   await Hive.initFlutter();
   await UserClass.loadFromHive();

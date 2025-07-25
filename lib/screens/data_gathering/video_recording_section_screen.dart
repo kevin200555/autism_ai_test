@@ -330,6 +330,7 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
                 UserClass.screenNumber++;
                 if (!isRecording) {
                   nextVideo();
+                  UserClass.saveToHive();
                 }
               },
             ),

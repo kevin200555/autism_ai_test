@@ -74,6 +74,7 @@ class GeneralInstructionsScreen extends StatelessWidget {
               label: 'NEXT',
               onPressed: () {
                 UserClass.screenNumber++;
+                UserClass.saveToHive();
                 Navigator.push(
                   context,
                   MaterialPageRoute(

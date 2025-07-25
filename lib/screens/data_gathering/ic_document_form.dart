@@ -75,6 +75,7 @@ class _InformedConsentSigningScreenState
                 //makes a new UserClass in order to save the information this user has done
                 UserClass.userId = generateUserId();
                 UserClass.iCResponses = responses;
+                UserClass.saveToHive();
 
                 Navigator.push(
                   context,

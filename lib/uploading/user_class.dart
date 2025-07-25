@@ -60,6 +60,7 @@ class UserClass {
           .map((p) => p != null ? XFile(p) : null)
           .toList();
     }
+    printSummary();
   }
 
   static void printSummary() {
