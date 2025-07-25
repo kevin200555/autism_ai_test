@@ -43,7 +43,7 @@ class _ChildIntakeFormScreenState extends State<ChildIntakeFormScreen> {
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
         leading: BackButtonAppBar(),
-        title: AppBarTitle('INTAKE FORM', color: ColorTheme.alternateTextColor),
+        title: AppBarTitle('INTAKE FORM: CHILD', color: ColorTheme.alternateTextColor),
         centerTitle: true,
         backgroundColor: ColorTheme.accent,
         iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),
@@ -65,7 +65,7 @@ class _ChildIntakeFormScreenState extends State<ChildIntakeFormScreen> {
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        CompensationFormScreen(camera: widget.camera),
+                        ParentIntakeFormScreen(camera: widget.camera),
                   ),
                 );
               },
@@ -121,7 +121,7 @@ class ParentIntakeFormScreen extends StatefulWidget {
 }
 
 class _ParentIntakeFormScreenState extends State<ParentIntakeFormScreen> {
-  var intakeFormQuestions = InstructionAndQuestions.getChildIntakeForm();
+  var intakeFormQuestions = InstructionAndQuestions.getParentIntakeForm();
 
   List<String?> responses = [];
 
@@ -137,7 +137,7 @@ class _ParentIntakeFormScreenState extends State<ParentIntakeFormScreen> {
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
         leading: BackButtonAppBar(),
-        title: AppBarTitle('INTAKE FORM', color: ColorTheme.alternateTextColor),
+        title: AppBarTitle('INTAKE FORM: PARENT/GUARDIAN', color: ColorTheme.alternateTextColor),
         centerTitle: true,
         backgroundColor: ColorTheme.accent,
         iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),
