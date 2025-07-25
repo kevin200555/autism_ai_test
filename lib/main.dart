@@ -1,5 +1,11 @@
+import 'package:autism_ai_test/constants/instruction_and_questions.dart';
+import 'package:autism_ai_test/screens/data_gathering/compensation_form.dart';
 import 'package:autism_ai_test/screens/data_gathering/ic_document_form.dart';
 import 'package:autism_ai_test/screens/data_gathering/ic_signiture.dart';
+import 'package:autism_ai_test/screens/data_gathering/intake_form_screen.dart';
+import 'package:autism_ai_test/screens/data_gathering/m_chatR_form_screen.dart';
+import 'package:autism_ai_test/screens/data_gathering/video_recording_section_screen.dart';
+import 'package:autism_ai_test/screens/information_screens/video_section_info_screen.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -27,15 +33,62 @@ class AutismAITest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget initialScreen;
+    // ScreenNumber and the screen
+    // 0 : Homescreen
+    // N/A : IC document
+    // 1 : Informed Consent form screen
+    // 2 : Infomred Conset Signiture Screen
+    // ===================================
+    // 3 : Intake Form - Child
+    // 4 : Intake Form - Parent
+    // 5 : Compensation Form
+    // ===================================
+    // 6 : MChatR Form 1
+    // 7 : MChatR Form 2 (MChatR Form 1)
+    // ===================================
+    // 8 : Video Section Information
+    // 9 : Video Section Information
+    // 10 : Video Section Information
+    // 11 : Video Section Information
+    // ===================================
+    // 12 : Video Test 1
+    // 13 : Video Test 2
+    // 14 : Video Test 3
     switch(UserClass.screenNumber){
       case 1:
         initialScreen = InformedConsentSigningScreen(camera: cameras[0]);
       case 2:
         initialScreen = InformedConsentSignitureScreen(camera: cameras[0]);
+      case 3: 
+        initialScreen = ChildIntakeFormScreen(camera: cameras[0]);
+      case 4: 
+        initialScreen = ParentIntakeFormScreen(camera: cameras[0]);
+      case 5:
+        initialScreen = CompensationFormScreen(camera: cameras[0]);
+      case 6: 
+        initialScreen = MChatRFormScreen1(camera: cameras[0]);
+      case 7: 
+        initialScreen = MChatRFormScreen1(camera: cameras[0]);
+      case 8:
+        initialScreen = GeneralInstructionsScreen(camera: cameras[0]);
+      case 9:
+        initialScreen = GeneralInstructionsScreen(camera: cameras[0]);
+      case 10:
+        initialScreen = GeneralInstructionsScreen(camera: cameras[0]);
+      case 11:
+        initialScreen = GeneralInstructionsScreen(camera: cameras[0]);
+      case 12: 
+        initialScreen = VideoRecordingSectionScreen(camera: cameras[0], instructions: InstructionAndQuestions.getVideoInstructios(), currentStep: 0);
+      case 13:
+        initialScreen = VideoRecordingSectionScreen(camera: cameras[0], instructions: InstructionAndQuestions.getVideoInstructios(), currentStep: 1);
+      case 14:
+        initialScreen = VideoRecordingSectionScreen(camera: cameras[0], instructions: InstructionAndQuestions.getVideoInstructios(), currentStep: 2);
 
+      default:
+        initialScreen = HomeScreen(camera: cameras[0]);
     }
     //camera is passed around through all widgets and screens in the program
-    return MaterialApp(home: HomeScreen(camera: cameras[0]));
+    return MaterialApp(home: initialScreen);
   }
 } // EOF main.dart
 
