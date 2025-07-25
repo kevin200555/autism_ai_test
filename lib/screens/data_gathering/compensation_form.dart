@@ -70,7 +70,7 @@ class _CompensationFormScreenState extends State<CompensationFormScreen> {
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        MChatRFormScreen(camera: widget.camera),
+                        MChatRFormScreen1(camera: widget.camera),
                   ),
                 );
               },
