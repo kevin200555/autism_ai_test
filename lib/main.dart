@@ -94,9 +94,10 @@ class AutismAITest extends StatelessWidget {
 
 // Things to add:
 // - progress bar (for forms) ✓
-// - HiveObject to save user data if they ever leave
-// - split questions into multiple pages
+// - HiveObject to save user data if they ever leave ✓
+// - split questions into multiple pages ✓
 // - figure out text consistency ?
+// Things to note:
 // - see if I can get them to split into 9 videos 
 // - make the MCQ questions more cleaner (dropdown button harder to see)
 // - for multiple choice questions, make it so there is like a "other option"
