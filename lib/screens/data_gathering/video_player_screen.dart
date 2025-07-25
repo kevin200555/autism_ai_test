@@ -50,6 +50,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
         backgroundColor: ColorTheme.accent,
       ),
       body: Center(
+        // shows a loading circle while waiting for everything to load
         child: _controller.value.isInitialized
             ? AspectRatio(
                 aspectRatio: _controller.value.aspectRatio,
@@ -75,4 +76,4 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
-} //EOF video_player_screen.dart
+} // EOF video_player_screen.dart

@@ -123,6 +123,7 @@ class _InformedConsentSignitureScreenState
                   return;
                 } else {
                   await screenShot();
+                  // SAVE TO HIVE
                   UserClass.screenNumber++;
                   UserClass.saveToHive();
                   Navigator.push(

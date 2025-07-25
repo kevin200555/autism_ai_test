@@ -3,7 +3,7 @@ import 'package:autism_ai_test/screens/data_gathering/compensation_form.dart';
 import 'package:autism_ai_test/screens/data_gathering/ic_document_form.dart';
 import 'package:autism_ai_test/screens/data_gathering/ic_signiture.dart';
 import 'package:autism_ai_test/screens/data_gathering/intake_form_screen.dart';
-import 'package:autism_ai_test/screens/data_gathering/m_chatR_form_screen.dart';
+import 'package:autism_ai_test/screens/data_gathering/m_chatr_form_screen.dart';
 import 'package:autism_ai_test/screens/data_gathering/video_recording_section_screen.dart';
 import 'package:autism_ai_test/screens/information_screens/video_section_info_screen.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';

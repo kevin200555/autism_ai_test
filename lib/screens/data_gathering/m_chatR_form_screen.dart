@@ -8,7 +8,6 @@ import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/back_button.dart';
 import 'package:autism_ai_test/widgets/progress_bar.dart';
 import 'package:autism_ai_test/widgets/questions/radio_multiple_choice_question_widget.dart';
-import 'package:autism_ai_test/widgets/questions/short_answer_question_widget.dart';
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/widgets/next_button.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';
@@ -172,25 +171,15 @@ class _MChatRFormScreen2State extends State<MChatRFormScreen2> {
 
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
-            child: question[0] == 'SAQ'
-                ? ShortAnswerQuestionWidget(
-                    shortAnswerInstructions: question,
-                    value: widget.responses[qIndex],
-                    onChanged: (value) {
-                      setState(() {
-                        widget.responses[qIndex] = value;
-                      });
-                    },
-                  )
-                : RadioMutlipleChoiceQuestionWidget(
-                    multipleChoiceEntry: question,
-                    value: widget.responses[qIndex],
-                    onChanged: (newValue) {
-                      setState(() {
-                        widget.responses[qIndex] = newValue;
-                      });
-                    },
-                  ),
+            child: RadioMutlipleChoiceQuestionWidget(
+              multipleChoiceEntry: question,
+              value: widget.responses[qIndex],
+              onChanged: (newValue) {
+                setState(() {
+                  widget.responses[qIndex] = newValue;
+                });
+              },
+            ),
           );
         },
       ),

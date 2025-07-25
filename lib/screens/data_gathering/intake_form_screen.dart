@@ -1,9 +1,3 @@
-// just some demographic questions
-// may need to make a "Choose all that apply type question"
-// Screen that basically shows terms and conditions
-// may need to implement a feature that lets people draw their signiture
-// has some MCQ and SAQ questions
-
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/screens/data_gathering/compensation_form.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
@@ -18,6 +12,9 @@ import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
+// The purpose of this class is to implement the intake form questionaire
+// It is a mix of multiple choice and short answer questions meant to take some basic information about the child and parent
+// I split this form into two seperate screens: one for the child, one for the parent
 class ChildIntakeFormScreen extends StatefulWidget {
   final CameraDescription camera;
   const ChildIntakeFormScreen({super.key, required this.camera});
@@ -112,6 +109,7 @@ class _ChildIntakeFormScreenState extends State<ChildIntakeFormScreen> {
   }
 }
 
+// second half of the intake form
 class ParentIntakeFormScreen extends StatefulWidget {
   final CameraDescription camera;
   const ParentIntakeFormScreen({super.key, required this.camera});
@@ -152,6 +150,7 @@ class _ParentIntakeFormScreenState extends State<ParentIntakeFormScreen> {
             return NextButton(
               label: 'NEXT',
               onPressed: () {
+                // SAVE TO HIVE
                 UserClass.screenNumber++;
                 UserClass.parentIntakeResponses = responses;
                 UserClass.saveToHive();
@@ -204,6 +203,4 @@ class _ParentIntakeFormScreenState extends State<ParentIntakeFormScreen> {
       bottomNavigationBar: ProgressBar(),
     );
   }
-}
-
-// EOF intake_form_screen.dart
+} // EOF intake_form_screen.dart

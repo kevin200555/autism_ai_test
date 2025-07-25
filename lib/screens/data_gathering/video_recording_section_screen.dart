@@ -130,7 +130,6 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
         UserClass.generateUserReport(),
       );
       UserClass.uploadAllFiles(userReport);
-      print("hey");
       if (!mounted) return;
       Navigator.push(
         context,
