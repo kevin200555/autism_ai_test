@@ -7,7 +7,6 @@ import 'package:autism_ai_test/screens/information_screens/video_section_info_sc
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/back_button.dart';
 import 'package:autism_ai_test/widgets/progress_bar.dart';
-import 'package:autism_ai_test/widgets/questions/mutliple_choice_question_widget.dart';
 import 'package:autism_ai_test/widgets/questions/radio_multiple_choice_question_widget.dart';
 import 'package:autism_ai_test/widgets/questions/short_answer_question_widget.dart';
 import 'package:autism_ai_test/constants/colors.dart';
@@ -16,6 +15,10 @@ import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
+// This class implements the mChatR form, a questionaire made up of 100% multiple choice questions used to
+// test for autism based on 20 questions
+// It uses the Radio multiple choice question widget to do this
+// It is split into 2 screens for less scrolling
 class MChatRFormScreen1 extends StatefulWidget {
   final CameraDescription camera;
   const MChatRFormScreen1({super.key, required this.camera});
@@ -28,6 +31,7 @@ class _MChatRFormScreen1State extends State<MChatRFormScreen1> {
   var mChatRQuestions = InstructionAndQuestions.getMChatR();
 
   List<String?> responses = [];
+  // half refers to half of the mChatRquestions
   int half = 0;
   @override
   void initState() {
@@ -60,10 +64,11 @@ class _MChatRFormScreen1State extends State<MChatRFormScreen1> {
             return NextButton(
               label: 'NEXT',
               onPressed: () {
+                // SAVE TO HIVE
                 UserClass.screenNumber++;
                 UserClass.mChatRresponses = responses;
                 UserClass.saveToHive();
-                
+
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -75,21 +80,20 @@ class _MChatRFormScreen1State extends State<MChatRFormScreen1> {
                 );
               },
             );
-          } else if (index < half) {
-            // multiple choice question
-            return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: RadioMutlipleChoiceQuestionWidget(
-                multipleChoiceEntry: mChatRQuestions[index],
-                value: responses[index],
-                onChanged: (newValue) {
-                  setState(() {
-                    responses[index] = newValue;
-                  });
-                },
-              ),
-            );
           }
+          // multiple choice question
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: RadioMutlipleChoiceQuestionWidget(
+              multipleChoiceEntry: mChatRQuestions[index],
+              value: responses[index],
+              onChanged: (newValue) {
+                setState(() {
+                  responses[index] = newValue;
+                });
+              },
+            ),
+          );
         },
       ),
       bottomNavigationBar: ProgressBar(),
@@ -97,6 +101,9 @@ class _MChatRFormScreen1State extends State<MChatRFormScreen1> {
   }
 }
 
+// Second screen of the MChatRForm
+// important to note that it takes in responses from the previous screen
+// This is so that both screens update the same response list
 class MChatRFormScreen2 extends StatefulWidget {
   final CameraDescription camera;
   final List<String?> responses;
@@ -144,6 +151,7 @@ class _MChatRFormScreen2State extends State<MChatRFormScreen2> {
             return NextButton(
               label: 'SUBMIT',
               onPressed: () async {
+                // SAVE TO HIVE
                 UserClass.screenNumber++;
                 UserClass.mChatRresponses = widget.responses;
                 await UserClass.saveToHive();
@@ -188,6 +196,4 @@ class _MChatRFormScreen2State extends State<MChatRFormScreen2> {
       bottomNavigationBar: ProgressBar(),
     );
   }
-}
-
-// EOF m_chatr_form_screen.dart
+} // EOF m_chatr_form_screen.dart
