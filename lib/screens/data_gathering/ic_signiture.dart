@@ -113,7 +113,7 @@ class _InformedConsentSignitureScreenState
             NextButton(
               label: 'SUBMIT SIGNITURES',
               onPressed: () async {
-                if (responses[0] == false || responses[1] == false) {
+                if (responses[0] == false || responses[1] == false || UserClass.signiture == null) {
                   await showDialog(
                     context: context,
                     builder: (_) => AlertDialog(

@@ -1,3 +1,5 @@
+import 'package:autism_ai_test/screens/data_gathering/ic_document_form.dart';
+import 'package:autism_ai_test/screens/data_gathering/ic_signiture.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +26,14 @@ class AutismAITest extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Widget initialScreen;
+    switch(UserClass.screenNumber){
+      case 1:
+        initialScreen = InformedConsentSigningScreen(camera: cameras[0]);
+      case 2:
+        initialScreen = InformedConsentSignitureScreen(camera: cameras[0]);
+
+    }
     //camera is passed around through all widgets and screens in the program
     return MaterialApp(home: HomeScreen(camera: cameras[0]));
   }
