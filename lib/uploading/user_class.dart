@@ -71,6 +71,7 @@ class UserClass {
       print("mChatR Responses: $mChatRresponses");
       print("Intake Form Responses: $intakeResponses");
       print("Compensation Form Responses: $compensationResponses");
+      print("Screen Number:  $screenNumber");
 
       print("Recorded Video 1: ${recordedVideos?[0]?.path}");
       print("Recorded Video 2: ${recordedVideos?[1]?.path}");

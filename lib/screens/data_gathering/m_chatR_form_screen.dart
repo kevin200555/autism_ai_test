@@ -8,6 +8,7 @@ import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/back_button.dart';
 import 'package:autism_ai_test/widgets/progress_bar.dart';
 import 'package:autism_ai_test/widgets/questions/mutliple_choice_question_widget.dart';
+import 'package:autism_ai_test/widgets/questions/radio_multiple_choice_question_widget.dart';
 import 'package:autism_ai_test/widgets/questions/short_answer_question_widget.dart';
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/widgets/next_button.dart';
@@ -89,12 +90,12 @@ class _MChatRFormScreenState extends State<MChatRFormScreen> {
             // multiple choice question
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: MutlipleChoiceQuestionWidget(
+              child: RadioMutlipleChoiceQuestionWidget(
                 multipleChoiceEntry: mChatRQuestions[index],
                 value: responses[index],
-                onChanged: (value) {
+                onChanged: (newValue) {
                   setState(() {
-                    responses[index] = value;
+                    responses[index] = newValue;
                   });
                 },
               ),
