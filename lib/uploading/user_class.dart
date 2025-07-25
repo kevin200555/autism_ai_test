@@ -13,7 +13,7 @@ import 'package:hive/hive.dart';
 class UserClass {
   static String? userId;
   static int screenNumber = 0;
-  static int totalScreenNumber = 13;
+  static int totalScreenNumber = 14;
   static List<String?>? iCResponses;
   static File? signiture;
   static List<String?>? mChatRresponses;
@@ -22,6 +22,19 @@ class UserClass {
   static List<String?>? compensationResponses;
   static List<XFile?>? recordedVideos = [null, null, null];
 
+  static void resetAll() {
+    userId = null;
+    screenNumber = 0;
+    totalScreenNumber = 14;
+    iCResponses = null;
+    signiture = null;
+    mChatRresponses = null;
+    childIntakeResponses = null;
+    parentIntakeResponses = null;
+    compensationResponses = null;
+    recordedVideos = [null, null, null];
+    saveToHive();
+  }
   static Future<void> saveToHive() async {
     final box = await Hive.openBox('user_data');
     await box.put('userId', userId);
@@ -97,7 +110,7 @@ class UserClass {
 
     List<List<String>> parentIntake = InstructionAndQuestions.getParentIntakeForm();
     String parentIntakeString = '';
-    for (int i = 0; i < childIntake.length; i++) {
+    for (int i = 0; i < parentIntake.length; i++) {
       parentIntakeString += "Q: ${parentIntake[i][1]}\n";
       parentIntakeString += "A: ${parentIntakeResponses?[i]?[1]}\n";
     }
