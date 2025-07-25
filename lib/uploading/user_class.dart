@@ -6,6 +6,7 @@ import 'package:camera/camera.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as path;
 import 'package:archive/archive_io.dart';
+import 'package:hive/hive.dart';
 
 // Class that stores information about the User
 // May want to use HiveObject in order to save the information if the user disconnects
@@ -19,6 +20,47 @@ class UserClass {
   static List<String?>? intakeResponses;
   static List<String?>? compensationResponses;
   static List<XFile?>? recordedVideos = [null, null, null];
+
+  static Future<void> saveToHive() async {
+    final box = await Hive.openBox('user_data');
+    await box.put('userId', userId);
+    await box.put('screenNumber', screenNumber);
+    await box.put('iCResponses', iCResponses);
+    await box.put('mChatRresponses', mChatRresponses);
+    await box.put('intakeResponses', intakeResponses);
+    await box.put('compensationResponses', compensationResponses);
+    await box.put('signiturePath', signiture?.path);
+
+    // Save recorded video paths
+    List<String?> videoPaths = recordedVideos!
+        .map((file) => file?.path)
+        .toList();
+    await box.put('recordedVideoPaths', videoPaths);
+  }
+
+  static Future<void> loadFromHive() async {
+    final box = await Hive.openBox('user_data');
+    userId = box.get('userId');
+    screenNumber = box.get('screenNumber') ?? 0;
+    iCResponses = (box.get('iCResponses') as List?)?.cast<String?>();
+    mChatRresponses = (box.get('mChatRresponses') as List?)?.cast<String?>();
+    intakeResponses = (box.get('intakeResponses') as List?)?.cast<String?>();
+    compensationResponses = (box.get('compensationResponses') as List?)
+        ?.cast<String?>();
+
+    final signPath = box.get('signiturePath');
+    if (signPath != null) {
+      signiture = File(signPath);
+    }
+
+    final videoPaths = (box.get('recordedVideoPaths') as List?)
+        ?.cast<String?>();
+    if (videoPaths != null) {
+      recordedVideos = videoPaths
+          .map((p) => p != null ? XFile(p) : null)
+          .toList();
+    }
+  }
 
   static void printSummary() {
     if (kDebugMode) {

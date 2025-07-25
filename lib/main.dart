@@ -1,7 +1,9 @@
+import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:autism_ai_test/screens/information_screens/home_screen.dart';
+import 'package:hive_flutter/adapters.dart';
 
 // initizies the cameras, this is used accross all parts of the program
 late List<CameraDescription> cameras;
@@ -11,6 +13,8 @@ Future<void> main() async {
   //await Permission.camera.request();
   //await Permission.microphone.request();
   await Firebase.initializeApp();
+  await Hive.initFlutter();
+  await UserClass.loadFromHive();
   cameras = await availableCameras();
   runApp(AutismAITest());
 }
@@ -29,7 +33,7 @@ class AutismAITest extends StatelessWidget {
 // - progress bar (for forms) ✓
 // - HiveObject to save user data if they ever leave
 // - split questions into multiple pages
-// - figure out text consistency
+// - figure out text consistency ?
 // - see if I can get them to split into 9 videos 
 // - make the MCQ questions more cleaner (dropdown button harder to see)
 // - for multiple choice questions, make it so there is like a "other option"
