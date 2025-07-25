@@ -69,7 +69,7 @@ class InstructionAndQuestions {
   // the next items in the list are relevant to the question itself, like question name and answer choices.
   // The List items are then passed into the ListView builder and based on the first element in a list, the correct widget
   // can be assigned to build the question
-  static final List<List<String>> autismIntakeForm = [
+  static final List<List<String>> autismIntakeChildForm = [
     ['SAQ', 'What is your child\'s full name?'],
     ['SAQ', 'What is your child\'s middle name? (Enter N/A if not applicable)'],
     ['SAQ', 'What is your child\'s last name?'],
@@ -113,6 +113,8 @@ class InstructionAndQuestions {
       'over \$200,000',
       'Do not wish to say',
     ],
+  ];
+  static final List<List<String>> autismIntakeParentForm = [
     ['SAQ', 'What is the Parent/Guardian\'s first Name'],
     [
       'SAQ',
@@ -306,8 +308,12 @@ class InstructionAndQuestions {
     return videoInstructions;
   }
 
-  static List<List<String>> getIntakeForm() {
-    return autismIntakeForm;
+  static List<List<String>> getChildIntakeForm() {
+    return autismIntakeChildForm;
+  }
+
+  static List<List<String>> getParentIntakeForm() {
+    return autismIntakeParentForm;
   }
 
   static List<List<String>> getMChatR() {

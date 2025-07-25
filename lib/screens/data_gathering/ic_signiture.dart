@@ -130,7 +130,7 @@ class _InformedConsentSignitureScreenState
                     context,
                     MaterialPageRoute(
                       builder: (context) =>
-                          IntakeFormScreen(camera: widget.camera),
+                          ChildIntakeFormScreen(camera: widget.camera),
                     ),
                   );
                 }

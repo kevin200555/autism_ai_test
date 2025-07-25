@@ -17,7 +17,8 @@ class UserClass {
   static List<String?>? iCResponses;
   static File? signiture;
   static List<String?>? mChatRresponses;
-  static List<String?>? intakeResponses;
+  static List<String?>? childIntakeResponses;
+  static List<String?>? parentIntakeResponses;
   static List<String?>? compensationResponses;
   static List<XFile?>? recordedVideos = [null, null, null];
 
@@ -27,7 +28,8 @@ class UserClass {
     await box.put('screenNumber', screenNumber);
     await box.put('iCResponses', iCResponses);
     await box.put('mChatRresponses', mChatRresponses);
-    await box.put('intakeResponses', intakeResponses);
+    await box.put('childIntakeResponses', childIntakeResponses);
+    await box.put('parentIntakeResponses', parentIntakeResponses);
     await box.put('compensationResponses', compensationResponses);
     await box.put('signiturePath', signiture?.path);
 
@@ -44,7 +46,8 @@ class UserClass {
     screenNumber = box.get('screenNumber') ?? 0;
     iCResponses = (box.get('iCResponses') as List?)?.cast<String?>();
     mChatRresponses = (box.get('mChatRresponses') as List?)?.cast<String?>();
-    intakeResponses = (box.get('intakeResponses') as List?)?.cast<String?>();
+    childIntakeResponses = (box.get('childIntakeResponses') as List?)?.cast<String?>();
+    parentIntakeResponses = (box.get('parentIntakeResponses') as List?)?.cast<String?>();
     compensationResponses = (box.get('compensationResponses') as List?)
         ?.cast<String?>();
 
@@ -69,7 +72,8 @@ class UserClass {
       print("Informed Consent Responses: $iCResponses");
       print("Signiture FilePath: ${signiture?.path}");
       print("mChatR Responses: $mChatRresponses");
-      print("Intake Form Responses: $intakeResponses");
+      print("Child Intake Form Responses: $childIntakeResponses");
+      print("Parent Intake Form Responses: $parentIntakeResponses");
       print("Compensation Form Responses: $compensationResponses");
       print("Screen Number:  $screenNumber");
 
@@ -84,11 +88,18 @@ class UserClass {
   static String generateUserReport() {
     String linebreak = '===============================================\n';
 
-    List<List<String>> intake = InstructionAndQuestions.getIntakeForm();
-    String intakeString = '';
-    for (int i = 0; i < intake.length; i++) {
-      intakeString += "Q: ${intake[i][1]}\n";
-      intakeString += "A: ${intakeResponses?[i]?[1]}\n";
+    List<List<String>> childIntake = InstructionAndQuestions.getChildIntakeForm();
+    String childIntakeString = '';
+    for (int i = 0; i < childIntake.length; i++) {
+      childIntakeString += "Q: ${childIntake[i][1]}\n";
+      childIntakeString += "A: ${childIntakeResponses?[i]?[1]}\n";
+    }
+
+    List<List<String>> parentIntake = InstructionAndQuestions.getParentIntakeForm();
+    String parentIntakeString = '';
+    for (int i = 0; i < childIntake.length; i++) {
+      parentIntakeString += "Q: ${parentIntake[i][1]}\n";
+      parentIntakeString += "A: ${parentIntakeResponses?[i]?[1]}\n";
     }
 
     List<List<String>> compensation = InstructionAndQuestions.getMChatR();
@@ -113,7 +124,7 @@ class UserClass {
     return 'User-ID: $userId\n$linebreak Child-Name: ${iCResponses?[2]}\nDate: ${iCResponses?[3]}\n'
         'Parent-Name: ${iCResponses?[4]}\nRelationship-to-Participant: ${iCResponses?[5]}\n'
         'Name-of-person-who-obtained-consent: ${iCResponses?[6]}\n'
-        '$linebreak $intakeString $linebreak $cString $linebreak $mString';
+        '$linebreak $childIntakeString $parentIntakeString $linebreak $cString $linebreak $mString';
   }
 
   // makes the user_report.txt file

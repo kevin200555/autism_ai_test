@@ -18,16 +18,16 @@ import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
-class IntakeFormScreen extends StatefulWidget {
+class ChildIntakeFormScreen extends StatefulWidget {
   final CameraDescription camera;
-  const IntakeFormScreen({super.key, required this.camera});
+  const ChildIntakeFormScreen({super.key, required this.camera});
 
   @override
-  State<IntakeFormScreen> createState() => _IntakeFormScreenState();
+  State<ChildIntakeFormScreen> createState() => _ChildIntakeFormScreenState();
 }
 
-class _IntakeFormScreenState extends State<IntakeFormScreen> {
-  var intakeFormQuestions = InstructionAndQuestions.getIntakeForm();
+class _ChildIntakeFormScreenState extends State<ChildIntakeFormScreen> {
+  var intakeFormQuestions = InstructionAndQuestions.getChildIntakeForm();
 
   List<String?> responses = [];
 
@@ -59,7 +59,7 @@ class _IntakeFormScreenState extends State<IntakeFormScreen> {
               label: 'NEXT',
               onPressed: () {
                 UserClass.screenNumber++;
-                UserClass.intakeResponses = responses;
+                UserClass.childIntakeResponses = responses;
                 UserClass.saveToHive();
                 Navigator.push(
                   context,
@@ -110,4 +110,100 @@ class _IntakeFormScreenState extends State<IntakeFormScreen> {
       bottomNavigationBar: ProgressBar(),
     );
   }
-} // EOF intake_form_screen.dart
+}
+
+class ParentIntakeFormScreen extends StatefulWidget {
+  final CameraDescription camera;
+  const ParentIntakeFormScreen({super.key, required this.camera});
+
+  @override
+  State<ParentIntakeFormScreen> createState() => _ParentIntakeFormScreenState();
+}
+
+class _ParentIntakeFormScreenState extends State<ParentIntakeFormScreen> {
+  var intakeFormQuestions = InstructionAndQuestions.getChildIntakeForm();
+
+  List<String?> responses = [];
+
+  @override
+  void initState() {
+    super.initState();
+    responses = List<String?>.filled(intakeFormQuestions.length, null);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: ColorTheme.background,
+      appBar: AppBar(
+        leading: BackButtonAppBar(),
+        title: AppBarTitle('INTAKE FORM', color: ColorTheme.alternateTextColor),
+        centerTitle: true,
+        backgroundColor: ColorTheme.accent,
+        iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),
+      ),
+
+      body: ListView.builder(
+        padding: const EdgeInsets.all(8),
+        itemCount: intakeFormQuestions.length + 1,
+        itemBuilder: (context, index) {
+          //adds a next button at the end of all the questions
+          if (index == intakeFormQuestions.length) {
+            return NextButton(
+              label: 'NEXT',
+              onPressed: () {
+                UserClass.screenNumber++;
+                UserClass.parentIntakeResponses = responses;
+                UserClass.saveToHive();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        CompensationFormScreen(camera: widget.camera),
+                  ),
+                );
+              },
+            );
+          }
+          if (intakeFormQuestions[index][0] == 'SAQ') {
+            // short answer question
+            return ShortAnswerQuestionWidget(
+              shortAnswerInstructions: intakeFormQuestions[index],
+              value: responses[index],
+              onChanged: (value) {
+                setState(() {
+                  responses[index] = value;
+                });
+              },
+            );
+          } else if (intakeFormQuestions[index][0] == 'CATAQ') {
+            // short answer question
+            return ChooseAllThatApplyQuestionWidget(
+              multipleChoiceEntry: intakeFormQuestions[index],
+              value: responses[index] ?? "",
+              onChanged: (updatedString) {
+                setState(() {
+                  responses[index] = updatedString;
+                });
+              },
+            );
+          } else {
+            // multiple choice question
+            return MutlipleChoiceQuestionWidget(
+              multipleChoiceEntry: intakeFormQuestions[index],
+              value: responses[index],
+              onChanged: (value) {
+                setState(() {
+                  responses[index] = value;
+                });
+              },
+            );
+          }
+        },
+      ),
+      bottomNavigationBar: ProgressBar(),
+    );
+  }
+}
+
+// EOF intake_form_screen.dart
