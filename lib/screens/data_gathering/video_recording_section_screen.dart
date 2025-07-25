@@ -17,10 +17,12 @@ class VideoRecordingSectionScreen extends StatefulWidget {
   //Takes in the camera from main and the instructions are from home_screen
   final CameraDescription camera;
   final List<String> instructions;
+  final int currentStep;
   const VideoRecordingSectionScreen({
     super.key,
     required this.camera,
     required this.instructions,
+    required this.currentStep,
   });
 
   @override
@@ -33,10 +35,22 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
   bool isRecording = false;
   List<XFile> recordedVideos = []; //stores recorded videos
 
+  Future<void> _runPreInteractionCode() async {
+    // Simulate logic like checking user consent, preparing files, etc.
+    while (currentStep > 0) {
+      nextVideo();
+      currentStep--;
+    }
+
+    // Optional: do some real setup here instead of just showing a dialog
+    await Future.delayed(Duration(seconds: 1));
+  }
+
   //initlize the camera controller
   @override
   void initState() {
     super.initState();
+    _runPreInteractionCode();
     controller = CameraController(widget.camera, ResolutionPreset.medium);
     controller.initialize().then((_) {
       if (!mounted) return;
@@ -106,7 +120,6 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
       return;
     }
     UserClass.recordedVideos?[currentStep] = recordedVideos[currentStep];
-    UserClass.printSummary();
     if (currentStep < widget.instructions.length - 1) {
       setState(() {
         currentStep++;
@@ -117,6 +130,7 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
         UserClass.generateUserReport(),
       );
       UserClass.uploadAllFiles(userReport);
+      print("hey");
       if (!mounted) return;
       Navigator.push(
         context,
