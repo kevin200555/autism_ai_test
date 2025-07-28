@@ -133,7 +133,7 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
       if (!mounted) return;
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => FinalScreen()),
+        MaterialPageRoute(builder: (context) => FinalScreen(camera: widget.camera,)),
       );
     }
   }
