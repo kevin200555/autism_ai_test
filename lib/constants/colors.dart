@@ -10,6 +10,6 @@ class ColorTheme {
   static Color red = const Color.fromARGB(255, 210, 5, 5);
   static Color green = const Color.fromARGB(255, 17, 155, 17);
   static Color progressBar1 = const Color.fromARGB(255, 242, 219, 16);
-  static Color progressBar2 = const Color.fromARGB(255, 65, 255, 40);
-  static Color progressBar3 = const Color.fromARGB(255, 16, 183, 16);
+  static Color progressBar2 = const Color.fromARGB(255, 26, 220, 0);
+  static Color progressBar3 = const Color.fromARGB(255, 15, 172, 15);
 } // EOF colors.dart
