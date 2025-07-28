@@ -342,8 +342,8 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
                   ? 'FINISH'
                   : 'SUBMIT VIDEO',
               onPressed: () {
-                UserClass.screenNumber++;
                 if (!isRecording) {
+                  UserClass.screenNumber++;
                   nextVideo();
                   UserClass.saveToHive();
                 }
