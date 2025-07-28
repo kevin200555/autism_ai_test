@@ -151,6 +151,34 @@ class BodyText extends StatelessWidget {
   }
 }
 
+class ButtonText extends StatelessWidget {
+  final String text;
+  final TextAlign textAlign;
+  final double minFontSize;
+  final TextStyle? style;
+  final int maxLines;
+
+  const ButtonText(
+    this.text, {
+    super.key,
+    this.textAlign = TextAlign.left,
+    this.minFontSize = 8,
+    this.style,
+    required this.maxLines,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return AutoSizeText(
+          text,
+          textAlign: textAlign,
+          minFontSize: minFontSize,
+          maxLines: maxLines,
+          style: GoogleFonts.lato(fontSize: 16, color: ColorTheme.alternateTextColor, fontWeight: FontWeight.w700),
+        );
+  }
+}
+
 // like BodyText, but with a red color
 class RedBodyText extends StatelessWidget {
   final String text;

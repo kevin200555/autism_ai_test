@@ -1,5 +1,6 @@
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
+import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:flutter/material.dart';
 
 // This class introduces a widget that displays to the user how far along they are in their test
@@ -55,16 +56,15 @@ class _ProgressBarState extends State<ProgressBar> {
           // space
           SizedBox(width: MediaQuery.sizeOf(context).width * 0.05),
           // Displays percent of exam completed
-          Text(
+          ButtonText(
             // not sure why it decided to format it like this but basically if the user ever accidently
             // somehow gets to 14/13 or something, this makes sure that number stays at 100%
             (100 * (UserClass.screenNumber / UserClass.totalScreenNumber))
                         .toInt() <=
                     100
-                ? '${(100 * (UserClass.screenNumber / UserClass.totalScreenNumber)).toInt()}% Done'
-                : '100% Done',
-            textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                ? '${(100 * (UserClass.screenNumber / UserClass.totalScreenNumber)).toInt()}% DONE'
+                : '100% DONE',
+            maxLines: 1,
           ),
         ],
       ),
