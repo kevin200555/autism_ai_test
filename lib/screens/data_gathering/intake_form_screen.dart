@@ -2,6 +2,7 @@ import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/screens/data_gathering/compensation_form.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/button/back_button.dart';
+import 'package:autism_ai_test/widgets/button/help_button.dart';
 import 'package:autism_ai_test/widgets/progress_bar.dart';
 import 'package:autism_ai_test/widgets/questions/choose_all_question_widget.dart';
 import 'package:autism_ai_test/widgets/questions/mutliple_choice_question_widget.dart';
@@ -40,7 +41,11 @@ class _ChildIntakeFormScreenState extends State<ChildIntakeFormScreen> {
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
         leading: BackButtonAppBar(),
-        title: AppBarTitle('INTAKE FORM: CHILD', color: ColorTheme.alternateTextColor),
+        actions: [HelpButton(color: ColorTheme.alternateTextColor)],
+        title: AppBarTitle(
+          'INTAKE FORM: CHILD',
+          color: ColorTheme.alternateTextColor,
+        ),
         centerTitle: true,
         backgroundColor: ColorTheme.accent,
         iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),
@@ -135,7 +140,11 @@ class _ParentIntakeFormScreenState extends State<ParentIntakeFormScreen> {
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
         leading: BackButtonAppBar(),
-        title: AppBarTitle('INTAKE FORM: PARENT/GUARDIAN', color: ColorTheme.alternateTextColor),
+        actions: [HelpButton(color: ColorTheme.alternateTextColor)],
+        title: AppBarTitle(
+          'INTAKE FORM: PARENT/GUARDIAN',
+          color: ColorTheme.alternateTextColor,
+        ),
         centerTitle: true,
         backgroundColor: ColorTheme.accent,
         iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),

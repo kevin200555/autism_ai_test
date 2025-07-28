@@ -1,6 +1,7 @@
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/button/back_button.dart';
+import 'package:autism_ai_test/widgets/button/help_button.dart';
 import 'package:autism_ai_test/widgets/progress_bar.dart';
 import 'package:autism_ai_test/widgets/questions/mutliple_choice_question_widget.dart';
 import 'package:autism_ai_test/widgets/questions/short_answer_question_widget.dart';
@@ -39,6 +40,7 @@ class _CompensationFormScreenState extends State<CompensationFormScreen> {
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
         leading: BackButtonAppBar(),
+        actions: [HelpButton(color: ColorTheme.alternateTextColor)],
         title: AppBarTitle(
           'COMPENSATION FORM',
           color: ColorTheme.alternateTextColor,

@@ -8,6 +8,7 @@ import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/screens/data_gathering/intake_form_screen.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/button/back_button.dart';
+import 'package:autism_ai_test/widgets/button/help_button.dart';
 import 'package:autism_ai_test/widgets/button/next_button.dart';
 import 'package:autism_ai_test/widgets/progress_bar.dart';
 import 'package:autism_ai_test/widgets/questions/signiture_question_widget.dart';
@@ -80,6 +81,7 @@ class _InformedConsentSignitureScreenState
         backgroundColor: ColorTheme.background,
         appBar: AppBar(
           leading: BackButtonAppBar(),
+          actions: [HelpButton(color: ColorTheme.alternateTextColor)],
           title: AppBarTitle('SIGNITURE', color: ColorTheme.alternateTextColor),
           centerTitle: true,
           backgroundColor: ColorTheme.accent,

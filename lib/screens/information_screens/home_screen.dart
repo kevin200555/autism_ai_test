@@ -1,10 +1,10 @@
 import 'package:autism_ai_test/screens/information_screens/ic_document_screen.dart';
+import 'package:autism_ai_test/widgets/button/help_button.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:autism_ai_test/constants/colors.dart';
-import 'package:autism_ai_test/screens/help_screens/help_screen.dart';
 
 //The very first screen that a user will see
 class HomeScreen extends StatelessWidget {
@@ -18,18 +18,7 @@ class HomeScreen extends StatelessWidget {
         title: AppBarTitle('WELCOME!', color: ColorTheme.textColor),
         centerTitle: true,
         backgroundColor: ColorTheme.background,
-        actions: <Widget>[
-          IconButton(
-            onPressed: () {
-              debugPrint(DefaultTextStyle.of(context).style.toString());
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => HelpScreen()),
-              );
-            },
-            icon: const Icon(Icons.question_mark_outlined),
-          ),
-        ],
+        actions: [HelpButton(color: ColorTheme.textColor)]
       ),
 
       body: SizedBox(

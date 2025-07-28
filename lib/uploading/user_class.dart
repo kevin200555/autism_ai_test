@@ -25,7 +25,7 @@ class UserClass {
   static void resetAll() {
     userId = null;
     screenNumber = 0;
-    totalScreenNumber = 14;
+    totalScreenNumber = 15;
     iCResponses = null;
     signiture = null;
     mChatRresponses = null;

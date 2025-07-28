@@ -6,6 +6,7 @@ import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/screens/information_screens/video_section_info_screen.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/button/back_button.dart';
+import 'package:autism_ai_test/widgets/button/help_button.dart';
 import 'package:autism_ai_test/widgets/button/next_button.dart';
 import 'package:autism_ai_test/widgets/progress_bar.dart';
 import 'package:autism_ai_test/widgets/questions/radio_multiple_choice_question_widget.dart';
@@ -45,6 +46,7 @@ class _MChatRFormScreen1State extends State<MChatRFormScreen1> {
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
         leading: BackButtonAppBar(),
+        actions: [HelpButton(color: ColorTheme.alternateTextColor)],
         title: AppBarTitle(
           'M-CHATR FORM: Page 1 of 2',
           color: ColorTheme.alternateTextColor,
@@ -134,6 +136,7 @@ class _MChatRFormScreen2State extends State<MChatRFormScreen2> {
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
         leading: BackButtonAppBar(),
+        actions: [HelpButton(color: ColorTheme.alternateTextColor)],
         title: AppBarTitle(
           'M-CHATR FORM: Page 2 of 2',
           color: ColorTheme.alternateTextColor,

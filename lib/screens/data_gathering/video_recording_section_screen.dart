@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/screens/information_screens/final_screen.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
+import 'package:autism_ai_test/widgets/button/help_button.dart';
 import 'package:autism_ai_test/widgets/button/next_button.dart';
 import 'package:autism_ai_test/widgets/progress_bar.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';
@@ -199,6 +200,7 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
           'Task ${currentStep + 1} of ${widget.instructions.length}: "${InstructionAndQuestions.getVideoNames()[currentStep]}"',
           color: ColorTheme.background,
         ),
+        actions: [HelpButton(color: ColorTheme.alternateTextColor)],
         centerTitle: true,
         iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),
         backgroundColor: ColorTheme.accent,
