@@ -44,7 +44,7 @@ class AutismAITest extends StatelessWidget {
     // 5 : Compensation Form
     // ===================================
     // 6 : MChatR Form 1
-    // 7 : MChatR Form 2 (MChatR Form 1)
+    // 7 : MChatR Form 2 (direct to MChatR Form 1)
     // ===================================
     // 8 : Video Section Information
     // 9 : Video Section Information
@@ -54,21 +54,24 @@ class AutismAITest extends StatelessWidget {
     // 12 : Video Test 1
     // 13 : Video Test 2
     // 14 : Video Test 3
-    switch(UserClass.screenNumber){
+    switch (UserClass.screenNumber) {
       case 1:
         initialScreen = InformedConsentSigningScreen(camera: cameras[0]);
       case 2:
         initialScreen = InformedConsentSignitureScreen(camera: cameras[0]);
-      case 3: 
+      case 3:
         initialScreen = ChildIntakeFormScreen(camera: cameras[0]);
-      case 4: 
+      case 4:
         initialScreen = ParentIntakeFormScreen(camera: cameras[0]);
       case 5:
         initialScreen = CompensationFormScreen(camera: cameras[0]);
-      case 6: 
+      case 6:
         initialScreen = MChatRFormScreen1(camera: cameras[0]);
-      case 7: 
-        initialScreen = MChatRFormScreen1(camera: cameras[0]);
+      case 7:
+        initialScreen = MChatRFormScreen2(
+          camera: cameras[0],
+          responses: UserClass.mChatRresponses ?? <String?>[],
+        );
       case 8:
         initialScreen = GeneralInstructionsScreen(camera: cameras[0]);
       case 9:
@@ -77,18 +80,29 @@ class AutismAITest extends StatelessWidget {
         initialScreen = GeneralInstructionsScreen(camera: cameras[0]);
       case 11:
         initialScreen = GeneralInstructionsScreen(camera: cameras[0]);
-      case 12: 
-        initialScreen = VideoRecordingSectionScreen(camera: cameras[0], instructions: InstructionAndQuestions.getVideoInstructios(), currentStep: 0);
+      case 12:
+        initialScreen = VideoRecordingSectionScreen(
+          camera: cameras[0],
+          instructions: InstructionAndQuestions.getVideoInstructios(),
+          currentStep: 0,
+        );
       case 13:
-        initialScreen = VideoRecordingSectionScreen(camera: cameras[0], instructions: InstructionAndQuestions.getVideoInstructios(), currentStep: 1);
+        initialScreen = VideoRecordingSectionScreen(
+          camera: cameras[0],
+          instructions: InstructionAndQuestions.getVideoInstructios(),
+          currentStep: 1,
+        );
       case 14:
-        initialScreen = VideoRecordingSectionScreen(camera: cameras[0], instructions: InstructionAndQuestions.getVideoInstructios(), currentStep: 2);
-
+        initialScreen = VideoRecordingSectionScreen(
+          camera: cameras[0],
+          instructions: InstructionAndQuestions.getVideoInstructios(),
+          currentStep: 2,
+        );
       default:
         initialScreen = HomeScreen(camera: cameras[0]);
     }
     //camera is passed around through all widgets and screens in the program
-    return MaterialApp(home: initialScreen);
+    return MaterialApp(home: initialScreen, debugShowCheckedModeBanner: false,);
   }
 } // EOF main.dart
 
