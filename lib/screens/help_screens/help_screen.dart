@@ -10,35 +10,47 @@ class HelpScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
-        title: Text('HELP MENU', style: TextStyle(fontSize: 24)),
+        title: AppBarTitle(
+          'HELP MENU',
+          style: TextStyle(fontSize: 24),
+          color: ColorTheme.textColor,
+        ),
         centerTitle: true,
         backgroundColor: ColorTheme.background,
       ),
 
-      body: SizedBox(
-        width: double.infinity,
-        height: double.infinity,
+      body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SubTitle('Questions?', textAlign: TextAlign.left),
+            SubTitle('Getting Started / How to Use'),
             BodyText(
-              'If you have any questions regarding how to record and upload your videos, please feel free to e-mail Daniel '
-              'Gray (drgray@wustl.edu) and Jerry Yu (xiangxu@wustl.edu). Jerry is also available via text/phone at 737-'
-              '529-5080. After you upload videos, we will review the videos and let you know if there are any problems.',
-              maxLines: 7,
+              'Welcome to the Autism AI Test app, this menu will give you a step-by-step guide '
+              'to using this app to its fullest capabilities. \n\n'
+              'This test consists of an Informed Consent Document, Autism Intake Information Form, '
+              'M-ChatR Form, and Recorded Video Section. The first three are just forms that you must fill out. '
+              'These forms consist of some multiple choice questions and short answer questions\n\n'
+              'The Recorded Video Section requires that you follow the instructions listed to '
+              'record a successful video. \n\n'
+              'Keep in mind that this app will ask you to use your camera; you\'ll need to accept '
+              'this request to record.',
+              maxLines: 15,
             ),
-            SizedBox(height: MediaQuery.of(context).size.width * 0.05),
+            SubTitle('FAQ'),
             BodyText(
-              'For any questions reguarding the app itself, Contact Kevin Li (kevinli200555@gmail.com)'
-              'if their are any problems.',
-              maxLines: 4,
+              'Q: \n'
+              'A: \n\n'
+              'Q: \n'
+              'A: \n\n',
+              maxLines: 6,
             ),
-            SizedBox(height: MediaQuery.of(context).size.width * 0.05),
+            SubTitle('Troubleshooting'),
+            BodyText('hmmmm, we\'ll find these later\n', maxLines: 2),
+            SubTitle('Contact'),
             BodyText(
-              'Any suggestions, recommendations or comments you have are also welcome!',
-              maxLines: 4,
+              'For questions about the app, contact Kevin Li:\n'
+              'kevinli200555@gmail.com\n\n'
+              'For more information about this project and the AI model, contact Dr Shuo Wang: 314-362-7338',
+              maxLines: 5,
             ),
           ],
         ),
