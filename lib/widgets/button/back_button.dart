@@ -11,6 +11,7 @@ class BackButtonAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       icon: const Icon(Icons.arrow_back),
+      iconSize: MediaQuery.of(context).size.width * 0.075, 
       onPressed: () {
         UserClass.screenNumber--;
         Navigator.of(context).pop();
