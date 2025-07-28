@@ -35,9 +35,11 @@ class AppBarTitle extends StatelessWidget {
       maxLines: maxLines,
       minFontSize: minFontSize,
       style: GoogleFonts.lato(
-        fontSize: 30,
-        fontWeight: FontWeight.bold,
-        color: color,
+        textStyle: TextStyle(
+          fontSize: 30,
+          fontWeight: FontWeight.bold,
+          color: color,
+        ),
       ),
     );
   }
@@ -72,7 +74,9 @@ class SubTitle extends StatelessWidget {
           textAlign: textAlign,
           minFontSize: minFontSize,
           maxLines: 1,
-          style: GoogleFonts.lato(fontSize: 20, fontWeight: FontWeight.w800)
+          style: GoogleFonts.lato(
+            textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
+          ),
         ),
       ),
     );
@@ -107,7 +111,9 @@ class QuestionText extends StatelessWidget {
           textAlign: textAlign,
           minFontSize: minFontSize,
           maxLines: 3,
-          style: GoogleFonts.lato(fontSize: 20, fontWeight: FontWeight.w800),
+          style: GoogleFonts.lato(
+            textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
+          ),
         ),
       ),
     );
@@ -144,7 +150,9 @@ class BodyText extends StatelessWidget {
           textAlign: textAlign,
           minFontSize: minFontSize,
           maxLines: maxLines,
-          style: GoogleFonts.lato(fontSize: 16, fontWeight: FontWeight.w400),
+          style: GoogleFonts.lato(
+            textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+          ),
         ),
       ),
     );
@@ -170,12 +178,18 @@ class ButtonText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AutoSizeText(
-          text,
-          textAlign: textAlign,
-          minFontSize: minFontSize,
-          maxLines: maxLines,
-          style: GoogleFonts.lato(fontSize: 16, color: ColorTheme.alternateTextColor, fontWeight: FontWeight.w700),
-        );
+      text,
+      textAlign: textAlign,
+      minFontSize: minFontSize,
+      maxLines: maxLines,
+      style: GoogleFonts.lato(
+        textStyle: TextStyle(
+          fontSize: 16,
+          color: ColorTheme.alternateTextColor,
+          fontWeight: FontWeight.w700,
+        ),
+      ),
+    );
   }
 }
 
@@ -208,10 +222,12 @@ class RedBodyText extends StatelessWidget {
           textAlign: textAlign,
           minFontSize: minFontSize,
           maxLines: maxLines,
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            color: ColorTheme.red,
+          style: GoogleFonts.lato(
+            textStyle: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: ColorTheme.red,
+            ),
           ),
         ),
       ),
@@ -249,7 +265,9 @@ class RichBodyText extends StatelessWidget {
           textAlign: textAlign,
           minFontSize: minFontSize,
           maxLines: maxLines,
-          style: GoogleFonts.lato(fontSize: 16, fontWeight: FontWeight.w400),
+          style: GoogleFonts.lato(
+            textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+          ),
         ),
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:autism_ai_test/constants/colors.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 // This class creates a next button that is reusable throughout all screens
 // It's purpose is to direct users to a new screen
@@ -26,10 +27,12 @@ class NextButton extends StatelessWidget {
           // Button Label (doesn't have to say 'next')
           label: AutoSizeText(
             label,
-            style: TextStyle(
+            style: GoogleFonts.lato(
+              textStyle: TextStyle(
               fontSize: 32,
               fontWeight: FontWeight.bold,
               color: ColorTheme.alternateTextColor,
+              )
             ),
             maxLines: 1,
             minFontSize: 12,
