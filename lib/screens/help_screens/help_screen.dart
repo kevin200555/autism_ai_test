@@ -39,12 +39,13 @@ class HelpScreen extends StatelessWidget {
             BodyText(
               'Q: Does my progress save?\n'
               'A: Yes! You are welcome to leave the app at any time and come back to your saved progress. '
+              'you\'re encourgaed to do this; especially if your child needs a break. ' 
               'However, after completing a form or finish recording a video, you must hit the \'next\' '
               'or \'submit\' button in order for that form or video to be saved\n\n'
               'Q: Am I able to restart my progress?, I have made a mistake\n'
               'A: You are welcome to go back to any point in the form and change your answers or upload '
               'a new video. Keep an eye out for the back button at the top left corner\n\n',
-              maxLines: 13,
+              maxLines: 14,
             ),
             SubTitle('Troubleshooting'),
             BodyText(
