@@ -64,10 +64,15 @@ class HomeScreen extends StatelessWidget {
             BodyText('\t\t- Informed Consent Document', maxLines: 1),
             BodyText('\t\t- Autism Intake Form', maxLines: 1),
             BodyText('\t\t- M-ChatR Form', maxLines: 1),
-            BodyText('\t\t- Recorded Video Section\n\n', maxLines: 3),
+            BodyText('\t\t- Recorded Video Section\n', maxLines: 2),
             BodyText(
               'We really appreciate your time and support!'
-              ' These tasks are quick and simple, and your child might even think they’re just playing with you!',
+              ' These tasks are quick and simple, and your child might even think they’re just playing with you!\n',
+              maxLines: 4,
+            ),
+            BodyText(
+              'This test will roughly take around 1-2 hours or so.  However, you are welcome to leave and come back '
+              'at any time and have your progress saved.',
               maxLines: 3,
             ),
           ],
