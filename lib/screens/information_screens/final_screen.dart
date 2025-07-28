@@ -1,26 +1,29 @@
 import 'package:autism_ai_test/constants/colors.dart';
+import 'package:autism_ai_test/screens/information_screens/home_screen.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
-import 'package:autism_ai_test/widgets/back_button.dart';
+
 import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
 // This is just a screen to thank the user for their time and to confirm their answers had been uploaded
 // Later, I may what to put the results onto this screen too
 class FinalScreen extends StatelessWidget {
-  const FinalScreen({super.key});
+  final CameraDescription camera;
+  const FinalScreen({super.key, required this.camera});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
-        leading: BackButtonAppBar(),
         title: AppBarTitle(
           'Thank you for completing the test!',
           color: ColorTheme.textColor,
         ),
         centerTitle: true,
         backgroundColor: ColorTheme.background,
+        automaticallyImplyLeading: false,
       ),
 
       body: SizedBox(
@@ -54,7 +57,11 @@ class FinalScreen extends StatelessWidget {
           child: ElevatedButton.icon(
             onPressed: () {
               UserClass.resetAll();
-              Navigator.popUntil(context, (route) => route.isFirst);
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(
+                  builder: (context) => HomeScreen(camera: camera),
+                ),
+              );
             },
             label: AutoSizeText(
               'EXIT',
