@@ -20,7 +20,7 @@ dependencies {
 
 android {
     namespace = "com.example.autism_ai_test"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 36
     ndkVersion = "27.0.12077973"
 
     compileOptions {
