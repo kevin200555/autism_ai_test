@@ -37,20 +37,27 @@ class HelpScreen extends StatelessWidget {
             ),
             SubTitle('FAQ'),
             BodyText(
-              'Q: \n'
-              'A: \n\n'
-              'Q: \n'
-              'A: \n\n',
-              maxLines: 6,
+              'Q: Does my progress save?\n'
+              'A: Yes! You are welcome to leave the app at any time and come back to your saved progress. '
+              'However, after completing a form or finish recording a video, you must hit the \'next\' '
+              'or \'submit\' button in order for that form or video to be saved\n\n'
+              'Q: Am I able to restart my progress?, I have made a mistake\n'
+              'A: You are welcome to go back to any point in the form and change your answers or upload '
+              'a new video. Keep an eye out for the back button at the top left corner\n\n',
+              maxLines: 13,
             ),
             SubTitle('Troubleshooting'),
-            BodyText('hmmmm, we\'ll find these later\n', maxLines: 2),
+            BodyText(
+              'To my knowledge, the only technical issue that could arise is troubles with the camera '
+              'make sure to allow the use of the camera wlist on the app, it is critical for this test\n',
+              maxLines: 5,
+            ),
             SubTitle('Contact'),
             BodyText(
               'For questions about the app, contact Kevin Li:\n'
               'kevinli200555@gmail.com\n\n'
-              'For more information about this project and the AI model, contact Dr Shuo Wang: 314-362-7338',
-              maxLines: 5,
+              'For more information about this project and the AI model, contact Dr Shuo Wang: 314-362-7338\n\n\n',
+              maxLines: 8,
             ),
           ],
         ),
