@@ -4,7 +4,7 @@ import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:flutter/material.dart';
 
 // This class introduces a widget that displays to the user how far along they are in their test
-//
+// It also comes with a some text that shows the % of the test done
 class ProgressBar extends StatefulWidget {
   const ProgressBar({super.key});
 
@@ -17,7 +17,7 @@ class _ProgressBarState extends State<ProgressBar> {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(16),
-      color: Colors.blueGrey,
+      color: ColorTheme.progressBarBackground,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -70,4 +70,4 @@ class _ProgressBarState extends State<ProgressBar> {
       ),
     );
   }
-}
+} // EOF progress_bar.dart

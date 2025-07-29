@@ -12,4 +12,5 @@ class ColorTheme {
   static Color progressBar1 = const Color.fromARGB(255, 242, 219, 16);
   static Color progressBar2 = const Color.fromARGB(255, 26, 220, 0);
   static Color progressBar3 = const Color.fromARGB(255, 15, 172, 15);
+  static Color progressBarBackground = Colors.blueGrey;
 } // EOF colors.dart
