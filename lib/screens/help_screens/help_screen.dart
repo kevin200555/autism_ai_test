@@ -2,7 +2,8 @@ import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:flutter/material.dart';
 import 'package:autism_ai_test/constants/colors.dart';
 
-//Just diaplays some information of the purpose of this app and how to use it to the user
+// purpose of this widget is to display some information to the user about the app and how it works
+// Accessed through the pressing of the help button present on most pages in the top right corner
 class HelpScreen extends StatelessWidget {
   const HelpScreen({super.key});
   @override
@@ -12,16 +13,16 @@ class HelpScreen extends StatelessWidget {
       appBar: AppBar(
         title: AppBarTitle(
           'HELP MENU',
-          style: TextStyle(fontSize: 24),
-          color: ColorTheme.textColor,
+          color: ColorTheme.background,
         ),
         centerTitle: true,
         backgroundColor: ColorTheme.background,
       ),
-
+      // all of the text information
       body: SingleChildScrollView(
         child: Column(
           children: [
+            // Getting started section
             SubTitle('Getting Started / How to Use'),
             BodyText(
               'Welcome to the Autism AI Test app, this menu will give you a step-by-step guide '
@@ -35,6 +36,7 @@ class HelpScreen extends StatelessWidget {
               'this request to record.',
               maxLines: 15,
             ),
+            // FAQ Section
             SubTitle('FAQ'),
             BodyText(
               'Q: Does my progress save?\n'
@@ -47,12 +49,14 @@ class HelpScreen extends StatelessWidget {
               'a new video. Keep an eye out for the back button at the top left corner\n\n',
               maxLines: 14,
             ),
+            // Toubleshooting section
             SubTitle('Troubleshooting'),
             BodyText(
               'To my knowledge, the only technical issue that could arise is troubles with the camera '
               'make sure to allow the use of the camera wlist on the app, it is critical for this test\n',
               maxLines: 5,
             ),
+            // Contact information section
             SubTitle('Contact'),
             BodyText(
               'For questions about the app, contact Kevin Li:\n'
