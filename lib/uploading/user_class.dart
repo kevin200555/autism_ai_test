@@ -9,19 +9,27 @@ import 'package:archive/archive_io.dart';
 import 'package:hive/hive.dart';
 
 // Class that stores information about the User
-// May want to use HiveObject in order to save the information if the user disconnects
+// all variables are static because only one user should be active at a time
+// This class is helpful for saving infromation about the user, espicelly if they disconnect or leaef during their 
+// exam
 class UserClass {
   static String? userId;
+  // These variables keep track of what screen the user is on, a full detail of this can be seen in main.dart
   static int screenNumber = 0;
-  static int totalScreenNumber = 14;
+  static int totalScreenNumber = 15;
+  // These store all information from the questionaires
   static List<String?>? iCResponses;
   static File? signiture;
   static List<String?>? mChatRresponses;
   static List<String?>? childIntakeResponses;
   static List<String?>? parentIntakeResponses;
   static List<String?>? compensationResponses;
+  // These store the videos (size of these could change later)
   static List<XFile?>? recordedVideos = [null, null, null];
 
+  // This is used after the user has completed the test, since their data should be uploaded to Google Cloud
+  // is not needed locally on their mobile device anymore and
+  // These need to be updated in case I change anything about the above static variables
   static void resetAll() {
     userId = null;
     screenNumber = 0;
@@ -35,6 +43,11 @@ class UserClass {
     recordedVideos = [null, null, null];
     saveToHive();
   }
+
+  // saves all variables in the user class into Hive, this allows information to be sotred in case the user want to 
+  // leave during the test and come back later
+  // This function is called after every 'next' button is pressed
+  // This means its NOT being called continously
   static Future<void> saveToHive() async {
     final box = await Hive.openBox('user_data');
     await box.put('userId', userId);
@@ -53,6 +66,7 @@ class UserClass {
     await box.put('recordedVideoPaths', videoPaths);
   }
 
+  // load any saved data that have been stored as result of saveToHive()
   static Future<void> loadFromHive() async {
     final box = await Hive.openBox('user_data');
     userId = box.get('userId');
@@ -79,6 +93,7 @@ class UserClass {
     printSummary();
   }
 
+  // prints all relevant variables in the UserClass
   static void printSummary() {
     if (kDebugMode) {
       print("User ID: $userId");
@@ -98,6 +113,7 @@ class UserClass {
 
   // function that will take all responses from the the questionaires and turn them into a string,
   // this string will then be written to a file
+  // the format of this can be seen in my figma designs
   static String generateUserReport() {
     String linebreak = '===============================================\n';
 
@@ -189,15 +205,14 @@ class UserClass {
     if (url != null) {
       if (kDebugMode) {
         print('Uploaded file URL: $url');
-      }
-      // You can now use this URL to display the file or save it in your database
+      } // use this to display the file url (good if you need to just look at what's being uploaded)
     }
     if (kDebugMode) {
       print('Saved files to ${folder.path}');
     }
   }
 
-  //zips folder
+  // to upload data, everything is put in a zipped folder before being uploaded
   static Future<File> zipFolder(Directory folder) async {
     final encoder = ZipFileEncoder();
     final zipPath = path.join(
