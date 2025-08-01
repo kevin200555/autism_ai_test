@@ -224,7 +224,7 @@ class RedBodyText extends StatelessWidget {
           maxLines: maxLines,
           style: GoogleFonts.lato(
             textStyle: TextStyle(
-              fontSize: 20,
+              fontSize: 16,
               fontWeight: FontWeight.bold,
               color: ColorTheme.red,
             ),
