@@ -200,7 +200,7 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
           'Task ${currentStep + 1} of ${widget.instructions.length}: "${InstructionAndQuestions.getVideoNames()[currentStep]}"',
           color: ColorTheme.background,
         ),
-        actions: [HelpButton(color: ColorTheme.alternateTextColor)],
+        actions: [HelpButton(color: ColorTheme.alternateTextColor, camera: widget.camera,)],
         centerTitle: true,
         iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),
         backgroundColor: ColorTheme.accent,

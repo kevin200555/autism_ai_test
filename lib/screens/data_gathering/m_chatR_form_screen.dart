@@ -5,6 +5,7 @@
 // ignore_for_file: file_names
 
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
+import 'package:autism_ai_test/main.dart';
 import 'package:autism_ai_test/screens/information_screens/video_section_info_screen.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/button/back_button.dart';
@@ -48,7 +49,7 @@ class _MChatRFormScreen1State extends State<MChatRFormScreen1> {
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
         leading: BackButtonAppBar(),
-        actions: [HelpButton(color: ColorTheme.alternateTextColor)],
+        actions: [HelpButton(color: ColorTheme.alternateTextColor, camera: widget.camera,)],
         title: AppBarTitle(
           'M-CHATR FORM: Page 1 of 2',
           color: ColorTheme.alternateTextColor,
@@ -138,7 +139,7 @@ class _MChatRFormScreen2State extends State<MChatRFormScreen2> {
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
         leading: BackButtonAppBar(),
-        actions: [HelpButton(color: ColorTheme.alternateTextColor)],
+        actions: [HelpButton(color: ColorTheme.alternateTextColor, camera: widget.camera,)],
         title: AppBarTitle(
           'M-CHATR FORM: Page 2 of 2',
           color: ColorTheme.alternateTextColor,
