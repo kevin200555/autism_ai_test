@@ -62,7 +62,7 @@ class HelpScreen extends StatelessWidget {
               maxLines: 6,
             ),
             RedBodyText('Warning: this button resets all your progress, so only do this if there is no other option', maxLines: 2,),
-            ResetButton(camera: camera,),
+            ResetButton(camera: camera),
             // Contact information section
             SubTitle('Contact'),
             BodyText(
