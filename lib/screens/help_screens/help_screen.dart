@@ -13,7 +13,7 @@ class HelpScreen extends StatelessWidget {
       appBar: AppBar(
         title: AppBarTitle(
           'HELP MENU',
-          color: ColorTheme.background,
+          color: ColorTheme.textColor,
         ),
         centerTitle: true,
         backgroundColor: ColorTheme.background,
