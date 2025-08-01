@@ -112,7 +112,8 @@ class AutismAITest extends StatelessWidget {
 // - split questions into multiple pages ✓
 // - figure out text consistency ?
 // - update help menu ✓
-// - with a restart button and maybe multiple screens 
+// - with a restart button 
+// - and maybe multiple screens 
 // Things to note:
 // - see if I can get them to split into 9 videos 
 // - make the MCQ questions more cleaner (dropdown button harder to see)
