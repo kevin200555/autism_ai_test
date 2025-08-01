@@ -20,6 +20,7 @@ class ResetButton extends StatelessWidget {
       color: ColorTheme.textColor,
       onPressed: () {
         UserClass.resetAll();
+        
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => HomeScreen(camera: camera,)),

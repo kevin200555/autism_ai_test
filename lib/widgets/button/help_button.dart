@@ -1,4 +1,5 @@
 import 'package:autism_ai_test/screens/help_screens/help_screen.dart';
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
 // The purpose of this module is create a button that sits ontop of the appbar and direct the user to the
@@ -8,7 +9,8 @@ import 'package:flutter/material.dart';
 class HelpButton extends StatelessWidget {
   // takes in a color value (I have appbars with different colors )
   final Color color;
-  const HelpButton({super.key, required this.color});
+  final CameraDescription camera;
+  const HelpButton({super.key, required this.color, required this.camera});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,7 @@ class HelpButton extends StatelessWidget {
       onPressed: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => HelpScreen()),
+          MaterialPageRoute(builder: (context) => HelpScreen(camera: camera)),
         );
       },
     );

@@ -1,3 +1,4 @@
+import 'package:autism_ai_test/widgets/button/reset_button.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:flutter/material.dart';
 import 'package:autism_ai_test/constants/colors.dart';
@@ -5,7 +6,9 @@ import 'package:autism_ai_test/constants/colors.dart';
 // purpose of this widget is to display some information to the user about the app and how it works
 // Accessed through the pressing of the help button present on most pages in the top right corner
 class HelpScreen extends StatelessWidget {
-  const HelpScreen({super.key});
+  final CameraDescription camera;
+  const HelpScreen({super.key, required this.camera});
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,9 +56,12 @@ class HelpScreen extends StatelessWidget {
             SubTitle('Troubleshooting'),
             BodyText(
               'To my knowledge, the only technical issue that could arise is troubles with the camera '
-              'make sure to allow the use of the camera wlist on the app, it is critical for this test\n',
-              maxLines: 5,
+              'make sure to allow the use of the camera wlist on the app, it is critical for this test\n\n'
+              'If, for whatever reason, you are stuck, press the below button in order to reset',
+              maxLines: 6,
             ),
+            RedBodyText('Warning: this button resets all your progress, so only do this if there is no other option', maxLines: 2,),
+            ResetButton(camera: camera,),
             // Contact information section
             SubTitle('Contact'),
             BodyText(
