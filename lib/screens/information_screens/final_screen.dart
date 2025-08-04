@@ -1,9 +1,7 @@
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/screens/information_screens/home_screen.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
-
 import 'package:autism_ai_test/widgets/text_types.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
@@ -63,15 +61,9 @@ class FinalScreen extends StatelessWidget {
                 ),
               );
             },
-            label: AutoSizeText(
-              'EXIT',
-              style: TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.bold,
-                color: ColorTheme.alternateTextColor,
-              ),
-              maxLines: 1,
-              minFontSize: 12,
+            label: ButtonText(
+              'EXIT', maxLines: 1,
+  
             ),
             style: ElevatedButton.styleFrom(
               backgroundColor: ColorTheme.accent,
