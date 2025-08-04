@@ -123,8 +123,7 @@ class UserClass {
       childIntakeString += "Q: ${childIntake[i][1]}\n";
       childIntakeString += "A: ${childIntakeResponses?[i]}\n";
     }
-    
-    print(parentIntakeResponses);
+
     List<List<String>> parentIntake = InstructionAndQuestions.getParentIntakeForm();
     String parentIntakeString = '';
     for (int i = 0; i < parentIntake.length; i++) {
