@@ -18,7 +18,8 @@ class HomeScreen extends StatelessWidget {
         title: AppBarTitle('WELCOME!', color: ColorTheme.textColor),
         centerTitle: true,
         backgroundColor: ColorTheme.background,
-        actions: [HelpButton(color: ColorTheme.textColor, camera: camera,)]
+        actions: [HelpButton(color: ColorTheme.textColor, camera: camera,)],
+        automaticallyImplyLeading: false,
       ),
 
       body: SizedBox(
