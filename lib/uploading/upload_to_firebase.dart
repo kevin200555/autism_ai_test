@@ -27,15 +27,13 @@ Future<String?> uploadFile(String filePath) async {
     if (kDebugMode) {
       print('Upload started...');
     }
+    // ignore: unused_local_variable
     final snapshot = await uploadTask;
     if (kDebugMode) {
       print('Upload completed');
     }
-    final downloadURL = await snapshot.ref.getDownloadURL();
-    if (kDebugMode) {
-      print('Download URL: $downloadURL');
-    }
-    return downloadURL;
+    return null;
+
   } on FirebaseException catch (e) {
     if (kDebugMode) {
       print('FirebaseException: $e');
