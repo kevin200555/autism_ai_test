@@ -10,7 +10,7 @@ import 'package:hive/hive.dart';
 
 // Class that stores information about the User
 // all variables are static because only one user should be active at a time
-// This class is helpful for saving infromation about the user, espicelly if they disconnect or leaef during their 
+// This class is helpful for saving infromation about the user, espicelly if they disconnect or leaef during their
 // exam
 class UserClass {
   static String? userId;
@@ -44,7 +44,7 @@ class UserClass {
     saveToHive();
   }
 
-  // saves all variables in the user class into Hive, this allows information to be sotred in case the user want to 
+  // saves all variables in the user class into Hive, this allows information to be sotred in case the user want to
   // leave during the test and come back later
   // This function is called after every 'next' button is pressed
   // This means its NOT being called continously
@@ -73,8 +73,10 @@ class UserClass {
     screenNumber = box.get('screenNumber') ?? 0;
     iCResponses = (box.get('iCResponses') as List?)?.cast<String?>();
     mChatRresponses = (box.get('mChatRresponses') as List?)?.cast<String?>();
-    childIntakeResponses = (box.get('childIntakeResponses') as List?)?.cast<String?>();
-    parentIntakeResponses = (box.get('parentIntakeResponses') as List?)?.cast<String?>();
+    childIntakeResponses = (box.get('childIntakeResponses') as List?)
+        ?.cast<String?>();
+    parentIntakeResponses = (box.get('parentIntakeResponses') as List?)
+        ?.cast<String?>();
     compensationResponses = (box.get('compensationResponses') as List?)
         ?.cast<String?>();
 
@@ -116,15 +118,17 @@ class UserClass {
   // the format of this can be seen in my figma designs
   static String generateUserReport() {
     String linebreak = '===============================================\n';
-    
-    List<List<String>> childIntake = InstructionAndQuestions.getChildIntakeForm();
+
+    List<List<String>> childIntake =
+        InstructionAndQuestions.getChildIntakeForm();
     String childIntakeString = '';
     for (int i = 0; i < childIntake.length; i++) {
       childIntakeString += "Q: ${childIntake[i][1]}\n";
       childIntakeString += "A: ${childIntakeResponses?[i]}\n";
     }
 
-    List<List<String>> parentIntake = InstructionAndQuestions.getParentIntakeForm();
+    List<List<String>> parentIntake =
+        InstructionAndQuestions.getParentIntakeForm();
     String parentIntakeString = '';
     for (int i = 0; i < parentIntake.length; i++) {
       parentIntakeString += "Q: ${parentIntake[i][1]}\n";
@@ -153,7 +157,9 @@ class UserClass {
     return 'User-ID: $userId\n$linebreak Child-Name: ${iCResponses?[2]}\nDate: ${iCResponses?[3]}\n'
         'Parent-Name: ${iCResponses?[4]}\nRelationship-to-Participant: ${iCResponses?[5]}\n'
         'Name-of-person-who-obtained-consent: ${iCResponses?[6]}\n'
-        '$linebreak $childIntakeString $parentIntakeString $linebreak $cString $linebreak $mString';
+        '${linebreak}INTAKE FORM RESPONSES-CHILD${childIntakeString}INTAKE FORM RESPONSES-PARENT'
+        '$parentIntakeString${linebreak}INTAKE FORM RESPONSES-COMPENSATION'
+        '$cString${linebreak}MCHATR FORM RESPONSES$mString';
   }
 
   // makes the user_report.txt file
