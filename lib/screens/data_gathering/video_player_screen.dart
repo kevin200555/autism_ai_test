@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:autism_ai_test/constants/colors.dart';
+import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
@@ -38,13 +39,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
-        title: Text(
-          'Video Playback',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: ColorTheme.alternateTextColor,
-          ),
-        ),
+        title: AppBarTitle('Video Playback', color: ColorTheme.background),
         centerTitle: true,
         iconTheme: IconThemeData(color: ColorTheme.background),
         backgroundColor: ColorTheme.accent,
@@ -59,18 +54,24 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
             : const CircularProgressIndicator(),
       ),
       // play/pause button
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            _controller.value.isPlaying
-                ? _controller.pause()
-                : _controller.play();
-          });
-        },
-        backgroundColor: ColorTheme.accent,
-        foregroundColor: ColorTheme.background,
-        child: Icon(
-          _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
+      floatingActionButton: SizedBox(
+        width: MediaQuery.sizeOf(context).height * 0.075,
+        height: MediaQuery.sizeOf(context).height * 0.075, 
+        child: FloatingActionButton(
+          onPressed: () {
+            setState(() {
+              _controller.value.isPlaying
+                  ? _controller.pause()
+                  : _controller.play();
+            });
+          },
+          shape: const CircleBorder(),
+          backgroundColor: ColorTheme.accent,
+          foregroundColor: ColorTheme.background,
+          child: Icon(
+            _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
+            size: MediaQuery.sizeOf(context).height * 0.07
+          ),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
