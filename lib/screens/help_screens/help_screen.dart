@@ -40,6 +40,16 @@ class HelpScreen extends StatelessWidget {
               'this request to record.',
               maxLines: 15,
             ),
+            SubTitle('Video Recording'),
+            BodyText(
+              'Video recording is the main feature of the app '
+              'Our AI model requires videos in order to accuratley determine if a child has autism\n\n'
+              'To Record a video, simply press the green button to start recording, and then the red button to stop '
+              'The button with an \'eye\' icon can then be pressed to review the video '
+              'If you\'re not satisfied with the video, you can then delete the video by pressing the button '
+              'with the trash can on it. Take as much time as you need, so don\'t worry about \'messing up\'',
+              maxLines: 12,
+            ),
             // FAQ Section
             SubTitle('FAQ'),
             BodyText(
