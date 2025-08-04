@@ -3,7 +3,7 @@ import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/button/back_button.dart';
 import 'package:autism_ai_test/widgets/button/help_button.dart';
 import 'package:autism_ai_test/widgets/progress_bar.dart';
-import 'package:autism_ai_test/widgets/questions/mutliple_choice_question_widget.dart';
+import 'package:autism_ai_test/widgets/questions/radio_multiple_choice_question_widget.dart';
 import 'package:autism_ai_test/widgets/questions/short_answer_question_widget.dart';
 import 'package:autism_ai_test/screens/data_gathering/m_chatr_form_screen.dart';
 import 'package:autism_ai_test/constants/colors.dart';
@@ -93,7 +93,7 @@ class _CompensationFormScreenState extends State<CompensationFormScreen> {
                 },
               );
             } else {
-              return MutlipleChoiceQuestionWidget(
+              return RadioMutlipleChoiceQuestionWidget(
                 multipleChoiceEntry: compensationFormQuestions[questionIndex],
                 value: responses[questionIndex],
                 onChanged: (value) {
