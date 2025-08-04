@@ -1,4 +1,4 @@
-import 'package:auto_size_text/auto_size_text.dart';
+import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:flutter/material.dart';
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -25,7 +25,7 @@ class NextButton extends StatelessWidget {
         child: ElevatedButton.icon(
           onPressed: onPressed,
           // Button Label (doesn't have to say 'next')
-          label: AutoSizeText(
+          label: ButtonText(
             label,
             style: GoogleFonts.lato(
               textStyle: TextStyle(
