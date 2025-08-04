@@ -31,8 +31,8 @@ class HomeScreen extends StatelessWidget {
           children: [
             SubTitle('Background', textAlign: TextAlign.left),
             BodyText(
-              'Getting an autism diagnosis for young children can still be slow and expensive.'
-              ' Many families miss the chance to get early support when it matters most.\n',
+              'Getting an autism diagnosis for young children can still be slow and expensive. '
+              'Many families miss the chance to get early support when it matters most.\n',
               maxLines: 4,
             ),
             BodyText(
@@ -41,16 +41,16 @@ class HomeScreen extends StatelessWidget {
               maxLines: 4,
             ),
             BodyText(
-              'To make this possible, we need videos of real kids—playing, interacting, and'
-              ' just being themselves.\n',
+              'To make this possible, we need videos of real kids playing, interacting, and '
+              'just being themselves.\n',
               maxLines: 3,
             ),
             BodyText(
-              'That\'s where you come in. By doing a few short tasks and recording them'
-              ', you\'re helping us build something that could help many other families in the future.\n',
+              'That\'s where you come in. By doing a few short tasks and recording them, '
+              'you\'re helping us build something that could help many other families in the future.\n',
               maxLines: 4,
             ),
-            SubTitle('What\'s in the Test?', textAlign: TextAlign.left),
+            SubTitle('What\'s in the test?', textAlign: TextAlign.left),
             BodyText('\t\t- Informed Consent Document', maxLines: 1),
             BodyText('\t\t- Autism Intake Form', maxLines: 1),
             BodyText('\t\t- M-ChatR Form', maxLines: 1),
