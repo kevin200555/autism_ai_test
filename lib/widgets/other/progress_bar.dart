@@ -28,7 +28,10 @@ class _ProgressBarState extends State<ProgressBar> {
               Container(
                 width: MediaQuery.sizeOf(context).width * 0.65,
                 height: MediaQuery.sizeOf(context).height * 0.02,
-                color: ColorTheme.background,
+                decoration: BoxDecoration(
+                  color: ColorTheme.background,
+                  borderRadius: BorderRadius.circular(10),
+                ),
               ),
 
               // Top rectangle (shows actual progress)
@@ -42,14 +45,19 @@ class _ProgressBarState extends State<ProgressBar> {
                           (UserClass.screenNumber /
                               UserClass.totalScreenNumber),
                 height: MediaQuery.sizeOf(context).height * 0.02,
-                color:
-                    (UserClass.screenNumber / UserClass.totalScreenNumber) <
-                        0.333
-                    ? ColorTheme.progressBar1
-                    : (UserClass.screenNumber / UserClass.totalScreenNumber) <
-                          0.666
-                    ? ColorTheme.progressBar2
-                    : ColorTheme.progressBar3,
+                decoration: BoxDecoration(
+                  color:
+                      (UserClass.screenNumber / UserClass.totalScreenNumber) <
+                          0.333
+                      ? ColorTheme.progressBar1
+                      : (UserClass.screenNumber / UserClass.totalScreenNumber) <
+                            0.666
+                      ? ColorTheme.progressBar2
+                      : ColorTheme.progressBar3,
+                  borderRadius: BorderRadius.circular(
+                    10,
+                  ), // Adjust the radius as needed
+                ),
               ),
             ],
           ),
