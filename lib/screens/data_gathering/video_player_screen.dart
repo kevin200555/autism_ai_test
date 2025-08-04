@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:autism_ai_test/constants/colors.dart';
-import 'package:autism_ai_test/widgets/text_types.dart';
+import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 

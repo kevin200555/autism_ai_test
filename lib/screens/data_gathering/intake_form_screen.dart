@@ -3,13 +3,13 @@ import 'package:autism_ai_test/screens/data_gathering/compensation_form.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/button/back_button.dart';
 import 'package:autism_ai_test/widgets/button/help_button.dart';
-import 'package:autism_ai_test/widgets/progress_bar.dart';
+import 'package:autism_ai_test/widgets/other/progress_bar.dart';
 import 'package:autism_ai_test/widgets/questions/choose_all_question_widget.dart';
 import 'package:autism_ai_test/widgets/questions/mutliple_choice_question_widget.dart';
 import 'package:autism_ai_test/widgets/questions/short_answer_question_widget.dart';
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/widgets/button/next_button.dart';
-import 'package:autism_ai_test/widgets/text_types.dart';
+import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 

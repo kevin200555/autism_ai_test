@@ -1,6 +1,6 @@
 import 'package:autism_ai_test/screens/information_screens/ic_document_screen.dart';
 import 'package:autism_ai_test/widgets/button/help_button.dart';
-import 'package:autism_ai_test/widgets/text_types.dart';
+import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';

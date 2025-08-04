@@ -1,7 +1,7 @@
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/screens/information_screens/home_screen.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
-import 'package:autism_ai_test/widgets/text_types.dart';
+import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
