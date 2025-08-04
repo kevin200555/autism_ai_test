@@ -134,7 +134,9 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
       if (!mounted) return;
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => FinalScreen(camera: widget.camera,)),
+        MaterialPageRoute(
+          builder: (context) => FinalScreen(camera: widget.camera),
+        ),
       );
     }
   }
@@ -200,7 +202,12 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
           'Task ${currentStep + 1} of ${widget.instructions.length}: "${InstructionAndQuestions.getVideoNames()[currentStep]}"',
           color: ColorTheme.background,
         ),
-        actions: [HelpButton(color: ColorTheme.alternateTextColor, camera: widget.camera,)],
+        actions: [
+          HelpButton(
+            color: ColorTheme.alternateTextColor,
+            camera: widget.camera,
+          ),
+        ],
         centerTitle: true,
         iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),
         backgroundColor: ColorTheme.accent,

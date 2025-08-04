@@ -102,7 +102,7 @@ class AutismAITest extends StatelessWidget {
         initialScreen = HomeScreen(camera: cameras[0]);
     }
     //camera is passed around through all widgets and screens in the program
-    return MaterialApp(home: initialScreen, debugShowCheckedModeBanner: false,);
+    return MaterialApp(home: initialScreen, debugShowCheckedModeBanner: false);
   }
 } // EOF main.dart
 

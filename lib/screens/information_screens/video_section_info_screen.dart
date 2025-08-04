@@ -571,7 +571,8 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                     builder: (context) => VideoRecordingSectionScreen(
                       camera: widget.camera,
                       instructions:
-                          InstructionAndQuestions.getVideoInstructios(), currentStep: 0,
+                          InstructionAndQuestions.getVideoInstructios(),
+                      currentStep: 0,
                     ),
                   ),
                 );

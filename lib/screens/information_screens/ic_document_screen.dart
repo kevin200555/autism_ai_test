@@ -62,10 +62,7 @@ class _PdfViewerScreenState extends State<PdfViewerScreen> {
                 ),
               );
             },
-            label: ButtonText(
-              'SIGN ON NEXT PAGE', maxLines: 1,
-
-            ),
+            label: ButtonText('SIGN ON NEXT PAGE', maxLines: 1),
             style: ElevatedButton.styleFrom(
               backgroundColor: ColorTheme.accent,
               foregroundColor: ColorTheme.alternateTextColor,

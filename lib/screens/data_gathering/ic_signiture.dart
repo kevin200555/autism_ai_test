@@ -81,7 +81,12 @@ class _InformedConsentSignitureScreenState
         backgroundColor: ColorTheme.background,
         appBar: AppBar(
           leading: BackButtonAppBar(),
-          actions: [HelpButton(color: ColorTheme.alternateTextColor,camera: widget.camera)],
+          actions: [
+            HelpButton(
+              color: ColorTheme.alternateTextColor,
+              camera: widget.camera,
+            ),
+          ],
           title: AppBarTitle('SIGNITURE', color: ColorTheme.alternateTextColor),
           centerTitle: true,
           backgroundColor: ColorTheme.accent,

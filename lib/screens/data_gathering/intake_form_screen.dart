@@ -41,7 +41,12 @@ class _ChildIntakeFormScreenState extends State<ChildIntakeFormScreen> {
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
         leading: BackButtonAppBar(),
-        actions: [HelpButton(color: ColorTheme.alternateTextColor,camera: widget.camera,)],
+        actions: [
+          HelpButton(
+            color: ColorTheme.alternateTextColor,
+            camera: widget.camera,
+          ),
+        ],
         title: AppBarTitle(
           'INTAKE FORM: CHILD',
           color: ColorTheme.alternateTextColor,
@@ -140,7 +145,12 @@ class _ParentIntakeFormScreenState extends State<ParentIntakeFormScreen> {
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
         leading: BackButtonAppBar(),
-        actions: [HelpButton(color: ColorTheme.alternateTextColor, camera: widget.camera,)],
+        actions: [
+          HelpButton(
+            color: ColorTheme.alternateTextColor,
+            camera: widget.camera,
+          ),
+        ],
         title: AppBarTitle(
           'INTAKE FORM: PARENT/GUARDIAN',
           color: ColorTheme.alternateTextColor,

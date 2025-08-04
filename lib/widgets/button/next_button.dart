@@ -29,10 +29,10 @@ class NextButton extends StatelessWidget {
             label,
             style: GoogleFonts.lato(
               textStyle: TextStyle(
-              fontSize: 32,
-              fontWeight: FontWeight.bold,
-              color: ColorTheme.alternateTextColor,
-              )
+                fontSize: 32,
+                fontWeight: FontWeight.bold,
+                color: ColorTheme.alternateTextColor,
+              ),
             ),
             maxLines: 1,
             minFontSize: 12,

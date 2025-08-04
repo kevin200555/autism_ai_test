@@ -61,10 +61,7 @@ class FinalScreen extends StatelessWidget {
                 ),
               );
             },
-            label: ButtonText(
-              'EXIT', maxLines: 1,
-  
-            ),
+            label: ButtonText('EXIT', maxLines: 1),
             style: ElevatedButton.styleFrom(
               backgroundColor: ColorTheme.accent,
               foregroundColor: ColorTheme.alternateTextColor,

@@ -40,7 +40,12 @@ class _CompensationFormScreenState extends State<CompensationFormScreen> {
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
         leading: BackButtonAppBar(),
-        actions: [HelpButton(color: ColorTheme.alternateTextColor, camera: widget.camera,)],
+        actions: [
+          HelpButton(
+            color: ColorTheme.alternateTextColor,
+            camera: widget.camera,
+          ),
+        ],
         title: AppBarTitle(
           'COMPENSATION FORM',
           color: ColorTheme.alternateTextColor,

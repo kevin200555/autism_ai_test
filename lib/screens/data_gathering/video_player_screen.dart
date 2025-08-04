@@ -56,7 +56,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
       // play/pause button
       floatingActionButton: SizedBox(
         width: MediaQuery.sizeOf(context).height * 0.075,
-        height: MediaQuery.sizeOf(context).height * 0.075, 
+        height: MediaQuery.sizeOf(context).height * 0.075,
         child: FloatingActionButton(
           onPressed: () {
             setState(() {
@@ -70,7 +70,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
           foregroundColor: ColorTheme.background,
           child: Icon(
             _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
-            size: MediaQuery.sizeOf(context).height * 0.07
+            size: MediaQuery.sizeOf(context).height * 0.07,
           ),
         ),
       ),

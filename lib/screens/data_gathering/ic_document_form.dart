@@ -54,7 +54,10 @@ class _InformedConsentSigningScreenState
       appBar: AppBar(
         leading: BackButton(),
         actions: [
-          HelpButton(color: ColorTheme.alternateTextColor, camera: widget.camera)
+          HelpButton(
+            color: ColorTheme.alternateTextColor,
+            camera: widget.camera,
+          ),
         ],
         // leading: BackButtonAppBar(),
         title: AppBarTitle(
