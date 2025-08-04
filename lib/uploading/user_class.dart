@@ -116,19 +116,20 @@ class UserClass {
   // the format of this can be seen in my figma designs
   static String generateUserReport() {
     String linebreak = '===============================================\n';
-
+    
     List<List<String>> childIntake = InstructionAndQuestions.getChildIntakeForm();
     String childIntakeString = '';
     for (int i = 0; i < childIntake.length; i++) {
       childIntakeString += "Q: ${childIntake[i][1]}\n";
-      childIntakeString += "A: ${childIntakeResponses?[i]?[1]}\n";
+      childIntakeString += "A: ${childIntakeResponses?[i]}\n";
     }
-
+    
+    print(parentIntakeResponses);
     List<List<String>> parentIntake = InstructionAndQuestions.getParentIntakeForm();
     String parentIntakeString = '';
     for (int i = 0; i < parentIntake.length; i++) {
       parentIntakeString += "Q: ${parentIntake[i][1]}\n";
-      parentIntakeString += "A: ${parentIntakeResponses?[i]?[1]}\n";
+      parentIntakeString += "A: ${parentIntakeResponses?[i]}\n";
     }
 
     List<List<String>> compensation = InstructionAndQuestions.getMChatR();
@@ -139,7 +140,7 @@ class UserClass {
         cString += "Q: ###-###-####";
       } else {
         cString += "Q: ${compensation[i][1]}\n";
-        cString += "A: ${mChatRresponses?[i]?[1]}\n";
+        cString += "A: ${mChatRresponses?[i]}\n";
       }
     }
 
@@ -147,7 +148,7 @@ class UserClass {
     String mString = '';
     for (int i = 0; i < mChatR.length; i++) {
       mString += "Q: ${mChatR[i][1]}\n";
-      mString += "A: ${mChatRresponses?[i]?[1]}\n";
+      mString += "A: ${mChatRresponses?[i]}\n";
     }
 
     return 'User-ID: $userId\n$linebreak Child-Name: ${iCResponses?[2]}\nDate: ${iCResponses?[3]}\n'
