@@ -15,6 +15,7 @@ import 'package:autism_ai_test/widgets/questions/radio_multiple_choice_question_
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';
 import 'package:camera/camera.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 // This class implements the mChatR form, a questionaire made up of 100% multiple choice questions used to
@@ -48,7 +49,12 @@ class _MChatRFormScreen1State extends State<MChatRFormScreen1> {
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
         leading: BackButtonAppBar(),
-        actions: [HelpButton(color: ColorTheme.alternateTextColor, camera: widget.camera,)],
+        actions: [
+          HelpButton(
+            color: ColorTheme.alternateTextColor,
+            camera: widget.camera,
+          ),
+        ],
         title: AppBarTitle(
           'M-CHATR FORM: Page 1 of 2',
           color: ColorTheme.alternateTextColor,
@@ -138,7 +144,12 @@ class _MChatRFormScreen2State extends State<MChatRFormScreen2> {
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
         leading: BackButtonAppBar(),
-        actions: [HelpButton(color: ColorTheme.alternateTextColor, camera: widget.camera,)],
+        actions: [
+          HelpButton(
+            color: ColorTheme.alternateTextColor,
+            camera: widget.camera,
+          ),
+        ],
         title: AppBarTitle(
           'M-CHATR FORM: Page 2 of 2',
           color: ColorTheme.alternateTextColor,
@@ -156,6 +167,11 @@ class _MChatRFormScreen2State extends State<MChatRFormScreen2> {
               label: 'SUBMIT',
               onPressed: () async {
                 // SAVE TO HIVE
+                if (kDebugMode) {
+                  print(UserClass.parentIntakeResponses);
+                  print(UserClass.compensationResponses);
+                  print(UserClass.mChatRresponses);
+                }
                 UserClass.screenNumber++;
                 UserClass.mChatRresponses = widget.responses;
                 await UserClass.saveToHive();
