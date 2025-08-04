@@ -157,9 +157,9 @@ class UserClass {
     return 'User-ID: $userId\n$linebreak Child-Name: ${iCResponses?[2]}\nDate: ${iCResponses?[3]}\n'
         'Parent-Name: ${iCResponses?[4]}\nRelationship-to-Participant: ${iCResponses?[5]}\n'
         'Name-of-person-who-obtained-consent: ${iCResponses?[6]}\n'
-        '${linebreak}INTAKE FORM RESPONSES-CHILD${childIntakeString}INTAKE FORM RESPONSES-PARENT'
-        '$parentIntakeString${linebreak}INTAKE FORM RESPONSES-COMPENSATION'
-        '$cString${linebreak}MCHATR FORM RESPONSES$mString';
+        '${linebreak}INTAKE FORM RESPONSES-CHILD\n${childIntakeString}INTAKE FORM RESPONSES-PARENT\n'
+        '$parentIntakeString${linebreak}INTAKE FORM RESPONSES-COMPENSATION\n'
+        '$cString${linebreak}MCHATR FORM RESPONSES\n$mString';
   }
 
   // makes the user_report.txt file
