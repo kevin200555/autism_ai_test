@@ -3,7 +3,6 @@ import 'package:autism_ai_test/screens/data_gathering/ic_document_form.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/button/back_button.dart';
 import 'package:autism_ai_test/widgets/text_types.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:pdfx/pdfx.dart';
@@ -63,15 +62,9 @@ class _PdfViewerScreenState extends State<PdfViewerScreen> {
                 ),
               );
             },
-            label: AutoSizeText(
-              'SIGN ON NEXT PAGE',
-              style: TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.bold,
-                color: ColorTheme.alternateTextColor,
-              ),
-              maxLines: 1,
-              minFontSize: 12,
+            label: ButtonText(
+              'SIGN ON NEXT PAGE', maxLines: 1,
+
             ),
             style: ElevatedButton.styleFrom(
               backgroundColor: ColorTheme.accent,
