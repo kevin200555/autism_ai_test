@@ -8,6 +8,7 @@ import 'package:autism_ai_test/screens/data_gathering/video_recording_section_sc
 import 'package:autism_ai_test/screens/information_screens/video_section_info_screen.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:autism_ai_test/screens/information_screens/home_screen.dart';
@@ -23,7 +24,14 @@ Future<void> main() async {
   await Firebase.initializeApp();
   await Hive.initFlutter();
   await UserClass.loadFromHive();
-  cameras = await availableCameras();
+  try {
+    cameras = await availableCameras();
+  } catch (e) {
+    if(kDebugMode){
+      print('Error getting cameras: $e');
+    }
+    cameras = []; // ensure it's at least an empty list
+  }
   runApp(AutismAITest());
 }
 
@@ -99,6 +107,7 @@ class AutismAITest extends StatelessWidget {
           currentStep: 2,
         );
       default:
+      
         initialScreen = HomeScreen(camera: cameras[0]);
     }
     //camera is passed around through all widgets and screens in the program
