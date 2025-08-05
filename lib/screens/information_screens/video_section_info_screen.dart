@@ -13,6 +13,7 @@ import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:autism_ai_test/widgets/button/help_button.dart';
 
 class GeneralInstructionsScreen extends StatelessWidget {
   final CameraDescription camera;
@@ -24,6 +25,12 @@ class GeneralInstructionsScreen extends StatelessWidget {
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
         leading: BackButtonAppBar(),
+        actions: [
+            HelpButton(
+              color: ColorTheme.textColor,
+              camera: camera,
+            ),
+          ],
         title: AppBarTitle(
           'Video Section Information Page 1 of 4',
           color: ColorTheme.textColor,
@@ -101,6 +108,12 @@ class FewTipsBeforeStart extends StatelessWidget {
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
         leading: BackButtonAppBar(),
+        actions: [
+            HelpButton(
+              color: ColorTheme.textColor,
+              camera: camera,
+            ),
+          ],
         title: AppBarTitle(
           'Video Section Information Page 2 of 4',
           color: ColorTheme.textColor,
@@ -292,6 +305,12 @@ class BeforeYouStartScreen extends StatelessWidget {
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
         leading: BackButtonAppBar(),
+        actions: [
+            HelpButton(
+              color: ColorTheme.textColor,
+              camera: camera,
+            ),
+          ],
         title: AppBarTitle(
           'Video Section Information Page 3 of 4',
           color: ColorTheme.textColor,
@@ -456,6 +475,12 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
         leading: BackButtonAppBar(),
+        actions: [
+            HelpButton(
+              color: ColorTheme.textColor,
+              camera: widget.camera,
+            ),
+          ],
         title: AppBarTitle(
           'Video Section Information Page 4 of 4',
           color: ColorTheme.textColor,
