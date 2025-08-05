@@ -1,4 +1,6 @@
+
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
+import 'package:autism_ai_test/no_camera_error_screen.dart';
 import 'package:autism_ai_test/screens/data_gathering/compensation_form.dart';
 import 'package:autism_ai_test/screens/data_gathering/ic_document_form.dart';
 import 'package:autism_ai_test/screens/data_gathering/ic_signiture.dart';
@@ -40,6 +42,12 @@ class AutismAITest extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if(cameras.isEmpty){
+      if(kDebugMode){
+        print('yeah so ur camera doesn\'t exist?');
+        return NoCameraErrorScreen();
+    }
+    }
     Widget initialScreen;
     // ScreenNumber and the screen
     // 0 : Homescreen
