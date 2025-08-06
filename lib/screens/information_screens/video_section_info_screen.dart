@@ -48,8 +48,10 @@ class GeneralInstructionsScreen extends StatelessWidget {
                   TextSpan(
                     text: 'You\'ll be recording ',
                     style: GoogleFonts.lato(
+                      textStyle: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w400,
+                      ),
                     ),
                   ),
                   TextSpan(

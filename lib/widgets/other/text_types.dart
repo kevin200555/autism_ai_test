@@ -150,7 +150,7 @@ class BodyText extends StatelessWidget {
           textAlign: textAlign,
           minFontSize: minFontSize,
           maxLines: maxLines,
-          style: GoogleFonts.lato(fontSize: 16, fontWeight: FontWeight.w400),
+          style: GoogleFonts.lato(textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
         ),
       ),
     );
