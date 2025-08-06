@@ -1,5 +1,5 @@
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
-import 'package:autism_ai_test/no_camera_error_screen.dart';
+import 'package:autism_ai_test/screens/other/no_camera_error_screen.dart';
 import 'package:autism_ai_test/screens/data_gathering/compensation_form.dart';
 import 'package:autism_ai_test/screens/data_gathering/ic_document_form.dart';
 import 'package:autism_ai_test/screens/data_gathering/ic_signiture.dart';
