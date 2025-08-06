@@ -265,13 +265,6 @@ class RichBodyText extends StatelessWidget {
           textAlign: textAlign,
           minFontSize: minFontSize,
           maxLines: maxLines,
-          style: GoogleFonts.lato(
-            textStyle: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: ColorTheme.textColor,
-            ),
-          ),
         ),
       ),
     );
