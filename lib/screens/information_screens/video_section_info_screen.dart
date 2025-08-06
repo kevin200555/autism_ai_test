@@ -220,7 +220,7 @@ class FewTipsBeforeStart extends StatelessWidget {
                     ),
                   ],
                 ),
-                maxLines: 2,
+                maxLines: 3,
               ),
             ),
             Padding(
@@ -228,7 +228,15 @@ class FewTipsBeforeStart extends StatelessWidget {
               child: RichBodyText(
                 TextSpan(
                   children: [
-                    TextSpan(text: '- '),
+                    TextSpan(
+                      text: '- ',
+                      style: GoogleFonts.lato(
+                        textStyle: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
                     TextSpan(
                       text: 'Good lighting',
                       style: GoogleFonts.lato(
