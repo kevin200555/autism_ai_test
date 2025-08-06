@@ -67,11 +67,12 @@ class HelpScreen extends StatelessWidget {
             SubTitle('Troubleshooting'),
             BodyText(
               'To my knowledge, the only technical issue that could arise is troubles with the camera '
-              'make sure to allow the use of the camera wlist on the app, it is critical for this test\n\n'
+              'make sure to allow the use of the camera whlie on the app, it is critical for this test\n\n'
+              'Also ensure that your device has a working camera, but at when this point, that is a non issue. '
               'If, for whatever reason, you are stuck, press the below button in order to reset',
-              maxLines: 6,
+              maxLines: 9,
             ),
-            RedBodyText('Warning: this button resets all your progress, so only do this if there is no other option', maxLines: 2,),
+            RedBodyText('Warning: this button resets all your progress, so only do this if there is no other option', maxLines: 3,),
             ResetButton(camera: camera),
             // Contact information section
             SubTitle('Contact'),
