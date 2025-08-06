@@ -21,9 +21,7 @@ class HomeScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
       ),
 
-      body: SizedBox(
-        width: double.infinity,
-        height: double.infinity,
+      body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
