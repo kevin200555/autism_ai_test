@@ -60,8 +60,9 @@ class HomeScreen extends StatelessWidget {
             BodyText(
               'This test will roughly take around 1-2 hours or so.  However, you are welcome to leave and come back '
               'at any time and have your progress saved.',
-              maxLines: 10,
+              maxLines: 3,
             ),
+            BodyText('\n\n\n\n\n\n\n\n\n', maxLines: 10)
           ],
         ),
       ),
