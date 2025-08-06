@@ -59,7 +59,7 @@ class _ShortAnswerQuestionWidgetState extends State<ShortAnswerQuestionWidget> {
         QuestionText(widget.shortAnswerInstructions[1]),
         // keeps answer box away from the edges
         Padding(
-          padding: EdgeInsets.fromLTRB(16, 2, 16, 2),
+          padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
           // answer box widget
           child: TextField(
             controller: _controller,

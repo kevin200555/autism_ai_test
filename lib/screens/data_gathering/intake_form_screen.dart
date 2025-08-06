@@ -80,14 +80,17 @@ class _ChildIntakeFormScreenState extends State<ChildIntakeFormScreen> {
           }
           if (intakeFormQuestions[index][0] == 'SAQ') {
             // short answer question
-            return ShortAnswerQuestionWidget(
-              shortAnswerInstructions: intakeFormQuestions[index],
-              value: responses[index],
-              onChanged: (value) {
-                setState(() {
-                  responses[index] = value;
-                });
-              },
+            return Padding(
+              padding: EdgeInsets.fromLTRB(0, 16, 0, 0),
+              child: ShortAnswerQuestionWidget(
+                shortAnswerInstructions: intakeFormQuestions[index],
+                value: responses[index],
+                onChanged: (value) {
+                  setState(() {
+                    responses[index] = value;
+                  });
+                },
+              ),
             );
           } else if (intakeFormQuestions[index][0] == 'CATAQ') {
             // short answer question
