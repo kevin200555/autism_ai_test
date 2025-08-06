@@ -33,8 +33,10 @@ class MutlipleChoiceQuestionWidget extends StatelessWidget {
             items: multipleChoiceEntry
                 .sublist(2)
                 .map(
-                  (item) =>
-                      DropdownMenuItem<String>(value: item, child: BodyText(item, maxLines: 1,)),
+                  (item) => DropdownMenuItem<String>(
+                    value: item,
+                    child: BodyText(item, maxLines: 1),
+                  ),
                 )
                 .toList(),
             onChanged: (val) {

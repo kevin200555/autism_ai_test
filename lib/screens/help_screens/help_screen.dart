@@ -9,16 +9,13 @@ import 'package:autism_ai_test/constants/colors.dart';
 class HelpScreen extends StatelessWidget {
   final CameraDescription camera;
   const HelpScreen({super.key, required this.camera});
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
-        title: AppBarTitle(
-          'HELP MENU',
-          color: ColorTheme.textColor,
-        ),
+        title: AppBarTitle('HELP MENU', color: ColorTheme.textColor),
         centerTitle: true,
         backgroundColor: ColorTheme.background,
       ),
@@ -55,7 +52,7 @@ class HelpScreen extends StatelessWidget {
             BodyText(
               'Q: Does my progress save?\n'
               'A: Yes! You are welcome to leave the app at any time and come back to your saved progress. '
-              'you\'re encourgaed to do this; especially if your child needs a break. ' 
+              'you\'re encourgaed to do this; especially if your child needs a break. '
               'However, after completing a form or finish recording a video, you must hit the \'next\' '
               'or \'submit\' button in order for that form or video to be saved\n\n'
               'Q: Am I able to restart my progress?, I have made a mistake\n'
@@ -72,7 +69,10 @@ class HelpScreen extends StatelessWidget {
               'If, for whatever reason, you are stuck, press the below button in order to reset',
               maxLines: 9,
             ),
-            RedBodyText('Warning: this button resets all your progress, so only do this if there is no other option', maxLines: 3,),
+            RedBodyText(
+              'Warning: this button resets all your progress, so only do this if there is no other option',
+              maxLines: 3,
+            ),
             ResetButton(camera: camera),
             // Contact information section
             SubTitle('Contact'),

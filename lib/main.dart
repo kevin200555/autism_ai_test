@@ -1,4 +1,3 @@
-
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/no_camera_error_screen.dart';
 import 'package:autism_ai_test/screens/data_gathering/compensation_form.dart';
@@ -29,7 +28,7 @@ Future<void> main() async {
   try {
     cameras = await availableCameras();
   } catch (e) {
-    if(kDebugMode){
+    if (kDebugMode) {
       print('Error getting cameras: $e');
     }
     cameras = []; // ensure it's at least an empty list
@@ -42,11 +41,11 @@ class AutismAITest extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if(cameras.isEmpty){
-      if(kDebugMode){
+    if (cameras.isEmpty) {
+      if (kDebugMode) {
         print('yeah so ur camera doesn\'t exist?');
         return NoCameraErrorScreen();
-    }
+      }
     }
     Widget initialScreen;
     // ScreenNumber and the screen
@@ -115,7 +114,6 @@ class AutismAITest extends StatelessWidget {
           currentStep: 2,
         );
       default:
-      
         initialScreen = HomeScreen(camera: cameras[0]);
     }
     //camera is passed around through all widgets and screens in the program
