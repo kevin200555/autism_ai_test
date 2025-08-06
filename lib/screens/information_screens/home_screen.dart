@@ -62,7 +62,7 @@ class HomeScreen extends StatelessWidget {
               'at any time and have your progress saved.',
               maxLines: 3,
             ),
-            BodyText('\n\n\n\n\n\n\n\n\n', maxLines: 10)
+            BodyText('\n\n\n\n\n\n\n\n\n', maxLines: 10),
           ],
         ),
       ),
