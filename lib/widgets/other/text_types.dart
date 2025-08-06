@@ -75,7 +75,7 @@ class SubTitle extends StatelessWidget {
           minFontSize: minFontSize,
           maxLines: 1,
           style: GoogleFonts.lato(
-            textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
+            textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
           ),
         ),
       ),
@@ -112,7 +112,7 @@ class QuestionText extends StatelessWidget {
           minFontSize: minFontSize,
           maxLines: 3,
           style: GoogleFonts.lato(
-            textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
+            textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
           ),
         ),
       ),
@@ -266,10 +266,16 @@ class RichBodyText extends StatelessWidget {
           minFontSize: minFontSize,
           maxLines: maxLines,
           style: GoogleFonts.lato(
-            textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+            textStyle: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: ColorTheme.textColor,
+            ),
           ),
         ),
       ),
     );
   }
-} // EOF text_types.dart
+}
+
+// EOF text_types.dart
