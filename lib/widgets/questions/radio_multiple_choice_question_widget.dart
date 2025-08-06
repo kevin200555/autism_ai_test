@@ -30,7 +30,7 @@ class RadioMutlipleChoiceQuestionWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: multipleChoiceEntry.sublist(2).map((item) {
               return RadioListTile<String>(
-                title: Text(item),
+                title: BodyText(item, maxLines: 1),
                 value: item,
                 groupValue: value,
                 onChanged: (val) {
