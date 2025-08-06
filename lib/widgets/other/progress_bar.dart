@@ -19,14 +19,14 @@ class _ProgressBarState extends State<ProgressBar> {
       padding: EdgeInsets.all(16),
       color: ColorTheme.progressBarBackground,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // the progress bar is made up of a bottom rectangle and a top green rectangle stacked on top of it.
           Stack(
             children: [
               // Bottom rectangle
               Container(
-                width: MediaQuery.sizeOf(context).width * 0.65,
+                width: MediaQuery.sizeOf(context).width * 0.60,
                 height: MediaQuery.sizeOf(context).height * 0.02,
                 decoration: BoxDecoration(
                   color: ColorTheme.background,
@@ -39,7 +39,7 @@ class _ProgressBarState extends State<ProgressBar> {
                 width:
                     // if user ever somhow gets to 14/13 or something, this makes sure the top rectangle doesn't get any bigger
                     (UserClass.screenNumber / UserClass.totalScreenNumber) >= 1
-                    ? MediaQuery.sizeOf(context).width * 0.65
+                    ? MediaQuery.sizeOf(context).width * 0.60
                     : MediaQuery.sizeOf(context).width *
                           0.60 *
                           (UserClass.screenNumber /
