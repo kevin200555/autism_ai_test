@@ -25,7 +25,7 @@ class UserClass {
   static List<String?>? parentIntakeResponses;
   static List<String?>? compensationResponses;
   // These store the videos (size of these could change later)
-  static List<XFile?>? recordedVideos = [null, null, null];
+  static List<XFile?>? recordedVideos = List<XFile?>.filled(InstructionAndQuestions.videoNames.length, null, growable: false);
 
   // This is used after the user has completed the test, since their data should be uploaded to Google Cloud
   // is not needed locally on their mobile device anymore and
@@ -40,7 +40,7 @@ class UserClass {
     childIntakeResponses = null;
     parentIntakeResponses = null;
     compensationResponses = null;
-    recordedVideos = [null, null, null];
+    recordedVideos = List<XFile?>.filled(InstructionAndQuestions.videoNames.length, null, growable: false);
     saveToHive();
   }
 
@@ -107,9 +107,9 @@ class UserClass {
       print("Compensation Form Responses: $compensationResponses");
       print("Screen Number:  $screenNumber");
 
-      print("Recorded Video 1: ${recordedVideos?[0]?.path}");
-      print("Recorded Video 2: ${recordedVideos?[1]?.path}");
-      print("Recorded Video 3: ${recordedVideos?[2]?.path}");
+      for(int i = 0; i < InstructionAndQuestions.videoNames.length; i++){
+        print("Recorded Video 1: ${recordedVideos?[i]?.path}");
+      }
     }
   }
 
@@ -189,8 +189,8 @@ class UserClass {
     );
     await userReport.copy(userReportDest.path);
 
-    // Copy each recorded video (assuming you have 3 and they're not null)
-    for (int i = 0; i < 3; i++) {
+    // Copy each recorded video (assuming you have (instruction length) and they're not null)
+    for (int i = 0; i < InstructionAndQuestions.videoNames.length; i++) {
       final video = recordedVideos?[i];
       if (video != null) {
         final file = File(video.path);
