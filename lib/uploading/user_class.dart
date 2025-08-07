@@ -25,7 +25,11 @@ class UserClass {
   static List<String?>? parentIntakeResponses;
   static List<String?>? compensationResponses;
   // These store the videos (size of these could change later)
-  static List<XFile?>? recordedVideos = List<XFile?>.filled(InstructionAndQuestions.videoNames.length, null, growable: false);
+  static List<XFile?>? recordedVideos = List<XFile?>.filled(
+    InstructionAndQuestions.videoNames.length,
+    null,
+    growable: false,
+  );
 
   // This is used after the user has completed the test, since their data should be uploaded to Google Cloud
   // is not needed locally on their mobile device anymore and
@@ -40,7 +44,11 @@ class UserClass {
     childIntakeResponses = null;
     parentIntakeResponses = null;
     compensationResponses = null;
-    recordedVideos = List<XFile?>.filled(InstructionAndQuestions.videoNames.length, null, growable: false);
+    recordedVideos = List<XFile?>.filled(
+      InstructionAndQuestions.videoNames.length,
+      null,
+      growable: false,
+    );
     saveToHive();
   }
 
@@ -107,7 +115,7 @@ class UserClass {
       print("Compensation Form Responses: $compensationResponses");
       print("Screen Number:  $screenNumber");
 
-      for(int i = 0; i < InstructionAndQuestions.videoNames.length; i++){
+      for (int i = 0; i < InstructionAndQuestions.videoNames.length; i++) {
         print("Recorded Video 1: ${recordedVideos?[i]?.path}");
       }
     }
