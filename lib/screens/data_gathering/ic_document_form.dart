@@ -44,7 +44,7 @@ class _InformedConsentSigningScreenState
     final parent = responses[4]?.toLowerCase().replaceAll(' ', '');
     //uses the Date time class to give user unquie Id based on date
     final now = DateTime.now();
-    final date = now.toString().substring(0, 10).replaceAll('-','');
+    final date = now.toString().substring(0, 10).replaceAll('-','').substring(4,8)+now.toString().substring(0, 10).replaceAll('-','').substring(0,4);
     final time = now.toString().substring(11,19).replaceAll(':', '');
     String userId = "$name-$parent-$date-$time";
     return userId;
