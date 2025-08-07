@@ -7,6 +7,10 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:pdfx/pdfx.dart';
 
+// This module lets the user view the Informed Consent document (in the assets folder)
+// its a widget that could integreate a pdf
+// I was going to let the user just sign on this screen, but the document was way too small to both read and try to sign
+// and there not really a good way to scroll without accidentally drawing or draw without accidentally scrolling 
 class PdfViewerScreen extends StatefulWidget {
   final CameraDescription camera;
   const PdfViewerScreen({super.key, required this.camera});
@@ -18,6 +22,7 @@ class PdfViewerScreen extends StatefulWidget {
 class _PdfViewerScreenState extends State<PdfViewerScreen> {
   late final PdfControllerPinch _pdfController;
 
+  // inititate the pdf controller, this is what lets us interact with the document
   @override
   void initState() {
     super.initState();
@@ -27,6 +32,7 @@ class _PdfViewerScreenState extends State<PdfViewerScreen> {
     );
   }
 
+  // removes the controller
   @override
   void dispose() {
     _pdfController.dispose();
@@ -38,6 +44,7 @@ class _PdfViewerScreenState extends State<PdfViewerScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: BackButtonAppBar(),
+        // title
         title: AppBarTitle(
           'Informed Consent Document',
           color: ColorTheme.textColor,
