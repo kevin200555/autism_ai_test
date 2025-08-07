@@ -41,9 +41,12 @@ class _InformedConsentSigningScreenState
   // generate a unquie user id sarahjones-20250707-tomjones
   String generateUserId() {
     final name = responses[2]?.toLowerCase().replaceAll(' ', '');
-    final date = responses[3]?.replaceAll('/', '');
     final parent = responses[4]?.toLowerCase().replaceAll(' ', '');
-    String userId = "$name-$date-$parent";
+    //uses the Date time class to give user unquie Id based on date
+    final now = DateTime.now();
+    final date = now.toString().substring(0, 10).replaceAll('-','');
+    final time = now.toString().substring(11,19).replaceAll(':', '');
+    String userId = "$name-$parent-$date-$time";
     return userId;
   }
 
@@ -81,6 +84,7 @@ class _InformedConsentSigningScreenState
                 UserClass.screenNumber++;
                 //makes a new UserClass in order to save the information this user has done
                 UserClass.userId = generateUserId();
+                print(UserClass.userId);
                 UserClass.iCResponses = responses;
                 UserClass.saveToHive();
 
