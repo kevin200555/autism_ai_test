@@ -129,6 +129,11 @@ class AutismAITest extends StatelessWidget {
 // - update help menu ✓
 // - with a restart button ✓
 // - and maybe multiple screens 
+// - have a menu where the user can choose which video to do first
+// - be it a drop down menu or like a scrollable menu or what have you
+// - menu where the user can continously upload videos of their child to check for susipoious behaviors
+// - see if I can read data from firebase / google cloud services
+//   and display it on the app
 // Things to note:
 // - see if I can get them to split into 9 videos 
 // - make the MCQ questions more cleaner (dropdown button harder to see) ✓
