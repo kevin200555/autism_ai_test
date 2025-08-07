@@ -202,7 +202,9 @@ class UserClass {
       final video = recordedVideos?[i];
       if (video != null) {
         final file = File(video.path);
-        final dest = File(path.join(folder.path, path.basename(video.path)));
+        final dest = File(
+          path.join(folder.path, InstructionAndQuestions.videoNames[i]),
+        );
         await file.copy(dest.path);
       }
     }
