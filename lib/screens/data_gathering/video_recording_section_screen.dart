@@ -12,8 +12,12 @@ import 'package:camera/camera.dart';
 import 'package:autism_ai_test/screens/data_gathering/video_player_screen.dart';
 import 'package:autism_ai_test/constants/colors.dart';
 
-//Stateful Widget that displays a series of video recording sections that the user must complete
+// Stateful Widget that displays a series of video recording sections that the user must complete
 // The user records data for one section, moves on to the next section, and etc
+// Unlike the other screens, that are created individually, this generates the screens based on a set of instructions
+// these instructions are in the constants folder
+// each video has a different set of instuctions, so a different video will be generated for each
+// since the instructions can change as I'm given more requirements, this is a must
 class VideoRecordingSectionScreen extends StatefulWidget {
   //Takes in the camera from main and the instructions are from home_screen
   final CameraDescription camera;
@@ -37,7 +41,9 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
   bool isRecording = false;
   List<XFile> recordedVideos = []; //stores recorded videos
 
-
+  // This function is for the case where the user saved their progress at video #2 for example, and need to get back
+  // to that screen
+  // I can't just drop them off at the screen they left at because I didn't code a seperate screen for video #1 and video #2
   Future<void> _runPreInteractionCode() async {
     // Simulate logic like checking user consent, preparing files, etc.
     while (currentStep > 0) {
@@ -45,11 +51,13 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
       currentStep--;
     }
 
-    // Optional: do some real setup here instead of just showing a dialog
     await Future.delayed(Duration(seconds: 1));
   }
 
-  //initlize the camera controller
+  // initlize the camera and scroll controllers
+  // the camera controllers lets the program interact with the camera (taking and storing videos)
+  // the scroll controller makes sure the user always starts at the top of the page before taking a video 
+  // (so they can read the instructions)
   @override
   void initState() {
     super.initState();
@@ -64,7 +72,7 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
     });
   }
 
-  //deactivates the recording
+  //deactivates the recording and scroll
   @override
   void dispose() {
     _scrollController.dispose();
@@ -115,7 +123,18 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
     }
   }
 
-  //goes to the next video
+  //goes back to previous video screen
+  previousVideo() {
+    if (currentStep > 0) {
+      setState(() {
+        currentStep--;
+      });
+    } else {
+      Navigator.of(context).pop();
+    }
+  }
+
+  //goes to the next video screen
   nextVideo() async {
     //check to make sure that the user recorded somthing before moving on
     if (!(currentStep >= 0 && currentStep < recordedVideos.length)) {
@@ -127,12 +146,12 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
       return;
     }
     UserClass.recordedVideos?[currentStep] = recordedVideos[currentStep];
-    _scrollController.jumpTo(0);
+    _scrollController.jumpTo(0); // set the scroll controller
     if (currentStep < widget.instructions.length - 1) {
       setState(() {
         currentStep++;
       });
-      //goes back to main menu
+      //goes back to main menu if the current vide step exceeds number of insturcions
     } else {
       File userReport = await UserClass.writeToReportFile(
         UserClass.generateUserReport(),
@@ -148,16 +167,7 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
     }
   }
 
-  //goes back to previous video
-  previousVideo() {
-    if (currentStep > 0) {
-      setState(() {
-        currentStep--;
-      });
-    } else {
-      Navigator.of(context).pop();
-    }
-  }
+
 
   //deletes Video, has to convert the recordedvideo from an XFILE to a File, This is why this code doesn't work on web applications
   //since web applications can't use dart.io FIles
@@ -184,7 +194,7 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
     }
   }
 
-  //views video,
+  //views video, brings user to a seperate screen to do so
   Future<void> viewVideo(XFile videoFile) async {
     if (!mounted) return;
     Navigator.push(
