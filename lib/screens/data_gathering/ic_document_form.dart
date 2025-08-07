@@ -84,7 +84,7 @@ class _InformedConsentSigningScreenState
                 UserClass.screenNumber++;
                 //makes a new UserClass in order to save the information this user has done
                 UserClass.userId = generateUserId();
-                print(UserClass.userId);
+
                 UserClass.iCResponses = responses;
                 UserClass.saveToHive();
 
