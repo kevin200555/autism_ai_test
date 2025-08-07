@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
 // Lets the user view the video they just recorded
-// may be a good idea to add a fast forward/rewind button
+// may be a good idea to add a fast forward / rewind button 
+// (I'll add this later depending on how long the videos end up being)
 class VideoPlayerScreen extends StatefulWidget {
   final String videoPath; // Can be file path or network URL
 
