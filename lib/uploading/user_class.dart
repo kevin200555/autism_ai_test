@@ -203,7 +203,7 @@ class UserClass {
       if (video != null) {
         final file = File(video.path);
         final dest = File(
-          path.join(folder.path, InstructionAndQuestions.videoNames[i]),
+          path.join(folder.path, '${InstructionAndQuestions.videoNames[i]}.mp4'), // change this depending on what names you want the videos to be called
         );
         await file.copy(dest.path);
       }
