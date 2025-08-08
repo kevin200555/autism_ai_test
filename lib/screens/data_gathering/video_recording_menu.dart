@@ -5,6 +5,7 @@ import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/screens/information_screens/final_screen.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/button/help_button.dart';
+import 'package:autism_ai_test/widgets/button/next_button.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:autism_ai_test/widgets/other/video_item.dart';
 import 'package:camera/camera.dart';
@@ -26,7 +27,7 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
     return list[videoNumber] != null;
   }
 
-  nextVideo() async {
+  submit() async {
     for (int i = 0; i < InstructionAndQuestions.videoNames.length; i++) {
       if (!isVideoRecorded(i)) {
         await showDialog(
@@ -41,6 +42,7 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
     File userReport = await UserClass.writeToReportFile(
       UserClass.generateUserReport(),
     );
+    
     UserClass.uploadAllFiles(userReport);
     if (!mounted) return;
     Navigator.push(
@@ -103,6 +105,9 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
                 },
               ),
             ),
+            NextButton(label: 'SUBMIT VIDEOS', onPressed: (){
+              submit();
+            })
           ],
         ),
       ),
