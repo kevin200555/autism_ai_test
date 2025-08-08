@@ -3,6 +3,7 @@
 // easier to digest
 
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
+import 'package:autism_ai_test/screens/data_gathering/video_recording_menu.dart';
 import 'package:autism_ai_test/screens/data_gathering/video_recording_section_screen.dart';
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
@@ -849,12 +850,7 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => VideoRecordingSectionScreen(
-                      camera: widget.camera,
-                      instructions:
-                          InstructionAndQuestions.getVideoInstructios(),
-                      currentStep: 0,
-                    ),
+                    builder: (context) => VideoRecordingMenu(camera: widget.camera,),
                   ),
                 );
               },

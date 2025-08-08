@@ -14,9 +14,10 @@ import 'package:autism_ai_test/widgets/other/progress_bar.dart';
 import 'package:autism_ai_test/widgets/questions/radio_multiple_choice_question_widget.dart';
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
+import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+
 
 // This class implements the mChatR form, a questionaire made up of 100% multiple choice questions used to
 // test for autism based on 20 questions
