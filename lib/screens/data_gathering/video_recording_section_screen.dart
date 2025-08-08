@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/button/help_button.dart';
-import 'package:autism_ai_test/widgets/button/next_button.dart';
 import 'package:autism_ai_test/widgets/other/progress_bar.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:auto_size_text/auto_size_text.dart';
@@ -167,11 +166,14 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
         showDialog(
           context: context,
           builder: (_) => const AlertDialog(title: Text('Video Deleted!')),
+          
         );
-        UserClass.recordedVideos?[currentStep] = null;
+        setState(() {
+          UserClass.recordedVideos?[currentStep] = null;
+        });
 
         // Also remove from the list if you want:
-        UserClass.recordedVideos?.removeAt(currentStep);
+        //UserClass.recordedVideos?.removeAt(currentStep);
       } else {
         if (!mounted) return;
         showDialog(
@@ -329,14 +331,17 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.05),
             // Next Task/Finish Test
-            NextButton(
-              label: 'SAVE VIDEO',
-              onPressed: () {
-                if (!isRecording) {
-                  UserClass.screenNumber++;
-                  UserClass.saveToHive();
-                }
-              },
+            Center(
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width * 0.8,
+                height: MediaQuery.of(context).size.height * 0.05,
+                child: Container(
+                  color: (UserClass.recordedVideos?[currentStep] == null) ? ColorTheme.progressBarBackground : ColorTheme.green,
+                  child: Center(
+                    child: ButtonText((UserClass.recordedVideos?[currentStep] == null) ? 'Video not recorded' : 'Task Completed!', maxLines: 1),
+                  )
+                ),
+              ),
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.05),
           ],
