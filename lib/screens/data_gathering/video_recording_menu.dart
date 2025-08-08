@@ -89,22 +89,26 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
               maxLines: 4,
             ),
             SubTitle('Tasks'),
-            Column(
-              children: List.generate(
-                InstructionAndQuestions.videoNames.length,
-                (index) {
-                  return VideoItem(
-                    camera: widget.camera,
-                    labelText: InstructionAndQuestions.videoNames[index],
-                    taskNumber: index,
-                    isCompleted: isVideoRecorded(index),
-                    onReturnFromRecording: () {
-                      setState(() {}); // Refresh UI after returning from recording
-                    },
-                  );
-                },
+            Padding(
+              padding: const EdgeInsets.fromLTRB(4, 0, 4, 0),
+              child: Column(
+                children: List.generate(
+                  InstructionAndQuestions.videoNames.length,
+                  (index) {
+                    return VideoItem(
+                      camera: widget.camera,
+                      labelText: InstructionAndQuestions.videoNames[index],
+                      taskNumber: index,
+                      isCompleted: isVideoRecorded(index),
+                      onReturnFromRecording: () {
+                        setState(() {}); // Refresh UI after returning from recording
+                      },
+                    );
+                  },
+                ),
               ),
             ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.01),
             NextButton(label: 'SUBMIT VIDEOS', onPressed: (){
               submit();
             })

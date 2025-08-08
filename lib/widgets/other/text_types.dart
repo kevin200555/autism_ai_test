@@ -150,7 +150,9 @@ class BodyText extends StatelessWidget {
           textAlign: textAlign,
           minFontSize: minFontSize,
           maxLines: maxLines,
-          style: GoogleFonts.lato(textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
+          style: GoogleFonts.lato(
+            textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+          ),
         ),
       ),
     );
@@ -162,6 +164,7 @@ class AlternateBodyText extends StatelessWidget {
   final TextAlign textAlign;
   final double minFontSize;
   final TextStyle? style;
+  final Color color;
 
   const AlternateBodyText(
     this.text, {
@@ -169,6 +172,7 @@ class AlternateBodyText extends StatelessWidget {
     this.textAlign = TextAlign.left,
     this.minFontSize = 8,
     this.style,
+    required this.color,
   });
 
   @override
@@ -176,14 +180,17 @@ class AlternateBodyText extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 1, 16, 1),
       child: AutoSizeText(
-          text,
-          textAlign: textAlign,
-          minFontSize: minFontSize,
-          style: GoogleFonts.lato(textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
+        text,
+        textAlign: textAlign,
+        minFontSize: minFontSize,
+        style: GoogleFonts.lato(
+          textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: color),
         ),
+      ),
     );
   }
 }
+
 class ButtonText extends StatelessWidget {
   final String text;
   final TextAlign textAlign;

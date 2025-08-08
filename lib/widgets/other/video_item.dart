@@ -36,10 +36,12 @@ class _VideoItemState extends State<VideoItem> {
             : '${widget.taskNumber + 1}: ${widget.labelText} (In Progress)',
         maxLines: 1,
       ),
-      collapsedBackgroundColor:
-          (widget.isCompleted) ? ColorTheme.green : ColorTheme.progressBarBackground,
-      backgroundColor:
-          (widget.isCompleted) ? ColorTheme.green : ColorTheme.background,
+      collapsedBackgroundColor: (widget.isCompleted)
+          ? ColorTheme.green
+          : ColorTheme.progressBarBackground,
+      backgroundColor: (widget.isCompleted)
+          ? ColorTheme.green
+          : ColorTheme.background,
       collapsedIconColor: ColorTheme.background,
       iconColor: ColorTheme.textColor,
       children: <Widget>[
@@ -51,6 +53,9 @@ class _VideoItemState extends State<VideoItem> {
               SubTitle('Task #${widget.taskNumber + 1} Instructions'),
               AlternateBodyText(
                 InstructionAndQuestions.videoInstructions[widget.taskNumber],
+                color: (widget.isCompleted)
+                    ? ColorTheme.background
+                    : ColorTheme.textColor,
               ),
               NextButton(
                 label: 'RECORD',
