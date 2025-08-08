@@ -1,12 +1,55 @@
+import 'dart:io';
+
 import 'package:autism_ai_test/constants/colors.dart';
+import 'package:autism_ai_test/constants/instruction_and_questions.dart';
+import 'package:autism_ai_test/screens/information_screens/final_screen.dart';
+import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/button/help_button.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
+import 'package:autism_ai_test/widgets/other/video_item.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
-class VideoRecordingMenu extends StatelessWidget {
+class VideoRecordingMenu extends StatefulWidget {
   final CameraDescription camera;
   const VideoRecordingMenu({super.key, required this.camera});
+
+  @override
+  State<VideoRecordingMenu> createState() => _VideoRecordingMenuState();
+}
+
+class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
+  bool isVideoRecorded(int videoNumber) {
+    final list = UserClass.recordedVideos;
+    if (list == null) return false;
+    if (videoNumber < 0 || videoNumber >= list.length) return false;
+    return list[videoNumber] != null;
+  }
+
+  nextVideo() async {
+    for (int i = 0; i < InstructionAndQuestions.videoNames.length; i++) {
+      if (!isVideoRecorded(i)) {
+        await showDialog(
+          context: context,
+          builder: (_) =>
+              const AlertDialog(title: Text('please record a video first')),
+        );
+        return;
+      }
+    }
+
+    File userReport = await UserClass.writeToReportFile(
+      UserClass.generateUserReport(),
+    );
+    UserClass.uploadAllFiles(userReport);
+    if (!mounted) return;
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => FinalScreen(camera: widget.camera),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +57,11 @@ class VideoRecordingMenu extends StatelessWidget {
       appBar: AppBar(
         leading: BackButton(),
         actions: [
-          HelpButton(color: ColorTheme.alternateTextColor, camera: camera),
+          HelpButton(
+            color: ColorTheme.alternateTextColor,
+            camera: widget.camera,
+          ),
         ],
-        // leading: BackButtonAppBar(),
         title: AppBarTitle(
           'Video Recording Menu',
           color: ColorTheme.alternateTextColor,
@@ -37,10 +82,27 @@ class VideoRecordingMenu extends StatelessWidget {
               maxLines: 6,
             ),
             BodyText(
-              'Click the drop down arrow in order to read the task’s instructions.\n',
+              'Click the drop down arrow in order to read the task\'s instructions.'
+              'Then scroll down and click the "RECORD" button to complete that task.\n',
               maxLines: 4,
             ),
             SubTitle('Tasks'),
+            Column(
+              children: List.generate(
+                InstructionAndQuestions.videoNames.length,
+                (index) {
+                  return VideoItem(
+                    camera: widget.camera,
+                    labelText: InstructionAndQuestions.videoNames[index],
+                    taskNumber: index,
+                    isCompleted: isVideoRecorded(index),
+                    onReturnFromRecording: () {
+                      setState(() {}); // Refresh UI after returning from recording
+                    },
+                  );
+                },
+              ),
+            ),
           ],
         ),
       ),
