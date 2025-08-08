@@ -98,19 +98,19 @@ class AutismAITest extends StatelessWidget {
       case 12:
         initialScreen = VideoRecordingSectionScreen(
           camera: cameras[0],
-          instructions: InstructionAndQuestions.getVideoInstructios(),
+          instructions: InstructionAndQuestions.getVideoInstructions(),
           currentStep: 0,
         );
       case 13:
         initialScreen = VideoRecordingSectionScreen(
           camera: cameras[0],
-          instructions: InstructionAndQuestions.getVideoInstructios(),
+          instructions: InstructionAndQuestions.getVideoInstructions(),
           currentStep: 1,
         );
       case 14:
         initialScreen = VideoRecordingSectionScreen(
           camera: cameras[0],
-          instructions: InstructionAndQuestions.getVideoInstructios(),
+          instructions: InstructionAndQuestions.getVideoInstructions(),
           currentStep: 2,
         );
       default:
