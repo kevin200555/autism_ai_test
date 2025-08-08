@@ -1,4 +1,5 @@
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
+import 'package:autism_ai_test/screens/data_gathering/video_recording_menu.dart';
 import 'package:autism_ai_test/screens/other/no_camera_error_screen.dart';
 import 'package:autism_ai_test/screens/data_gathering/compensation_form.dart';
 import 'package:autism_ai_test/screens/data_gathering/ic_document_form.dart';
@@ -96,24 +97,13 @@ class AutismAITest extends StatelessWidget {
       case 11:
         initialScreen = GeneralInstructionsScreen(camera: cameras[0]);
       case 12:
-        initialScreen = VideoRecordingSectionScreen(
-          camera: cameras[0],
-          instructions: InstructionAndQuestions.getVideoInstructions(),
-          currentStep: 0,
-        );
+        initialScreen = VideoRecordingMenu(camera: cameras[0]);
       case 13:
-        initialScreen = VideoRecordingSectionScreen(
-          camera: cameras[0],
-          instructions: InstructionAndQuestions.getVideoInstructions(),
-          currentStep: 1,
-        );
+        initialScreen = VideoRecordingMenu(camera: cameras[0]);
       case 14:
-        initialScreen = VideoRecordingSectionScreen(
-          camera: cameras[0],
-          instructions: InstructionAndQuestions.getVideoInstructions(),
-          currentStep: 2,
-        );
+        initialScreen = VideoRecordingMenu(camera: cameras[0]);
       default:
+        UserClass.screenNumber = 0;
         initialScreen = HomeScreen(camera: cameras[0]);
     }
     //camera is passed around through all widgets and screens in the program
