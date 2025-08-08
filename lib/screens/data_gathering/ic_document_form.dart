@@ -40,8 +40,8 @@ class _InformedConsentSigningScreenState
   // given a sample set of responses like [yes, yes, Sarah Jones, 07/07/2025, null, Tom Jones, Mother, null, Tom Jones]
   // generate a unquie user id sarahjones-20250707-tomjones
   String generateUserId() {
-    final name = responses[2]?.toLowerCase().replaceAll(' ', '');
-    final parent = responses[4]?.toLowerCase().replaceAll(' ', '');
+    final name = (responses[2] == null) ? 'empty' : responses[2]?.toLowerCase().replaceAll(' ', '');
+    final parent = (responses[2] == null) ? 'empty' : responses[4]?.toLowerCase().replaceAll(' ', '');
     //uses the Date time class to give user unquie Id based on date
     final now = DateTime.now();
     final date = now.toString().substring(0, 10).replaceAll('-','').substring(4,8)+now.toString().substring(0, 10).replaceAll('-','').substring(0,4);
