@@ -157,6 +157,33 @@ class BodyText extends StatelessWidget {
   }
 }
 
+class AlternateBodyText extends StatelessWidget {
+  final String text;
+  final TextAlign textAlign;
+  final double minFontSize;
+  final TextStyle? style;
+
+  const AlternateBodyText(
+    this.text, {
+    super.key,
+    this.textAlign = TextAlign.left,
+    this.minFontSize = 8,
+    this.style,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 1, 16, 1),
+      child: AutoSizeText(
+          text,
+          textAlign: textAlign,
+          minFontSize: minFontSize,
+          style: GoogleFonts.lato(textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
+        ),
+    );
+  }
+}
 class ButtonText extends StatelessWidget {
   final String text;
   final TextAlign textAlign;

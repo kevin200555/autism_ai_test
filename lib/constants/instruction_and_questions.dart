@@ -304,7 +304,7 @@ class InstructionAndQuestions {
   ];
 
   //accessors (not really nesscessary, but I have them)
-  static List<String> getVideoInstructios() {
+  static List<String> getVideoInstructions() {
     return videoInstructions;
   }
 
