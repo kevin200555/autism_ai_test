@@ -50,7 +50,9 @@ class _VideoItemState extends State<VideoItem> {
           padding: const EdgeInsets.all(24),
           child: Column(
             children: [
-              SubTitle('Task #${widget.taskNumber + 1} Instructions'),
+              AlternateBodyText('Task #${widget.taskNumber + 1} Instructions\n',color: (widget.isCompleted)
+                    ? ColorTheme.background
+                    : ColorTheme.textColor,),
               AlternateBodyText(
                 InstructionAndQuestions.videoInstructions[widget.taskNumber],
                 color: (widget.isCompleted)

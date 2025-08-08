@@ -33,7 +33,7 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
         await showDialog(
           context: context,
           builder: (_) =>
-              const AlertDialog(title: Text('please record a video first')),
+              const AlertDialog(title: Text('please complete all of the tasks')),
         );
         return;
       }
