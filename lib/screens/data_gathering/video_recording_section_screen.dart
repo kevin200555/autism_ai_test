@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
-import 'package:autism_ai_test/screens/information_screens/final_screen.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/button/help_button.dart';
 import 'package:autism_ai_test/widgets/button/next_button.dart';
@@ -35,36 +34,23 @@ class VideoRecordingSectionScreen extends StatefulWidget {
 }
 
 class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
-  int currentStep = 0; //keeps track of page
+  late int currentStep = widget.currentStep; //keeps track of page
   late CameraController controller;
-   final ScrollController _scrollController = ScrollController();
+  //final ScrollController _scrollController = ScrollController();
   bool isRecording = false;
-  List<XFile> recordedVideos = []; //stores recorded videos
+  XFile? recordedVideo; //stores recorded videos
 
   // This function is for the case where the user saved their progress at video #2 for example, and need to get back
   // to that screen
   // I can't just drop them off at the screen they left at because I didn't code a seperate screen for video #1 and video #2
-  Future<void> _runPreInteractionCode() async {
-    // Simulate logic like checking user consent, preparing files, etc.
-    while (currentStep > 0) {
-      nextVideo();
-      currentStep--;
-    }
-
-    await Future.delayed(Duration(seconds: 1));
-  }
 
   // initlize the camera and scroll controllers
   // the camera controllers lets the program interact with the camera (taking and storing videos)
-  // the scroll controller makes sure the user always starts at the top of the page before taking a video 
+  // the scroll controller makes sure the user always starts at the top of the page before taking a video
   // (so they can read the instructions)
   @override
   void initState() {
     super.initState();
-    _runPreInteractionCode();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _scrollController.jumpTo(0);
-    });
     controller = CameraController(widget.camera, ResolutionPreset.medium);
     controller.initialize().then((_) {
       if (!mounted) return;
@@ -75,7 +61,7 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
   //deactivates the recording and scroll
   @override
   void dispose() {
-    _scrollController.dispose();
+    //_scrollController.dispose();
     controller.dispose();
     super.dispose();
   }
@@ -98,18 +84,16 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
         //stores recording in the Xfile list
         setState(() {
           isRecording = false;
-          if (recordedVideos.length > currentStep) {
-            recordedVideos[currentStep] = videoFile;
-          } else {
-            recordedVideos.add(videoFile);
-          }
+          recordedVideo = videoFile;
         });
-
+        UserClass.recordedVideos?[currentStep] = recordedVideo;
+        UserClass.saveToHive();
         if (!mounted) return;
         await showDialog(
           context: context,
           builder: (_) => const AlertDialog(title: Text('Video Saved!')),
         );
+
         // checks to make sure the video actually stopped recording
       } catch (e) {
         debugPrint('Error stopping video: $e');
@@ -135,6 +119,7 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
   }
 
   //goes to the next video screen
+  /*
   nextVideo() async {
     //check to make sure that the user recorded somthing before moving on
     if (!(currentStep >= 0 && currentStep < recordedVideos.length)) {
@@ -146,7 +131,6 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
       return;
     }
     UserClass.recordedVideos?[currentStep] = recordedVideos[currentStep];
-    _scrollController.jumpTo(0); // set the scroll controller
     if (currentStep < widget.instructions.length - 1) {
       setState(() {
         currentStep++;
@@ -166,41 +150,56 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
       );
     }
   }
-
-
+  */
 
   //deletes Video, has to convert the recordedvideo from an XFILE to a File, This is why this code doesn't work on web applications
   //since web applications can't use dart.io FIles
-  Future<void> deleteVideo(int index) async {
-    final filePath = recordedVideos[index].path;
-    final file = File(filePath);
-
-    if (await file.exists()) {
-      await file.delete();
-      setState(() => recordedVideos.removeAt(index));
-      if (mounted) {
-        await showDialog(
+  Future<void> deleteVideo() async {
+    // Assuming currentStep is your index:
+    recordedVideo = UserClass.recordedVideos?[currentStep];
+    
+    if (recordedVideo != null) {
+      final file = File(recordedVideo!.path);
+      if (!mounted) return;
+      if (await file.exists()) {
+        await file.delete();
+        showDialog(
           context: context,
-          builder: (_) => const AlertDialog(title: Text('Video deleted!')),
+          builder: (_) => const AlertDialog(title: Text('Video Deleted!')),
+        );
+        UserClass.recordedVideos?[currentStep] = null;
+
+        // Also remove from the list if you want:
+        UserClass.recordedVideos?.removeAt(currentStep);
+      } else {
+        showDialog(
+          context: context,
+          builder: (_) => const AlertDialog(title: Text('No Video to Delete!')),
         );
       }
     } else {
-      if (mounted) {
-        await showDialog(
-          context: context,
-          builder: (_) => const AlertDialog(title: Text('No Video to Delete.')),
-        );
-      }
+      showDialog(
+        context: context,
+        builder: (_) => const AlertDialog(title: Text('No Video to Delete!')),
+      );
     }
   }
 
   //views video, brings user to a seperate screen to do so
-  Future<void> viewVideo(XFile videoFile) async {
+  Future<void> viewVideo() async {
+    recordedVideo = UserClass.recordedVideos?[currentStep];
+    if (recordedVideo == null) {
+      showDialog(
+        context: context,
+        builder: (_) => const AlertDialog(title: Text('No video to view!')),
+      );
+      return;
+    }
     if (!mounted) return;
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => VideoPlayerScreen(videoPath: videoFile.path),
+        builder: (context) => VideoPlayerScreen(videoPath: recordedVideo!.path),
       ),
     );
   }
@@ -211,7 +210,6 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
       //loading screen, needed since this section has to ask user for camera/mic access first
       return Scaffold(body: Center(child: CircularProgressIndicator()));
     }
-
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
@@ -230,160 +228,119 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
         backgroundColor: ColorTheme.accent,
         // This part overrides the default code of the appBar back button
         // This would normally just go back to the previous widget (which is the questionaire secion)
-        automaticallyImplyLeading: false,
-        leading: IconButton(
-          // Custom leading widget
-          icon: Icon(Icons.arrow_back), // The desired icon
-          onPressed: () {
-            UserClass.screenNumber--;
-            if (!isRecording) {
-              previousVideo();
-            }
-          },
-        ),
+        automaticallyImplyLeading: true,
       ),
       //makes screen scrollable to account for different phone screens
       body: SingleChildScrollView(
-          controller: _scrollController,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SubTitle('Instructions'),
-              BodyText(widget.instructions[currentStep], maxLines: 40),
-              BodyText('', maxLines: 1),
-              SubTitle('Recording Section (Scroll Down)'),
-              // Text that indicates to the user if they're recording or not, synced with the recording button
-              SizedBox(
-                width: double.infinity,
-                child: AutoSizeText(
-                  (isRecording) ? 'RECORDING IN PROGRESS' : 'RECORDING STOPPED',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: (isRecording) ? ColorTheme.green : ColorTheme.red,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  textAlign: TextAlign.center,
-                  minFontSize: 12,
-                  maxLines: 1,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SubTitle('Instructions'),
+            BodyText(widget.instructions[currentStep], maxLines: 40),
+            BodyText('', maxLines: 1),
+            SubTitle('Recording Section (Scroll Down)'),
+            // Text that indicates to the user if they're recording or not, synced with the recording button
+            SizedBox(
+              width: double.infinity,
+              child: AutoSizeText(
+                (isRecording) ? 'RECORDING IN PROGRESS' : 'RECORDING STOPPED',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: (isRecording) ? ColorTheme.green : ColorTheme.red,
+                  fontWeight: FontWeight.bold,
                 ),
+                textAlign: TextAlign.center,
+                minFontSize: 12,
+                maxLines: 1,
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-              // display of the camera
-              SizedBox(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * 0.55,
-                child: CameraPreview(controller),
-              ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.025),
-              // starts and stops the recording button
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  // button to let user view their video
-                  ElevatedButton(
-                    onPressed: () {
-                      if (!isRecording) {
-                        if (currentStep < recordedVideos.length) {
-                          viewVideo(recordedVideos[currentStep]);
-                        } else {
-                          showDialog(
-                            context: context,
-                            builder: (_) => const AlertDialog(
-                              title: Text('No video to view!'),
-                            ),
-                          );
-                        }
-                      }
-                    },
-                    style: ElevatedButton.styleFrom(
-                      shape: const CircleBorder(),
-                      padding: const EdgeInsets.all(
-                        1,
-                      ), // space inside the button
-                      backgroundColor: ColorTheme.background,
-                      foregroundColor: ColorTheme.textColor,
-                    ),
-                    child: const Icon(Icons.remove_red_eye, size: 50),
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+            // display of the camera
+            SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height * 0.55,
+              child: CameraPreview(controller),
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.025),
+            // starts and stops the recording button
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // button to let user view their video
+                ElevatedButton(
+                  onPressed: () {
+                    if (!isRecording) {
+                        viewVideo();
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                    shape: const CircleBorder(),
+                    padding: const EdgeInsets.all(1), // space inside the button
+                    backgroundColor: ColorTheme.background,
+                    foregroundColor: ColorTheme.textColor,
                   ),
-                  SizedBox(width: MediaQuery.of(context).size.width * 0.2),
-                  //Recording button
-                  ElevatedButton(
-                    onPressed: !controller.value.isInitialized
-                        ? null
-                        : (isRecording ? _stopRecording : _startRecording),
-                    style: ElevatedButton.styleFrom(
-                      shape: const CircleBorder(),
-                      padding: const EdgeInsets.all(
-                        1,
-                      ), // space inside the button
-                      backgroundColor: (isRecording)
-                          ? ColorTheme.green
-                          : ColorTheme.red,
-                    ),
-                    child: isRecording
-                        ? Icon(
-                            Icons.motion_photos_pause_outlined,
-                            size: 72,
-                            color: ColorTheme.background,
-                          )
-                        : Icon(
-                            Icons.not_started,
-                            size: 72,
-                            color: ColorTheme.background,
-                          ),
+                  child: const Icon(Icons.remove_red_eye, size: 50),
+                ),
+                SizedBox(width: MediaQuery.of(context).size.width * 0.2),
+                //Recording button
+                ElevatedButton(
+                  onPressed: !controller.value.isInitialized
+                      ? null
+                      : (isRecording ? _stopRecording : _startRecording),
+                  style: ElevatedButton.styleFrom(
+                    shape: const CircleBorder(),
+                    padding: const EdgeInsets.all(1), // space inside the button
+                    backgroundColor: (isRecording)
+                        ? ColorTheme.green
+                        : ColorTheme.red,
                   ),
-                  SizedBox(width: MediaQuery.of(context).size.width * 0.2),
-                  // Lets User delete video if they have a video
-                  ElevatedButton(
-                    onPressed: () {
-                      if (!isRecording) {
-                        if (currentStep < recordedVideos.length) {
-                          deleteVideo(currentStep);
-                        } else {
-                          showDialog(
-                            context: context,
-                            builder: (_) => const AlertDialog(
-                              title: Text('No video to delete!'),
-                            ),
-                          );
-                        }
-                      }
-                    },
+                  child: isRecording
+                      ? Icon(
+                          Icons.motion_photos_pause_outlined,
+                          size: 72,
+                          color: ColorTheme.background,
+                        )
+                      : Icon(
+                          Icons.not_started,
+                          size: 72,
+                          color: ColorTheme.background,
+                        ),
+                ),
+                SizedBox(width: MediaQuery.of(context).size.width * 0.2),
+                // Lets User delete video if they have a video
+                ElevatedButton(
+                  onPressed: () {
+                    if (!isRecording) {
+                      deleteVideo();
+                    }
+                  },
 
-                    style: ElevatedButton.styleFrom(
-                      shape: const CircleBorder(),
-                      padding: const EdgeInsets.all(
-                        1,
-                      ), // space inside the button
-                      backgroundColor: ColorTheme.background,
-                      foregroundColor: ColorTheme.textColor,
-                    ),
-                    child: const Icon(Icons.delete, size: 50),
+                  style: ElevatedButton.styleFrom(
+                    shape: const CircleBorder(),
+                    padding: const EdgeInsets.all(1), // space inside the button
+                    backgroundColor: ColorTheme.background,
+                    foregroundColor: ColorTheme.textColor,
                   ),
-                ],
-              ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-              // Next Task/Finish Test
-              NextButton(
-                label:
-                    (currentStep ==
-                        widget.instructions.length -
-                            1) // if on last step, change text to show the user is abou tto complete the test
-                    ? 'FINISH'
-                    : 'SUBMIT VIDEO',
-                onPressed: () {
-                  if (!isRecording) {
-                    UserClass.screenNumber++;
-                    nextVideo();
-                    UserClass.saveToHive();
-                  }
-                },
-              ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-            ],
-          ),
+                  child: const Icon(Icons.delete, size: 50),
+                ),
+              ],
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+            // Next Task/Finish Test
+            NextButton(
+              label: 'SAVE VIDEO',
+              onPressed: () {
+                if (!isRecording) {
+                  UserClass.screenNumber++;
+                  UserClass.saveToHive();
+                }
+              },
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+          ],
         ),
+      ),
       bottomNavigationBar: ProgressBar(),
     );
   }
