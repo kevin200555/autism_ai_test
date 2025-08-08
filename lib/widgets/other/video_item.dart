@@ -1,14 +1,17 @@
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
+import 'package:autism_ai_test/screens/data_gathering/video_recording_section_screen.dart';
+import 'package:autism_ai_test/widgets/button/next_button.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
-class VideoItem extends StatelessWidget {
+class VideoItem extends StatefulWidget {
   final CameraDescription camera;
   final String labelText;
   final int taskNumber;
   final bool isCompleted;
+  final VoidCallback? onReturnFromRecording;
 
   const VideoItem({
     super.key,
@@ -16,14 +19,27 @@ class VideoItem extends StatelessWidget {
     required this.labelText,
     required this.taskNumber,
     required this.isCompleted,
+    this.onReturnFromRecording,
   });
 
   @override
+  State<VideoItem> createState() => _VideoItemState();
+}
+
+class _VideoItemState extends State<VideoItem> {
+  @override
   Widget build(BuildContext context) {
     return ExpansionTile(
-      title: ButtonText((isCompleted) ? '${taskNumber + 1}: $labelText (Completed!)' : '${taskNumber + 1}: $labelText (In Progress)', maxLines: 1),
-      collapsedBackgroundColor: (isCompleted) ? ColorTheme.green : ColorTheme.progressBarBackground,
-      backgroundColor: ColorTheme.background,
+      title: ButtonText(
+        (widget.isCompleted)
+            ? '${widget.taskNumber + 1}: ${widget.labelText} (Completed!)'
+            : '${widget.taskNumber + 1}: ${widget.labelText} (In Progress)',
+        maxLines: 1,
+      ),
+      collapsedBackgroundColor:
+          (widget.isCompleted) ? ColorTheme.green : ColorTheme.progressBarBackground,
+      backgroundColor:
+          (widget.isCompleted) ? ColorTheme.green : ColorTheme.background,
       collapsedIconColor: ColorTheme.background,
       iconColor: ColorTheme.textColor,
       children: <Widget>[
@@ -32,10 +48,25 @@ class VideoItem extends StatelessWidget {
           padding: const EdgeInsets.all(24),
           child: Column(
             children: [
-              SubTitle('Task #${taskNumber + 1} Instructions'),
-              BodyText(
-                InstructionAndQuestions.videoInstructions[taskNumber],
-                maxLines: 40,
+              SubTitle('Task #${widget.taskNumber + 1} Instructions'),
+              AlternateBodyText(
+                InstructionAndQuestions.videoInstructions[widget.taskNumber],
+              ),
+              NextButton(
+                label: 'RECORD',
+                onPressed: () async {
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => VideoRecordingSectionScreen(
+                        camera: widget.camera,
+                        instructions: InstructionAndQuestions.videoInstructions,
+                        currentStep: widget.taskNumber,
+                      ),
+                    ),
+                  );
+                  widget.onReturnFromRecording?.call();
+                },
               ),
             ],
           ),
