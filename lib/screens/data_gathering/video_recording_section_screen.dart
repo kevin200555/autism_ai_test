@@ -157,12 +157,13 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
   Future<void> deleteVideo() async {
     // Assuming currentStep is your index:
     recordedVideo = UserClass.recordedVideos?[currentStep];
-    
+
     if (recordedVideo != null) {
       final file = File(recordedVideo!.path);
-      if (!mounted) return;
+
       if (await file.exists()) {
         await file.delete();
+        if (!mounted) return;
         showDialog(
           context: context,
           builder: (_) => const AlertDialog(title: Text('Video Deleted!')),
@@ -172,6 +173,7 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
         // Also remove from the list if you want:
         UserClass.recordedVideos?.removeAt(currentStep);
       } else {
+        if (!mounted) return;
         showDialog(
           context: context,
           builder: (_) => const AlertDialog(title: Text('No Video to Delete!')),
@@ -237,8 +239,7 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SubTitle('Instructions'),
-            BodyText(widget.instructions[currentStep], maxLines: 40),
-            BodyText('', maxLines: 1),
+            AlternateBodyText(widget.instructions[currentStep]),
             SubTitle('Recording Section (Scroll Down)'),
             // Text that indicates to the user if they're recording or not, synced with the recording button
             SizedBox(
@@ -271,7 +272,7 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
                 ElevatedButton(
                   onPressed: () {
                     if (!isRecording) {
-                        viewVideo();
+                      viewVideo();
                     }
                   },
                   style: ElevatedButton.styleFrom(
