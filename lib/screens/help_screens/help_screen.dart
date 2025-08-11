@@ -35,7 +35,7 @@ class HelpScreen extends StatelessWidget {
               'record a successful video. \n\n'
               'Keep in mind that this app will ask you to use your camera; you\'ll need to accept '
               'this request to record.',
-              maxLines: 15,
+              maxLines: 20,
             ),
             SubTitle('Video Recording'),
             BodyText(
@@ -45,7 +45,7 @@ class HelpScreen extends StatelessWidget {
               'The button with an \'eye\' icon can then be pressed to review the video '
               'If you\'re not satisfied with the video, you can then delete the video by pressing the button '
               'with the trash can on it. Take as much time as you need, so don\'t worry about \'messing up\'',
-              maxLines: 12,
+              maxLines: 13,
             ),
             // FAQ Section
             SubTitle('FAQ'),
@@ -57,8 +57,8 @@ class HelpScreen extends StatelessWidget {
               'or \'submit\' button in order for that form or video to be saved\n\n'
               'Q: Am I able to restart my progress?, I have made a mistake\n'
               'A: You are welcome to go back to any point in the form and change your answers or upload '
-              'a new video. Keep an eye out for the back button at the top left corner\n\n',
-              maxLines: 14,
+              'a new video. Keep an eye out for the back button at the top left corner',
+              maxLines: 16,
             ),
             // Toubleshooting section
             SubTitle('Troubleshooting'),
@@ -66,8 +66,8 @@ class HelpScreen extends StatelessWidget {
               'To my knowledge, the only technical issue that could arise is troubles with the camera '
               'make sure to allow the use of the camera whlie on the app, it is critical for this test\n\n'
               'Also ensure that your device has a working camera, but at when this point, that is a non issue. '
-              'If, for whatever reason, you are stuck, press the below button in order to reset',
-              maxLines: 9,
+              'If, for whatever reason, you are stuck, press the below button in order to reset\n',
+              maxLines: 10,
             ),
             RedBodyText(
               'Warning: this button resets all your progress, so only do this if there is no other option',

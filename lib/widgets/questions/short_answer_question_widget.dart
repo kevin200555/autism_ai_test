@@ -70,12 +70,12 @@ class _ShortAnswerQuestionWidgetState extends State<ShortAnswerQuestionWidget> {
               hintText: 'Type your answer here',
             ),
             style: GoogleFonts.lato(
-                        textStyle: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          fontStyle: FontStyle.italic
-                        ),
-                      ),
+              textStyle: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
             maxLines: 5,
             minLines: 1,
           ),
