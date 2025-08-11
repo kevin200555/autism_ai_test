@@ -112,7 +112,7 @@ class QuestionText extends StatelessWidget {
           minFontSize: minFontSize,
           maxLines: 3,
           style: GoogleFonts.lato(
-            textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+            textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
           ),
         ),
       ),
@@ -122,6 +122,7 @@ class QuestionText extends StatelessWidget {
 
 // BodyText is used for general text in the app
 // It is the most commonly used text type and is used for paragraphs, instructions, etc.
+/*
 class BodyText extends StatelessWidget {
   final String text;
   final TextAlign textAlign;
@@ -158,6 +159,52 @@ class BodyText extends StatelessWidget {
     );
   }
 }
+*/
+class BodyText extends StatelessWidget {
+  final String text;
+  final TextAlign textAlign;
+  final double minFontSize;
+  final TextStyle? style;
+  final int maxLines;
+
+  const BodyText(
+    this.text, {
+    super.key,
+    this.textAlign = TextAlign.left,
+    this.minFontSize = 8,
+    this.style,
+    required this.maxLines,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(16, 1, 16, 1),
+      child: SizedBox(
+        width: double.infinity,
+        height: MediaQuery.sizeOf(context).height * 0.025 * maxLines,
+        child: AutoSizeText.rich(
+          TextSpan(
+            text: text,
+            style: GoogleFonts.lato(
+              textStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+            ),
+          ),
+          textAlign: textAlign,
+          minFontSize: minFontSize,
+          maxLines: maxLines,
+          style: GoogleFonts.lato(
+            textStyle: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.normal,
+              color: ColorTheme.textColor,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
 
 class AlternateBodyText extends StatelessWidget {
   final String text;
@@ -184,7 +231,11 @@ class AlternateBodyText extends StatelessWidget {
         textAlign: textAlign,
         minFontSize: minFontSize,
         style: GoogleFonts.lato(
-          textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: color),
+          textStyle: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w400,
+            color: color,
+          ),
         ),
       ),
     );
@@ -297,6 +348,13 @@ class RichBodyText extends StatelessWidget {
           textAlign: textAlign,
           minFontSize: minFontSize,
           maxLines: maxLines,
+          style: GoogleFonts.lato(
+            textStyle: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: ColorTheme.textColor,
+            ),
+          ),
         ),
       ),
     );
