@@ -18,7 +18,6 @@ import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/foundation.dart';
 
-
 // This class implements the mChatR form, a questionaire made up of 100% multiple choice questions used to
 // test for autism based on 20 questions
 // It uses the Radio multiple choice question widget to do this
@@ -65,46 +64,49 @@ class _MChatRFormScreen1State extends State<MChatRFormScreen1> {
         iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),
       ),
 
-      body: ListView.builder(
-        padding: const EdgeInsets.all(8),
-        itemCount: half + 1,
-        itemBuilder: (context, index) {
-          //adds a next button at the end of all the questions
-          if (index == half) {
-            return NextButton(
-              label: 'NEXT',
-              onPressed: () {
-                // SAVE TO HIVE
-                UserClass.screenNumber++;
-                UserClass.mChatRresponses = responses;
-                UserClass.saveToHive();
+      body: Scrollbar(
+        thumbVisibility: true,
+        child: ListView.builder(
+          padding: const EdgeInsets.all(8),
+          itemCount: half + 1,
+          itemBuilder: (context, index) {
+            //adds a next button at the end of all the questions
+            if (index == half) {
+              return NextButton(
+                label: 'NEXT',
+                onPressed: () {
+                  // SAVE TO HIVE
+                  UserClass.screenNumber++;
+                  UserClass.mChatRresponses = responses;
+                  UserClass.saveToHive();
 
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => MChatRFormScreen2(
-                      camera: widget.camera,
-                      responses: responses,
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MChatRFormScreen2(
+                        camera: widget.camera,
+                        responses: responses,
+                      ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              );
+            }
+            // multiple choice question
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: RadioMutlipleChoiceQuestionWidget(
+                multipleChoiceEntry: mChatRQuestions[index],
+                value: responses[index],
+                onChanged: (newValue) {
+                  setState(() {
+                    responses[index] = newValue;
+                  });
+                },
+              ),
             );
-          }
-          // multiple choice question
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0),
-            child: RadioMutlipleChoiceQuestionWidget(
-              multipleChoiceEntry: mChatRQuestions[index],
-              value: responses[index],
-              onChanged: (newValue) {
-                setState(() {
-                  responses[index] = newValue;
-                });
-              },
-            ),
-          );
-        },
+          },
+        ),
       ),
       bottomNavigationBar: ProgressBar(),
     );
@@ -159,51 +161,55 @@ class _MChatRFormScreen2State extends State<MChatRFormScreen2> {
         backgroundColor: ColorTheme.accent,
         iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),
       ),
-      body: ListView.builder(
-        padding: const EdgeInsets.all(8),
-        itemCount: (mChatRQuestions.length - half) + 1, // +1 for SUBMIT button
-        itemBuilder: (context, index) {
-          if (index == mChatRQuestions.length - half) {
-            return NextButton(
-              label: 'SUBMIT',
-              onPressed: () async {
-                // SAVE TO HIVE
-                if (kDebugMode) {
-                  print(UserClass.parentIntakeResponses);
-                  print(UserClass.compensationResponses);
-                  print(UserClass.mChatRresponses);
-                }
-                UserClass.screenNumber++;
-                UserClass.mChatRresponses = widget.responses;
-                await UserClass.saveToHive();
-                Navigator.push(
-                  // ignore: use_build_context_synchronously
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) =>
-                        GeneralInstructionsScreen(camera: widget.camera),
-                  ),
-                );
-              },
+      body: Scrollbar(
+        thumbVisibility: true,
+        child: ListView.builder(
+          padding: const EdgeInsets.all(8),
+          itemCount:
+              (mChatRQuestions.length - half) + 1, // +1 for SUBMIT button
+          itemBuilder: (context, index) {
+            if (index == mChatRQuestions.length - half) {
+              return NextButton(
+                label: 'SUBMIT',
+                onPressed: () async {
+                  // SAVE TO HIVE
+                  if (kDebugMode) {
+                    print(UserClass.parentIntakeResponses);
+                    print(UserClass.compensationResponses);
+                    print(UserClass.mChatRresponses);
+                  }
+                  UserClass.screenNumber++;
+                  UserClass.mChatRresponses = widget.responses;
+                  await UserClass.saveToHive();
+                  Navigator.push(
+                    // ignore: use_build_context_synchronously
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          GeneralInstructionsScreen(camera: widget.camera),
+                    ),
+                  );
+                },
+              );
+            }
+
+            final qIndex = half + index;
+            final question = mChatRQuestions[qIndex];
+
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: RadioMutlipleChoiceQuestionWidget(
+                multipleChoiceEntry: question,
+                value: widget.responses[qIndex],
+                onChanged: (newValue) {
+                  setState(() {
+                    widget.responses[qIndex] = newValue;
+                  });
+                },
+              ),
             );
-          }
-
-          final qIndex = half + index;
-          final question = mChatRQuestions[qIndex];
-
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0),
-            child: RadioMutlipleChoiceQuestionWidget(
-              multipleChoiceEntry: question,
-              value: widget.responses[qIndex],
-              onChanged: (newValue) {
-                setState(() {
-                  widget.responses[qIndex] = newValue;
-                });
-              },
-            ),
-          );
-        },
+          },
+        ),
       ),
       bottomNavigationBar: ProgressBar(),
     );

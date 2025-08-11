@@ -17,7 +17,7 @@ class HelpButton extends StatelessWidget {
     return IconButton(
       icon: Icon(Icons.help_outline),
       // sets size
-      iconSize: MediaQuery.of(context).size.width * 0.08,
+      iconSize: MediaQuery.of(context).size.height * 0.05,
       color: color,
       onPressed: () {
         Navigator.push(

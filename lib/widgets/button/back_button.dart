@@ -11,7 +11,7 @@ class BackButtonAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       icon: const Icon(Icons.arrow_back),
-      iconSize: MediaQuery.of(context).size.width * 0.07,
+      iconSize: MediaQuery.of(context).size.height * 0.05,
       onPressed: () {
         // makes sure that there is something in the stack before running navigator.
         // This is because when reloaded a savfe file, that stack is lost

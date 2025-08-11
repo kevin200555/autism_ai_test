@@ -33,7 +33,6 @@ class _CompensationFormScreenState extends State<CompensationFormScreen> {
     super.initState();
     responses = List<String?>.filled(compensationFormQuestions.length, null);
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,61 +54,64 @@ class _CompensationFormScreenState extends State<CompensationFormScreen> {
         iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),
       ),
 
-      body: ListView.builder(
-        padding: const EdgeInsets.all(8),
-        itemCount: compensationFormQuestions.length + 2,
-        itemBuilder: (context, index) {
-          if (index == 0) {
-            return RedBodyText(
-              'This information is required for compensation. '
-              'If you wish to decline payment, you can leave these fields blank.\n\n',
-              maxLines: 6,
-            );
-          } else if (index == compensationFormQuestions.length + 1) {
-            // LAST index (after all questions)
-            return NextButton(
-              label: 'NEXT',
-              onPressed: () {
-                UserClass.screenNumber++;
-                UserClass.compensationResponses = responses;
-                UserClass.saveToHive();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) =>
-                        MChatRFormScreen1(camera: widget.camera),
-                  ),
-                );
-              },
-            );
-          } else {
-            // Adjusted question index
-            int questionIndex = index - 1;
-
-            if (compensationFormQuestions[questionIndex][0] == 'SAQ') {
-              return ShortAnswerQuestionWidget(
-                shortAnswerInstructions:
-                    compensationFormQuestions[questionIndex],
-                value: responses[questionIndex],
-                onChanged: (value) {
-                  setState(() {
-                    responses[questionIndex] = value;
-                  });
+      body: Scrollbar(
+        thumbVisibility: true,
+        child: ListView.builder(
+          padding: const EdgeInsets.all(8),
+          itemCount: compensationFormQuestions.length + 2,
+          itemBuilder: (context, index) {
+            if (index == 0) {
+              return RedBodyText(
+                'This information is required for compensation. '
+                'If you wish to decline payment, you can leave these fields blank.\n\n',
+                maxLines: 6,
+              );
+            } else if (index == compensationFormQuestions.length + 1) {
+              // LAST index (after all questions)
+              return NextButton(
+                label: 'NEXT',
+                onPressed: () {
+                  UserClass.screenNumber++;
+                  UserClass.compensationResponses = responses;
+                  UserClass.saveToHive();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          MChatRFormScreen1(camera: widget.camera),
+                    ),
+                  );
                 },
               );
             } else {
-              return RadioMutlipleChoiceQuestionWidget(
-                multipleChoiceEntry: compensationFormQuestions[questionIndex],
-                value: responses[questionIndex],
-                onChanged: (value) {
-                  setState(() {
-                    responses[questionIndex] = value;
-                  });
-                },
-              );
+              // Adjusted question index
+              int questionIndex = index - 1;
+
+              if (compensationFormQuestions[questionIndex][0] == 'SAQ') {
+                return ShortAnswerQuestionWidget(
+                  shortAnswerInstructions:
+                      compensationFormQuestions[questionIndex],
+                  value: responses[questionIndex],
+                  onChanged: (value) {
+                    setState(() {
+                      responses[questionIndex] = value;
+                    });
+                  },
+                );
+              } else {
+                return RadioMutlipleChoiceQuestionWidget(
+                  multipleChoiceEntry: compensationFormQuestions[questionIndex],
+                  value: responses[questionIndex],
+                  onChanged: (value) {
+                    setState(() {
+                      responses[questionIndex] = value;
+                    });
+                  },
+                );
+              }
             }
-          }
-        },
+          },
+        ),
       ),
       bottomNavigationBar: ProgressBar(),
     );

@@ -68,7 +68,6 @@ class SubTitle extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(16, 1, 16, 1),
       child: SizedBox(
         width: double.infinity,
-        height: MediaQuery.sizeOf(context).height * 0.035,
         child: AutoSizeText(
           text,
           textAlign: textAlign,
@@ -112,7 +111,7 @@ class QuestionText extends StatelessWidget {
           minFontSize: minFontSize,
           maxLines: 3,
           style: GoogleFonts.lato(
-            textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+            textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
           ),
         ),
       ),
@@ -120,8 +119,6 @@ class QuestionText extends StatelessWidget {
   }
 }
 
-// BodyText is used for general text in the app
-// It is the most commonly used text type and is used for paragraphs, instructions, etc.
 class BodyText extends StatelessWidget {
   final String text;
   final TextAlign textAlign;
@@ -141,17 +138,24 @@ class BodyText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 1, 16, 1),
+      padding: EdgeInsets.fromLTRB(16, 1, 16, 1),
       child: SizedBox(
         width: double.infinity,
-        height: MediaQuery.sizeOf(context).height * 0.025 * maxLines,
-        child: AutoSizeText(
-          text,
+        child: AutoSizeText.rich(
+          TextSpan(
+            text: text,
+            style: GoogleFonts.lato(
+              textStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+            ),
+          ),
           textAlign: textAlign,
           minFontSize: minFontSize,
-          maxLines: maxLines,
           style: GoogleFonts.lato(
-            textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+            textStyle: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.normal,
+              color: ColorTheme.textColor,
+            ),
           ),
         ),
       ),
@@ -171,26 +175,83 @@ class AlternateBodyText extends StatelessWidget {
     super.key,
     this.textAlign = TextAlign.left,
     this.minFontSize = 8,
-    this.style,
-    required this.color,
+    this.style, required this.color,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 1, 16, 1),
-      child: AutoSizeText(
-        text,
-        textAlign: textAlign,
-        minFontSize: minFontSize,
-        style: GoogleFonts.lato(
-          textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: color),
+      padding: EdgeInsets.fromLTRB(16, 1, 16, 1),
+      child: SizedBox(
+        width: double.infinity,
+        child: AutoSizeText.rich(
+          TextSpan(
+            text: text,
+            style: GoogleFonts.lato(
+              textStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+              color: color
+            ),
+          ),
+          textAlign: textAlign,
+          minFontSize: minFontSize,
+          style: GoogleFonts.lato(
+            textStyle: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.normal,
+              color: color,
+            ),
+          ),
         ),
       ),
     );
   }
 }
 
+class QuestionBodyText extends StatelessWidget {
+  final String text;
+  final TextAlign textAlign;
+  final double minFontSize;
+  final TextStyle? style;
+  final int maxLines;
+  final bool isItalics;
+
+  const QuestionBodyText(
+    this.text, {
+    super.key,
+    this.textAlign = TextAlign.left,
+    this.minFontSize = 8,
+    this.style,
+    required this.maxLines, required this.isItalics,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(0, 1, 0, 1),
+      child: SizedBox(
+        width: double.infinity,
+        child: AutoSizeText.rich(
+          TextSpan(
+            text: text,
+            style: GoogleFonts.lato(
+              textStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+            ),
+          ),
+          textAlign: textAlign,
+          minFontSize: minFontSize,
+          style: GoogleFonts.lato(
+            textStyle: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.normal,
+              color: ColorTheme.textColor,
+              fontStyle: (isItalics) ? FontStyle.italic : FontStyle.normal,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
 class ButtonText extends StatelessWidget {
   final String text;
   final TextAlign textAlign;
@@ -248,7 +309,6 @@ class RedBodyText extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(16, 1, 16, 1),
       child: SizedBox(
         width: double.infinity,
-        height: MediaQuery.sizeOf(context).height * 0.035 * maxLines,
         child: AutoSizeText(
           text,
           textAlign: textAlign,
@@ -274,7 +334,6 @@ class RichBodyText extends StatelessWidget {
   final TextAlign textAlign;
   final double minFontSize;
   final TextStyle? style;
-  final int maxLines;
 
   const RichBodyText(
     this.textSpan, {
@@ -282,7 +341,6 @@ class RichBodyText extends StatelessWidget {
     this.textAlign = TextAlign.left,
     this.minFontSize = 8,
     this.style,
-    required this.maxLines,
   });
 
   @override
@@ -291,12 +349,17 @@ class RichBodyText extends StatelessWidget {
       padding: EdgeInsets.fromLTRB(16, 1, 16, 1),
       child: SizedBox(
         width: double.infinity,
-        height: MediaQuery.sizeOf(context).height * 0.025 * maxLines,
         child: AutoSizeText.rich(
           textSpan,
           textAlign: textAlign,
           minFontSize: minFontSize,
-          maxLines: maxLines,
+          style: GoogleFonts.lato(
+            textStyle: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: ColorTheme.textColor,
+            ),
+          ),
         ),
       ),
     );

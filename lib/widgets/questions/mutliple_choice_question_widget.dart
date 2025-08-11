@@ -30,6 +30,7 @@ class MutlipleChoiceQuestionWidget extends StatelessWidget {
             value: value,
             isExpanded: true,
             icon: const Icon(Icons.keyboard_arrow_down),
+            hint: QuestionBodyText('click to answer', maxLines: 1, isItalics: true,),
             items: multipleChoiceEntry
                 .sublist(2)
                 .map(

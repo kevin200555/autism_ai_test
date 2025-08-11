@@ -56,66 +56,69 @@ class _ChildIntakeFormScreenState extends State<ChildIntakeFormScreen> {
         iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),
       ),
 
-      body: ListView.builder(
-        padding: const EdgeInsets.all(8),
-        itemCount: intakeFormQuestions.length + 1,
-        itemBuilder: (context, index) {
-          //adds a next button at the end of all the questions
-          if (index == intakeFormQuestions.length) {
-            return NextButton(
-              label: 'NEXT',
-              onPressed: () {
-                UserClass.screenNumber++;
-                UserClass.childIntakeResponses = responses;
-                UserClass.saveToHive();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) =>
-                        ParentIntakeFormScreen(camera: widget.camera),
-                  ),
-                );
-              },
-            );
-          }
-          if (intakeFormQuestions[index][0] == 'SAQ') {
-            // short answer question
-            return Padding(
-              padding: EdgeInsets.fromLTRB(0, 16, 0, 0),
-              child: ShortAnswerQuestionWidget(
-                shortAnswerInstructions: intakeFormQuestions[index],
+      body: Scrollbar(
+        thumbVisibility: true,
+        child: ListView.builder(
+          padding: const EdgeInsets.all(8),
+          itemCount: intakeFormQuestions.length + 1,
+          itemBuilder: (context, index) {
+            //adds a next button at the end of all the questions
+            if (index == intakeFormQuestions.length) {
+              return NextButton(
+                label: 'NEXT',
+                onPressed: () {
+                  UserClass.screenNumber++;
+                  UserClass.childIntakeResponses = responses;
+                  UserClass.saveToHive();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          ParentIntakeFormScreen(camera: widget.camera),
+                    ),
+                  );
+                },
+              );
+            }
+            if (intakeFormQuestions[index][0] == 'SAQ') {
+              // short answer question
+              return Padding(
+                padding: EdgeInsets.fromLTRB(0, 16, 0, 0),
+                child: ShortAnswerQuestionWidget(
+                  shortAnswerInstructions: intakeFormQuestions[index],
+                  value: responses[index],
+                  onChanged: (value) {
+                    setState(() {
+                      responses[index] = value;
+                    });
+                  },
+                ),
+              );
+            } else if (intakeFormQuestions[index][0] == 'CATAQ') {
+              // short answer question
+              return ChooseAllThatApplyQuestionWidget(
+                multipleChoiceEntry: intakeFormQuestions[index],
+                value: responses[index] ?? "",
+                onChanged: (updatedString) {
+                  setState(() {
+                    responses[index] = updatedString;
+                  });
+                },
+              );
+            } else {
+              // multiple choice question
+              return MutlipleChoiceQuestionWidget(
+                multipleChoiceEntry: intakeFormQuestions[index],
                 value: responses[index],
                 onChanged: (value) {
                   setState(() {
                     responses[index] = value;
                   });
                 },
-              ),
-            );
-          } else if (intakeFormQuestions[index][0] == 'CATAQ') {
-            // short answer question
-            return ChooseAllThatApplyQuestionWidget(
-              multipleChoiceEntry: intakeFormQuestions[index],
-              value: responses[index] ?? "",
-              onChanged: (updatedString) {
-                setState(() {
-                  responses[index] = updatedString;
-                });
-              },
-            );
-          } else {
-            // multiple choice question
-            return MutlipleChoiceQuestionWidget(
-              multipleChoiceEntry: intakeFormQuestions[index],
-              value: responses[index],
-              onChanged: (value) {
-                setState(() {
-                  responses[index] = value;
-                });
-              },
-            );
-          }
-        },
+              );
+            }
+          },
+        ),
       ),
       bottomNavigationBar: ProgressBar(),
     );
@@ -163,64 +166,67 @@ class _ParentIntakeFormScreenState extends State<ParentIntakeFormScreen> {
         iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),
       ),
 
-      body: ListView.builder(
-        padding: const EdgeInsets.all(8),
-        itemCount: intakeFormQuestions.length + 1,
-        itemBuilder: (context, index) {
-          //adds a next button at the end of all the questions
-          if (index == intakeFormQuestions.length) {
-            return NextButton(
-              label: 'NEXT',
-              onPressed: () {
-                // SAVE TO HIVE
-                UserClass.screenNumber++;
-                UserClass.parentIntakeResponses = responses;
-                UserClass.saveToHive();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) =>
-                        CompensationFormScreen(camera: widget.camera),
-                  ),
-                );
-              },
-            );
-          }
-          if (intakeFormQuestions[index][0] == 'SAQ') {
-            // short answer question
-            return ShortAnswerQuestionWidget(
-              shortAnswerInstructions: intakeFormQuestions[index],
-              value: responses[index],
-              onChanged: (value) {
-                setState(() {
-                  responses[index] = value;
-                });
-              },
-            );
-          } else if (intakeFormQuestions[index][0] == 'CATAQ') {
-            // short answer question
-            return ChooseAllThatApplyQuestionWidget(
-              multipleChoiceEntry: intakeFormQuestions[index],
-              value: responses[index] ?? "",
-              onChanged: (updatedString) {
-                setState(() {
-                  responses[index] = updatedString;
-                });
-              },
-            );
-          } else {
-            // multiple choice question
-            return MutlipleChoiceQuestionWidget(
-              multipleChoiceEntry: intakeFormQuestions[index],
-              value: responses[index],
-              onChanged: (value) {
-                setState(() {
-                  responses[index] = value;
-                });
-              },
-            );
-          }
-        },
+      body: Scrollbar(
+        thumbVisibility: true,
+        child: ListView.builder(
+          padding: const EdgeInsets.all(8),
+          itemCount: intakeFormQuestions.length + 1,
+          itemBuilder: (context, index) {
+            //adds a next button at the end of all the questions
+            if (index == intakeFormQuestions.length) {
+              return NextButton(
+                label: 'NEXT',
+                onPressed: () {
+                  // SAVE TO HIVE
+                  UserClass.screenNumber++;
+                  UserClass.parentIntakeResponses = responses;
+                  UserClass.saveToHive();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          CompensationFormScreen(camera: widget.camera),
+                    ),
+                  );
+                },
+              );
+            }
+            if (intakeFormQuestions[index][0] == 'SAQ') {
+              // short answer question
+              return ShortAnswerQuestionWidget(
+                shortAnswerInstructions: intakeFormQuestions[index],
+                value: responses[index],
+                onChanged: (value) {
+                  setState(() {
+                    responses[index] = value;
+                  });
+                },
+              );
+            } else if (intakeFormQuestions[index][0] == 'CATAQ') {
+              // short answer question
+              return ChooseAllThatApplyQuestionWidget(
+                multipleChoiceEntry: intakeFormQuestions[index],
+                value: responses[index] ?? "",
+                onChanged: (updatedString) {
+                  setState(() {
+                    responses[index] = updatedString;
+                  });
+                },
+              );
+            } else {
+              // multiple choice question
+              return MutlipleChoiceQuestionWidget(
+                multipleChoiceEntry: intakeFormQuestions[index],
+                value: responses[index],
+                onChanged: (value) {
+                  setState(() {
+                    responses[index] = value;
+                  });
+                },
+              );
+            }
+          },
+        ),
       ),
       bottomNavigationBar: ProgressBar(),
     );
