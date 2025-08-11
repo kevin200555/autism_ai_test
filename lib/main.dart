@@ -91,10 +91,13 @@ class AutismAITest extends StatelessWidget {
       case 8:
         initialScreen = GeneralInstructionsScreen(camera: cameras[0]);
       case 9:
+        UserClass.screenNumber = 8;
         initialScreen = GeneralInstructionsScreen(camera: cameras[0]);
       case 10:
+        UserClass.screenNumber = 8;
         initialScreen = GeneralInstructionsScreen(camera: cameras[0]);
       case 11:
+        UserClass.screenNumber = 8;
         initialScreen = GeneralInstructionsScreen(camera: cameras[0]);
       case 12:
         initialScreen = VideoRecordingMenu(camera: cameras[0]);

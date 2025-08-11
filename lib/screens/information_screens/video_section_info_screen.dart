@@ -398,6 +398,7 @@ class FewTipsBeforeStart extends StatelessWidget {
               label: 'NEXT',
               onPressed: () {
                 UserClass.screenNumber++;
+                UserClass.saveToHive();
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -633,6 +634,7 @@ class BeforeYouStartScreen extends StatelessWidget {
               label: 'NEXT',
               onPressed: () {
                 UserClass.screenNumber++;
+                UserClass.saveToHive();
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -845,6 +847,7 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
               label: 'BEGIN TEST',
               onPressed: () {
                 UserClass.screenNumber++;
+                UserClass.saveToHive();
                 Navigator.push(
                   context,
                   MaterialPageRoute(
