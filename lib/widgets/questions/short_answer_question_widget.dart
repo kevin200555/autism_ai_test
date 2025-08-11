@@ -62,7 +62,9 @@ class _ShortAnswerQuestionWidgetState extends State<ShortAnswerQuestionWidget> {
         Padding(
           padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
           // answer box widget
-          child: TextField(
+          child: 
+          
+          TextField(
             controller: _controller,
             onChanged: widget.onChanged,
             decoration: const InputDecoration(
@@ -71,7 +73,7 @@ class _ShortAnswerQuestionWidgetState extends State<ShortAnswerQuestionWidget> {
             ),
             style: GoogleFonts.lato(
               textStyle: TextStyle(
-                fontSize: 12,
+                fontSize: 13,
                 fontWeight: FontWeight.w400,
                 fontStyle: FontStyle.italic,
               ),

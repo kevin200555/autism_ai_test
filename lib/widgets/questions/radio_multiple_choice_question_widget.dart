@@ -32,7 +32,7 @@ class RadioMutlipleChoiceQuestionWidget extends StatelessWidget {
               return RadioListTile<String>(
                 contentPadding: EdgeInsets.zero,
                 dense: true,
-                title: QuestionBodyText(item, maxLines: 1),
+                title: QuestionBodyText(item, maxLines: 1, isItalics: false,),
                 value: item,
                 groupValue: value,
                 onChanged: (val) {
