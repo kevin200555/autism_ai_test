@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:math';
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:flutter/material.dart';
