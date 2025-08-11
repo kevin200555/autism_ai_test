@@ -48,7 +48,7 @@ class GeneralInstructionsScreen extends StatelessWidget {
                     text: 'You\'ll be recording ',
                     style: GoogleFonts.lato(
                       textStyle: TextStyle(
-                        fontSize: 16,
+                        fontSize: 14,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -57,7 +57,7 @@ class GeneralInstructionsScreen extends StatelessWidget {
                     text: '3 short tasks',
                     style: GoogleFonts.lato(
                       textStyle: TextStyle(
-                        fontSize: 16,
+                        fontSize: 14,
                         fontWeight: FontWeight.w700,
                         decoration: TextDecoration.underline,
                       ),
@@ -68,7 +68,7 @@ class GeneralInstructionsScreen extends StatelessWidget {
                         ' using your phone. Each task should be recorded as a',
                     style: GoogleFonts.lato(
                       textStyle: TextStyle(
-                        fontSize: 16,
+                        fontSize: 14,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -77,7 +77,7 @@ class GeneralInstructionsScreen extends StatelessWidget {
                     text: ' separate video.',
                     style: GoogleFonts.lato(
                       textStyle: TextStyle(
-                        fontSize: 16,
+                        fontSize: 14,
                         fontWeight: FontWeight.w700,
                         decoration: TextDecoration.underline,
                       ),
@@ -88,14 +88,13 @@ class GeneralInstructionsScreen extends StatelessWidget {
                         ' You can upload the videos directly through the app when you\'re done.\n',
                     style: GoogleFonts.lato(
                       textStyle: TextStyle(
-                        fontSize: 16,
+                        fontSize: 14,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
                   ),
                 ],
               ),
-              maxLines: 5,
             ),
             NextButton(
               label: 'NEXT',
@@ -155,7 +154,7 @@ class FewTipsBeforeStart extends StatelessWidget {
                       text: '- Make sure your child\'s ',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -164,7 +163,7 @@ class FewTipsBeforeStart extends StatelessWidget {
                       text: 'face is not covered ',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w700,
                           decoration: TextDecoration.underline,
                         ),
@@ -174,14 +173,13 @@ class FewTipsBeforeStart extends StatelessWidget {
                       text: '(no hats or sunglasses).\n',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
                     ),
                   ],
                 ),
-                maxLines: 3,
               ),
             ),
             Padding(
@@ -193,7 +191,7 @@ class FewTipsBeforeStart extends StatelessWidget {
                       text: '- Try to record in a ',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -202,7 +200,7 @@ class FewTipsBeforeStart extends StatelessWidget {
                       text: 'quiet',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w700,
                           decoration: TextDecoration.underline,
                         ),
@@ -212,14 +210,13 @@ class FewTipsBeforeStart extends StatelessWidget {
                       text: ' place—turn off the TV or music.\n',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
                     ),
                   ],
                 ),
-                maxLines: 3,
               ),
             ),
             Padding(
@@ -231,7 +228,7 @@ class FewTipsBeforeStart extends StatelessWidget {
                       text: '- ',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -240,7 +237,7 @@ class FewTipsBeforeStart extends StatelessWidget {
                       text: 'Good lighting',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w700,
                           decoration: TextDecoration.underline,
                         ),
@@ -251,14 +248,13 @@ class FewTipsBeforeStart extends StatelessWidget {
                           ' is important! Daytime is best so we can clearly see your child\'s face and body.\n',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
                     ),
                   ],
                 ),
-                maxLines: 3,
               ),
             ),
             Padding(
@@ -271,14 +267,13 @@ class FewTipsBeforeStart extends StatelessWidget {
                           '- It\'s okay if you\'re in the video too—we want to see how your child interacts with you.\n',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
                     ),
                   ],
                 ),
-                maxLines: 3,
               ),
             ),
             Padding(
@@ -290,7 +285,7 @@ class FewTipsBeforeStart extends StatelessWidget {
                       text: '- ',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -299,7 +294,7 @@ class FewTipsBeforeStart extends StatelessWidget {
                       text: 'There\'s no right or wrong response.',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           decoration: TextDecoration.underline,
                           fontWeight: FontWeight.w700,
                         ),
@@ -311,14 +306,13 @@ class FewTipsBeforeStart extends StatelessWidget {
                           ' that\'s totally fine. Every video helps our research.\n',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
                     ),
                   ],
                 ),
-                maxLines: 4,
               ),
             ),
             Padding(
@@ -331,7 +325,7 @@ class FewTipsBeforeStart extends StatelessWidget {
                           '- You don\'t have to finish everything at once. Feel free to',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -340,7 +334,7 @@ class FewTipsBeforeStart extends StatelessWidget {
                       text: ' take breaks or spread the tasks out',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w700,
                           decoration: TextDecoration.underline,
                         ),
@@ -350,14 +344,13 @@ class FewTipsBeforeStart extends StatelessWidget {
                       text: ' over a few days.\n',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
                     ),
                   ],
                 ),
-                maxLines: 4,
               ),
             ),
             Padding(
@@ -370,7 +363,7 @@ class FewTipsBeforeStart extends StatelessWidget {
                           '- You\'ll find the task instructions on the next page.',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -379,7 +372,7 @@ class FewTipsBeforeStart extends StatelessWidget {
                       text: ' Please read each one before recording.\n',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w700,
                           decoration: TextDecoration.underline,
                         ),
@@ -387,7 +380,6 @@ class FewTipsBeforeStart extends StatelessWidget {
                     ),
                   ],
                 ),
-                maxLines: 3,
               ),
             ),
             BodyText(
@@ -457,7 +449,7 @@ class BeforeYouStartScreen extends StatelessWidget {
                       text: '- Try to follow the steps ',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -466,7 +458,7 @@ class BeforeYouStartScreen extends StatelessWidget {
                       text: 'exactly as written,',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w700,
                           decoration: TextDecoration.underline,
                         ),
@@ -478,7 +470,7 @@ class BeforeYouStartScreen extends StatelessWidget {
                           'specific sentence (e.g., “Bring me the toy”). Using the',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -487,7 +479,7 @@ class BeforeYouStartScreen extends StatelessWidget {
                       text: ' exact wording',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w700,
                           decoration: TextDecoration.underline,
                         ),
@@ -498,14 +490,13 @@ class BeforeYouStartScreen extends StatelessWidget {
                           ' helps us build useful tools like audio-based detection systems.\n',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
                     ),
                   ],
                 ),
-                maxLines: 6,
               ),
             ),
             Padding(
@@ -518,7 +509,7 @@ class BeforeYouStartScreen extends StatelessWidget {
                           '- If a sentence is included in quotation marks, please say ',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -527,7 +518,7 @@ class BeforeYouStartScreen extends StatelessWidget {
                       text: 'that exact sentence only once,',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w700,
                           decoration: TextDecoration.underline,
                         ),
@@ -537,14 +528,13 @@ class BeforeYouStartScreen extends StatelessWidget {
                       text: ' as instructed in the task.\n',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
                     ),
                   ],
                 ),
-                maxLines: 4,
               ),
             ),
             Padding(
@@ -557,7 +547,7 @@ class BeforeYouStartScreen extends StatelessWidget {
                           '- After you finish the main prompt or question in each task,',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -566,7 +556,7 @@ class BeforeYouStartScreen extends StatelessWidget {
                       text: ' keep recording for at least 30 seconds',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w700,
                           decoration: TextDecoration.underline,
                         ),
@@ -576,14 +566,13 @@ class BeforeYouStartScreen extends StatelessWidget {
                       text: ' or until the interaction ends naturally.\n',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
                     ),
                   ],
                 ),
-                maxLines: 4,
               ),
             ),
             Padding(
@@ -595,7 +584,7 @@ class BeforeYouStartScreen extends StatelessWidget {
                       text: '- Make sure your child\'s',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -604,7 +593,7 @@ class BeforeYouStartScreen extends StatelessWidget {
                       text: ' face and body',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w700,
                           decoration: TextDecoration.underline,
                         ),
@@ -615,14 +604,13 @@ class BeforeYouStartScreen extends StatelessWidget {
                           ' are visible as much as possible throughout the video.\n',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
                     ),
                   ],
                 ),
-                maxLines: 3,
               ),
             ),
             BodyText(
@@ -693,7 +681,7 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                     text: 'Try to keep your child\'s ',
                     style: GoogleFonts.lato(
                       textStyle: TextStyle(
-                        fontSize: 16,
+                        fontSize: 14,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -702,7 +690,7 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                     text: 'full body and face',
                     style: GoogleFonts.lato(
                       textStyle: TextStyle(
-                        fontSize: 16,
+                        fontSize: 14,
                         fontWeight: FontWeight.w700,
                         decoration: TextDecoration.underline,
                       ),
@@ -714,14 +702,13 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                         'the following ways to record, based on what works best for your situation:\n',
                     style: GoogleFonts.lato(
                       textStyle: TextStyle(
-                        fontSize: 16,
+                        fontSize: 14,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
                   ),
                 ],
               ),
-              maxLines: 4,
             ),
             Padding(
               padding: EdgeInsetsGeometry.fromLTRB(16, 0, 0, 0),
@@ -732,7 +719,7 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                       text: '- ',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -741,7 +728,7 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                       text: 'Hold the phone yourself',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w700,
                           decoration: TextDecoration.underline,
                         ),
@@ -754,14 +741,13 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                           'child feel like they are being “watched.”\n',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
                     ),
                   ],
                 ),
-                maxLines: 5,
               ),
             ),
             Padding(
@@ -773,7 +759,7 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                       text: '- ',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -782,7 +768,7 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                       text: 'Place the phone on a stable surface:',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w700,
                           decoration: TextDecoration.underline,
                         ),
@@ -795,14 +781,13 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                           'Just make sure the angle captures your child\'s body and face.\n',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
                     ),
                   ],
                 ),
-                maxLines: 6,
               ),
             ),
             Padding(
@@ -814,7 +799,7 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                       text: '- ',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -822,7 +807,7 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                     TextSpan(
                       text: 'Have a second person film:',
                       style: GoogleFonts.lato(
-                        fontSize: 16,
+                        fontSize: 14,
                         fontWeight: FontWeight.w700,
                         decoration: TextDecoration.underline,
                       ),
@@ -833,14 +818,13 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                           'holds the phone and follows the child\'s movement.\n',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
                     ),
                   ],
                 ),
-                maxLines: 4,
               ),
             ),
             NextButton(

@@ -68,7 +68,6 @@ class SubTitle extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(16, 1, 16, 1),
       child: SizedBox(
         width: double.infinity,
-        height: MediaQuery.sizeOf(context).height * 0.035,
         child: AutoSizeText(
           text,
           textAlign: textAlign,
@@ -142,7 +141,6 @@ class BodyText extends StatelessWidget {
       padding: EdgeInsets.fromLTRB(16, 1, 16, 1),
       child: SizedBox(
         width: double.infinity,
-        height: MediaQuery.sizeOf(context).height * 0.025 * maxLines,
         child: AutoSizeText.rich(
           TextSpan(
             text: text,
@@ -232,7 +230,6 @@ class QuestionBodyText extends StatelessWidget {
       padding: EdgeInsets.fromLTRB(0, 1, 0, 1),
       child: SizedBox(
         width: double.infinity,
-        height: MediaQuery.sizeOf(context).height * 0.025 * maxLines,
         child: AutoSizeText.rich(
           TextSpan(
             text: text,
@@ -242,7 +239,6 @@ class QuestionBodyText extends StatelessWidget {
           ),
           textAlign: textAlign,
           minFontSize: minFontSize,
-          maxLines: maxLines,
           style: GoogleFonts.lato(
             textStyle: TextStyle(
               fontSize: 16,
@@ -313,7 +309,6 @@ class RedBodyText extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(16, 1, 16, 1),
       child: SizedBox(
         width: double.infinity,
-        height: MediaQuery.sizeOf(context).height * 0.035 * maxLines,
         child: AutoSizeText(
           text,
           textAlign: textAlign,
@@ -339,7 +334,6 @@ class RichBodyText extends StatelessWidget {
   final TextAlign textAlign;
   final double minFontSize;
   final TextStyle? style;
-  final int maxLines;
 
   const RichBodyText(
     this.textSpan, {
@@ -347,7 +341,6 @@ class RichBodyText extends StatelessWidget {
     this.textAlign = TextAlign.left,
     this.minFontSize = 8,
     this.style,
-    required this.maxLines,
   });
 
   @override
@@ -356,12 +349,10 @@ class RichBodyText extends StatelessWidget {
       padding: EdgeInsets.fromLTRB(16, 1, 16, 1),
       child: SizedBox(
         width: double.infinity,
-        height: MediaQuery.sizeOf(context).height * 0.025 * maxLines,
         child: AutoSizeText.rich(
           textSpan,
           textAlign: textAlign,
           minFontSize: minFontSize,
-          maxLines: maxLines,
           style: GoogleFonts.lato(
             textStyle: TextStyle(
               fontSize: 16,
