@@ -1,11 +1,12 @@
 import 'dart:io';
+import 'dart:math';
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
 // Lets the user view the video they just recorded
-// may be a good idea to add a fast forward / rewind button 
+// may be a good idea to add a fast forward / rewind button
 // (I'll add this later depending on how long the videos end up being)
 class VideoPlayerScreen extends StatefulWidget {
   final String videoPath; // Can be file path or network URL
@@ -40,19 +41,26 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
-        title: AppBarTitle('Video Playback', color: ColorTheme.background),
+        title: AppBarTitle('Here is the video you recorded!', color: ColorTheme.background),
         centerTitle: true,
         iconTheme: IconThemeData(color: ColorTheme.background),
         backgroundColor: ColorTheme.accent,
       ),
-      body: Center(
-        // shows a loading circle while waiting for everything to load
-        child: _controller.value.isInitialized
-            ? AspectRatio(
-                aspectRatio: _controller.value.aspectRatio,
-                child: VideoPlayer(_controller),
-              )
-            : const CircularProgressIndicator(),
+      body: Column(
+        children: [
+          BodyText('Make sure the video fufills all of the requirements detailed in the instructions. '
+          'You can always delete and retake the video, so don\'t worry if it takes a few attempts! '
+          'Press the back button to exit this screen',maxLines: 5),
+          Center(
+            // shows a loading circle while waiting for everything to load
+            child: _controller.value.isInitialized
+                ? AspectRatio(
+                    aspectRatio: _controller.value.aspectRatio,
+                    child: VideoPlayer(_controller),
+                  )
+                : const CircularProgressIndicator(),
+          ),
+        ],
       ),
       // play/pause button
       floatingActionButton: SizedBox(

@@ -73,7 +73,7 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
     }
   }
 
-  //stops recording, moves onto next section automatically
+  //stops recording, and saves the video automatically
   Future<void> _stopRecording() async {
     if (controller.value.isRecordingVideo) {
       try {
@@ -86,11 +86,13 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
         });
         UserClass.recordedVideos?[currentStep] = recordedVideo;
         UserClass.saveToHive();
+        
         if (!mounted) return;
         await showDialog(
           context: context,
           builder: (_) => const AlertDialog(title: Text('Video Saved!')),
         );
+        viewVideo();
 
         // checks to make sure the video actually stopped recording
       } catch (e) {
