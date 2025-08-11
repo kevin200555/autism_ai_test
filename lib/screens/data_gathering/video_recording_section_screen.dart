@@ -86,7 +86,7 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
         });
         UserClass.recordedVideos?[currentStep] = recordedVideo;
         UserClass.saveToHive();
-        
+
         if (!mounted) return;
         await showDialog(
           context: context,
@@ -201,126 +201,135 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
         automaticallyImplyLeading: true,
       ),
       //makes screen scrollable to account for different phone screens
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SubTitle('Instructions'),
-            AlternateBodyText(
-              widget.instructions[currentStep],
-              color: ColorTheme.textColor,
-            ),
-            SubTitle('Recording Section (Scroll Down)'),
-            // Text that indicates to the user if they're recording or not, synced with the recording button
-            SizedBox(
-              width: double.infinity,
-              child: AutoSizeText(
-                (isRecording) ? 'RECORDING IN PROGRESS' : 'RECORDING STOPPED',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: (isRecording) ? ColorTheme.green : ColorTheme.red,
-                  fontWeight: FontWeight.bold,
-                ),
-                textAlign: TextAlign.center,
-                minFontSize: 12,
-                maxLines: 1,
+      body: Scrollbar(
+        thumbVisibility: true,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SubTitle('Instructions'),
+              AlternateBodyText(
+                widget.instructions[currentStep],
+                color: ColorTheme.textColor,
               ),
-            ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-            // display of the camera
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.55,
-              child: CameraPreview(controller),
-            ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.025),
-            // starts and stops the recording button
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // button to let user view their video
-                ElevatedButton(
-                  onPressed: () {
-                    if (!isRecording) {
-                      viewVideo();
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    padding: const EdgeInsets.all(1), // space inside the button
-                    backgroundColor: ColorTheme.background,
-                    foregroundColor: ColorTheme.textColor,
+              SubTitle('Recording Section (Scroll Down)'),
+              // Text that indicates to the user if they're recording or not, synced with the recording button
+              SizedBox(
+                width: double.infinity,
+                child: AutoSizeText(
+                  (isRecording) ? 'RECORDING IN PROGRESS' : 'RECORDING STOPPED',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: (isRecording) ? ColorTheme.green : ColorTheme.red,
+                    fontWeight: FontWeight.bold,
                   ),
-                  child: const Icon(Icons.remove_red_eye, size: 50),
+                  textAlign: TextAlign.center,
+                  minFontSize: 12,
+                  maxLines: 1,
                 ),
-                SizedBox(width: MediaQuery.of(context).size.width * 0.2),
-                //Recording button
-                ElevatedButton(
-                  onPressed: !controller.value.isInitialized
-                      ? null
-                      : (isRecording ? _stopRecording : _startRecording),
-                  style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    padding: const EdgeInsets.all(1), // space inside the button
-                    backgroundColor: (isRecording)
-                        ? ColorTheme.green
-                        : ColorTheme.red,
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+              // display of the camera
+              SizedBox(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 0.55,
+                child: CameraPreview(controller),
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.025),
+              // starts and stops the recording button
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // button to let user view their video
+                  ElevatedButton(
+                    onPressed: () {
+                      if (!isRecording) {
+                        viewVideo();
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      shape: const CircleBorder(),
+                      padding: const EdgeInsets.all(
+                        1,
+                      ), // space inside the button
+                      backgroundColor: ColorTheme.background,
+                      foregroundColor: ColorTheme.textColor,
+                    ),
+                    child: const Icon(Icons.remove_red_eye, size: 50),
                   ),
-                  child: isRecording
-                      ? Icon(
-                          Icons.motion_photos_pause_outlined,
-                          size: 72,
-                          color: ColorTheme.background,
-                        )
-                      : Icon(
-                          Icons.not_started,
-                          size: 72,
-                          color: ColorTheme.background,
-                        ),
-                ),
-                SizedBox(width: MediaQuery.of(context).size.width * 0.2),
-                // Lets User delete video if they have a video
-                ElevatedButton(
-                  onPressed: () {
-                    if (!isRecording) {
-                      deleteVideo();
-                    }
-                  },
+                  SizedBox(width: MediaQuery.of(context).size.width * 0.2),
+                  //Recording button
+                  ElevatedButton(
+                    onPressed: !controller.value.isInitialized
+                        ? null
+                        : (isRecording ? _stopRecording : _startRecording),
+                    style: ElevatedButton.styleFrom(
+                      shape: const CircleBorder(),
+                      padding: const EdgeInsets.all(
+                        1,
+                      ), // space inside the button
+                      backgroundColor: (isRecording)
+                          ? ColorTheme.green
+                          : ColorTheme.red,
+                    ),
+                    child: isRecording
+                        ? Icon(
+                            Icons.motion_photos_pause_outlined,
+                            size: 72,
+                            color: ColorTheme.background,
+                          )
+                        : Icon(
+                            Icons.not_started,
+                            size: 72,
+                            color: ColorTheme.background,
+                          ),
+                  ),
+                  SizedBox(width: MediaQuery.of(context).size.width * 0.2),
+                  // Lets User delete video if they have a video
+                  ElevatedButton(
+                    onPressed: () {
+                      if (!isRecording) {
+                        deleteVideo();
+                      }
+                    },
 
-                  style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    padding: const EdgeInsets.all(1), // space inside the button
-                    backgroundColor: ColorTheme.background,
-                    foregroundColor: ColorTheme.textColor,
+                    style: ElevatedButton.styleFrom(
+                      shape: const CircleBorder(),
+                      padding: const EdgeInsets.all(
+                        1,
+                      ), // space inside the button
+                      backgroundColor: ColorTheme.background,
+                      foregroundColor: ColorTheme.textColor,
+                    ),
+                    child: const Icon(Icons.delete, size: 50),
                   ),
-                  child: const Icon(Icons.delete, size: 50),
-                ),
-              ],
-            ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-            // Next Task/Finish Test
-            Center(
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width * 0.8,
-                height: MediaQuery.of(context).size.height * 0.05,
-                child: Container(
-                  color: (UserClass.recordedVideos?[currentStep] == null)
-                      ? ColorTheme.progressBarBackground
-                      : ColorTheme.green,
-                  child: Center(
-                    child: ButtonText(
-                      (UserClass.recordedVideos?[currentStep] == null)
-                          ? 'Video not recorded'
-                          : 'Task Completed! Press the back button!',
-                      maxLines: 1,
+                ],
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+              // Next Task/Finish Test
+              Center(
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  height: MediaQuery.of(context).size.height * 0.05,
+                  child: Container(
+                    color: (UserClass.recordedVideos?[currentStep] == null)
+                        ? ColorTheme.progressBarBackground
+                        : ColorTheme.green,
+                    child: Center(
+                      child: ButtonText(
+                        (UserClass.recordedVideos?[currentStep] == null)
+                            ? 'Video not recorded'
+                            : 'Task Completed! Press the back button!',
+                        maxLines: 1,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-          ],
+              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+            ],
+          ),
         ),
       ),
     );
