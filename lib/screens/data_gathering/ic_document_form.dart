@@ -72,7 +72,7 @@ class _InformedConsentSigningScreenState
         iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),
       ),
 
-      body: ListView.builder(
+      body: Scrollbar(thumbVisibility: true, child:ListView.builder(
         padding: const EdgeInsets.all(8),
         itemCount: icQuestions.length + 1,
         itemBuilder: (context, index) {
@@ -131,7 +131,7 @@ class _InformedConsentSigningScreenState
             );
           }
         },
-      ),
+      ),),
       bottomNavigationBar: ProgressBar(),
     );
   }
