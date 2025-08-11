@@ -116,40 +116,6 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
     }
   }
 
-  //goes to the next video screen
-  /*
-  nextVideo() async {
-    //check to make sure that the user recorded somthing before moving on
-    if (!(currentStep >= 0 && currentStep < recordedVideos.length)) {
-      await showDialog(
-        context: context,
-        builder: (_) =>
-            AlertDialog(title: const Text('please record a video first')),
-      );
-      return;
-    }
-    UserClass.recordedVideos?[currentStep] = recordedVideos[currentStep];
-    if (currentStep < widget.instructions.length - 1) {
-      setState(() {
-        currentStep++;
-      });
-      //goes back to main menu if the current vide step exceeds number of insturcions
-    } else {
-      File userReport = await UserClass.writeToReportFile(
-        UserClass.generateUserReport(),
-      );
-      UserClass.uploadAllFiles(userReport);
-      if (!mounted) return;
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => FinalScreen(camera: widget.camera),
-        ),
-      );
-    }
-  }
-  */
-
   //deletes Video, has to convert the recordedvideo from an XFILE to a File, This is why this code doesn't work on web applications
   //since web applications can't use dart.io FIles
   Future<void> deleteVideo() async {
@@ -165,7 +131,6 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
         showDialog(
           context: context,
           builder: (_) => const AlertDialog(title: Text('Video Deleted!')),
-          
         );
         setState(() {
           UserClass.recordedVideos?[currentStep] = null;
@@ -188,7 +153,7 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
     }
   }
 
-  //views video, brings user to a seperate screen to do so
+  //views video, brings user to a seperate screen to do so, displays popup to user if they haven't recorded anything
   Future<void> viewVideo() async {
     recordedVideo = UserClass.recordedVideos?[currentStep];
     if (recordedVideo == null) {
@@ -240,7 +205,10 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SubTitle('Instructions'),
-            AlternateBodyText(widget.instructions[currentStep], color: ColorTheme.textColor,),
+            AlternateBodyText(
+              widget.instructions[currentStep],
+              color: ColorTheme.textColor,
+            ),
             SubTitle('Recording Section (Scroll Down)'),
             // Text that indicates to the user if they're recording or not, synced with the recording button
             SizedBox(
@@ -335,10 +303,17 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
                 width: MediaQuery.of(context).size.width * 0.8,
                 height: MediaQuery.of(context).size.height * 0.05,
                 child: Container(
-                  color: (UserClass.recordedVideos?[currentStep] == null) ? ColorTheme.progressBarBackground : ColorTheme.green,
+                  color: (UserClass.recordedVideos?[currentStep] == null)
+                      ? ColorTheme.progressBarBackground
+                      : ColorTheme.green,
                   child: Center(
-                    child: ButtonText((UserClass.recordedVideos?[currentStep] == null) ? 'Video not recorded' : 'Task Completed!', maxLines: 1),
-                  )
+                    child: ButtonText(
+                      (UserClass.recordedVideos?[currentStep] == null)
+                          ? 'Video not recorded'
+                          : 'Task Completed! Press the back button!',
+                      maxLines: 1,
+                    ),
+                  ),
                 ),
               ),
             ),
