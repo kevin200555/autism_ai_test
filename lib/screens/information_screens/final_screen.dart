@@ -1,5 +1,6 @@
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/screens/information_screens/home_screen.dart';
+import 'package:autism_ai_test/uploading/read_from_firebase.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:camera/camera.dart';
@@ -7,9 +8,32 @@ import 'package:flutter/material.dart';
 
 // This is just a screen to thank the user for their time and to confirm their answers had been uploaded
 // Later, I may what to put the results onto this screen too
-class FinalScreen extends StatelessWidget {
+class FinalScreen extends StatefulWidget {
   final CameraDescription camera;
   const FinalScreen({super.key, required this.camera});
+
+  @override
+  State<FinalScreen> createState() => _FinalScreenState();
+}
+
+class _FinalScreenState extends State<FinalScreen> {
+  Future<String> loadTextFile() async {
+    String content = await readTextFileFromFirebase("data/data.txt");
+    return content;
+  }
+  String fileText = "";
+
+  @override
+  void initState() {
+    super.initState();
+    loadTextFile().then((value) {
+      setState(() {
+        fileText = value;
+      });
+    });
+    print("FileText: $fileText");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,8 +65,9 @@ class FinalScreen extends StatelessWidget {
                 size: MediaQuery.of(context).size.width * 0.3,
               ),
             ),
-            SubTitle('\nResults'),
-            BodyText('...)', maxLines: 1),
+            SubTitle('Results'),
+            
+            BodyText(fileText, maxLines: 1),
           ],
         ),
       ),
@@ -57,7 +82,7 @@ class FinalScreen extends StatelessWidget {
               UserClass.resetAll();
               Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
-                  builder: (context) => HomeScreen(camera: camera),
+                  builder: (context) => HomeScreen(camera: widget.camera),
                 ),
               );
             },
