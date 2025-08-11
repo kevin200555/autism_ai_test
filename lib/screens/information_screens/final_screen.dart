@@ -31,7 +31,6 @@ class _FinalScreenState extends State<FinalScreen> {
         fileText = value;
       });
     });
-    print("FileText: $fileText");
   }
 
   @override
