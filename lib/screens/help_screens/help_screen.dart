@@ -34,7 +34,7 @@ class HelpScreen extends StatelessWidget {
               'The Recorded Video Section requires that you follow the instructions listed to '
               'record a successful video. \n\n'
               'Keep in mind that this app will ask you to use your camera; you\'ll need to accept '
-              'this request to record.',
+              'this request to record.\n',
               maxLines: 20,
             ),
             SubTitle('Video Recording'),
@@ -44,7 +44,7 @@ class HelpScreen extends StatelessWidget {
               'To Record a video, simply press the green button to start recording, and then the red button to stop '
               'The button with an \'eye\' icon can then be pressed to review the video '
               'If you\'re not satisfied with the video, you can then delete the video by pressing the button '
-              'with the trash can on it. Take as much time as you need, so don\'t worry about \'messing up\'',
+              'with the trash can on it. Take as much time as you need, so don\'t worry about \'messing up\'\n',
               maxLines: 13,
             ),
             // FAQ Section
@@ -57,7 +57,7 @@ class HelpScreen extends StatelessWidget {
               'or \'submit\' button in order for that form or video to be saved\n\n'
               'Q: Am I able to restart my progress?, I have made a mistake\n'
               'A: You are welcome to go back to any point in the form and change your answers or upload '
-              'a new video. Keep an eye out for the back button at the top left corner',
+              'a new video. Keep an eye out for the back button at the top left corner\n',
               maxLines: 16,
             ),
             // Toubleshooting section
@@ -75,6 +75,7 @@ class HelpScreen extends StatelessWidget {
             ),
             ResetButton(camera: camera),
             // Contact information section
+            BodyText('\n', maxLines: 1),
             SubTitle('Contact'),
             BodyText(
               'For questions about the app, contact Kevin Li:\n'
