@@ -152,7 +152,6 @@ class BodyText extends StatelessWidget {
           ),
           textAlign: textAlign,
           minFontSize: minFontSize,
-          maxLines: maxLines,
           style: GoogleFonts.lato(
             textStyle: TextStyle(
               fontSize: 16,
@@ -216,6 +215,7 @@ class QuestionBodyText extends StatelessWidget {
   final double minFontSize;
   final TextStyle? style;
   final int maxLines;
+  final bool isItalics;
 
   const QuestionBodyText(
     this.text, {
@@ -223,7 +223,7 @@ class QuestionBodyText extends StatelessWidget {
     this.textAlign = TextAlign.left,
     this.minFontSize = 8,
     this.style,
-    required this.maxLines,
+    required this.maxLines, required this.isItalics,
   });
 
   @override
@@ -248,6 +248,7 @@ class QuestionBodyText extends StatelessWidget {
               fontSize: 16,
               fontWeight: FontWeight.normal,
               color: ColorTheme.textColor,
+              fontStyle: (isItalics) ? FontStyle.italic : FontStyle.normal,
             ),
           ),
         ),
