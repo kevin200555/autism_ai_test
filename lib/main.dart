@@ -1,4 +1,3 @@
-
 import 'package:autism_ai_test/screens/data_gathering/video_recording_menu.dart';
 import 'package:autism_ai_test/screens/other/no_camera_error_screen.dart';
 import 'package:autism_ai_test/screens/data_gathering/compensation_form.dart';
@@ -14,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:autism_ai_test/screens/information_screens/home_screen.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:flutter/services.dart';
 
 // initizies the cameras, this is used accross all parts of the program
 late List<CameraDescription> cameras;
@@ -33,6 +33,10 @@ Future<void> main() async {
     }
     cameras = []; // ensure it's at least an empty list
   }
+  // sets the screen orientation
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
   runApp(AutismAITest());
 }
 
