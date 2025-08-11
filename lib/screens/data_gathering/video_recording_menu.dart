@@ -111,7 +111,8 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
             SizedBox(height: MediaQuery.of(context).size.height * 0.01),
             NextButton(label: 'SUBMIT VIDEOS', onPressed: (){
               submit();
-            })
+            }),
+           BodyText('\n\n\n', maxLines: 1),
           ],
         ),
       ),
