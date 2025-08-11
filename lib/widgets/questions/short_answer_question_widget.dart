@@ -1,5 +1,6 @@
 import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 // This class' creates a widget that is meant to get some typed response from the user
 // It is used in the various forms in this experiment
@@ -66,9 +67,15 @@ class _ShortAnswerQuestionWidgetState extends State<ShortAnswerQuestionWidget> {
             onChanged: widget.onChanged,
             decoration: const InputDecoration(
               border: UnderlineInputBorder(),
-              hintText: 'Enter your answer here',
+              hintText: 'Type your answer here',
             ),
-            style: const TextStyle(fontSize: 14),
+            style: GoogleFonts.lato(
+                        textStyle: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          fontStyle: FontStyle.italic
+                        ),
+                      ),
             maxLines: 5,
             minLines: 1,
           ),
