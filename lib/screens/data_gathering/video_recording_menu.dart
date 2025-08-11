@@ -72,7 +72,7 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
         backgroundColor: ColorTheme.accent,
         iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),
       ),
-      body: SingleChildScrollView(
+      body: Scrollbar(thumbVisibility: true, child: SingleChildScrollView(
         child: Column(
           children: [
             SubTitle('Instructions'),
@@ -113,7 +113,7 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
               submit();
             })
           ],
-        ),
+        ),),
       ),
     );
   }
