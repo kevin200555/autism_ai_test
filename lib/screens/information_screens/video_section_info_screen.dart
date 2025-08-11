@@ -209,7 +209,7 @@ class FewTipsBeforeStart extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: ' place—turn off the TV or music.',
+                      text: ' place—turn off the TV or music.\n',
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
                           fontSize: 16,
