@@ -21,7 +21,7 @@ class MutlipleChoiceQuestionWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Question
+        // Question Text
         QuestionText(multipleChoiceEntry[1]),
         // adds spacing for the Dropdown menu
         Padding(
