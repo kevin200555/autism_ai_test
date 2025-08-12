@@ -5,7 +5,7 @@
 // ignore_for_file: file_names
 
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
-import 'package:autism_ai_test/screens/information_screens/video_section_info_screen.dart';
+import 'package:autism_ai_test/screens/video_section/video_section_info_screen.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/button/back_button.dart';
 import 'package:autism_ai_test/widgets/button/help_button.dart';

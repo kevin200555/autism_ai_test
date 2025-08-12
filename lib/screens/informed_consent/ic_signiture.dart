@@ -5,7 +5,7 @@
 
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/constants/colors.dart';
-import 'package:autism_ai_test/screens/data_gathering/intake/intake_form_screen.dart';
+import 'package:autism_ai_test/screens/intake/intake_form_screen.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/button/back_button.dart';
 import 'package:autism_ai_test/widgets/button/help_button.dart';
