@@ -49,7 +49,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
         children: [
           BodyText('Make sure the video fufills all of the requirements detailed in the instructions. '
           'You can always delete and retake the video, so don\'t worry if it takes a few attempts! '
-          'Press the back button to exit this screen',maxLines: 5),
+          'Press the back button to exit this screen', color: ColorTheme.textColor,),
           Center(
             // shows a loading circle while waiting for everything to load
             child: _controller.value.isInitialized

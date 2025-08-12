@@ -1,3 +1,4 @@
+import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:flutter/material.dart';
 
@@ -38,7 +39,7 @@ class MutlipleChoiceQuestionWidget extends StatelessWidget {
                 .map(
                   (item) => DropdownMenuItem<String>(
                     value: item,
-                    child: BodyText(item, maxLines: 1),
+                    child: BodyText(item, color: ColorTheme.textColor,),
                   ),
                 )
                 .toList(),

@@ -80,13 +80,12 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
               'This is the list of all of the videos you have to take. '
               'Carefully read each set of instructions and decide which one you want to do first. '
               'You are welcome to take these out of order.  As always, feel free to take breaks '
-              'and continue when you are ready.',
-              maxLines: 6,
+              'and continue when you are ready.', color: ColorTheme.textColor,
             ),
             BodyText(
               'Click the drop down arrow in order to read the task\'s instructions.'
               'Then scroll down and click the "RECORD" button to complete that task.\n',
-              maxLines: 4,
+              color: ColorTheme.textColor,
             ),
             SubTitle('Tasks'),
             Padding(
@@ -112,7 +111,7 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
             NextButton(label: 'SUBMIT VIDEOS', onPressed: (){
               submit();
             }),
-           BodyText('\n\n\n', maxLines: 1),
+           BodyText('\n\n\n', color: ColorTheme.textColor),
            
           ],
         ),),

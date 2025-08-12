@@ -35,7 +35,7 @@ class HelpScreen extends StatelessWidget {
               'record a successful video. \n\n'
               'Keep in mind that this app will ask you to use your camera; you\'ll need to accept '
               'this request to record.\n',
-              maxLines: 20,
+              color: ColorTheme.textColor,
             ),
             SubTitle('Video Recording'),
             BodyText(
@@ -45,7 +45,7 @@ class HelpScreen extends StatelessWidget {
               'The button with an \'eye\' icon can then be pressed to review the video '
               'If you\'re not satisfied with the video, you can then delete the video by pressing the button '
               'with the trash can on it. Take as much time as you need, so don\'t worry about \'messing up\'\n',
-              maxLines: 13,
+              color: ColorTheme.textColor,
             ),
             // FAQ Section
             SubTitle('FAQ'),
@@ -58,7 +58,7 @@ class HelpScreen extends StatelessWidget {
               'Q: Am I able to restart my progress?, I have made a mistake\n'
               'A: You are welcome to go back to any point in the form and change your answers or upload '
               'a new video. Keep an eye out for the back button at the top left corner\n',
-              maxLines: 16,
+              color: ColorTheme.textColor,
             ),
             // Toubleshooting section
             SubTitle('Troubleshooting'),
@@ -67,21 +67,21 @@ class HelpScreen extends StatelessWidget {
               'make sure to allow the use of the camera whlie on the app, it is critical for this test\n\n'
               'Also ensure that your device has a working camera, but at when this point, that is a non issue. '
               'If, for whatever reason, you are stuck, press the below button in order to reset\n',
-              maxLines: 10,
+              color: ColorTheme.textColor,
             ),
-            RedBodyText(
+            BodyText(
               'Warning: this button resets all your progress, so only do this if there is no other option',
-              maxLines: 3,
+              color: ColorTheme.red
             ),
             ResetButton(camera: camera),
             // Contact information section
-            BodyText('\n', maxLines: 1),
+            BodyText('\n', color: ColorTheme.textColor,),
             SubTitle('Contact'),
             BodyText(
               'For questions about the app, contact Kevin Li:\n'
               'kevinli200555@gmail.com\n\n'
               'For more information about this project and the AI model, contact Dr Shuo Wang: 314-362-7338\n\n\n',
-              maxLines: 8,
+              color: ColorTheme.textColor,
             ),
           ],
         ),

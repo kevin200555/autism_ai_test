@@ -61,10 +61,10 @@ class _CompensationFormScreenState extends State<CompensationFormScreen> {
           itemCount: compensationFormQuestions.length + 2,
           itemBuilder: (context, index) {
             if (index == 0) {
-              return RedBodyText(
+              return BodyText(
                 'This information is required for compensation. '
                 'If you wish to decline payment, you can leave these fields blank.\n\n',
-                maxLines: 6,
+                color: ColorTheme.red
               );
             } else if (index == compensationFormQuestions.length + 1) {
               // LAST index (after all questions)

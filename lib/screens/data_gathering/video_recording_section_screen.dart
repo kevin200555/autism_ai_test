@@ -209,7 +209,7 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SubTitle('Instructions'),
-              AlternateBodyText(
+              BodyText(
                 widget.instructions[currentStep],
                 color: ColorTheme.textColor,
               ),

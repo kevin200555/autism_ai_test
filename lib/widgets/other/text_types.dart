@@ -119,12 +119,12 @@ class QuestionText extends StatelessWidget {
   }
 }
 
+// The most commonly used text type, takes in color as well as text in order to write
 class BodyText extends StatelessWidget {
   final String text;
   final TextAlign textAlign;
   final double minFontSize;
   final TextStyle? style;
-  final int maxLines;
 
   const BodyText(
     this.text, {
@@ -132,7 +132,7 @@ class BodyText extends StatelessWidget {
     this.textAlign = TextAlign.left,
     this.minFontSize = 8,
     this.style,
-    required this.maxLines,
+    required Color color,
   });
 
   @override
@@ -163,50 +163,7 @@ class BodyText extends StatelessWidget {
   }
 }
 
-class AlternateBodyText extends StatelessWidget {
-  final String text;
-  final TextAlign textAlign;
-  final double minFontSize;
-  final TextStyle? style;
-  final Color color;
-
-  const AlternateBodyText(
-    this.text, {
-    super.key,
-    this.textAlign = TextAlign.left,
-    this.minFontSize = 8,
-    this.style, required this.color,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.fromLTRB(16, 1, 16, 1),
-      child: SizedBox(
-        width: double.infinity,
-        child: AutoSizeText.rich(
-          TextSpan(
-            text: text,
-            style: GoogleFonts.lato(
-              textStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-              color: color
-            ),
-          ),
-          textAlign: textAlign,
-          minFontSize: minFontSize,
-          style: GoogleFonts.lato(
-            textStyle: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.normal,
-              color: color,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
+//Similar to BodyText, except it also comes with the ability to italicize 
 class QuestionBodyText extends StatelessWidget {
   final String text;
   final TextAlign textAlign;
@@ -252,6 +209,7 @@ class QuestionBodyText extends StatelessWidget {
     );
   }
 }
+// The text displayed on buttons
 class ButtonText extends StatelessWidget {
   final String text;
   final TextAlign textAlign;
@@ -280,47 +238,6 @@ class ButtonText extends StatelessWidget {
           fontSize: 16,
           color: ColorTheme.alternateTextColor,
           fontWeight: FontWeight.w700,
-        ),
-      ),
-    );
-  }
-}
-
-// like BodyText, but with a red color
-class RedBodyText extends StatelessWidget {
-  final String text;
-  final TextAlign textAlign;
-  final double minFontSize;
-  final TextStyle? style;
-  final int maxLines;
-
-  const RedBodyText(
-    this.text, {
-    super.key,
-    this.textAlign = TextAlign.left,
-    this.minFontSize = 8,
-    this.style,
-    required this.maxLines,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 1, 16, 1),
-      child: SizedBox(
-        width: double.infinity,
-        child: AutoSizeText(
-          text,
-          textAlign: textAlign,
-          minFontSize: minFontSize,
-          maxLines: maxLines,
-          style: GoogleFonts.lato(
-            textStyle: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: ColorTheme.red,
-            ),
-          ),
         ),
       ),
     );

@@ -393,7 +393,7 @@ class FewTipsBeforeStart extends StatelessWidget {
                 ),
                 BodyText(
                   'Thanks again for being part of this—we\'re excited to see what you and your child share with us!\n',
-                  maxLines: 4,
+                  color: ColorTheme.textColor,
                 ),
                 NextButton(
                   label: 'NEXT',
@@ -453,7 +453,7 @@ class BeforeYouStartScreen extends StatelessWidget {
                 BodyText(
                   'Please read through all three tasks before recording. This will help you prepare '
                   'the right items and understand what to say or do during each activity.\n',
-                  maxLines: 4,
+                  color: ColorTheme.textColor,
                 ),
                 Padding(
                   padding: EdgeInsetsGeometry.fromLTRB(16, 0, 0, 0),
@@ -631,7 +631,7 @@ class BeforeYouStartScreen extends StatelessWidget {
                 BodyText(
                   'There are 3 tasks in total. They are meant to feel like playful,'
                   ' everyday moments—so please keep it relaxed and natural.\n',
-                  maxLines: 4,
+                  color: ColorTheme.textColor,
                 ),
                 NextButton(
                   label: 'NEXT',

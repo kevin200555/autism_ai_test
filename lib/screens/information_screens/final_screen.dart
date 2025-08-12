@@ -66,7 +66,7 @@ class _FinalScreenState extends State<FinalScreen> {
             ),
             SubTitle('Results'),
             
-            BodyText(fileText, maxLines: 1),
+            BodyText(fileText, color: ColorTheme.textColor,),
           ],
         ),
       ),
