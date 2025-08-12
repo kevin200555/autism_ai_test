@@ -50,10 +50,16 @@ class HomeScreen extends StatelessWidget {
                 color: ColorTheme.textColor,
               ),
               SubTitle('What\'s in the test?', textAlign: TextAlign.left),
-              BodyText('\t\t- Informed Consent Document', color: ColorTheme.textColor,),
-              BodyText('\t\t- Autism Intake Form', color: ColorTheme.textColor,),
-              BodyText('\t\t- M-ChatR Form', color: ColorTheme.textColor,),
-              BodyText('\t\t- Recorded Video Section\n', color: ColorTheme.textColor,),
+              BodyText(
+                '\t\t- Informed Consent Document',
+                color: ColorTheme.textColor,
+              ),
+              BodyText('\t\t- Autism Intake Form', color: ColorTheme.textColor),
+              BodyText('\t\t- M-ChatR Form', color: ColorTheme.textColor),
+              BodyText(
+                '\t\t- Recorded Video Section\n',
+                color: ColorTheme.textColor,
+              ),
               BodyText(
                 'We really appreciate your time and support!'
                 ' These tasks are quick and simple, and your child might even think they’re just playing with you!\n',
@@ -64,7 +70,7 @@ class HomeScreen extends StatelessWidget {
                 'at any time and have your progress saved.',
                 color: ColorTheme.textColor,
               ),
-              BodyText('\n\n\n\n\n\n\n\n\n',color: ColorTheme.textColor,),
+              BodyText('\n\n\n\n\n\n\n\n\n', color: ColorTheme.textColor),
             ],
           ),
         ),

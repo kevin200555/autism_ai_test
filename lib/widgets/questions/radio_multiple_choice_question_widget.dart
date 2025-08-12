@@ -28,13 +28,13 @@ class RadioMutlipleChoiceQuestionWidget extends StatelessWidget {
           // Dropdown menu
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            // takes the list after index position [1] and displays them as answer choices 
+            // takes the list after index position [1] and displays them as answer choices
             children: multipleChoiceEntry.sublist(2).map((item) {
               return RadioListTile<String>(
                 contentPadding: EdgeInsets.zero,
                 dense: true,
                 // displays the answer choices
-                title: QuestionBodyText(item, maxLines: 1, isItalics: false,),
+                title: QuestionBodyText(item, maxLines: 1, isItalics: false),
                 value: item,
                 groupValue: value,
                 // changes stored value when user chooses a different answer choice

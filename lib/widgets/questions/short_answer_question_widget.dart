@@ -62,25 +62,25 @@ class _ShortAnswerQuestionWidgetState extends State<ShortAnswerQuestionWidget> {
         Padding(
           padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
           // answer box widget
-          child: 
-          // hint text
-          TextField(
-            controller: _controller,
-            onChanged: widget.onChanged,
-            decoration: const InputDecoration(
-              border: UnderlineInputBorder(),
-              hintText: 'Type your answer here',
-            ),
-            style: GoogleFonts.lato(
-              textStyle: TextStyle(
-                fontSize: 13,
-                fontWeight: FontWeight.w400,
-                fontStyle: FontStyle.italic,
+          child:
+              // hint text
+              TextField(
+                controller: _controller,
+                onChanged: widget.onChanged,
+                decoration: const InputDecoration(
+                  border: UnderlineInputBorder(),
+                  hintText: 'Type your answer here',
+                ),
+                style: GoogleFonts.lato(
+                  textStyle: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w400,
+                    fontStyle: FontStyle.italic,
+                  ),
+                ),
+                maxLines: 5,
+                minLines: 1,
               ),
-            ),
-            maxLines: 5,
-            minLines: 1,
-          ),
         ),
       ],
     );

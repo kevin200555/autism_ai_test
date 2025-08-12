@@ -32,8 +32,9 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
       if (!isVideoRecorded(i)) {
         await showDialog(
           context: context,
-          builder: (_) =>
-              const AlertDialog(title: Text('please complete all of the tasks')),
+          builder: (_) => const AlertDialog(
+            title: Text('please complete all of the tasks'),
+          ),
         );
         return;
       }
@@ -42,7 +43,7 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
     File userReport = await UserClass.writeToReportFile(
       UserClass.generateUserReport(),
     );
-    
+
     UserClass.uploadAllFiles(userReport);
     if (!mounted) return;
     Navigator.push(
@@ -72,49 +73,57 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
         backgroundColor: ColorTheme.accent,
         iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),
       ),
-      body: Scrollbar(thumbVisibility: true, child: SingleChildScrollView(
-        child: Column(
-          children: [
-            SubTitle('Instructions'),
-            BodyText(
-              'This is the list of all of the videos you have to take. '
-              'Carefully read each set of instructions and decide which one you want to do first. '
-              'You are welcome to take these out of order.  As always, feel free to take breaks '
-              'and continue when you are ready.', color: ColorTheme.textColor,
-            ),
-            BodyText(
-              'Click the drop down arrow in order to read the task\'s instructions.'
-              'Then scroll down and click the "RECORD" button to complete that task.\n',
-              color: ColorTheme.textColor,
-            ),
-            SubTitle('Tasks'),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(4, 0, 4, 0),
-              child: Column(
-                children: List.generate(
-                  InstructionAndQuestions.videoNames.length,
-                  (index) {
-                    return VideoItem(
-                      camera: widget.camera,
-                      labelText: InstructionAndQuestions.videoNames[index],
-                      taskNumber: index,
-                      isCompleted: isVideoRecorded(index),
-                      onReturnFromRecording: () {
-                        setState(() {}); // Refresh UI after returning from recording
-                      },
-                    );
-                  },
+      body: Scrollbar(
+        thumbVisibility: true,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SubTitle('Instructions'),
+              BodyText(
+                'This is the list of all of the videos you have to take. '
+                'Carefully read each set of instructions and decide which one you want to do first. '
+                'You are welcome to take these out of order.  As always, feel free to take breaks '
+                'and continue when you are ready.',
+                color: ColorTheme.textColor,
+              ),
+              BodyText(
+                'Click the drop down arrow in order to read the task\'s instructions.'
+                'Then scroll down and click the "RECORD" button to complete that task.\n',
+                color: ColorTheme.textColor,
+              ),
+              SubTitle('Tasks'),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(4, 0, 4, 0),
+                child: Column(
+                  children: List.generate(
+                    InstructionAndQuestions.videoNames.length,
+                    (index) {
+                      return VideoItem(
+                        camera: widget.camera,
+                        labelText: InstructionAndQuestions.videoNames[index],
+                        taskNumber: index,
+                        isCompleted: isVideoRecorded(index),
+                        onReturnFromRecording: () {
+                          setState(
+                            () {},
+                          ); // Refresh UI after returning from recording
+                        },
+                      );
+                    },
+                  ),
                 ),
               ),
-            ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-            NextButton(label: 'SUBMIT VIDEOS', onPressed: (){
-              submit();
-            }),
-           BodyText('\n\n\n', color: ColorTheme.textColor),
-           
-          ],
-        ),),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+              NextButton(
+                label: 'SUBMIT VIDEOS',
+                onPressed: () {
+                  submit();
+                },
+              ),
+              BodyText('\n\n\n', color: ColorTheme.textColor),
+            ],
+          ),
+        ),
       ),
     );
   }

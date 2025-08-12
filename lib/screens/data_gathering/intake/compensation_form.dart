@@ -33,6 +33,7 @@ class _CompensationFormScreenState extends State<CompensationFormScreen> {
     super.initState();
     responses = List<String?>.filled(compensationFormQuestions.length, null);
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,7 +65,7 @@ class _CompensationFormScreenState extends State<CompensationFormScreen> {
               return BodyText(
                 'This information is required for compensation. '
                 'If you wish to decline payment, you can leave these fields blank.\n\n',
-                color: ColorTheme.red
+                color: ColorTheme.red,
               );
             } else if (index == compensationFormQuestions.length + 1) {
               // LAST index (after all questions)

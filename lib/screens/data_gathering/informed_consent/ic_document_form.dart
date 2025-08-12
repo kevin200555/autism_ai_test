@@ -40,12 +40,18 @@ class _InformedConsentSigningScreenState
   // given a sample set of responses like [yes, yes, Sarah Jones, 07/07/2025, null, Tom Jones, Mother, null, Tom Jones]
   // generate a unquie user id sarahjones-20250707-tomjones
   String generateUserId() {
-    final name = (responses[2] == null) ? 'empty' : responses[2]?.toLowerCase().replaceAll(' ', '');
-    final parent = (responses[2] == null) ? 'empty' : responses[4]?.toLowerCase().replaceAll(' ', '');
+    final name = (responses[2] == null)
+        ? 'empty'
+        : responses[2]?.toLowerCase().replaceAll(' ', '');
+    final parent = (responses[2] == null)
+        ? 'empty'
+        : responses[4]?.toLowerCase().replaceAll(' ', '');
     //uses the Date time class to give user unquie Id based on date
     final now = DateTime.now();
-    final date = now.toString().substring(0, 10).replaceAll('-','').substring(4,8)+now.toString().substring(0, 10).replaceAll('-','').substring(0,4);
-    final time = now.toString().substring(11,19).replaceAll(':', '');
+    final date =
+        now.toString().substring(0, 10).replaceAll('-', '').substring(4, 8) +
+        now.toString().substring(0, 10).replaceAll('-', '').substring(0, 4);
+    final time = now.toString().substring(11, 19).replaceAll(':', '');
     String userId = "$name-$parent-$date-$time";
     return userId;
   }
@@ -72,66 +78,69 @@ class _InformedConsentSigningScreenState
         iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),
       ),
 
-      body: Scrollbar(thumbVisibility: true, child:ListView.builder(
-        padding: const EdgeInsets.all(8),
-        itemCount: icQuestions.length + 1,
-        itemBuilder: (context, index) {
-          //adds a next button at the end
-          if (index == icQuestions.length) {
-            return NextButton(
-              label: 'NEXT',
-              onPressed: () {
-                UserClass.screenNumber++;
-                //makes a new UserClass in order to save the information this user has done
-                UserClass.userId = generateUserId();
+      body: Scrollbar(
+        thumbVisibility: true,
+        child: ListView.builder(
+          padding: const EdgeInsets.all(8),
+          itemCount: icQuestions.length + 1,
+          itemBuilder: (context, index) {
+            //adds a next button at the end
+            if (index == icQuestions.length) {
+              return NextButton(
+                label: 'NEXT',
+                onPressed: () {
+                  UserClass.screenNumber++;
+                  //makes a new UserClass in order to save the information this user has done
+                  UserClass.userId = generateUserId();
 
-                UserClass.iCResponses = responses;
-                UserClass.saveToHive();
+                  UserClass.iCResponses = responses;
+                  UserClass.saveToHive();
 
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder:
-                        (context) => // The user class will be passed from sc
-                        InformedConsentSignitureScreen(
-                          camera: widget.camera,
-                        ),
-                  ),
-                );
-              },
-            );
-          }
-          if (icQuestions[index][0] == 'SAQ') {
-            // make an SAQ question
-            return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: ShortAnswerQuestionWidget(
-                shortAnswerInstructions: icQuestions[index],
-                value: responses[index],
-                onChanged: (value) {
-                  setState(() {
-                    responses[index] = value;
-                  });
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder:
+                          (context) => // The user class will be passed from sc
+                          InformedConsentSignitureScreen(
+                            camera: widget.camera,
+                          ),
+                    ),
+                  );
                 },
-              ),
-            );
-          } else {
-            // make a multiple choice question
-            return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: MutlipleChoiceQuestionWidget(
-                multipleChoiceEntry: icQuestions[index],
-                value: responses[index],
-                onChanged: (value) {
-                  setState(() {
-                    responses[index] = value;
-                  });
-                },
-              ),
-            );
-          }
-        },
-      ),),
+              );
+            }
+            if (icQuestions[index][0] == 'SAQ') {
+              // make an SAQ question
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: ShortAnswerQuestionWidget(
+                  shortAnswerInstructions: icQuestions[index],
+                  value: responses[index],
+                  onChanged: (value) {
+                    setState(() {
+                      responses[index] = value;
+                    });
+                  },
+                ),
+              );
+            } else {
+              // make a multiple choice question
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: MutlipleChoiceQuestionWidget(
+                  multipleChoiceEntry: icQuestions[index],
+                  value: responses[index],
+                  onChanged: (value) {
+                    setState(() {
+                      responses[index] = value;
+                    });
+                  },
+                ),
+              );
+            }
+          },
+        ),
+      ),
       bottomNavigationBar: ProgressBar(),
     );
   }

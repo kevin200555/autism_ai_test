@@ -38,7 +38,7 @@ class ChooseAllThatApplyQuestionWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
             // answer choices
             child: CheckboxListTile(
-              title: QuestionBodyText(option, maxLines: 1, isItalics: false,),
+              title: QuestionBodyText(option, maxLines: 1, isItalics: false),
               activeColor: ColorTheme.accent,
               value: selected.contains(option),
               controlAffinity: ListTileControlAffinity.leading,

@@ -40,16 +40,22 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
-        title: AppBarTitle('Here is the video you recorded!', color: ColorTheme.background),
+        title: AppBarTitle(
+          'Here is the video you recorded!',
+          color: ColorTheme.background,
+        ),
         centerTitle: true,
         iconTheme: IconThemeData(color: ColorTheme.background),
         backgroundColor: ColorTheme.accent,
       ),
       body: Column(
         children: [
-          BodyText('Make sure the video fufills all of the requirements detailed in the instructions. '
-          'You can always delete and retake the video, so don\'t worry if it takes a few attempts! '
-          'Press the back button to exit this screen', color: ColorTheme.textColor,),
+          BodyText(
+            'Make sure the video fufills all of the requirements detailed in the instructions. '
+            'You can always delete and retake the video, so don\'t worry if it takes a few attempts! '
+            'Press the back button to exit this screen',
+            color: ColorTheme.textColor,
+          ),
           Center(
             // shows a loading circle while waiting for everything to load
             child: _controller.value.isInitialized

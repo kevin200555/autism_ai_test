@@ -164,7 +164,7 @@ class BodyText extends StatelessWidget {
   }
 }
 
-//Similar to BodyText, except it also comes with the ability to italicize 
+//Similar to BodyText, except it also comes with the ability to italicize
 class QuestionBodyText extends StatelessWidget {
   final String text;
   final TextAlign textAlign;
@@ -179,7 +179,8 @@ class QuestionBodyText extends StatelessWidget {
     this.textAlign = TextAlign.left,
     this.minFontSize = 8,
     this.style,
-    required this.maxLines, required this.isItalics,
+    required this.maxLines,
+    required this.isItalics,
   });
 
   @override
@@ -210,6 +211,7 @@ class QuestionBodyText extends StatelessWidget {
     );
   }
 }
+
 // The text displayed on buttons
 class ButtonText extends StatelessWidget {
   final String text;

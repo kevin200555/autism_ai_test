@@ -71,11 +71,11 @@ class HelpScreen extends StatelessWidget {
             ),
             BodyText(
               'Warning: this button resets all your progress, so only do this if there is no other option',
-              color: ColorTheme.red
+              color: ColorTheme.red,
             ),
             ResetButton(camera: camera),
             // Contact information section
-            BodyText('\n', color: ColorTheme.textColor,),
+            BodyText('\n', color: ColorTheme.textColor),
             SubTitle('Contact'),
             BodyText(
               'For questions about the app, contact Kevin Li:\n'

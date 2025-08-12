@@ -38,8 +38,8 @@ class _VideoItemState extends State<VideoItem> {
       // ExpansionTile has multiple parameters based on whether or not the tile is collapsed or not
       // when video is not completed and tile is collasped, it is grey with white text
       // when video is not completed and tile is expanded, it is white with black text
-      // when video is completed and tile is collasped, it is green with white text 
-      // when video is completed and tile is expanded, it is green with white text 
+      // when video is completed and tile is collasped, it is green with white text
+      // when video is completed and tile is expanded, it is green with white text
       title: ButtonText(
         (widget.isCompleted)
             ? '${widget.taskNumber + 1}: ${widget.labelText} (Completed!)'
@@ -62,9 +62,12 @@ class _VideoItemState extends State<VideoItem> {
           padding: const EdgeInsets.all(24),
           child: Column(
             children: [
-              BodyText('Task #${widget.taskNumber + 1} Instructions\n',color: (widget.isCompleted)
+              BodyText(
+                'Task #${widget.taskNumber + 1} Instructions\n',
+                color: (widget.isCompleted)
                     ? ColorTheme.background
-                    : ColorTheme.textColor),
+                    : ColorTheme.textColor,
+              ),
               BodyText(
                 InstructionAndQuestions.videoInstructions[widget.taskNumber],
                 color: (widget.isCompleted)

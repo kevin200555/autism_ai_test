@@ -72,7 +72,10 @@ class _FinalScreenState extends State<FinalScreen> {
               child: fileText.isEmpty
                   ? Column(
                       children: [
-                        BodyText('loading results...', color: ColorTheme.textColor),
+                        BodyText(
+                          'loading results...',
+                          color: ColorTheme.textColor,
+                        ),
                         CircularProgressIndicator(color: ColorTheme.accent),
                       ],
                     )

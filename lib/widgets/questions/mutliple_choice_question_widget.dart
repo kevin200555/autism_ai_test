@@ -32,14 +32,18 @@ class MutlipleChoiceQuestionWidget extends StatelessWidget {
             isExpanded: true,
             icon: const Icon(Icons.keyboard_arrow_down),
             // the hint text that shows where the user is supposed to answer the question
-            hint: QuestionBodyText('click to answer', maxLines: 1, isItalics: true,),
-            // takes the list after index position [1] and displays them as answer choices 
+            hint: QuestionBodyText(
+              'click to answer',
+              maxLines: 1,
+              isItalics: true,
+            ),
+            // takes the list after index position [1] and displays them as answer choices
             items: multipleChoiceEntry
                 .sublist(2)
                 .map(
                   (item) => DropdownMenuItem<String>(
                     value: item,
-                    child: BodyText(item, color: ColorTheme.textColor,),
+                    child: BodyText(item, color: ColorTheme.textColor),
                   ),
                 )
                 .toList(),

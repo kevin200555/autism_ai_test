@@ -10,7 +10,7 @@ import 'package:pdfx/pdfx.dart';
 // This module lets the user view the Informed Consent document (in the assets folder)
 // its a widget that could integreate a pdf
 // I was going to let the user just sign on this screen, but the document was way too small to both read and try to sign
-// and there not really a good way to scroll without accidentally drawing or draw without accidentally scrolling 
+// and there not really a good way to scroll without accidentally drawing or draw without accidentally scrolling
 class PdfViewerScreen extends StatefulWidget {
   final CameraDescription camera;
   const PdfViewerScreen({super.key, required this.camera});

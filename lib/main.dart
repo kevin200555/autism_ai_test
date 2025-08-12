@@ -34,9 +34,7 @@ Future<void> main() async {
     cameras = []; // ensure it's at least an empty list
   }
   // sets the screen orientation to be vertical (things don't really look right when in horizontal)
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-  ]);
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(AutismAITest());
 }
 
