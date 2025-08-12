@@ -1,7 +1,9 @@
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:flutter/material.dart';
-
+// The purpose of this screen is a error screen 
+// that would only appear if the user doesn't have a camera on their device
+// I REALLY hope this doesn't happen because there isn't really a way to fix it beyond just get something with a camera
 class NoCameraErrorScreen extends StatelessWidget {
   const NoCameraErrorScreen({super.key});
 
@@ -19,4 +21,4 @@ class NoCameraErrorScreen extends StatelessWidget {
       ),
     );
   }
-}
+} // EOF no_camera_error_screen.dart
