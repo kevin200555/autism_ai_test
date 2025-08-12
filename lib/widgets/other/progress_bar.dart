@@ -48,10 +48,10 @@ class _ProgressBarState extends State<ProgressBar> {
                 decoration: BoxDecoration(
                   color:
                       (UserClass.screenNumber / UserClass.totalScreenNumber) <
-                          0.333
+                          0.25
                       ? ColorTheme.progressBar1
                       : (UserClass.screenNumber / UserClass.totalScreenNumber) <
-                            0.666
+                            0.50
                       ? ColorTheme.progressBar2
                       : ColorTheme.progressBar3,
                   borderRadius: BorderRadius.circular(
