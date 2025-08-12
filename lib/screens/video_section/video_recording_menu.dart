@@ -95,6 +95,7 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(4, 0, 4, 0),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: List.generate(
                     InstructionAndQuestions.videoNames.length,
                     (index) {

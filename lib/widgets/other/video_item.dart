@@ -5,6 +5,7 @@ import 'package:autism_ai_test/widgets/button/next_button.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 // This module is used in the video recording menu
 // It is a expandable tile.  So it appears as a box of text at first, then expands into more information when clicked
@@ -40,12 +41,21 @@ class _VideoItemState extends State<VideoItem> {
       // when video is not completed and tile is expanded, it is white with black text
       // when video is completed and tile is collasped, it is green with white text
       // when video is completed and tile is expanded, it is green with white text
-      title: ButtonText(
+      title: Text(
         (widget.isCompleted)
             ? '${widget.taskNumber + 1}: ${widget.labelText} (Completed!)'
             : '${widget.taskNumber + 1}: ${widget.labelText} (In Progress)',
-        maxLines: 1,
+        style: GoogleFonts.lato(
+          textStyle: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
       ),
+      collapsedTextColor: ColorTheme.background,
+      textColor: (widget.isCompleted)
+          ? ColorTheme.background
+          : ColorTheme.textColor,
       collapsedBackgroundColor: (widget.isCompleted)
           ? ColorTheme.green
           : ColorTheme.progressBarBackground,
@@ -53,7 +63,9 @@ class _VideoItemState extends State<VideoItem> {
           ? ColorTheme.green
           : ColorTheme.background,
       collapsedIconColor: ColorTheme.background,
-      iconColor: ColorTheme.textColor,
+      iconColor: (widget.isCompleted)
+          ? ColorTheme.background
+          : ColorTheme.textColor,
       // This is what is in the expanded tile information, it displays the task instructions
       // This is so that the user can read which instruction they want to do first before going to the recording screen
       children: <Widget>[
