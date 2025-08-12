@@ -22,6 +22,7 @@ class HelpButton extends StatelessWidget {
       onPressed: () {
         Navigator.push(
           context,
+          // has to take in camera since the user has the option to restart in the help screen
           MaterialPageRoute(builder: (context) => HelpScreen(camera: camera)),
         );
       },

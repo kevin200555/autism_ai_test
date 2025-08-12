@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 // The purpose of this module is create a button that sits ontop of the appbar
 // in the help menu and reset the user's progress
 class ResetButton extends StatelessWidget {
-  // takes in a color value (I have appbars with different colors )
+  // takes in camera since that is needed to restart from the beginning)
   final CameraDescription camera;
   const ResetButton({super.key, required this.camera});
 
