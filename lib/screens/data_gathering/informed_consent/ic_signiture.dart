@@ -129,6 +129,8 @@ class _InformedConsentSignitureScreenState
                   );
                   return;
                 } else {
+                  await WidgetsBinding.instance.endOfFrame;
+                  
                   await screenShot();
                   // SAVE TO HIVE
                   UserClass.screenNumber++;
