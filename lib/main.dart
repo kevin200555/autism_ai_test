@@ -33,7 +33,7 @@ Future<void> main() async {
     }
     cameras = []; // ensure it's at least an empty list
   }
-  // sets the screen orientation
+  // sets the screen orientation to be vertical (things don't really look right when in horizontal)
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
@@ -45,6 +45,8 @@ class AutismAITest extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // checks to make sure the device has a camera
+    // I doubt this will be an issue but it's worth catching
     if (cameras.isEmpty) {
       if (kDebugMode) {
         print('yeah so ur camera doesn\'t exist?');
@@ -70,9 +72,9 @@ class AutismAITest extends StatelessWidget {
     // 10 : Video Section Information
     // 11 : Video Section Information
     // ===================================
-    // 12 : Video Test 1
-    // 13 : Video Test 2
-    // 14 : Video Test 3
+    // 12 : Video Menu
+    // 13 : Video Menu
+    // 14 : Video Menu
     switch (UserClass.screenNumber) {
       case 1:
         initialScreen = InformedConsentSigningScreen(camera: cameras[0]);
@@ -91,6 +93,8 @@ class AutismAITest extends StatelessWidget {
           camera: cameras[0],
           responses: UserClass.mChatRresponses ?? <String?>[],
         );
+      // anytime the user disconnects from the General Instructions Screen, it brings the User to the first screen in that area
+      // This is because their isn't a reason not to, might as well since you're not filling anything out any information
       case 8:
         initialScreen = GeneralInstructionsScreen(camera: cameras[0]);
       case 9:
@@ -121,14 +125,14 @@ class AutismAITest extends StatelessWidget {
 // - progress bar (for forms) ✓
 // - HiveObject to save user data if they ever leave ✓
 // - split questions into multiple pages ✓
-// - figure out text consistency ?
+// - figure out text consistency ✓
 // - update help menu ✓
 // - with a restart button ✓
 // - and maybe multiple screens 
-// - have a menu where the user can choose which video to do first
-// - be it a drop down menu or like a scrollable menu or what have you
+// - have a menu where the user can choose which video to do first ✓
+// - be it a drop down menu or like a scrollable menu or what have you ✓
 // - menu where the user can continously upload videos of their child to check for susipoious behaviors
-// - see if I can read data from firebase / google cloud services
+// - see if I can read data from firebase / google cloud services ✓
 //   and display it on the app
 // Things to note:
 // - see if I can get them to split into 9 videos 
