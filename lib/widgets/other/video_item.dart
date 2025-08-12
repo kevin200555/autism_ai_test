@@ -1,6 +1,6 @@
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
-import 'package:autism_ai_test/screens/data_gathering/video_recording_section_screen.dart';
+import 'package:autism_ai_test/screens/data_gathering/video/video_recording_section_screen.dart';
 import 'package:autism_ai_test/widgets/button/next_button.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:camera/camera.dart';
