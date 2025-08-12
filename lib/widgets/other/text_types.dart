@@ -125,6 +125,7 @@ class BodyText extends StatelessWidget {
   final TextAlign textAlign;
   final double minFontSize;
   final TextStyle? style;
+  final Color color;
 
   const BodyText(
     this.text, {
@@ -132,7 +133,7 @@ class BodyText extends StatelessWidget {
     this.textAlign = TextAlign.left,
     this.minFontSize = 8,
     this.style,
-    required Color color,
+    required this.color,
   });
 
   @override
@@ -154,7 +155,7 @@ class BodyText extends StatelessWidget {
             textStyle: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.normal,
-              color: ColorTheme.textColor,
+              color: color,
             ),
           ),
         ),
