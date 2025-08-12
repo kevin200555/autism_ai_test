@@ -20,70 +20,74 @@ class HelpScreen extends StatelessWidget {
         backgroundColor: ColorTheme.background,
       ),
       // all of the text information
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            // Getting started section
-            SubTitle('Getting Started / How to Use'),
-            BodyText(
-              'Welcome to the Autism AI Test app, this menu will give you a step-by-step guide '
-              'to using this app to its fullest capabilities. \n\n'
-              'This test consists of an Informed Consent Document, Autism Intake Information Form, '
-              'M-ChatR Form, and Recorded Video Section. The first three are just forms that you must fill out. '
-              'These forms consist of some multiple choice questions and short answer questions\n\n'
-              'The Recorded Video Section requires that you follow the instructions listed to '
-              'record a successful video. \n\n'
-              'Keep in mind that this app will ask you to use your camera; you\'ll need to accept '
-              'this request to record.\n',
-              color: ColorTheme.textColor,
-            ),
-            SubTitle('Video Recording'),
-            BodyText(
-              'Video recording is the main feature of the app '
-              'Our AI model requires videos in order to accuratley determine if a child has autism\n\n'
-              'To Record a video, simply press the green button to start recording, and then the red button to stop '
-              'The button with an \'eye\' icon can then be pressed to review the video '
-              'If you\'re not satisfied with the video, you can then delete the video by pressing the button '
-              'with the trash can on it. Take as much time as you need, so don\'t worry about \'messing up\'\n',
-              color: ColorTheme.textColor,
-            ),
-            // FAQ Section
-            SubTitle('FAQ'),
-            BodyText(
-              'Q: Does my progress save?\n'
-              'A: Yes! You are welcome to leave the app at any time and come back to your saved progress. '
-              'you\'re encourgaed to do this; especially if your child needs a break. '
-              'However, after completing a form or finish recording a video, you must hit the \'next\' '
-              'or \'submit\' button in order for that form or video to be saved\n\n'
-              'Q: Am I able to restart my progress?, I have made a mistake\n'
-              'A: You are welcome to go back to any point in the form and change your answers or upload '
-              'a new video. Keep an eye out for the back button at the top left corner\n',
-              color: ColorTheme.textColor,
-            ),
-            // Toubleshooting section
-            SubTitle('Troubleshooting'),
-            BodyText(
-              'To my knowledge, the only technical issue that could arise is troubles with the camera '
-              'make sure to allow the use of the camera whlie on the app, it is critical for this test\n\n'
-              'Also ensure that your device has a working camera, but at when this point, that is a non issue. '
-              'If, for whatever reason, you are stuck, press the below button in order to reset\n',
-              color: ColorTheme.textColor,
-            ),
-            BodyText(
-              'Warning: this button resets all your progress, so only do this if there is no other option',
-              color: ColorTheme.red,
-            ),
-            ResetButton(camera: camera),
-            // Contact information section
-            BodyText('\n', color: ColorTheme.textColor),
-            SubTitle('Contact'),
-            BodyText(
-              'For questions about the app, contact Kevin Li:\n'
-              'kevinli200555@gmail.com\n\n'
-              'For more information about this project and the AI model, contact Dr Shuo Wang: 314-362-7338\n\n\n',
-              color: ColorTheme.textColor,
-            ),
-          ],
+      body: Scrollbar(
+        thumbVisibility: true,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              // Getting started section
+              SubTitle('Getting Started / How to Use'),
+              BodyText(
+                'Welcome to the Autism AI Test app, this menu will give you a step-by-step guide '
+                'to using this app to its fullest capabilities. \n\n'
+                'This test consists of an Informed Consent Document, Autism Intake Information Form, '
+                'M-ChatR Form, and Recorded Video Section. The first three are just forms that you must fill out. '
+                'These forms consist of some multiple choice questions and short answer questions\n\n'
+                'The Recorded Video Section requires that you follow the instructions listed to '
+                'record a successful video. \n\n'
+                'Keep in mind that this app will ask you to use your camera; you\'ll need to accept '
+                'this request to record.\n',
+                color: ColorTheme.textColor,
+              ),
+              // Video Recording Section
+              SubTitle('Video Recording'),
+              BodyText(
+                'Video recording is the main feature of the app '
+                'Our AI model requires videos in order to accuratley determine if a child has autism\n\n'
+                'To Record a video, simply press the green button to start recording, and then the red button to stop '
+                'The button with an \'eye\' icon can then be pressed to review the video '
+                'If you\'re not satisfied with the video, you can then delete the video by pressing the button '
+                'with the trash can on it. Take as much time as you need, so don\'t worry about \'messing up\'\n',
+                color: ColorTheme.textColor,
+              ),
+              // FAQ Section
+              SubTitle('FAQ'),
+              BodyText(
+                'Q: Does my progress save?\n'
+                'A: Yes! You are welcome to leave the app at any time and come back to your saved progress. '
+                'you\'re encourgaed to do this; especially if your child needs a break. '
+                'However, after completing a form or finish recording a video, you must hit the \'next\' '
+                'or \'submit\' button in order for that form or video to be saved\n\n'
+                'Q: Am I able to restart my progress?, I have made a mistake\n'
+                'A: You are welcome to go back to any point in the form and change your answers or upload '
+                'a new video. Keep an eye out for the back button at the top left corner\n',
+                color: ColorTheme.textColor,
+              ),
+              // Toubleshooting section
+              SubTitle('Troubleshooting'),
+              BodyText(
+                'To my knowledge, the only technical issue that could arise is troubles with the camera '
+                'make sure to allow the use of the camera whlie on the app, it is critical for this test\n\n'
+                'Also ensure that your device has a working camera, but at when this point, that is a non issue. '
+                'If, for whatever reason, you are stuck, press the below button in order to reset\n',
+                color: ColorTheme.textColor,
+              ),
+              BodyText(
+                'Warning: this button resets all your progress, so only do this if there is no other option',
+                color: ColorTheme.red,
+              ),
+              ResetButton(camera: camera),
+              BodyText('\n', color: ColorTheme.textColor),
+              // Contact information section
+              SubTitle('Contact'),
+              BodyText(
+                'For questions about the app, contact Kevin Li:\n'
+                'kevinli200555@gmail.com\n\n'
+                'For more information about this project and the AI model, contact Dr Shuo Wang: 314-362-7338\n\n\n',
+                color: ColorTheme.textColor,
+              ),
+            ],
+          ),
         ),
       ),
     );
