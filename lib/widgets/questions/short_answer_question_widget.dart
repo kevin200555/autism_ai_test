@@ -63,7 +63,7 @@ class _ShortAnswerQuestionWidgetState extends State<ShortAnswerQuestionWidget> {
           padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
           // answer box widget
           child: 
-          
+          // hint text
           TextField(
             controller: _controller,
             onChanged: widget.onChanged,

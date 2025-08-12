@@ -3,7 +3,7 @@ import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:flutter/material.dart';
 
 // This class' creates a widget that is meant to get some drawn response from the user
-// It is used to get user's signitures
+// It is used to get user's signitures.  This is stored by taking a screenshot of the drawing and then uploading it
 class DrawingQuestionWidget extends StatefulWidget {
   final String question;
   final Function(bool) onChanged;

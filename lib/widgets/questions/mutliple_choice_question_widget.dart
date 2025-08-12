@@ -30,7 +30,9 @@ class MutlipleChoiceQuestionWidget extends StatelessWidget {
             value: value,
             isExpanded: true,
             icon: const Icon(Icons.keyboard_arrow_down),
+            // the hint text that shows where the user is supposed to answer the question
             hint: QuestionBodyText('click to answer', maxLines: 1, isItalics: true,),
+            // takes the list after index position [1] and displays them as answer choices 
             items: multipleChoiceEntry
                 .sublist(2)
                 .map(
@@ -40,6 +42,7 @@ class MutlipleChoiceQuestionWidget extends StatelessWidget {
                   ),
                 )
                 .toList(),
+            // changes the value if the user picks another option
             onChanged: (val) {
               if (val != null) onChanged(val);
             },
