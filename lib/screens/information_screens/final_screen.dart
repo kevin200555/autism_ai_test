@@ -22,6 +22,7 @@ class _FinalScreenState extends State<FinalScreen> {
     String content = await readTextFileFromFirebase("data/data.txt");
     return content;
   }
+
   // This would be the results
   String fileText = "";
 
@@ -69,10 +70,11 @@ class _FinalScreenState extends State<FinalScreen> {
             SubTitle('Results'),
             Expanded(
               child: fileText.isEmpty
-                  ? Center(
-                      child: CircularProgressIndicator(
-                        color: ColorTheme.accent,
-                      ),
+                  ? Column(
+                      children: [
+                        BodyText('loading results...', color: ColorTheme.textColor),
+                        CircularProgressIndicator(color: ColorTheme.accent),
+                      ],
                     )
                   : SingleChildScrollView(
                       child: BodyText(fileText, color: ColorTheme.textColor),
