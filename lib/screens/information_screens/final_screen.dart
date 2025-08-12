@@ -17,10 +17,12 @@ class FinalScreen extends StatefulWidget {
 }
 
 class _FinalScreenState extends State<FinalScreen> {
+  // reads from whatever folder the data would be in
   Future<String> loadTextFile() async {
     String content = await readTextFileFromFirebase("data/data.txt");
     return content;
   }
+  // This would be the results
   String fileText = "";
 
   @override
@@ -65,8 +67,17 @@ class _FinalScreenState extends State<FinalScreen> {
               ),
             ),
             SubTitle('Results'),
-            
-            BodyText(fileText, color: ColorTheme.textColor,),
+            Expanded(
+              child: fileText.isEmpty
+                  ? Center(
+                      child: CircularProgressIndicator(
+                        color: ColorTheme.accent,
+                      ),
+                    )
+                  : SingleChildScrollView(
+                      child: BodyText(fileText, color: ColorTheme.textColor),
+                    ),
+            ),
           ],
         ),
       ),
