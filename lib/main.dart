@@ -138,3 +138,49 @@ class AutismAITest extends StatelessWidget {
 // - for multiple choice questions, make it so there is like a "other option" 
 // - keep in mind that all types of people look at this
 // - look at default text size and see if it is too small
+//
+// =========================================================================================
+//
+// meeting notes:
+// - Free play is a generalist video recording
+// - uses google gemini, based on everyone's behavior, a large language model
+// - looks at behaviors from many different instances to diaganois
+// - probably best to drop the user off after the IC document
+// - The model doesn't have test/train data
+// - John Constantine
+// - eye tracking for autism research
+// - https://www.thetransmitter.org/spectrum/new-tablet-based-tools-
+//   to-spot-autism-draw-excitement-and-questions/
+// - Cognoa (similar model) - providing diagnois or for referral
+// - all schools provide ABA, it is whether or not they want to give it or not
+// - aba is covered by insurance
+// - can we help in rural communities and family doctors?
+// - app can provide evidence to schools for an evulations
+// - like a $100 doctor appointment checkup for covid is worse than like a covid test kit
+// - check ins with the app every year, every month, etc. could charge for each one or
+//   something
+// - echo system?
+// Value:
+// - actual diaganosis (very hard)
+// - some sort of scale (like 90% chance of autism)
+// - target for families
+// - family reassurance
+// - highlight behavior
+// - 
+// - family take video, we give a score, this makes it so that they skip the primary doctor
+//   and the wait times
+// - can we give referrals? 
+// - subscription based model or some package deal things
+// - compares to "normal" behaviors
+// - perhaps an autism tracker as opposed to an autism test
+
+//Given this, I think I got an idea how to organize the app
+//At the beginning, I make the user take the IC document 
+//This gets thier user id 
+//After this, bring them to a page to pay for our services
+//After paying, bring them to the "main menu"
+//main menu has a home screen -> forms screen <-> a videos screen, previous results screen, and settings screen
+//Make them take the intake/mChatR form first (lock the videos)
+//after this, they are able to do the video 
+//Here they can take videos and upload them and get their results back, these can later be seen on the previous results screen  
+//We could remind them to do this every ____ months or so
