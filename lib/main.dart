@@ -1,3 +1,4 @@
+import 'package:autism_ai_test/screens/main_menu/home_menu_screen.dart';
 import 'package:autism_ai_test/screens/video_section/video_recording_menu.dart';
 import 'package:autism_ai_test/screens/other/no_camera_error_screen.dart';
 import 'package:autism_ai_test/screens/intake/compensation_form.dart';
@@ -115,7 +116,7 @@ class AutismAITest extends StatelessWidget {
         initialScreen = HomeScreen(camera: cameras[0]);
     }
     //camera is passed around through all widgets and screens in the program
-    return MaterialApp(home: initialScreen, debugShowCheckedModeBanner: false);
+    return MaterialApp(home: HomeMenuScreen(camera: cameras[0]), debugShowCheckedModeBanner: false);
   }
 } // EOF main.dart
 
