@@ -14,7 +14,7 @@ class HomeMenuScreen extends StatefulWidget {
 }
 
 class _HomeMenuScreenState extends State<HomeMenuScreen> {
-  int currentPageIndex = 0; // <-- moved here
+  int currentPageIndex = 0; 
 
   // Your different pages
   late final List<Widget> pages = [
@@ -54,7 +54,7 @@ class _HomeMenuScreenState extends State<HomeMenuScreen> {
           NavigationDestination(icon: Icon(Icons.home), label: '',),
           NavigationDestination(icon: Icon(Icons.camera_alt), label: '',),
           NavigationDestination(
-            icon: Icon(Icons.list_alt),
+            icon: Icon(Icons.video_library),
             label: '',
           ),
           NavigationDestination(icon: Icon(Icons.settings), label: ''),
