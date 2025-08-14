@@ -4,6 +4,7 @@ import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
+
 class HomeMenuScreen extends StatefulWidget {
   final CameraDescription camera;
   const HomeMenuScreen({super.key, required this.camera});
@@ -13,10 +14,18 @@ class HomeMenuScreen extends StatefulWidget {
 }
 
 class _HomeMenuScreenState extends State<HomeMenuScreen> {
-  @override
+  int currentPageIndex = 0; // <-- moved here
+
+  // Your different pages
+  late final List<Widget> pages = [
+    Center(child: Text("Home Screen")),
+    Center(child: Text("Recording Screen")),
+    Center(child: Text("Previous Videos Screen")),
+    Center(child: Text("Settings Screen")),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    int currentPageIndex = 0;
     NavigationDestinationLabelBehavior labelBehavior =
         NavigationDestinationLabelBehavior.alwaysShow;
 
@@ -30,8 +39,11 @@ class _HomeMenuScreenState extends State<HomeMenuScreen> {
         ],
         automaticallyImplyLeading: false,
       ),
+      body: pages[currentPageIndex],
       bottomNavigationBar: NavigationBar(
         labelBehavior: labelBehavior,
+        backgroundColor: ColorTheme.navigationBarBackground,
+        indicatorColor: ColorTheme.primary,
         selectedIndex: currentPageIndex,
         onDestinationSelected: (int index) {
           setState(() {
@@ -39,12 +51,13 @@ class _HomeMenuScreenState extends State<HomeMenuScreen> {
           });
         },
         destinations: const <Widget>[
-          NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
+          NavigationDestination(icon: Icon(Icons.home), label: '',),
+          NavigationDestination(icon: Icon(Icons.camera_alt_outlined), label: '',),
           NavigationDestination(
             icon: Icon(Icons.list),
-            label: 'Previous Videos',
+            label: '',
           ),
-          NavigationDestination(icon: Icon(Icons.settings), label: 'Settings'),
+          NavigationDestination(icon: Icon(Icons.settings), label: ''),
         ],
       ),
     );
