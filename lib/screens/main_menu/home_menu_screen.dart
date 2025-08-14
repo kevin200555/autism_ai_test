@@ -52,9 +52,9 @@ class _HomeMenuScreenState extends State<HomeMenuScreen> {
         },
         destinations: const <Widget>[
           NavigationDestination(icon: Icon(Icons.home), label: '',),
-          NavigationDestination(icon: Icon(Icons.camera_alt_outlined), label: '',),
+          NavigationDestination(icon: Icon(Icons.camera_alt), label: '',),
           NavigationDestination(
-            icon: Icon(Icons.list),
+            icon: Icon(Icons.list_alt),
             label: '',
           ),
           NavigationDestination(icon: Icon(Icons.settings), label: ''),
