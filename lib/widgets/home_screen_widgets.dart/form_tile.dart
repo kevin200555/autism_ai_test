@@ -49,17 +49,17 @@ class _FormTileState extends State<FormTile> {
           textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
         ),
       ),
-      collapsedTextColor: ColorTheme.background,
+      collapsedTextColor: (widget.isCompleted) ? ColorTheme.background : ColorTheme.textColor,
       textColor: (widget.isCompleted)
           ? ColorTheme.background
           : ColorTheme.textColor,
       collapsedBackgroundColor: (widget.isCompleted)
           ? ColorTheme.green
-          : ColorTheme.progressBarBackground,
+          : ColorTheme.primary,
       backgroundColor: (widget.isCompleted)
           ? ColorTheme.green
           : ColorTheme.background,
-      collapsedIconColor: ColorTheme.background,
+      collapsedIconColor: ColorTheme.textColor,
       iconColor: (widget.isCompleted)
           ? ColorTheme.background
           : ColorTheme.textColor,
@@ -79,7 +79,7 @@ class _FormTileState extends State<FormTile> {
               ),
               // Takes user to the place where they'll record their video
               NextButton(
-                label: 'RECORD',
+                label: 'TAKE FORM',
                 onPressed: () async {
                   await Navigator.push(
                     context,

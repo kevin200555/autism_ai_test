@@ -35,7 +35,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     border: Border.all(color: ColorTheme.textColor, width: 3),
-                    borderRadius: BorderRadius.circular(4),
+                    borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text(
                     'Hello,\n${UserClass.childIntakeResponses?[0]}!',
@@ -54,7 +54,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     border: Border.all(color: ColorTheme.textColor, width: 3),
-                    borderRadius: BorderRadius.circular(4),
+                    borderRadius: BorderRadius.circular(8),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -80,45 +80,68 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ),
           const SizedBox(height: 16),
           // FormTile below the row
-          FormTile(
-            camera: widget.camera,
-            labelText: 'Informed Consent Document Form',
-            isCompleted: false,
-            description:
-                'This is the form you took at the beginning of the app. Thanks for filling it out!',
-            asscoiatedScreen: InformedConsentSigningScreen(
-              camera: widget.camera,
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border.all(color: ColorTheme.textColor, width: 3),
+              borderRadius: BorderRadius.circular(8),
             ),
-          ),
-          FormTile(
-            camera: widget.camera,
-            labelText: 'Intake Form',
-            isCompleted: false,
-            description:
-                'This is the form you took at the beginning of the app. Thanks for filling it out!',
-            asscoiatedScreen: ChildIntakeFormScreen(
-              camera: widget.camera,
-            ),
-          ),
-          FormTile(
-            camera: widget.camera,
-            labelText: 'Compensation Form',
-            isCompleted: false,
-            description:
-                'This is the form you took at the beginning of the app. Thanks for filling it out!',
-            asscoiatedScreen: CompensationFormScreen(
-              camera: widget.camera,
-            ),
-          ),
-          FormTile(
-            camera: widget.camera,
-            labelText: 'mChatR Form',
-            isCompleted: false,
-            description:
-                'This class implements the mChatR form, a questionaire made up '
-                'of 100% multiple choice questions used to test for autism based on 20 questions',
-            asscoiatedScreen: MChatRFormScreen1(
-              camera: widget.camera,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                        'Forms to do:\n',
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: ColorTheme.textColor,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                FormTile(
+                  camera: widget.camera,
+                  labelText: 'Informed Consent Document Form',
+                  isCompleted: false,
+                  description:
+                      'This is the form you took at the beginning of the app. Thanks for filling it out!',
+                  asscoiatedScreen: InformedConsentSigningScreen(
+                    camera: widget.camera,
+                  ),
+                ),
+                SizedBox(height: 16),
+                FormTile(
+                  camera: widget.camera,
+                  labelText: 'Intake Form',
+                  isCompleted: false,
+                  description:
+                      'This is the form you took at the beginning of the app. Thanks for filling it out!',
+                  asscoiatedScreen: ChildIntakeFormScreen(
+                    camera: widget.camera,
+                  ),
+                ),
+                SizedBox(height: 16),
+                FormTile(
+                  camera: widget.camera,
+                  labelText: 'Compensation Form',
+                  isCompleted: false,
+                  description:
+                      'This is the form you took at the beginning of the app. Thanks for filling it out!',
+                  asscoiatedScreen: CompensationFormScreen(
+                    camera: widget.camera,
+                  ),
+                ),
+                SizedBox(height: 16),
+                FormTile(
+                  camera: widget.camera,
+                  labelText: 'mChatR Form',
+                  isCompleted: false,
+                  description:
+                      'This class implements the mChatR form, a questionaire made up '
+                      'of 100% multiple choice questions used to test for autism based on 20 questions',
+                  asscoiatedScreen: MChatRFormScreen1(camera: widget.camera),
+                ),
+              ],
             ),
           ),
         ],
