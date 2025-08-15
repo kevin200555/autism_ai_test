@@ -49,7 +49,9 @@ class _FormTileState extends State<FormTile> {
           textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
         ),
       ),
-      collapsedTextColor: (widget.isCompleted) ? ColorTheme.background : ColorTheme.textColor,
+      collapsedTextColor: (widget.isCompleted)
+          ? ColorTheme.background
+          : ColorTheme.textColor,
       textColor: (widget.isCompleted)
           ? ColorTheme.background
           : ColorTheme.textColor,

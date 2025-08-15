@@ -55,8 +55,8 @@ class VideoStorageClassItem {
 
   static void getTime() {
     DateTime now = DateTime.now();
-    date = "${now.year}-${now.month}-${now.day}";
-    time = "${now.hour}:${now.minute}:${now.second}";
+    date = "${now.month}-${now.day}-${now.year}";
+    time = "${now.hour}:${now.minute}";
     saveToHive();
   }
 }
