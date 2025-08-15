@@ -1,5 +1,4 @@
 import 'package:autism_ai_test/constants/colors.dart';
-import 'package:autism_ai_test/main.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/home_screen_widgets.dart/score.dart';
 import 'package:flutter/material.dart';
