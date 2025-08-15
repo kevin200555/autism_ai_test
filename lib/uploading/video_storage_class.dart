@@ -81,7 +81,7 @@ class VideoStorageClassItem {
   static void getStartTime() {
     DateTime now = DateTime.now();
     date = "${now.month}-${now.day}-${now.year}";
-    time = "${now.hour}:${now.minute}";
+    time = (now.hour > 12) ? "${now.hour - 12}:${now.minute} PM" : "${now.hour}:${now.minute} AM" ;
     saveToHive();
   }
 
