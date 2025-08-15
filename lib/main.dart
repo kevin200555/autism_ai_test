@@ -134,7 +134,6 @@ class AutismAITest extends StatelessWidget {
 // - see if I can read data from firebase / google cloud services ✓
 //   and display it on the app
 // Things to note:
-// - see if I can get them to split into 9 videos 
 // - make the MCQ questions more cleaner (dropdown button harder to see) ✓
 // - for multiple choice questions, make it so there is like a "other option" 
 // - keep in mind that all types of people look at this
