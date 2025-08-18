@@ -6,12 +6,10 @@
 
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/screens/main_menu/home_menu_screen.dart';
-import 'package:autism_ai_test/screens/video_section/video_section_info_screen.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/button/back_button.dart';
 import 'package:autism_ai_test/widgets/button/help_button.dart';
 import 'package:autism_ai_test/widgets/button/next_button.dart';
-import 'package:autism_ai_test/widgets/other/progress_bar.dart';
 import 'package:autism_ai_test/widgets/questions/radio_multiple_choice_question_widget.dart';
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';

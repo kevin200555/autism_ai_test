@@ -10,7 +10,6 @@ import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/button/back_button.dart';
 import 'package:autism_ai_test/widgets/button/help_button.dart';
 import 'package:autism_ai_test/widgets/button/next_button.dart';
-import 'package:autism_ai_test/widgets/other/progress_bar.dart';
 import 'package:autism_ai_test/widgets/questions/signiture_question_widget.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:camera/camera.dart';
