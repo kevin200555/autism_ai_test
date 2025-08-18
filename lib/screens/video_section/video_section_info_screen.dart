@@ -7,7 +7,6 @@ import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/button/back_button.dart';
 import 'package:autism_ai_test/widgets/button/next_button.dart';
-import 'package:autism_ai_test/widgets/other/progress_bar.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
@@ -118,7 +117,6 @@ class GeneralInstructionsScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: ProgressBar(),
     );
   }
 }
@@ -414,7 +412,6 @@ class FewTipsBeforeStart extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: ProgressBar(),
     );
   }
 }
@@ -651,7 +648,6 @@ class BeforeYouStartScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: ProgressBar(),
     );
   }
 }
@@ -866,7 +862,6 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: ProgressBar(),
     );
   }
 } // EOF video_section_info_screen.dart
