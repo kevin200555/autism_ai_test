@@ -28,12 +28,14 @@ class InformedConsentSigningScreen extends StatefulWidget {
 class _InformedConsentSigningScreenState
     extends State<InformedConsentSigningScreen> {
   var icQuestions = InstructionAndQuestions.getIC();
-  List<String?> responses = [];
+  List<String?> responses = UserClass.iCResponses ?? [];
 
   @override
   void initState() {
     super.initState();
-    responses = List<String?>.filled(icQuestions.length, null);
+    responses = UserClass.iCResponses != null
+      ? List<String?>.from(UserClass.iCResponses!)
+      : List<String?>.filled(icQuestions.length, null);
   }
 
   // given a sample set of responses like [yes, yes, Sarah Jones, 07/07/2025, null, Tom Jones, Mother, null, Tom Jones]
