@@ -1,4 +1,6 @@
+import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/screens/information_screens/ic_document_screen.dart';
+import 'package:autism_ai_test/screens/video_section/video_section_info_screen.dart';
 import 'package:autism_ai_test/widgets/button/help_button.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:flutter/material.dart';
@@ -13,14 +15,15 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorTheme.background,
+
+      /*
       appBar: AppBar(
         title: AppBarTitle('WELCOME!', color: ColorTheme.textColor),
         centerTitle: true,
         backgroundColor: ColorTheme.background,
         actions: [HelpButton(color: ColorTheme.textColor, camera: camera)],
         automaticallyImplyLeading: false,
-      ),
-
+      ),*/
       body: Scrollbar(
         thumbVisibility: true,
         child: SingleChildScrollView(
@@ -49,17 +52,20 @@ class HomeScreen extends StatelessWidget {
                 'you\'re helping us build something that could help many other families in the future.\n',
                 color: ColorTheme.textColor,
               ),
-              SubTitle('What\'s in the test?', textAlign: TextAlign.left),
+              SubTitle('What are the video tasks?', textAlign: TextAlign.left),
               BodyText(
-                '\t\t- Informed Consent Document',
+                '\t\t- ${InstructionAndQuestions.videoNames[0]}',
                 color: ColorTheme.textColor,
               ),
-              BodyText('\t\t- Autism Intake Form', color: ColorTheme.textColor),
-              BodyText('\t\t- M-ChatR Form', color: ColorTheme.textColor),
               BodyText(
-                '\t\t- Recorded Video Section\n',
+                '\t\t- ${InstructionAndQuestions.videoNames[1]}',
                 color: ColorTheme.textColor,
               ),
+              BodyText(
+                '\t\t- ${InstructionAndQuestions.videoNames[2]}',
+                color: ColorTheme.textColor,
+              ),
+              BodyText('', color: ColorTheme.textColor),
               BodyText(
                 'We really appreciate your time and support!'
                 ' These tasks are quick and simple, and your child might even think they’re just playing with you!\n',
@@ -85,12 +91,12 @@ class HomeScreen extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => PdfViewerScreen(camera: camera),
+                  builder: (context) => GeneralInstructionsScreen(camera: camera),
                 ),
               );
             },
             //Start button
-            label: ButtonText('BEGIN TEST', maxLines: 1),
+            label: ButtonText('START RECORDING', maxLines: 1),
             style: ElevatedButton.styleFrom(
               backgroundColor: ColorTheme.accent,
               foregroundColor: ColorTheme.alternateTextColor,
