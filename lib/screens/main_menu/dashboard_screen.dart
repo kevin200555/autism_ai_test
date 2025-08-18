@@ -6,6 +6,7 @@ import 'package:autism_ai_test/screens/mchatr/m_chatR_form_screen.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/home_screen_widgets.dart/form_tile.dart';
 import 'package:autism_ai_test/widgets/home_screen_widgets.dart/score.dart';
+import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
@@ -91,14 +92,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                        'Forms to do:\n',
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: ColorTheme.textColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                  'Listed Forms:\n',
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: ColorTheme.textColor,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 FormTile(
                   camera: widget.camera,
                   labelText: 'Informed Consent Document Form',
@@ -142,6 +143,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   asscoiatedScreen: MChatRFormScreen1(camera: widget.camera),
                 ),
               ],
+            ),
+          ),
+          Text(
+            'Check out the \'video\' tab in order to start a recording section!\n',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 16,
+              color: ColorTheme.textColor,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ],
