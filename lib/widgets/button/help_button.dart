@@ -1,4 +1,4 @@
-import 'package:autism_ai_test/screens/help_screens/help_screen.dart';
+import 'package:autism_ai_test/screens/other/help_screen.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 

@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
-import 'package:autism_ai_test/screens/information_screens/final_screen.dart';
+import 'package:autism_ai_test/screens/other/final_screen.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/button/help_button.dart';
 import 'package:autism_ai_test/widgets/button/next_button.dart';
