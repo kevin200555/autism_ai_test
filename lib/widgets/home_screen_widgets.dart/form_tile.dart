@@ -35,67 +35,78 @@ class FormTile extends StatefulWidget {
 class _FormTileState extends State<FormTile> {
   @override
   Widget build(BuildContext context) {
-    return ExpansionTile(
-      // ExpansionTile has multiple parameters based on whether or not the tile is collapsed or not
-      // when video is not completed and tile is collasped, it is grey with white text
-      // when video is not completed and tile is expanded, it is white with black text
-      // when video is completed and tile is collasped, it is green with white text
-      // when video is completed and tile is expanded, it is green with white text
-      title: Text(
-        (widget.isCompleted)
-            ? '${widget.labelText} (Completed!)'
-            : '${widget.labelText} (In Progress)',
-        style: GoogleFonts.lato(
-          textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-        ),
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white, // Background color
+        border: Border.all(color: ColorTheme.textColor, width: 2), // Border
+        borderRadius: BorderRadius.circular(8), // Rounded corners
+        boxShadow: [
+          BoxShadow(color: Colors.black12, blurRadius: 6, offset: Offset(0, 2)),
+        ],
       ),
-      collapsedTextColor: (widget.isCompleted)
-          ? ColorTheme.background
-          : ColorTheme.textColor,
-      textColor: (widget.isCompleted)
-          ? ColorTheme.background
-          : ColorTheme.textColor,
-      collapsedBackgroundColor: (widget.isCompleted)
-          ? ColorTheme.green
-          : ColorTheme.primary,
-      backgroundColor: (widget.isCompleted)
-          ? ColorTheme.green
-          : ColorTheme.background,
-      collapsedIconColor: ColorTheme.textColor,
-      iconColor: (widget.isCompleted)
-          ? ColorTheme.background
-          : ColorTheme.textColor,
-      // This is what is in the expanded tile information, it displays the task instructions
-      // This is so that the user can read which instruction they want to do first before going to the recording screen
-      children: <Widget>[
-        Container(
-          alignment: Alignment.center,
-          padding: const EdgeInsets.all(24),
-          child: Column(
-            children: [
-              BodyText(
-                widget.description,
-                color: (widget.isCompleted)
-                    ? ColorTheme.background
-                    : ColorTheme.textColor,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(8),
+        child: Theme(
+          data: Theme.of(context).copyWith(dividerColor: ColorTheme.textColor),
+          child: ExpansionTile(
+            title: Text(
+              (widget.isCompleted)
+                  ? '${widget.labelText} (Completed!)'
+                  : '${widget.labelText} (In Progress)',
+              style: GoogleFonts.lato(
+                textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
               ),
-              // Takes user to the place where they'll record their video
-              NextButton(
-                label: 'TAKE FORM',
-                onPressed: () async {
-                  await Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => widget.asscoiatedScreen,
+            ),
+            collapsedTextColor: (widget.isCompleted)
+                ? ColorTheme.background
+                : ColorTheme.textColor,
+            textColor: (widget.isCompleted)
+                ? ColorTheme.background
+                : ColorTheme.textColor,
+            collapsedBackgroundColor: (widget.isCompleted)
+                ? ColorTheme.green
+                : ColorTheme.primary,
+            backgroundColor: (widget.isCompleted)
+                ? ColorTheme.green
+                : ColorTheme.background,
+            collapsedIconColor: ColorTheme.textColor,
+            iconColor: (widget.isCompleted)
+                ? ColorTheme.background
+                : ColorTheme.textColor,
+            // This is what is in the expanded tile information, it displays the task instructions
+            // This is so that the user can read which instruction they want to do first before going to the recording screen
+            children: <Widget>[
+              Container(
+                alignment: Alignment.center,
+                padding: const EdgeInsets.all(24),
+                child: Column(
+                  children: [
+                    BodyText(
+                      widget.description,
+                      color: (widget.isCompleted)
+                          ? ColorTheme.background
+                          : ColorTheme.textColor,
                     ),
-                  );
-                  widget.onReturnFromRecording?.call();
-                },
+                    // Takes user to the place where they'll record their video
+                    NextButton(
+                      label: 'TAKE FORM',
+                      onPressed: () async {
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => widget.asscoiatedScreen,
+                          ),
+                        );
+                        widget.onReturnFromRecording?.call();
+                      },
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
         ),
-      ],
+      ),
     );
   }
 } // EOF video_item.dart
