@@ -25,12 +25,18 @@ class CompensationFormScreen extends StatefulWidget {
 class _CompensationFormScreenState extends State<CompensationFormScreen> {
   var compensationFormQuestions = InstructionAndQuestions.getCQuestions();
   // stores responses
-  List<String?> responses = [];
+  List<String?> responses = UserClass.compensationResponses ?? [];
 
   @override
   void initState() {
     super.initState();
     responses = List<String?>.filled(compensationFormQuestions.length, null);
+
+    if (UserClass.iCResponses != null) {
+      for (int i = 0; i < UserClass.compensationResponses!.length; i++) {
+        responses[i] = UserClass.compensationResponses![i];
+      }
+    }
   }
 
   @override

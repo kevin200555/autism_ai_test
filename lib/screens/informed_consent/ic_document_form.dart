@@ -33,9 +33,13 @@ class _InformedConsentSigningScreenState
   @override
   void initState() {
     super.initState();
-    responses = UserClass.iCResponses != null
-      ? List<String?>.from(UserClass.iCResponses!)
-      : List<String?>.filled(icQuestions.length, null);
+    responses = List<String?>.filled(icQuestions.length, null);
+
+    if (UserClass.iCResponses != null) {
+      for (int i = 0; i < UserClass.iCResponses!.length; i++) {
+        responses[i] = UserClass.iCResponses![i];
+      }
+    }
   }
 
   // given a sample set of responses like [yes, yes, Sarah Jones, 07/07/2025, null, Tom Jones, Mother, null, Tom Jones]
@@ -90,7 +94,6 @@ class _InformedConsentSigningScreenState
               return NextButton(
                 label: 'NEXT',
                 onPressed: () {
-
                   //makes a new UserClass in order to save the information this user has done
                   UserClass.currentScreen = 'IC_document';
                   UserClass.userId = generateUserId();

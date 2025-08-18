@@ -26,12 +26,18 @@ class ChildIntakeFormScreen extends StatefulWidget {
 class _ChildIntakeFormScreenState extends State<ChildIntakeFormScreen> {
   var intakeFormQuestions = InstructionAndQuestions.getChildIntakeForm();
 
-  List<String?> responses = [];
+  List<String?> responses = UserClass.childIntakeResponses ?? [];
 
   @override
   void initState() {
     super.initState();
     responses = List<String?>.filled(intakeFormQuestions.length, null);
+
+    if (UserClass.iCResponses != null) {
+      for (int i = 0; i < UserClass.childIntakeResponses!.length; i++) {
+        responses[i] = UserClass.childIntakeResponses![i];
+      }
+    }
   }
 
   @override
@@ -135,12 +141,18 @@ class ParentIntakeFormScreen extends StatefulWidget {
 class _ParentIntakeFormScreenState extends State<ParentIntakeFormScreen> {
   var intakeFormQuestions = InstructionAndQuestions.getParentIntakeForm();
 
-  List<String?> responses = [];
+  List<String?> responses = UserClass.parentIntakeResponses ?? [];
 
   @override
   void initState() {
     super.initState();
     responses = List<String?>.filled(intakeFormQuestions.length, null);
+
+    if (UserClass.iCResponses != null) {
+      for (int i = 0; i < UserClass.parentIntakeResponses!.length; i++) {
+        responses[i] = UserClass.parentIntakeResponses![i];
+      }
+    }
   }
 
   @override

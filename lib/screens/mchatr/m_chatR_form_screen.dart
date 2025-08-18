@@ -39,7 +39,12 @@ class _MChatRFormScreen1State extends State<MChatRFormScreen1> {
   void initState() {
     super.initState();
     half = (mChatRQuestions.length / 2).ceil();
-    responses = List<String?>.filled(mChatRQuestions.length, null);
+    if (UserClass.mChatRresponses != null &&
+        UserClass.mChatRresponses!.length == mChatRQuestions.length) {
+      responses = List<String?>.from(UserClass.mChatRresponses!);
+    } else {
+      responses = List<String?>.filled(mChatRQuestions.length, null);
+    }
   }
 
   @override
@@ -100,6 +105,9 @@ class _MChatRFormScreen1State extends State<MChatRFormScreen1> {
                 onChanged: (newValue) {
                   setState(() {
                     responses[index] = newValue;
+                    UserClass.mChatRresponses = responses;
+                    UserClass.currentScreen = 'mChatR1';
+                    UserClass.saveToHive();
                   });
                 },
               ),
@@ -201,6 +209,9 @@ class _MChatRFormScreen2State extends State<MChatRFormScreen2> {
                 onChanged: (newValue) {
                   setState(() {
                     widget.responses[qIndex] = newValue;
+                    UserClass.mChatRresponses = widget.responses;
+                    UserClass.currentScreen = 'mChatR2';
+                    UserClass.saveToHive();
                   });
                 },
               ),
