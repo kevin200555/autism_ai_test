@@ -89,7 +89,7 @@ class _FormTileState extends State<FormTile> {
                     ),
                     // Takes user to the place where they'll record their video
                     NextButton(
-                      label: 'TAKE FORM',
+                      label: (widget.isCompleted) ? 'EDIT/VIEW FORM' : 'TAKE FORM',
                       onPressed: () async {
                         await Navigator.push(
                           context,

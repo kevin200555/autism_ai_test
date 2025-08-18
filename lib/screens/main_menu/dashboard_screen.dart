@@ -19,12 +19,12 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
   bool formCompleted(bool isIntake, List<String?>? list) {
-    for(int i = 0; i < list!.length; i++){
-      if(list[i] == '' || list[i] == null){
+    for (int i = 0; i < list!.length; i++) {
+      if (list[i] == '' || list[i] == null) {
         return false;
       }
     }
-    
+
     return true;
   }
 
@@ -114,7 +114,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   labelText: 'Informed Consent Document Form',
                   isCompleted: formCompleted(true, UserClass.iCResponses),
                   description:
-                      'This is the form you took at the beginning of the app. Thanks for filling it out!',
+                      'This is the form you took at the beginning of the app. Thanks for filling it out!\n',
                   asscoiatedScreen: InformedConsentSigningScreen(
                     camera: widget.camera,
                   ),
@@ -123,9 +123,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 FormTile(
                   camera: widget.camera,
                   labelText: 'Intake Form',
-                  isCompleted: formCompleted(false, UserClass.childIntakeResponses) && formCompleted(false, UserClass.parentIntakeResponses),
+                  isCompleted:
+                      formCompleted(false, UserClass.childIntakeResponses) &&
+                      formCompleted(false, UserClass.parentIntakeResponses),
                   description:
-                      'This is the form you took at the beginning of the app. Thanks for filling it out!',
+                      'This is the form will ask just some basic questions about you and your child.\n',
                   asscoiatedScreen: ChildIntakeFormScreen(
                     camera: widget.camera,
                   ),
@@ -134,9 +136,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 FormTile(
                   camera: widget.camera,
                   labelText: 'Compensation Form',
-                  isCompleted: formCompleted(false, UserClass.compensationResponses),
+                  isCompleted: formCompleted(
+                    false,
+                    UserClass.compensationResponses,
+                  ),
                   description:
-                      'This is the form you took at the beginning of the app. Thanks for filling it out!',
+                      'This form is optional, but if you want to be compensated for your time, fill this out'
+                      'Keep in mind, this form will ask for your Social Security Number.\n',
                   asscoiatedScreen: CompensationFormScreen(
                     camera: widget.camera,
                   ),
@@ -148,7 +154,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   isCompleted: formCompleted(false, UserClass.mChatRresponses),
                   description:
                       'This class implements the mChatR form, a questionaire made up '
-                      'of 100% multiple choice questions used to test for autism based on 20 questions',
+                      'of 20 multiple choice questions used to test for autism.\n',
                   asscoiatedScreen: MChatRFormScreen1(camera: widget.camera),
                 ),
               ],
