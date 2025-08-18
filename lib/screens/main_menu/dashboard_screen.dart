@@ -6,7 +6,6 @@ import 'package:autism_ai_test/screens/mchatr/m_chatR_form_screen.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/home_screen_widgets.dart/form_tile.dart';
 import 'package:autism_ai_test/widgets/home_screen_widgets.dart/score.dart';
-import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
