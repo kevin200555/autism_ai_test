@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/uploading/upload_to_firebase.dart';
+import 'package:autism_ai_test/uploading/video_storage_class.dart';
 import 'package:flutter/foundation.dart';
 import 'package:camera/camera.dart';
 import 'package:path_provider/path_provider.dart';
@@ -24,12 +25,19 @@ class UserClass {
   static List<String?>? childIntakeResponses;
   static List<String?>? parentIntakeResponses;
   static List<String?>? compensationResponses;
+
+  static bool icCompleted = false;
+  static bool intakeCompleted = false;
+  static bool compensationCompleted = false;
+  static bool mChatRCompleted = false;
   // These store the videos (size of these could change later)
   static List<XFile?>? recordedVideos = List<XFile?>.filled(
     InstructionAndQuestions.videoNames.length,
     null,
     growable: false,
   );
+
+  List<VideoStorageClassItem> videos = [];
 
   // This is used after the user has completed the test, since their data should be uploaded to Google Cloud
   // is not needed locally on their mobile device anymore and
@@ -44,6 +52,12 @@ class UserClass {
     childIntakeResponses = null;
     parentIntakeResponses = null;
     compensationResponses = null;
+
+    icCompleted = false;
+    intakeCompleted = false;
+    compensationCompleted = false;
+    mChatRCompleted = false;
+
     recordedVideos = List<XFile?>.filled(
       InstructionAndQuestions.videoNames.length,
       null,
@@ -66,6 +80,11 @@ class UserClass {
     await box.put('parentIntakeResponses', parentIntakeResponses);
     await box.put('compensationResponses', compensationResponses);
     await box.put('signiturePath', signiture?.path);
+
+    await box.put('icCompleted', icCompleted);
+    await box.put('intakeCompleted', intakeCompleted);
+    await box.put('compensationCompleted', compensationCompleted);
+    await box.put('mChatRCompleted', mChatRCompleted);
 
     // Save recorded video paths
     List<String?> videoPaths = recordedVideos!
@@ -92,6 +111,14 @@ class UserClass {
     if (signPath != null) {
       signiture = File(signPath);
     }
+
+    icCompleted = box.get('icCompleted', defaultValue: false);
+    intakeCompleted = box.get('intakeCompleted', defaultValue: false);
+    compensationCompleted = box.get(
+      'compensationCompleted',
+      defaultValue: false,
+    );
+    mChatRCompleted = box.get('mChatRCompleted', defaultValue: false);
 
     final videoPaths = (box.get('recordedVideoPaths') as List?)
         ?.cast<String?>();
