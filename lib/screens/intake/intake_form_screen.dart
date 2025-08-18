@@ -1,5 +1,6 @@
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/screens/intake/compensation_form.dart';
+import 'package:autism_ai_test/screens/main_menu/home_menu_screen.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/button/back_button.dart';
 import 'package:autism_ai_test/widgets/button/help_button.dart';
@@ -120,7 +121,6 @@ class _ChildIntakeFormScreenState extends State<ChildIntakeFormScreen> {
           },
         ),
       ),
-      bottomNavigationBar: ProgressBar(),
     );
   }
 }
@@ -175,7 +175,7 @@ class _ParentIntakeFormScreenState extends State<ParentIntakeFormScreen> {
             //adds a next button at the end of all the questions
             if (index == intakeFormQuestions.length) {
               return NextButton(
-                label: 'NEXT',
+                label: 'SUBMIT FORM',
                 onPressed: () {
                   // SAVE TO HIVE
                   UserClass.screenNumber++;
@@ -185,7 +185,7 @@ class _ParentIntakeFormScreenState extends State<ParentIntakeFormScreen> {
                     context,
                     MaterialPageRoute(
                       builder: (context) =>
-                          CompensationFormScreen(camera: widget.camera),
+                          HomeMenuScreen(camera: widget.camera),
                     ),
                   );
                 },
@@ -228,7 +228,6 @@ class _ParentIntakeFormScreenState extends State<ParentIntakeFormScreen> {
           },
         ),
       ),
-      bottomNavigationBar: ProgressBar(),
     );
   }
 } // EOF intake_form_screen.dart

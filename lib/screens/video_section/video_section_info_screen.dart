@@ -98,6 +98,7 @@ class GeneralInstructionsScreen extends StatelessWidget {
                     ],
                   ),
                 ),
+                BodyText('Please read all instructions completley\n', color: ColorTheme.textColor),
                 NextButton(
                   label: 'NEXT',
                   onPressed: () {

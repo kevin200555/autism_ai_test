@@ -148,7 +148,6 @@ class _InformedConsentSignitureScreenState
             ),
           ],
         ),
-        bottomNavigationBar: ProgressBar(),
       ),
     );
   }

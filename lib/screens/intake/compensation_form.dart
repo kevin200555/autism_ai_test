@@ -1,4 +1,5 @@
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
+import 'package:autism_ai_test/screens/main_menu/home_menu_screen.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/button/back_button.dart';
 import 'package:autism_ai_test/widgets/button/help_button.dart';
@@ -70,7 +71,7 @@ class _CompensationFormScreenState extends State<CompensationFormScreen> {
             } else if (index == compensationFormQuestions.length + 1) {
               // LAST index (after all questions)
               return NextButton(
-                label: 'NEXT',
+                label: 'SUBMIT FORM',
                 onPressed: () {
                   UserClass.screenNumber++;
                   UserClass.compensationResponses = responses;
@@ -79,7 +80,7 @@ class _CompensationFormScreenState extends State<CompensationFormScreen> {
                     context,
                     MaterialPageRoute(
                       builder: (context) =>
-                          MChatRFormScreen1(camera: widget.camera),
+                        HomeMenuScreen(camera: widget.camera),
                     ),
                   );
                 },
@@ -114,7 +115,6 @@ class _CompensationFormScreenState extends State<CompensationFormScreen> {
           },
         ),
       ),
-      bottomNavigationBar: ProgressBar(),
     );
   }
 } // EOF intake_form_screen.dart

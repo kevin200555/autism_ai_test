@@ -5,6 +5,7 @@
 // ignore_for_file: file_names
 
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
+import 'package:autism_ai_test/screens/main_menu/home_menu_screen.dart';
 import 'package:autism_ai_test/screens/video_section/video_section_info_screen.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/button/back_button.dart';
@@ -108,7 +109,6 @@ class _MChatRFormScreen1State extends State<MChatRFormScreen1> {
           },
         ),
       ),
-      bottomNavigationBar: ProgressBar(),
     );
   }
 }
@@ -170,7 +170,7 @@ class _MChatRFormScreen2State extends State<MChatRFormScreen2> {
           itemBuilder: (context, index) {
             if (index == mChatRQuestions.length - half) {
               return NextButton(
-                label: 'SUBMIT',
+                label: 'SUBMIT FORM',
                 onPressed: () async {
                   // SAVE TO HIVE
                   if (kDebugMode) {
@@ -186,7 +186,7 @@ class _MChatRFormScreen2State extends State<MChatRFormScreen2> {
                     context,
                     MaterialPageRoute(
                       builder: (context) =>
-                          GeneralInstructionsScreen(camera: widget.camera),
+                          HomeMenuScreen(camera: widget.camera),
                     ),
                   );
                 },
@@ -211,7 +211,6 @@ class _MChatRFormScreen2State extends State<MChatRFormScreen2> {
           },
         ),
       ),
-      bottomNavigationBar: ProgressBar(),
     );
   }
 } // EOF m_chatr_form_screen.dart

@@ -141,7 +141,6 @@ class _InformedConsentSigningScreenState
           },
         ),
       ),
-      bottomNavigationBar: ProgressBar(),
     );
   }
 } // EOF ic_document_signing.dart
