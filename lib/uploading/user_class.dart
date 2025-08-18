@@ -15,7 +15,7 @@ import 'package:hive/hive.dart';
 class UserClass {
   static String? userId;
   // These variables keep track of what screen the user is on, a full detail of this can be seen in main.dart
-  static int screenNumber = 0;
+  static String currentScreen = 'main_menu';
   static int totalScreenNumber = 15;
   // These store all information from the questionaires
   static List<String?>? iCResponses;
@@ -36,7 +36,7 @@ class UserClass {
   // These need to be updated in case I change anything about the above static variables
   static void resetAll() {
     userId = null;
-    screenNumber = 0;
+    currentScreen = 'main_menu';
     totalScreenNumber = 15;
     iCResponses = null;
     signiture = null;
@@ -59,7 +59,7 @@ class UserClass {
   static Future<void> saveToHive() async {
     final box = await Hive.openBox('user_data');
     await box.put('userId', userId);
-    await box.put('screenNumber', screenNumber);
+    await box.put('currentScreen', currentScreen);
     await box.put('iCResponses', iCResponses);
     await box.put('mChatRresponses', mChatRresponses);
     await box.put('childIntakeResponses', childIntakeResponses);
@@ -78,7 +78,7 @@ class UserClass {
   static Future<void> loadFromHive() async {
     final box = await Hive.openBox('user_data');
     userId = box.get('userId');
-    screenNumber = box.get('screenNumber') ?? 0;
+    currentScreen = box.get('currentScreen') ?? 'main_menu';
     iCResponses = (box.get('iCResponses') as List?)?.cast<String?>();
     mChatRresponses = (box.get('mChatRresponses') as List?)?.cast<String?>();
     childIntakeResponses = (box.get('childIntakeResponses') as List?)
@@ -113,7 +113,7 @@ class UserClass {
       print("Child Intake Form Responses: $childIntakeResponses");
       print("Parent Intake Form Responses: $parentIntakeResponses");
       print("Compensation Form Responses: $compensationResponses");
-      print("Screen Number:  $screenNumber");
+      print("currentScreen:  $currentScreen");
 
       for (int i = 0; i < InstructionAndQuestions.videoNames.length; i++) {
         print("Recorded Video 1: ${recordedVideos?[i]?.path}");

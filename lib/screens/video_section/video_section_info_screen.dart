@@ -22,7 +22,7 @@ class GeneralInstructionsScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
-        leading: BackButtonAppBar(),
+        automaticallyImplyLeading: false,
         actions: [HelpButton(color: ColorTheme.textColor, camera: camera)],
         title: AppBarTitle(
           'Video Section Information Page 1 of 4',
@@ -102,7 +102,7 @@ class GeneralInstructionsScreen extends StatelessWidget {
                 NextButton(
                   label: 'NEXT',
                   onPressed: () {
-                    UserClass.screenNumber++;
+                    UserClass.currentScreen = "main_menu";
                     UserClass.saveToHive();
                     Navigator.push(
                       context,
@@ -397,7 +397,7 @@ class FewTipsBeforeStart extends StatelessWidget {
                 NextButton(
                   label: 'NEXT',
                   onPressed: () {
-                    UserClass.screenNumber++;
+                    UserClass.currentScreen = "main_menu";
                     UserClass.saveToHive();
                     Navigator.push(
                       context,
@@ -634,7 +634,7 @@ class BeforeYouStartScreen extends StatelessWidget {
                 NextButton(
                   label: 'NEXT',
                   onPressed: () {
-                    UserClass.screenNumber++;
+                    UserClass.currentScreen = "main_menu";
                     UserClass.saveToHive();
                     Navigator.push(
                       context,
@@ -847,7 +847,7 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                 NextButton(
                   label: 'BEGIN TEST',
                   onPressed: () {
-                    UserClass.screenNumber++;
+                    UserClass.currentScreen = "video_info_screen";
                     UserClass.saveToHive();
                     Navigator.push(
                       context,

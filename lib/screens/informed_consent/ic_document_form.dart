@@ -88,10 +88,10 @@ class _InformedConsentSigningScreenState
               return NextButton(
                 label: 'NEXT',
                 onPressed: () {
-                  UserClass.screenNumber++;
-                  //makes a new UserClass in order to save the information this user has done
-                  UserClass.userId = generateUserId();
 
+                  //makes a new UserClass in order to save the information this user has done
+                  UserClass.currentScreen = 'IC_document';
+                  UserClass.userId = generateUserId();
                   UserClass.iCResponses = responses;
                   UserClass.saveToHive();
 

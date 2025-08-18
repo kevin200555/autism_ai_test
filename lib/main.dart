@@ -1,7 +1,5 @@
 import 'package:autism_ai_test/screens/main_menu/home_menu_screen.dart';
-import 'package:autism_ai_test/screens/video_section/video_recording_menu.dart';
 import 'package:autism_ai_test/screens/other/no_camera_error_screen.dart';
-import 'package:autism_ai_test/screens/intake/compensation_form.dart';
 import 'package:autism_ai_test/screens/informed_consent/ic_document_form.dart';
 import 'package:autism_ai_test/screens/informed_consent/ic_signiture.dart';
 import 'package:autism_ai_test/screens/intake/intake_form_screen.dart';
@@ -12,7 +10,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
-import 'package:autism_ai_test/screens/video_section/home_screen.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:flutter/services.dart';
 
@@ -25,7 +22,9 @@ Future<void> main() async {
   // await Permission.microphone.request();
   await Firebase.initializeApp();
   await Hive.initFlutter();
+
   await UserClass.loadFromHive();
+
   try {
     cameras = await availableCameras();
   } catch (e) {
@@ -74,50 +73,28 @@ class AutismAITest extends StatelessWidget {
     // 12 : Video Menu
     // 13 : Video Menu
     // 14 : Video Menu
-    switch (UserClass.screenNumber) {
-      case 1:
+    switch (UserClass.currentScreen) {
+      case 'main_menu':
+        initialScreen = HomeMenuScreen(camera: cameras[0]);
+      case 'IC_Document':
         initialScreen = InformedConsentSigningScreen(camera: cameras[0]);
-      case 2:
+      case 'IC_document_form':
         initialScreen = InformedConsentSignitureScreen(camera: cameras[0]);
-      case 3:
+      case 'child_intake':
         initialScreen = ChildIntakeFormScreen(camera: cameras[0]);
-      case 4:
-        initialScreen = ParentIntakeFormScreen(camera: cameras[0]);
-      case 5:
-        initialScreen = CompensationFormScreen(camera: cameras[0]);
-      case 6:
+      case 'mChatR1':
         initialScreen = MChatRFormScreen1(camera: cameras[0]);
-      case 7:
-        initialScreen = MChatRFormScreen2(
-          camera: cameras[0],
-          responses: UserClass.mChatRresponses ?? <String?>[],
-        );
       // anytime the user disconnects from the General Instructions Screen, it brings the User to the first screen in that area
       // This is because their isn't a reason not to, might as well since you're not filling anything out any information
-      case 8:
+      case 'video_info_screen':
         initialScreen = GeneralInstructionsScreen(camera: cameras[0]);
-      case 9:
-        UserClass.screenNumber = 8;
-        initialScreen = GeneralInstructionsScreen(camera: cameras[0]);
-      case 10:
-        UserClass.screenNumber = 8;
-        initialScreen = GeneralInstructionsScreen(camera: cameras[0]);
-      case 11:
-        UserClass.screenNumber = 8;
-        initialScreen = GeneralInstructionsScreen(camera: cameras[0]);
-      case 12:
-        initialScreen = VideoRecordingMenu(camera: cameras[0]);
-      case 13:
-        initialScreen = VideoRecordingMenu(camera: cameras[0]);
-      case 14:
-        initialScreen = VideoRecordingMenu(camera: cameras[0]);
       default:
-        UserClass.screenNumber = 0;
-        initialScreen = HomeScreen(camera: cameras[0]);
+        UserClass.currentScreen = 'main_menu';
+        initialScreen = HomeMenuScreen(camera: cameras[0]);
     }
     //camera is passed around through all widgets and screens in the program
     // return MaterialApp(home: HomeScreen(camera: cameras[0]), debugShowCheckedModeBanner: false);
-    return MaterialApp(home: HomeMenuScreen(camera: cameras[0]), debugShowCheckedModeBanner: false);
+    return MaterialApp(home: initialScreen, debugShowCheckedModeBanner: false);
   }
 } // EOF main.dart
 

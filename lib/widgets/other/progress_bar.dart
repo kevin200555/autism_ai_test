@@ -1,3 +1,4 @@
+/*
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
@@ -38,19 +39,19 @@ class _ProgressBarState extends State<ProgressBar> {
               Container(
                 width:
                     // if user ever somhow gets to 14/13 or something, this makes sure the top rectangle doesn't get any bigger
-                    (UserClass.screenNumber / UserClass.totalScreenNumber) >= 1
+                    (UserClass.currentScreen / UserClass.totalScreenNumber) >= 1
                     ? MediaQuery.sizeOf(context).width * 0.60
                     : MediaQuery.sizeOf(context).width *
                           0.60 *
-                          (UserClass.screenNumber /
+                          (UserClass.currentScreen /
                               UserClass.totalScreenNumber),
                 height: MediaQuery.sizeOf(context).height * 0.02,
                 decoration: BoxDecoration(
                   color:
-                      (UserClass.screenNumber / UserClass.totalScreenNumber) <
+                      (UserClass.currentScreen / UserClass.totalScreenNumber) <
                           0.25
                       ? ColorTheme.progressBar1
-                      : (UserClass.screenNumber / UserClass.totalScreenNumber) <
+                      : (UserClass.currentScreen / UserClass.totalScreenNumber) <
                             0.50
                       ? ColorTheme.progressBar2
                       : ColorTheme.progressBar3,
@@ -67,10 +68,10 @@ class _ProgressBarState extends State<ProgressBar> {
           ButtonText(
             // not sure why it decided to format it like this but basically if the user ever accidently
             // somehow gets to 14/13 or something, this makes sure that number stays at 100%
-            (100 * (UserClass.screenNumber / UserClass.totalScreenNumber))
+            (100 * (UserClass.currentScreen / UserClass.totalScreenNumber))
                         .toInt() <=
                     100
-                ? '${(100 * (UserClass.screenNumber / UserClass.totalScreenNumber)).toInt()}% DONE'
+                ? '${(100 * (UserClass.currentScreen / UserClass.totalScreenNumber)).toInt()}% DONE'
                 : '100% DONE',
             maxLines: 1,
           ),
@@ -79,3 +80,4 @@ class _ProgressBarState extends State<ProgressBar> {
     );
   }
 } // EOF progress_bar.dart
+*/

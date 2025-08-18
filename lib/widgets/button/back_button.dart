@@ -1,4 +1,3 @@
-import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:flutter/material.dart';
 
 // The purpose of this class is to override the default back button in scafold appbar
@@ -16,7 +15,6 @@ class BackButtonAppBar extends StatelessWidget {
         // makes sure that there is something in the stack before running navigator.
         // This is because when reloaded a savfe file, that stack is lost
         if (Navigator.canPop(context)) {
-          UserClass.screenNumber--;
           Navigator.of(context).pop();
         }
       },

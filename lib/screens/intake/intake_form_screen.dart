@@ -66,7 +66,7 @@ class _ChildIntakeFormScreenState extends State<ChildIntakeFormScreen> {
               return NextButton(
                 label: 'NEXT',
                 onPressed: () {
-                  UserClass.screenNumber++;
+                  UserClass.currentScreen = "child_intake";
                   UserClass.childIntakeResponses = responses;
                   UserClass.saveToHive();
                   Navigator.push(
@@ -176,7 +176,7 @@ class _ParentIntakeFormScreenState extends State<ParentIntakeFormScreen> {
                 label: 'SUBMIT FORM',
                 onPressed: () {
                   // SAVE TO HIVE
-                  UserClass.screenNumber++;
+                  UserClass.currentScreen = "main_menu";
                   UserClass.parentIntakeResponses = responses;
                   UserClass.saveToHive();
                   Navigator.push(

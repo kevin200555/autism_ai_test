@@ -118,6 +118,7 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
               NextButton(
                 label: 'SUBMIT VIDEOS',
                 onPressed: () {
+                  UserClass.currentScreen = "main_menu";
                   submit();
                 },
               ),

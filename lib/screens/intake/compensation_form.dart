@@ -71,7 +71,7 @@ class _CompensationFormScreenState extends State<CompensationFormScreen> {
               return NextButton(
                 label: 'SUBMIT FORM',
                 onPressed: () {
-                  UserClass.screenNumber++;
+                  UserClass.currentScreen = "main_menu";
                   UserClass.compensationResponses = responses;
                   UserClass.saveToHive();
                   Navigator.push(

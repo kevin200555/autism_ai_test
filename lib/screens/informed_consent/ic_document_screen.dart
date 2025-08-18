@@ -60,7 +60,7 @@ class _PdfViewerScreenState extends State<PdfViewerScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: ElevatedButton.icon(
             onPressed: () {
-              UserClass.screenNumber++;
+              UserClass.currentScreen = 'IC_document_form';
               Navigator.push(
                 context,
                 MaterialPageRoute(

@@ -75,7 +75,7 @@ class _MChatRFormScreen1State extends State<MChatRFormScreen1> {
                 label: 'NEXT',
                 onPressed: () {
                   // SAVE TO HIVE
-                  UserClass.screenNumber++;
+                  UserClass.currentScreen = 'mChatR1';
                   UserClass.mChatRresponses = responses;
                   UserClass.saveToHive();
 
@@ -176,9 +176,8 @@ class _MChatRFormScreen2State extends State<MChatRFormScreen2> {
                     print(UserClass.compensationResponses);
                     print(UserClass.mChatRresponses);
                   }
-                  UserClass.screenNumber++;
+                  UserClass.currentScreen = 'main_menu';
                   UserClass.mChatRresponses = widget.responses;
-                  await UserClass.saveToHive();
                   Navigator.push(
                     // ignore: use_build_context_synchronously
                     context,
