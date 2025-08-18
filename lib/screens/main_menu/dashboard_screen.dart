@@ -101,12 +101,22 @@ class _DashboardScreenState extends State<DashboardScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Listed Forms:\n',
+                  'Listed Forms:',
                   textAlign: TextAlign.start,
                   style: TextStyle(
                     fontSize: 20,
                     color: ColorTheme.textColor,
                     fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  'Make sure to fill out these forms. '
+                  'Afterwards, check out the \'video\' tab in order to start a recording section!\n',
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: ColorTheme.textColor,
+                    fontWeight: FontWeight.normal,
                   ),
                 ),
                 FormTile(
@@ -160,15 +170,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               ],
             ),
           ),
-          Text(
-            'Check out the \'video\' tab in order to start a recording section!\n',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 16,
-              color: ColorTheme.textColor,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+
         ],
       ),
     );
