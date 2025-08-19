@@ -1,4 +1,4 @@
-import 'package:autism_ai_test/widgets/button/reset_button.dart';
+import 'package:autism_ai_test/widgets/button/delete_button.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
@@ -76,7 +76,7 @@ class HelpScreen extends StatelessWidget {
                 'Warning: this button resets all your progress, so only do this if there is no other option',
                 color: ColorTheme.red,
               ),
-              ResetButton(camera: camera),
+              DeleteButton(camera: camera),
               BodyText('\n', color: ColorTheme.textColor),
               // Contact information section
               SubTitle('Contact'),

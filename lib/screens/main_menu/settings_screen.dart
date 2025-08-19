@@ -1,6 +1,6 @@
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
-import 'package:autism_ai_test/widgets/button/reset_button.dart';
+import 'package:autism_ai_test/widgets/button/delete_button.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
@@ -49,9 +49,14 @@ class SettingsScreen extends StatelessWidget {
           SubTitle('UserId: '),
           BodyText('${UserClass.userId}\n', color: ColorTheme.textColor),
           SubTitle('Amount of video recording sessions: '),
-          BodyText('${UserClass.videos.length}', color: ColorTheme.textColor),
-          
-          DeleteButton(camera: camera),
+          BodyText(
+            '${UserClass.videos.length}\n\n\n',
+            color: ColorTheme.textColor,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: DeleteButton(camera: camera),
+          ),
         ],
       ),
     );
