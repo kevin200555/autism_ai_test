@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
-import 'package:autism_ai_test/uploading/user_class.dart';
+import 'package:autism_ai_test/uploading/video_storage_class.dart';
 import 'package:autism_ai_test/widgets/button/help_button.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:auto_size_text/auto_size_text.dart';
@@ -84,8 +84,8 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
           isRecording = false;
           recordedVideo = videoFile;
         });
-        UserClass.recordedVideos?[currentStep] = recordedVideo;
-        UserClass.saveToHive();
+        VideoStorageClassItem.recordedVideos?[currentStep] = recordedVideo;
+        VideoStorageClassItem.saveToHive();
 
         if (!mounted) return;
         await showDialog(
@@ -122,7 +122,7 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
   //since web applications can't use dart.io FIles
   Future<void> deleteVideo() async {
     // Assuming currentStep is your index:
-    recordedVideo = UserClass.recordedVideos?[currentStep];
+    recordedVideo = VideoStorageClassItem.recordedVideos?[currentStep];
 
     if (recordedVideo != null) {
       final file = File(recordedVideo!.path);
@@ -135,7 +135,7 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
           builder: (_) => const AlertDialog(title: Text('Video Deleted!')),
         );
         setState(() {
-          UserClass.recordedVideos?[currentStep] = null;
+          VideoStorageClassItem.recordedVideos?[currentStep] = null;
         });
 
         // Also remove from the list if you want:
@@ -157,7 +157,7 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
 
   //views video, brings user to a seperate screen to do so, displays popup to user if they haven't recorded anything
   Future<void> viewVideo() async {
-    recordedVideo = UserClass.recordedVideos?[currentStep];
+    recordedVideo = VideoStorageClassItem.recordedVideos?[currentStep];
     if (recordedVideo == null) {
       showDialog(
         context: context,
@@ -313,12 +313,12 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
                   width: MediaQuery.of(context).size.width * 0.8,
                   height: MediaQuery.of(context).size.height * 0.05,
                   child: Container(
-                    color: (UserClass.recordedVideos?[currentStep] == null)
+                    color: (VideoStorageClassItem.recordedVideos?[currentStep] == null)
                         ? ColorTheme.progressBarBackground
                         : ColorTheme.green,
                     child: Center(
                       child: ButtonText(
-                        (UserClass.recordedVideos?[currentStep] == null)
+                        (VideoStorageClassItem.recordedVideos?[currentStep] == null)
                             ? 'Video not recorded'
                             : 'Task Completed! Press the back button!',
                         maxLines: 1,

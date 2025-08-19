@@ -1,10 +1,7 @@
-import 'dart:io';
-
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
-import 'package:video_player/video_player.dart';
 
 class VideoStorageClassItem {
   static bool isActive = false;
@@ -46,10 +43,10 @@ class VideoStorageClassItem {
 
   static Future<void> loadFromHive() async {
     final box = await Hive.openBox('user_data');
-    isActive = box.get('isActive');
-    date = box.get('date');
-    time = box.get('time');
-    timeElasped = box.get('timeElasped');
+    isActive = box.get('isActive' , defaultValue: false);
+    date = box.get('date', defaultValue: '');
+    time = box.get('time', defaultValue: '');
+    timeElasped = box.get('timeElasped', defaultValue: '');
     final videoPaths = (box.get('recordedVideoPaths') as List?)
         ?.cast<String?>();
     if (videoPaths != null) {
@@ -84,9 +81,9 @@ class VideoStorageClassItem {
     time = (now.hour > 12) ? "${now.hour - 12}:${now.minute} PM" : "${now.hour}:${now.minute} AM" ;
     saveToHive();
   }
-
+/*
   Future<void> getTotalVideoDuration(List<XFile?>? videos) async {
-    if (videos == null) timeElasped = "0:00";
+    if (videos == null || videos.isEmpty) timeElasped = "0:00";
 
     Duration totalDuration = Duration.zero;
 
@@ -105,5 +102,5 @@ class VideoStorageClassItem {
     int seconds = totalDuration.inSeconds % 60;
 
     timeElasped = "$minutes:${seconds.toString().padLeft(2, '0')}";
-  }
+  }*/
 }

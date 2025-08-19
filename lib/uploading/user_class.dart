@@ -3,7 +3,6 @@ import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/uploading/upload_to_firebase.dart';
 import 'package:autism_ai_test/uploading/video_storage_class.dart';
 import 'package:flutter/foundation.dart';
-import 'package:camera/camera.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as path;
 import 'package:archive/archive_io.dart';
@@ -26,18 +25,16 @@ class UserClass {
   static List<String?>? parentIntakeResponses;
   static List<String?>? compensationResponses;
 
-  static bool icCompleted = false;
-  static bool intakeCompleted = false;
-  static bool compensationCompleted = false;
-  static bool mChatRCompleted = false;
   // These store the videos (size of these could change later)
+  /*
   static List<XFile?>? recordedVideos = List<XFile?>.filled(
     InstructionAndQuestions.videoNames.length,
     null,
     growable: false,
   );
+  */
 
-  static List<VideoStorageClassItem> videos = [];
+  static List<VideoStorageClassItem> videoList = [];
 
   // This is used after the user has completed the test, since their data should be uploaded to Google Cloud
   // is not needed locally on their mobile device anymore and
@@ -53,16 +50,14 @@ class UserClass {
     parentIntakeResponses = null;
     compensationResponses = null;
 
-    icCompleted = false;
-    intakeCompleted = false;
-    compensationCompleted = false;
-    mChatRCompleted = false;
-
+    /*
     recordedVideos = List<XFile?>.filled(
       InstructionAndQuestions.videoNames.length,
       null,
       growable: false,
     );
+    */
+    videoList = [];
     saveToHive();
   }
 
@@ -81,16 +76,13 @@ class UserClass {
     await box.put('compensationResponses', compensationResponses);
     await box.put('signiturePath', signiture?.path);
 
-    await box.put('icCompleted', icCompleted);
-    await box.put('intakeCompleted', intakeCompleted);
-    await box.put('compensationCompleted', compensationCompleted);
-    await box.put('mChatRCompleted', mChatRCompleted);
-
     // Save recorded video paths
+    /*
     List<String?> videoPaths = recordedVideos!
         .map((file) => file?.path)
         .toList();
-    await box.put('recordedVideoPaths', videoPaths);
+    await box.put('recordedVideoPaths', videoPaths);*/
+    await box.put('videoList', videoList);
   }
 
   // load any saved data that have been stored as result of saveToHive()
@@ -112,21 +104,17 @@ class UserClass {
       signiture = File(signPath);
     }
 
-    icCompleted = box.get('icCompleted', defaultValue: false);
-    intakeCompleted = box.get('intakeCompleted', defaultValue: false);
-    compensationCompleted = box.get(
-      'compensationCompleted',
-      defaultValue: false,
-    );
-    mChatRCompleted = box.get('mChatRCompleted', defaultValue: false);
+    videoList = box.get('videos', defaultValue: <VideoStorageClassItem>[])!;
 
+    /*
     final videoPaths = (box.get('recordedVideoPaths') as List?)
         ?.cast<String?>();
     if (videoPaths != null) {
       recordedVideos = videoPaths
           .map((p) => p != null ? XFile(p) : null)
           .toList();
-    }
+    }*/
+
     printSummary();
   }
 
@@ -141,6 +129,7 @@ class UserClass {
 
     return true;
   }
+
   // prints all relevant variables in the UserClass
   static void printSummary() {
     if (kDebugMode) {
@@ -152,10 +141,6 @@ class UserClass {
       print("Parent Intake Form Responses: $parentIntakeResponses");
       print("Compensation Form Responses: $compensationResponses");
       print("currentScreen:  $currentScreen");
-
-      for (int i = 0; i < InstructionAndQuestions.videoNames.length; i++) {
-        print("Recorded Video 1: ${recordedVideos?[i]?.path}");
-      }
     }
   }
 
@@ -236,19 +221,6 @@ class UserClass {
     await userReport.copy(userReportDest.path);
 
     // Copy each recorded video (assuming you have (instruction length) and they're not null)
-    for (int i = 0; i < InstructionAndQuestions.videoNames.length; i++) {
-      final video = recordedVideos?[i];
-      if (video != null) {
-        final file = File(video.path);
-        final dest = File(
-          path.join(
-            folder.path,
-            '${InstructionAndQuestions.videoNames[i]}.mp4',
-          ), // change this depending on what names you want the videos to be called
-        );
-        await file.copy(dest.path);
-      }
-    }
 
     File? imageFile = File(signiture!.path);
     final imageDest = File(

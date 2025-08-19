@@ -56,7 +56,7 @@ class SettingsScreen extends StatelessWidget {
           BodyText('${UserClass.userId}\n', color: ColorTheme.textColor),
           SubTitle('Amount of video recording sessions: '),
           BodyText(
-            '${UserClass.videos.length}\n\n\n',
+            '${UserClass.videoList.length}\n\n\n',
             color: ColorTheme.textColor,
           ),
           // Delete Button

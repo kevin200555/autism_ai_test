@@ -4,6 +4,7 @@ import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/screens/other/final_screen.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
+import 'package:autism_ai_test/uploading/video_storage_class.dart';
 import 'package:autism_ai_test/widgets/button/help_button.dart';
 import 'package:autism_ai_test/widgets/button/next_button.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
@@ -21,7 +22,7 @@ class VideoRecordingMenu extends StatefulWidget {
 
 class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
   bool isVideoRecorded(int videoNumber) {
-    final list = UserClass.recordedVideos;
+    final list = VideoStorageClassItem.recordedVideos;
     if (list == null) return false;
     if (videoNumber < 0 || videoNumber >= list.length) return false;
     return list[videoNumber] != null;

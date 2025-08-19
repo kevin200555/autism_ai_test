@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 
@@ -21,7 +22,7 @@ Future<String?> uploadFile(String filePath) async {
 
   try {
     final storageRef = FirebaseStorage.instance.ref().child(
-      'uploads/${file.uri.pathSegments.last}',
+      'uploads/${UserClass.userId}/${file.uri.pathSegments.last}',
     );
     if (kDebugMode) {
       print('Storage ref created: ${storageRef.fullPath}');

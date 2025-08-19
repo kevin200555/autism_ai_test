@@ -1,3 +1,4 @@
+import 'package:autism_ai_test/screens/informed_consent/welcome_screen.dart';
 import 'package:autism_ai_test/screens/main_menu/home_menu_screen.dart';
 import 'package:autism_ai_test/screens/other/no_camera_error_screen.dart';
 import 'package:autism_ai_test/screens/informed_consent/ic_document_form.dart';
@@ -6,6 +7,7 @@ import 'package:autism_ai_test/screens/intake/intake_form_screen.dart';
 import 'package:autism_ai_test/screens/mchatr/m_chatr_form_screen.dart';
 import 'package:autism_ai_test/screens/video_section/video_section_info_screen.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
+import 'package:autism_ai_test/uploading/video_storage_class.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +26,7 @@ Future<void> main() async {
   await Hive.initFlutter();
 
   await UserClass.loadFromHive();
+  await VideoStorageClassItem.loadFromHive();
 
   try {
     cameras = await availableCameras();
@@ -52,28 +55,9 @@ class AutismAITest extends StatelessWidget {
       }
     }
     Widget initialScreen;
-    // ScreenNumber and the screen
-    // 0 : Homescreen
-    // N/A : IC document
-    // 1 : Informed Consent form screen
-    // 2 : Infomred Conset Signiture Screen
-    // ===================================
-    // 3 : Intake Form - Child
-    // 4 : Intake Form - Parent
-    // 5 : Compensation Form
-    // ===================================
-    // 6 : MChatR Form 1
-    // 7 : MChatR Form 2 (direct to MChatR Form 1)
-    // ===================================
-    // 8 : Video Section Information
-    // 9 : Video Section Information
-    // 10 : Video Section Information
-    // 11 : Video Section Information
-    // ===================================
-    // 12 : Video Menu
-    // 13 : Video Menu
-    // 14 : Video Menu
     switch (UserClass.currentScreen) {
+      case 'start':
+        initialScreen = WelcomeScreen(camera: cameras[0]);
       case 'main_menu':
         initialScreen = HomeMenuScreen(camera: cameras[0]);
       case 'IC_Document':

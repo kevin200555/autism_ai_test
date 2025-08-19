@@ -55,7 +55,7 @@ class _FormTileState extends State<FormTile> {
                   ? '${widget.labelText} (Completed!)'
                   : '${widget.labelText} (In Progress)',
               style: GoogleFonts.lato(
-                textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
               ),
             ),
             collapsedTextColor: (widget.isCompleted)
