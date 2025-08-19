@@ -9,6 +9,9 @@ import 'package:autism_ai_test/widgets/home_screen_widgets.dart/score.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
+// This purpose of this widget is to look and act like a dashboard for the user, 
+// It also shows the forms the users needs to take
+// It would probably be the screen the user sees the most when consistenly use the app, so I tried to make it look good
 class DashboardScreen extends StatefulWidget {
   final CameraDescription camera;
   const DashboardScreen({super.key, required this.camera});
@@ -18,19 +21,6 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
-  
-  bool formCompleted(bool isIntake, List<String?>? list) {
-    if (list == null || list.isEmpty) return false;
-
-    for (int i = 0; i < list.length; i++) {
-      if (list[i] == '' || list[i] == null) {
-        return false;
-      }
-    }
-
-    return true;
-  }
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -38,10 +28,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Top row: Greeting + Previous Test
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // Hello, User text
               Expanded(
                 child: Container(
                   padding: const EdgeInsets.all(16),
@@ -61,6 +51,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 ),
               ),
               const SizedBox(width: 16),
+              // Last test result 
               Expanded(
                 child: Container(
                   padding: const EdgeInsets.all(16),
@@ -92,7 +83,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ],
           ),
           const SizedBox(height: 16),
-          // FormTile below the row
+          // List of forms
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
@@ -103,6 +94,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Forms
                 Text(
                   'Listed Forms:',
                   textAlign: TextAlign.start,
@@ -122,10 +114,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     fontWeight: FontWeight.normal,
                   ),
                 ),
+                // Informed Consent Document tile
                 FormTile(
                   camera: widget.camera,
                   labelText: 'Informed Consent Document Form',
-                  isCompleted: formCompleted(true, UserClass.iCResponses),
+                  isCompleted: UserClass.formCompleted(UserClass.iCResponses),
                   description:
                       'This is the form you took at the beginning of the app. Thanks for filling it out!\n',
                   asscoiatedScreen: InformedConsentSigningScreen(
@@ -133,12 +126,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ),
                 ),
                 SizedBox(height: 16),
+                // Intake tile
                 FormTile(
                   camera: widget.camera,
                   labelText: 'Intake Form',
                   isCompleted:
-                      formCompleted(false, UserClass.childIntakeResponses) &&
-                      formCompleted(false, UserClass.parentIntakeResponses),
+                      UserClass.formCompleted(UserClass.childIntakeResponses) &&
+                      UserClass.formCompleted(UserClass.parentIntakeResponses),
                   description:
                       'This is the form will ask just some basic questions about you and your child.\n',
                   asscoiatedScreen: ChildIntakeFormScreen(
@@ -146,11 +140,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ),
                 ),
                 SizedBox(height: 16),
+                // Compensation tile
                 FormTile(
                   camera: widget.camera,
                   labelText: 'Compensation Form',
-                  isCompleted: formCompleted(
-                    false,
+                  isCompleted: UserClass.formCompleted(
                     UserClass.compensationResponses,
                   ),
                   description:
@@ -161,10 +155,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ),
                 ),
                 SizedBox(height: 16),
+                // mChatR tile
                 FormTile(
                   camera: widget.camera,
                   labelText: 'mChatR Form',
-                  isCompleted: formCompleted(false, UserClass.mChatRresponses),
+                  isCompleted: UserClass.formCompleted(
+                    UserClass.mChatRresponses,
+                  ),
                   description:
                       'This class implements the mChatR form, a questionaire made up '
                       'of 20 multiple choice questions used to test for autism.\n',
@@ -173,9 +170,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
               ],
             ),
           ),
-
         ],
       ),
     );
   }
-}
+} // EOF dashboard_screen.dart
