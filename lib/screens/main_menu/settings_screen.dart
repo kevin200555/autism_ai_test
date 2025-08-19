@@ -5,11 +5,17 @@ import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
+// The purpose of this screen is to actually display the informed_consent answers back to the user
+// Since that form can't be edited, I feel this is good to do
+// Also, it contains a delelte account button that resets user data
+// good for debugging, but if the user made a mistake on the informed_conset, it could be good for them too 
 class SettingsScreen extends StatelessWidget {
   final CameraDescription camera;
 
   const SettingsScreen({super.key, required this.camera});
 
+  // This function gets the date from the user's userID
+  // This could be a function to put in user class, but I also feel like the settings screen would be the only place for it
   String getDate(String? userId) {
     if (userId == null) {
       return 'No information given';
@@ -53,6 +59,7 @@ class SettingsScreen extends StatelessWidget {
             '${UserClass.videos.length}\n\n\n',
             color: ColorTheme.textColor,
           ),
+          // Delete Button
           Padding(
             padding: const EdgeInsets.all(16),
             child: DeleteButton(camera: camera),
@@ -61,4 +68,4 @@ class SettingsScreen extends StatelessWidget {
       ),
     );
   }
-}
+} // EOF settings_screen.dart
