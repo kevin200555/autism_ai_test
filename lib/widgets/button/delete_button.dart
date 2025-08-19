@@ -1,5 +1,4 @@
 import 'package:autism_ai_test/constants/colors.dart';
-import 'package:autism_ai_test/screens/informed_consent/ic_document_screen.dart';
 import 'package:autism_ai_test/screens/informed_consent/welcome_screen.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';

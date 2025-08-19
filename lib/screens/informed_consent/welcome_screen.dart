@@ -12,18 +12,19 @@ import 'package:flutter/material.dart';
 // welcome_screen -> ic_document -> signing and forms -> main_menu -> branches to forms, settings, video recording, etc.
 class WelcomeScreen extends StatelessWidget {
   final CameraDescription camera;
-
   const WelcomeScreen({super.key, required this.camera});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // App bar
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: AppBarTitle('Welcome!', color: ColorTheme.background),
         centerTitle: true,
         backgroundColor: ColorTheme.accent,
       ),
+      // Text 
       body: Column(
         children: [
           Padding(
@@ -41,7 +42,7 @@ class WelcomeScreen extends StatelessWidget {
               ),
             ),
           ),
-
+          // transition into next page
           NextButton(
             label: 'NEXT',
             onPressed: () {
@@ -58,4 +59,4 @@ class WelcomeScreen extends StatelessWidget {
       ),
     );
   }
-}
+} // EOF welcome_screen.dart

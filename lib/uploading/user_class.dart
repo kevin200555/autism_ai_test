@@ -130,6 +130,17 @@ class UserClass {
     printSummary();
   }
 
+  static bool formCompleted(List<String?>? list) {
+    if (list == null || list.isEmpty) return false;
+
+    for (int i = 0; i < list.length; i++) {
+      if (list[i] == '' || list[i] == null) {
+        return false;
+      }
+    }
+
+    return true;
+  }
   // prints all relevant variables in the UserClass
   static void printSummary() {
     if (kDebugMode) {

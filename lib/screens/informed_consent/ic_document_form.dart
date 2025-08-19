@@ -16,6 +16,10 @@ import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
+// The purpose of this screen is to get the user's name and name of child
+// This is important since this info will be needed to generate a unquie user id
+// based on the names and time of form submission
+// this form is unquie since it requires the user completes it before continuing
 class InformedConsentSigningScreen extends StatefulWidget {
   final CameraDescription camera;
   const InformedConsentSigningScreen({super.key, required this.camera});
@@ -93,8 +97,17 @@ class _InformedConsentSigningScreenState
             if (index == icQuestions.length) {
               return NextButton(
                 label: 'NEXT',
-                onPressed: () {
+                onPressed: () async {
                   //makes a new UserClass in order to save the information this user has done
+                  if (UserClass.formCompleted(UserClass.iCResponses) == false) {
+                    await showDialog(
+                      context: context,
+                      builder: (_) => AlertDialog(
+                        title: const Text('Please answer all questions first'),
+                      ),
+                    );
+                    return;
+                  }
                   UserClass.currentScreen = 'IC_document';
                   UserClass.userId = generateUserId();
                   UserClass.iCResponses = responses;
