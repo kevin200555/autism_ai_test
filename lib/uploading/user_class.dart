@@ -37,7 +37,7 @@ class UserClass {
     growable: false,
   );
 
-  List<VideoStorageClassItem> videos = [];
+  static List<VideoStorageClassItem> videos = [];
 
   // This is used after the user has completed the test, since their data should be uploaded to Google Cloud
   // is not needed locally on their mobile device anymore and

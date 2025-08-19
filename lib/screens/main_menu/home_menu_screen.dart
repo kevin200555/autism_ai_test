@@ -1,4 +1,5 @@
 import 'package:autism_ai_test/constants/colors.dart';
+import 'package:autism_ai_test/screens/main_menu/settings_screen.dart';
 import 'package:autism_ai_test/screens/video_section/home_screen.dart';
 import 'package:autism_ai_test/screens/main_menu/dashboard_screen.dart';
 import 'package:autism_ai_test/widgets/button/help_button.dart';
@@ -23,7 +24,7 @@ class _HomeMenuScreenState extends State<HomeMenuScreen> {
     DashboardScreen(camera: widget.camera,),
     HomeScreen(camera: widget.camera),
     Center(child: Text("Previous Videos Screen")),
-    Center(child: Text("Settings Screen")),
+    SettingsScreen(camera: widget.camera),
   ];
 
   @override
