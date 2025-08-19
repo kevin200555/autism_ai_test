@@ -1,4 +1,5 @@
 import 'package:autism_ai_test/constants/colors.dart';
+import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/button/next_button.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:camera/camera.dart';
@@ -88,18 +89,27 @@ class _FormTileState extends State<FormTile> {
                           : ColorTheme.textColor,
                     ),
                     // Takes user to the place where they'll record their video
-                    NextButton(
-                      label: (widget.isCompleted) ? 'EDIT/VIEW FORM' : 'TAKE FORM',
-                      onPressed: () async {
-                        await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => widget.asscoiatedScreen,
+                    (UserClass.formCompleted(UserClass.iCResponses) &&
+                            widget.labelText ==
+                                'Informed Consent Document Form')
+                        ? NextButton(
+                            label: 'Sorry, you cannot edit this form',
+                            onPressed: () {},
+                          )
+                        : NextButton(
+                            label: (widget.isCompleted)
+                                ? 'EDIT/VIEW FORM'
+                                : 'TAKE FORM',
+                            onPressed: () async {
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => widget.asscoiatedScreen,
+                                ),
+                              );
+                              widget.onReturnFromRecording?.call();
+                            },
                           ),
-                        );
-                        widget.onReturnFromRecording?.call();
-                      },
-                    ),
                   ],
                 ),
               ),
