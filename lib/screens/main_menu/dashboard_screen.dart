@@ -18,8 +18,11 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
+  
   bool formCompleted(bool isIntake, List<String?>? list) {
-    for (int i = 0; i < list!.length; i++) {
+    if (list == null || list.isEmpty) return false;
+
+    for (int i = 0; i < list.length; i++) {
       if (list[i] == '' || list[i] == null) {
         return false;
       }

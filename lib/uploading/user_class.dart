@@ -16,7 +16,7 @@ import 'package:hive/hive.dart';
 class UserClass {
   static String? userId;
   // These variables keep track of what screen the user is on, a full detail of this can be seen in main.dart
-  static String currentScreen = 'main_menu';
+  static String currentScreen = 'start';
   static int totalScreenNumber = 15;
   // These store all information from the questionaires
   static List<String?>? iCResponses;
@@ -44,7 +44,7 @@ class UserClass {
   // These need to be updated in case I change anything about the above static variables
   static void resetAll() {
     userId = null;
-    currentScreen = 'main_menu';
+    currentScreen = 'start';
     totalScreenNumber = 15;
     iCResponses = null;
     signiture = null;
