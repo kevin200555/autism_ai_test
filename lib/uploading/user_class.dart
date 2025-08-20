@@ -76,12 +76,6 @@ class UserClass {
     await box.put('compensationResponses', compensationResponses);
     await box.put('signiturePath', signiture?.path);
 
-    // Save recorded video paths
-    /*
-    List<String?> videoPaths = recordedVideos!
-        .map((file) => file?.path)
-        .toList();
-    await box.put('recordedVideoPaths', videoPaths);*/
     await box.put('videoList', videoList);
   }
 
@@ -218,51 +212,6 @@ class UserClass {
     await uploadFile(file.path);
   }
 
-  static String generateUserReport() {
-    String linebreak = '===============================================\n';
-
-    List<List<String>> childIntake =
-        InstructionAndQuestions.getChildIntakeForm();
-    String childIntakeString = '';
-    for (int i = 0; i < childIntake.length; i++) {
-      childIntakeString += "Q: ${childIntake[i][1]}\n";
-      childIntakeString += "A: ${childIntakeResponses?[i]}\n";
-    }
-
-    List<List<String>> parentIntake =
-        InstructionAndQuestions.getParentIntakeForm();
-    String parentIntakeString = '';
-    for (int i = 0; i < parentIntake.length; i++) {
-      parentIntakeString += "Q: ${parentIntake[i][1]}\n";
-      parentIntakeString += "A: ${parentIntakeResponses?[i]}\n";
-    }
-
-    List<List<String>> compensation = InstructionAndQuestions.getMChatR();
-    String cString = '';
-    for (int i = 0; i < compensation.length; i++) {
-      if (compensation[i][1] == 'Social Security Number: ') {
-        cString += "Q: ${compensation[i][1]}\n";
-        cString += "Q: ###-###-####";
-      } else {
-        cString += "Q: ${compensation[i][1]}\n";
-        cString += "A: ${mChatRresponses?[i]}\n";
-      }
-    }
-
-    List<List<String>> mChatR = InstructionAndQuestions.getMChatR();
-    String mString = '';
-    for (int i = 0; i < mChatR.length; i++) {
-      mString += "Q: ${mChatR[i][1]}\n";
-      mString += "A: ${mChatRresponses?[i]}\n";
-    }
-
-    return 'User-ID: $userId\n$linebreak Child-Name: ${iCResponses?[2]}\nDate: ${iCResponses?[3]}\n'
-        'Parent-Name: ${iCResponses?[4]}\nRelationship-to-Participant: ${iCResponses?[5]}\n'
-        'Name-of-person-who-obtained-consent: ${iCResponses?[6]}\n'
-        '${linebreak}INTAKE FORM RESPONSES-CHILD\n${childIntakeString}INTAKE FORM RESPONSES-PARENT\n'
-        '$parentIntakeString${linebreak}INTAKE FORM RESPONSES-COMPENSATION\n'
-        '$cString${linebreak}MCHATR FORM RESPONSES\n$mString';
-  }
 
   // makes the user_report.txt file
   static Future<File> get _localFile async {

@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/screens/other/final_screen.dart';
@@ -12,6 +10,11 @@ import 'package:autism_ai_test/widgets/other/video_item.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
+// This widget is the menu for the video recording section
+// It displays some instructions and a list of the videos the user as to complete
+// These videos use th video_item.dart class and are expandable to let the user read their descriptions
+// This lets the user choose which videos they want to complete first
+// This screen also lets the user upload their videos to firebase, provided they completed all their task
 class VideoRecordingMenu extends StatefulWidget {
   final CameraDescription camera;
   const VideoRecordingMenu({super.key, required this.camera});
@@ -51,11 +54,6 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
       }
     }
 
-    File userReport = await UserClass.writeToReportFile(
-      UserClass.generateUserReport(),
-    );
-
-    VideoStorageClassItem.uploadAllFiles(userReport);
     UserClass.videoList.add(VideoStorageClassItem());
     VideoStorageClassItem.resetAll();
     VideoStorageClassItem.printSummary();

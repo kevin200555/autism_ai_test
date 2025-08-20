@@ -2,6 +2,7 @@ import 'package:autism_ai_test/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
+// This widget displays visually to the user the score they get
 class PartialCircle extends StatelessWidget {
   final double fraction;
   final double size;
@@ -61,4 +62,4 @@ class _PartialCirclePainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
-}
+} // EOF score.dart

@@ -9,12 +9,8 @@ import 'package:camera/camera.dart';
 import 'package:autism_ai_test/screens/video_section/video_player_screen.dart';
 import 'package:autism_ai_test/constants/colors.dart';
 
-// Stateful Widget that displays a series of video recording sections that the user must complete
-// The user records data for one section, moves on to the next section, and etc
-// Unlike the other screens, that are created individually, this generates the screens based on a set of instructions
-// these instructions are in the constants folder
-// each video has a different set of instuctions, so a different video will be generated for each
-// since the instructions can change as I'm given more requirements, this is a must
+// This widget takes the user to the screen where they would record their videos
+// The videso will automatically be saved locally on their device, and can be uploaded on video_recording_menu
 class VideoRecordingSectionScreen extends StatefulWidget {
   //Takes in the camera from main and the instructions are from home_screen
   final CameraDescription camera;

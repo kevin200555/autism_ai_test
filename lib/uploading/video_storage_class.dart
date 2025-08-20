@@ -178,4 +178,4 @@ class VideoStorageClassItem {
     encoder.close();
     return File(zipPath);
   }
-}
+} // EOF video_storage_class.dart

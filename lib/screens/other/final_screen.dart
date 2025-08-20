@@ -1,7 +1,6 @@
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/screens/main_menu/home_menu_screen.dart';
 import 'package:autism_ai_test/uploading/read_from_firebase.dart';
-import 'package:autism_ai_test/uploading/video_storage_class.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +18,7 @@ class FinalScreen extends StatefulWidget {
 class _FinalScreenState extends State<FinalScreen> {
   // reads from whatever folder the data would be in
   Future<String> loadTextFile() async {
+    //I'm not really sure where it'd be posted, so change this line if needed
     String content = await readTextFileFromFirebase("data/data.txt");
     return content;
   }
