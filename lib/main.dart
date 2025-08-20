@@ -1,11 +1,9 @@
 import 'package:autism_ai_test/screens/informed_consent/welcome_screen.dart';
 import 'package:autism_ai_test/screens/main_menu/home_menu_screen.dart';
 import 'package:autism_ai_test/screens/other/no_camera_error_screen.dart';
-import 'package:autism_ai_test/screens/informed_consent/ic_document_form.dart';
-import 'package:autism_ai_test/screens/informed_consent/ic_signiture.dart';
 import 'package:autism_ai_test/screens/intake/intake_form_screen.dart';
 import 'package:autism_ai_test/screens/mchatr/m_chatr_form_screen.dart';
-import 'package:autism_ai_test/screens/video_section/video_section_info_screen.dart';
+import 'package:autism_ai_test/screens/video_section/disconnect_screen.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/uploading/video_storage_class.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -71,7 +69,7 @@ class AutismAITest extends StatelessWidget {
       // anytime the user disconnects from the General Instructions Screen, it brings the User to the first screen in that area
       // This is because their isn't a reason not to, might as well since you're not filling anything out any information
       case 'video_info_screen':
-        initialScreen = GeneralInstructionsScreen(camera: cameras[0]);
+        initialScreen = DisconnectScreen(camera: cameras[0]);
       default:
         UserClass.currentScreen = 'main_menu';
         initialScreen = HomeMenuScreen(camera: cameras[0]);
