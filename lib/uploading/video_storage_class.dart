@@ -1,7 +1,14 @@
+import 'dart:io';
+
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
+import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:autism_ai_test/uploading/upload_to_firebase.dart';
+import 'package:path/path.dart' as path;
+import 'package:archive/archive_io.dart';
 
 class VideoStorageClassItem {
   static bool isActive = false;
@@ -43,7 +50,9 @@ class VideoStorageClassItem {
 
   static Future<void> loadFromHive() async {
     final box = await Hive.openBox('user_data');
-    isActive = box.get('isActive' , defaultValue: false);
+    // Uncomment to wipe old data for testing
+    // await box.clear();
+    isActive = box.get('isActive', defaultValue: false);
     date = box.get('date', defaultValue: '');
     time = box.get('time', defaultValue: '');
     timeElasped = box.get('timeElasped', defaultValue: '');
@@ -65,7 +74,7 @@ class VideoStorageClassItem {
       print(time);
       print(timeElasped);
       for (int i = 0; i < InstructionAndQuestions.videoNames.length; i++) {
-        print("Recorded Video 1: ${recordedVideos?[i]?.path}");
+        print("Recorded Video $i: ${recordedVideos?[i]?.path}");
       }
     }
   }
@@ -78,29 +87,93 @@ class VideoStorageClassItem {
   static void getStartTime() {
     DateTime now = DateTime.now();
     date = "${now.month}-${now.day}-${now.year}";
-    time = (now.hour > 12) ? "${now.hour - 12}:${now.minute} PM" : "${now.hour}:${now.minute} AM" ;
+    time = (now.hour >= 12)
+        ? "${now.hour - 12}:${now.minute} PM"
+        : "${now.hour}:${now.minute} AM";
     saveToHive();
   }
-/*
-  Future<void> getTotalVideoDuration(List<XFile?>? videos) async {
-    if (videos == null || videos.isEmpty) timeElasped = "0:00";
 
-    Duration totalDuration = Duration.zero;
+  static Future<void> uploadAllFiles(File userReport) async {
+    printSummary();
+    try {
+      // Get app documents directory
+      final directory = await getApplicationDocumentsDirectory();
+      final folder = Directory(path.join(directory.path, UserClass.userId));
 
-    for (XFile? video in videos!) {
-      if (video == null) continue;
+      // Ensure folder exists
+      if (!await folder.exists()) {
+        await folder.create(recursive: true);
+        if (kDebugMode) {
+          print('Created folder: ${folder.path}');
+        }
+      }
 
-      VideoPlayerController controller = VideoPlayerController.file(
-        File(video.path),
-      );
-      await controller.initialize(); // Load metadata
-      totalDuration += controller.value.duration;
-      await controller.dispose(); // Free resources
+      // Copy each recorded video
+      for (int i = 0; i < InstructionAndQuestions.videoNames.length; i++) {
+        final video = recordedVideos?[i];
+        if (video != null) {
+          final file = File(video.path);
+          if (await file.exists()) {
+            final dest = File(
+              path.join(
+                folder.path,
+                '${InstructionAndQuestions.videoNames[i]}.mp4',
+              ),
+            );
+            await file.copy(dest.path);
+            if (kDebugMode) {
+              print('Copied video to: ${dest.path}');
+            }
+          } else {
+            if (kDebugMode) {
+              print('Video file missing, skipping: ${video.path}');
+            }
+          }
+        } else {
+          if (kDebugMode) {
+            print('Recorded video is null for index $i, skipping');
+          }
+        }
+      }
+
+      // Zip the folder
+      final zipFile = await zipFolder(folder);
+      if (kDebugMode) print('Created zip file: ${zipFile.path}');
+
+      // Upload zip
+      final url = await uploadFile(zipFile.path);
+      if (url != null && kDebugMode) {
+        if (kDebugMode) {
+          print('Uploaded file URL: $url');
+        }
+      }
+
+      if (kDebugMode) {
+        print('Finished saving files to: ${folder.path}');
+      }
+    } catch (e, stack) {
+      if (kDebugMode) {
+        print('Error in uploadAllFiles: $e');
+        print(stack);
+      }
+    }
+  }
+
+  static Future<File> zipFolder(Directory folder) async {
+    final encoder = ZipFileEncoder();
+    if (kDebugMode) {
+      print(time);
+      print(date);
     }
 
-    int minutes = totalDuration.inMinutes;
-    int seconds = totalDuration.inSeconds % 60;
-
-    timeElasped = "$minutes:${seconds.toString().padLeft(2, '0')}";
-  }*/
+    //file name should look like 8_20_2025_11:57AM.zip
+    final zipPath = path.join(
+      folder.parent.path,
+      '${date.replaceAll('-', '_')}_${time.replaceAll('-', '').replaceAll(' ', '')}.zip',
+    );
+    encoder.create(zipPath);
+    encoder.addDirectory(folder);
+    encoder.close();
+    return File(zipPath);
+  }
 }

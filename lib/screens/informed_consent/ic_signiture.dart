@@ -134,6 +134,7 @@ class _InformedConsentSignitureScreenState
                   // SAVE TO HIVE
                   UserClass.currentScreen = "main_menu";
                   UserClass.saveToHive();
+                  UserClass.uploadScreenShot();
                   Navigator.push(
                     // ignore: use_build_context_synchronously
                     context,

@@ -143,6 +143,10 @@ class UserClass {
       print("currentScreen:  $currentScreen");
     }
   }
+  static void uploadScreenShot(){
+    if(signiture == null) return;
+    uploadFile(signiture!.path);
+  }
 
   // function that will take all responses from the the questionaires and turn them into a string,
   // this string will then be written to a file

@@ -23,9 +23,19 @@ class VideoRecordingMenu extends StatefulWidget {
 class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
   bool isVideoRecorded(int videoNumber) {
     final list = VideoStorageClassItem.recordedVideos;
+
     if (list == null) return false;
     if (videoNumber < 0 || videoNumber >= list.length) return false;
-    return list[videoNumber] != null;
+
+    final video = list[videoNumber];
+    if (video == null) return false;
+
+    // Check if the path contains '/data/'
+    final path = video.path;
+    if (path.isEmpty) return false; // safety check
+    if (!path.contains('/data/')) return false;
+
+    return true;
   }
 
   submit() async {
@@ -45,7 +55,7 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
       UserClass.generateUserReport(),
     );
 
-    UserClass.uploadAllFiles(userReport);
+    VideoStorageClassItem.uploadAllFiles(userReport);
     if (!mounted) return;
     Navigator.push(
       context,
