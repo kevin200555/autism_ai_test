@@ -1,5 +1,5 @@
 import 'package:autism_ai_test/constants/colors.dart';
-import 'package:autism_ai_test/screens/video_section/video_recording_menu.dart';
+import 'package:autism_ai_test/screens/video_section/video_section_info_screen.dart';
 import 'package:autism_ai_test/widgets/button/next_button.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:camera/camera.dart';
@@ -27,7 +27,7 @@ class DisconnectScreen extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => VideoRecordingMenu(camera: camera),
+                  builder: (context) => GeneralInstructionsScreen(camera: camera),
                 ),
               );
             },

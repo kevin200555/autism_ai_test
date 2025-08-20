@@ -30,7 +30,7 @@ class VideoStorageClassItem {
 
   static Future<void> saveToHive() async {
     final box = await Hive.openBox('user_data');
-    await box.put('isActive', date);
+    await box.put('isActive', isActive);
     await box.put('date', date);
     await box.put('time', time);
     await box.put('timeElasped', timeElasped);

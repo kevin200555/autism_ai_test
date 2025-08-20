@@ -1,5 +1,5 @@
 import 'package:autism_ai_test/constants/colors.dart';
-import 'package:autism_ai_test/screens/main_menu/home_screen.dart';
+import 'package:autism_ai_test/screens/main_menu/home_menu_screen.dart';
 import 'package:autism_ai_test/uploading/read_from_firebase.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
@@ -97,7 +97,7 @@ class _FinalScreenState extends State<FinalScreen> {
               UserClass.resetAll();
               Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
-                  builder: (context) => HomeScreen(camera: widget.camera),
+                  builder: (context) => HomeMenuScreen(camera: widget.camera),
                 ),
               );
             },
