@@ -94,28 +94,42 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
               ),
               SubTitle('Tasks'),
               Padding(
-                padding: const EdgeInsets.fromLTRB(4, 0, 4, 0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: List.generate(
-                    InstructionAndQuestions.videoNames.length,
-                    (index) {
-                      return VideoItem(
-                        camera: widget.camera,
-                        labelText: InstructionAndQuestions.videoNames[index],
-                        taskNumber: index,
-                        isCompleted: isVideoRecorded(index),
-                        onReturnFromRecording: () {
-                          setState(
-                            () {},
-                          ); // Refresh UI after returning from recording
-                        },
-                      );
-                    },
+                padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+                child: Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(color: ColorTheme.textColor, width: 3),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Column(
+                    children: List.generate(
+                      InstructionAndQuestions.videoNames.length,
+                      (index) {
+                        return Column(
+                          children: [
+                            SizedBox(height: 8),
+                            VideoItem(
+                              camera: widget.camera,
+                              labelText:
+                                  InstructionAndQuestions.videoNames[index],
+                              taskNumber: index,
+                              isCompleted: isVideoRecorded(index),
+                              onReturnFromRecording: () {
+                                setState(() {});
+                              },
+                            ),
+                            SizedBox(height: 8),
+                          ],
+                        );
+                      },
+                    ),
                   ),
                 ),
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+              SubTitle('\n'),
+              SubTitle('\n'),
               NextButton(
                 label: 'SUBMIT VIDEOS',
                 onPressed: () {

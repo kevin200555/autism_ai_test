@@ -164,6 +164,51 @@ class BodyText extends StatelessWidget {
   }
 }
 
+class ImportantBodyText extends StatelessWidget {
+  final String text;
+  final TextAlign textAlign;
+  final double minFontSize;
+  final TextStyle? style;
+  final Color color;
+
+  const ImportantBodyText(
+    this.text, {
+    super.key,
+    this.textAlign = TextAlign.left,
+    this.minFontSize = 8,
+    this.style,
+    required this.color,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(16, 1, 16, 1),
+      child: SizedBox(
+        width: double.infinity,
+        child: AutoSizeText.rich(
+          TextSpan(
+            text: text,
+            style: GoogleFonts.lato(
+              textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+          ),
+          textAlign: textAlign,
+          minFontSize: minFontSize,
+          style: GoogleFonts.lato(
+            textStyle: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: color,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
 //Similar to BodyText, except it also comes with the ability to italicize
 class QuestionBodyText extends StatelessWidget {
   final String text;

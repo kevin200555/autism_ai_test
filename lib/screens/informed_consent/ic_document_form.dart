@@ -99,6 +99,7 @@ class _InformedConsentSigningScreenState
                 label: 'NEXT',
                 onPressed: () async {
                   //makes a new UserClass in order to save the information this user has done
+                  UserClass.iCResponses = responses;
                   if (UserClass.formCompleted(UserClass.iCResponses) == false) {
                     await showDialog(
                       context: context,
@@ -110,7 +111,6 @@ class _InformedConsentSigningScreenState
                   }
                   UserClass.currentScreen = 'IC_document';
                   UserClass.userId = generateUserId();
-                  UserClass.iCResponses = responses;
                   UserClass.saveToHive();
 
                   Navigator.push(

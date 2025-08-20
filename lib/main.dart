@@ -61,9 +61,9 @@ class AutismAITest extends StatelessWidget {
       case 'main_menu':
         initialScreen = HomeMenuScreen(camera: cameras[0]);
       case 'IC_Document':
-        initialScreen = InformedConsentSigningScreen(camera: cameras[0]);
+        initialScreen = WelcomeScreen(camera: cameras[0]);
       case 'IC_document_form':
-        initialScreen = InformedConsentSignitureScreen(camera: cameras[0]);
+        initialScreen = WelcomeScreen(camera: cameras[0]);
       case 'child_intake':
         initialScreen = ChildIntakeFormScreen(camera: cameras[0]);
       case 'mChatR1':
