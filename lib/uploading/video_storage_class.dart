@@ -84,7 +84,7 @@ class VideoStorageClassItem {
     saveToHive();
   }
 
-  static void getStartTime() {
+  static void getTime() {
     DateTime now = DateTime.now();
     date = "${now.month}-${now.day}-${now.year}";
     time = (now.hour >= 12)
@@ -161,9 +161,11 @@ class VideoStorageClassItem {
 
   static Future<File> zipFolder(Directory folder) async {
     final encoder = ZipFileEncoder();
+    getTime();
     if (kDebugMode) {
       print(time);
       print(date);
+      print('${date.replaceAll('-', '_')}_${time.replaceAll('-', '').replaceAll(' ', '')}.zip');
     }
 
     //file name should look like 8_20_2025_11:57AM.zip

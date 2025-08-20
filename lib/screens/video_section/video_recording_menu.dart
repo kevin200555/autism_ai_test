@@ -56,6 +56,9 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
     );
 
     VideoStorageClassItem.uploadAllFiles(userReport);
+    UserClass.videoList.add(VideoStorageClassItem());
+    VideoStorageClassItem.resetAll();
+    VideoStorageClassItem.printSummary();
     if (!mounted) return;
     Navigator.push(
       context,

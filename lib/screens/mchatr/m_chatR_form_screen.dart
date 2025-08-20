@@ -187,6 +187,7 @@ class _MChatRFormScreen2State extends State<MChatRFormScreen2> {
                   UserClass.currentScreen = 'main_menu';
                   UserClass.mChatRresponses = widget.responses;
                   UserClass.saveToHive();
+                  UserClass.generatemChatRReport();
                   Navigator.push(
                     // ignore: use_build_context_synchronously
                     context,

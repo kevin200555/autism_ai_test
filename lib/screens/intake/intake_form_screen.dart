@@ -33,8 +33,13 @@ class _ChildIntakeFormScreenState extends State<ChildIntakeFormScreen> {
     super.initState();
     responses = List<String?>.filled(intakeFormQuestions.length, null);
 
-    if (UserClass.iCResponses != null) {
-      for (int i = 0; i < UserClass.childIntakeResponses!.length; i++) {
+    // Safely copy child responses
+    if (UserClass.childIntakeResponses != null) {
+      for (
+        int i = 0;
+        i < UserClass.childIntakeResponses!.length && i < responses.length;
+        i++
+      ) {
         responses[i] = UserClass.childIntakeResponses![i];
       }
     }
@@ -148,8 +153,12 @@ class _ParentIntakeFormScreenState extends State<ParentIntakeFormScreen> {
     super.initState();
     responses = List<String?>.filled(intakeFormQuestions.length, null);
 
-    if (UserClass.iCResponses != null) {
-      for (int i = 0; i < UserClass.parentIntakeResponses!.length; i++) {
+    if (UserClass.parentIntakeResponses != null) {
+      for (
+        int i = 0;
+        i < UserClass.parentIntakeResponses!.length && i < responses.length;
+        i++
+      ) {
         responses[i] = UserClass.parentIntakeResponses![i];
       }
     }
@@ -191,6 +200,7 @@ class _ParentIntakeFormScreenState extends State<ParentIntakeFormScreen> {
                   UserClass.currentScreen = "main_menu";
                   UserClass.parentIntakeResponses = responses;
                   UserClass.saveToHive();
+                  UserClass.generateIntakeReport();
                   Navigator.push(
                     context,
                     MaterialPageRoute(

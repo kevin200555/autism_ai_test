@@ -850,7 +850,6 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                   onPressed: () {
                     UserClass.currentScreen = "video_info_screen";
                     UserClass.saveToHive();
-                    VideoStorageClassItem.getStartTime();
                     Navigator.push(
                       context,
                       MaterialPageRoute(

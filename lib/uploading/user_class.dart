@@ -106,15 +106,6 @@ class UserClass {
 
     videoList = box.get('videos', defaultValue: <VideoStorageClassItem>[])!;
 
-    /*
-    final videoPaths = (box.get('recordedVideoPaths') as List?)
-        ?.cast<String?>();
-    if (videoPaths != null) {
-      recordedVideos = videoPaths
-          .map((p) => p != null ? XFile(p) : null)
-          .toList();
-    }*/
-
     printSummary();
   }
 
@@ -143,14 +134,90 @@ class UserClass {
       print("currentScreen:  $currentScreen");
     }
   }
-  static void uploadScreenShot(){
-    if(signiture == null) return;
+
+  static void uploadScreenShot() {
+    if (signiture == null) return;
     uploadFile(signiture!.path);
   }
 
   // function that will take all responses from the the questionaires and turn them into a string,
   // this string will then be written to a file
   // the format of this can be seen in my figma designs
+  static Future<void> generateIntakeReport() async {
+    List<List<String>> childIntake =
+        InstructionAndQuestions.getChildIntakeForm();
+    String childIntakeString = '';
+    for (int i = 0; i < childIntake.length; i++) {
+      childIntakeString += "Q: ${childIntake[i][1]}\n";
+      childIntakeString += "A: ${childIntakeResponses?[i]}\n";
+    }
+
+    List<List<String>> parentIntake =
+        InstructionAndQuestions.getParentIntakeForm();
+    String parentIntakeString = '';
+    for (int i = 0; i < parentIntake.length; i++) {
+      parentIntakeString += "Q: ${parentIntake[i][1]}\n";
+      parentIntakeString += "A: ${parentIntakeResponses?[i]}\n";
+    }
+    String fullIntakeString =
+        '--- Child Intake ---\n$childIntakeString\n--- Parent Intake ---\n$parentIntakeString';
+
+    // Get app documents directory
+    final directory = await getApplicationDocumentsDirectory();
+
+    // Create a file called intake.txt in the documents directory
+    final file = File('${directory.path}/intake.txt');
+
+    // Write the combined intake string to the file
+    await file.writeAsString(fullIntakeString);
+    await uploadFile(file.path);
+  }
+
+  static Future<void> generateCompensationReport() async {
+    List<List<String>> compensation = InstructionAndQuestions.getMChatR();
+    String cString = '';
+    for (int i = 0; i < compensation.length; i++) {
+      if (compensation[i][1] == 'Social Security Number: ') {
+        cString += "Q: ${compensation[i][1]}\n";
+        cString += "Q: ###-###-####";
+      } else {
+        cString += "Q: ${compensation[i][1]}\n";
+        cString += "A: ${mChatRresponses?[i]}\n";
+      }
+    }
+    String fullCString = '--- Compensation ---\n$cString\n';
+
+    // Get app documents directory
+    final directory = await getApplicationDocumentsDirectory();
+
+    // Create a file called intake.txt in the documents directory
+    final file = File('${directory.path}/compensation.txt');
+
+    // Write the combined intake string to the file
+    await file.writeAsString(fullCString);
+    await uploadFile(file.path);
+  }
+
+  static Future<void> generatemChatRReport() async {
+    List<List<String>> mChatR = InstructionAndQuestions.getMChatR();
+    String mString = '';
+    for (int i = 0; i < mChatR.length; i++) {
+      mString += "Q: ${mChatR[i][1]}\n";
+      mString += "A: ${mChatRresponses?[i]}\n";
+    }
+    String fullMString = '--- Compensation ---\n$mString\n';
+
+    // Get app documents directory
+    final directory = await getApplicationDocumentsDirectory();
+
+    // Create a file called intake.txt in the documents directory
+    final file = File('${directory.path}/mchatr.txt');
+
+    // Write the combined intake string to the file
+    await file.writeAsString(fullMString);
+    await uploadFile(file.path);
+  }
+
   static String generateUserReport() {
     String linebreak = '===============================================\n';
 

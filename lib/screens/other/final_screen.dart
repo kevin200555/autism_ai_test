@@ -94,7 +94,6 @@ class _FinalScreenState extends State<FinalScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: ElevatedButton.icon(
             onPressed: () {
-              VideoStorageClassItem.resetAll;
               Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
                   builder: (context) => HomeMenuScreen(camera: widget.camera),

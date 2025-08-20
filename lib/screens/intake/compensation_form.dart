@@ -30,11 +30,13 @@ class _CompensationFormScreenState extends State<CompensationFormScreen> {
   @override
   void initState() {
     super.initState();
+
     responses = List<String?>.filled(compensationFormQuestions.length, null);
 
-    if (UserClass.iCResponses != null) {
-      for (int i = 0; i < UserClass.compensationResponses!.length; i++) {
-        responses[i] = UserClass.compensationResponses![i];
+    final prevResponses = UserClass.compensationResponses;
+    if (prevResponses != null) {
+      for (int i = 0; i < prevResponses.length && i < responses.length; i++) {
+        responses[i] = prevResponses[i];
       }
     }
   }
@@ -80,11 +82,12 @@ class _CompensationFormScreenState extends State<CompensationFormScreen> {
                   UserClass.currentScreen = "main_menu";
                   UserClass.compensationResponses = responses;
                   UserClass.saveToHive();
+                  UserClass.generateCompensationReport();
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) =>
-                        HomeMenuScreen(camera: widget.camera),
+                          HomeMenuScreen(camera: widget.camera),
                     ),
                   );
                 },
