@@ -1,4 +1,4 @@
-import 'package:autism_ai_test/widgets/button/delete_button.dart';
+import 'package:autism_ai_test/widgets/button/back_to_main_menu.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
@@ -73,10 +73,11 @@ class HelpScreen extends StatelessWidget {
                 color: ColorTheme.textColor,
               ),
               BodyText(
-                'Warning: this button resets all your progress, so only do this if there is no other option',
+                'This button will take you back to the main menu, however, it will also delete all your progress '
+                'for your video recording section, so be careful!\n',
                 color: ColorTheme.red,
               ),
-              DeleteButton(camera: camera),
+              BackToMainMenu(camera: camera),
               BodyText('\n', color: ColorTheme.textColor),
               // Contact information section
               SubTitle('Contact'),
