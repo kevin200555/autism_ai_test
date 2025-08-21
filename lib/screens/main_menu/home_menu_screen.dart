@@ -1,4 +1,5 @@
 import 'package:autism_ai_test/constants/colors.dart';
+import 'package:autism_ai_test/screens/main_menu/previous_videos_screen.dart';
 import 'package:autism_ai_test/screens/main_menu/settings_screen.dart';
 import 'package:autism_ai_test/screens/main_menu/home_screen.dart';
 import 'package:autism_ai_test/screens/main_menu/dashboard_screen.dart';
@@ -25,7 +26,7 @@ class _HomeMenuScreenState extends State<HomeMenuScreen> {
   late final List<Widget> pages = [
     DashboardScreen(camera: widget.camera,),
     HomeScreen(camera: widget.camera),
-    Center(child: Text("Previous Videos Screen")),
+    PreviousVideosScreen(),
     SettingsScreen(camera: widget.camera),
   ];
 

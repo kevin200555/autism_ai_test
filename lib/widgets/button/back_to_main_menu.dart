@@ -19,6 +19,7 @@ class BackToMainMenu extends StatelessWidget {
         onPressed: () {
           // takes the user back to the home menu screen
           // deletes all video progress
+          
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => HomeMenuScreen(camera: camera)),

@@ -1,0 +1,64 @@
+import 'package:autism_ai_test/constants/colors.dart';
+import 'package:autism_ai_test/widgets/home_screen_widgets.dart/score.dart';
+import 'package:autism_ai_test/widgets/other/text_types.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class PreviousVideosTile extends StatefulWidget {
+  final String date;
+  final String time;
+  final String score;
+  const PreviousVideosTile({
+    super.key,
+    required this.date,
+    required this.time,
+    required this.score,
+  });
+
+  @override
+  State<PreviousVideosTile> createState() => _PreviousVideosTileState();
+}
+
+class _PreviousVideosTileState extends State<PreviousVideosTile> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white, // Background color
+        border: Border.all(color: ColorTheme.textColor, width: 2), // Border
+        borderRadius: BorderRadius.circular(8), // Rounded corners
+        boxShadow: [
+          BoxShadow(color: Colors.black12, blurRadius: 6, offset: Offset(0, 2)),
+        ],
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(8),
+        child: Theme(
+          data: Theme.of(context).copyWith(dividerColor: ColorTheme.textColor),
+          child: ExpansionTile(
+            title: SubTitle('${widget.date} at ${widget.time}'),
+            collapsedTextColor: ColorTheme.textColor,
+            textColor: ColorTheme.textColor,
+            collapsedBackgroundColor: ColorTheme.primary,
+            backgroundColor: ColorTheme.background,
+            collapsedIconColor: ColorTheme.textColor,
+            iconColor: ColorTheme.textColor,
+            // This is what is in the expanded tile information, it displays the task instructions
+            // This is so that the user can read which instruction they want to do first before going to the recording screen
+            children: <Widget>[
+              Container(
+                alignment: Alignment.center,
+                padding: const EdgeInsets.all(24),
+                child: Column(
+                  children: [
+                    PartialCircle(fraction:  int.parse(widget.score)/100, size: 100, color: ColorTheme.green,)
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
