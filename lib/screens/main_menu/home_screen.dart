@@ -1,5 +1,6 @@
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/screens/video_section/video_section_info_screen.dart';
+import 'package:autism_ai_test/uploading/video_storage_class.dart';
 import 'package:autism_ai_test/widgets/button/next_button.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,8 @@ class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key, required this.camera});
   @override
   Widget build(BuildContext context) {
+    VideoStorageClassItem videoItem = VideoStorageClassItem();
+
     return Scaffold(
       backgroundColor: ColorTheme.background,
 
@@ -67,7 +70,7 @@ class HomeScreen extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) =>
-                          GeneralInstructionsScreen(camera: camera),
+                          GeneralInstructionsScreen(camera: camera, videoItem: videoItem),
                     ),
                   );
                 },
@@ -76,7 +79,6 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-      
     );
   }
 }

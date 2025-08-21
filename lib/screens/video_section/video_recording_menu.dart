@@ -60,7 +60,6 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
       UserClass.videoList.add(widget.videoItem!);
     }
     UserClass.currentScreen = "main_menu";
-    print('UserClass.videoList: ${UserClass.videoList}');
     UserClass.saveToHive();
     widget.videoItem?.resetAll();
     widget.videoItem?.printSummary();

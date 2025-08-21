@@ -6,7 +6,6 @@ import 'package:autism_ai_test/screens/mchatr/m_chatr_form_screen.dart';
 import 'package:autism_ai_test/screens/video_section/disconnect_screen.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/uploading/video_storage_class.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';

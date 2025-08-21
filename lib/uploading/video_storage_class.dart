@@ -141,6 +141,7 @@ class VideoStorageClassItem {
       if (kDebugMode) print('Created zip file: ${zipFile.path}');
 
       final url = await uploadFile(zipFile.path);
+      // ignore: avoid_print
       if (url != null && kDebugMode) print('Uploaded file URL: $url');
 
       if (kDebugMode) print('Finished saving files to: ${folder.path}');

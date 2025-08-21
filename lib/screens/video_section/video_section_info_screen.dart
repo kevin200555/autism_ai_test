@@ -16,7 +16,8 @@ import 'package:autism_ai_test/widgets/button/help_button.dart';
 
 class GeneralInstructionsScreen extends StatelessWidget {
   final CameraDescription camera;
-  const GeneralInstructionsScreen({super.key, required this.camera});
+  final VideoStorageClassItem? videoItem;
+  const GeneralInstructionsScreen({super.key, required this.camera, required this.videoItem});
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +100,10 @@ class GeneralInstructionsScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                BodyText('Please read all instructions completley\n', color: ColorTheme.textColor),
+                BodyText(
+                  'Please read all instructions completley\n',
+                  color: ColorTheme.textColor,
+                ),
                 NextButton(
                   label: 'NEXT',
                   onPressed: () {
@@ -109,7 +113,7 @@ class GeneralInstructionsScreen extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            FewTipsBeforeStart(camera: camera),
+                            FewTipsBeforeStart(camera: camera, videoItem: videoItem,),
                       ),
                     );
                   },
@@ -125,7 +129,8 @@ class GeneralInstructionsScreen extends StatelessWidget {
 
 class FewTipsBeforeStart extends StatelessWidget {
   final CameraDescription camera;
-  const FewTipsBeforeStart({super.key, required this.camera});
+  final VideoStorageClassItem? videoItem;
+  const FewTipsBeforeStart({super.key, required this.camera, required this.videoItem});
 
   @override
   Widget build(BuildContext context) {
@@ -404,7 +409,7 @@ class FewTipsBeforeStart extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            BeforeYouStartScreen(camera: camera),
+                            BeforeYouStartScreen(camera: camera, videoItem: videoItem,),
                       ),
                     );
                   },
@@ -420,7 +425,8 @@ class FewTipsBeforeStart extends StatelessWidget {
 
 class BeforeYouStartScreen extends StatelessWidget {
   final CameraDescription camera;
-  const BeforeYouStartScreen({super.key, required this.camera});
+  final VideoStorageClassItem? videoItem;
+  const BeforeYouStartScreen({super.key, required this.camera, required this.videoItem});
 
   @override
   Widget build(BuildContext context) {
@@ -640,7 +646,7 @@ class BeforeYouStartScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => FilmingTipsScreen(camera: camera),
+                        builder: (context) => FilmingTipsScreen(camera: camera, videoItem: videoItem,),
                       ),
                     );
                   },
@@ -656,14 +662,18 @@ class BeforeYouStartScreen extends StatelessWidget {
 
 class FilmingTipsScreen extends StatefulWidget {
   final CameraDescription camera;
-  const FilmingTipsScreen({super.key, required this.camera});
+  final VideoStorageClassItem? videoItem;
+  const FilmingTipsScreen({
+    super.key,
+    required this.camera,
+    required this.videoItem,
+  });
 
   @override
   State<FilmingTipsScreen> createState() => _FilmingTipsScreenState();
 }
 
 class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
-  VideoStorageClassItem videoItem = VideoStorageClassItem();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -854,8 +864,10 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) =>
-                            VideoRecordingMenu(camera: widget.camera, videoItem: videoItem),
+                        builder: (context) => VideoRecordingMenu(
+                          camera: widget.camera,
+                          videoItem: widget.videoItem,
+                        ),
                       ),
                     );
                   },

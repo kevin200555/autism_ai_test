@@ -85,11 +85,9 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
         });
 
         // update the video paths list
-        if (videoFile != null) {
-          widget.videoItem?.recordedVideoPaths[currentStep] = videoFile.path;
-          await widget.videoItem?.saveToHive();
-        }
-
+        widget.videoItem?.recordedVideoPaths[currentStep] = videoFile.path;
+        await widget.videoItem?.saveToHive();
+      
         if (!mounted) return;
         await showDialog(
           context: context,
