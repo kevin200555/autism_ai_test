@@ -25,15 +25,7 @@ class UserClass {
   static List<String?>? parentIntakeResponses;
   static List<String?>? compensationResponses;
 
-  // These store the videos (size of these could change later)
-  /*
-  static List<XFile?>? recordedVideos = List<XFile?>.filled(
-    InstructionAndQuestions.videoNames.length,
-    null,
-    growable: false,
-  );
-  */
-
+  // This is a list of all videos that the user has recorded
   static List<VideoStorageClassItem> videoList = [];
 
   // This is used after the user has completed the test, since their data should be uploaded to Google Cloud

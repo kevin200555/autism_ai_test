@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 // This widget displays visually to the user the score they get
+/// It uses a partial circle to represent the score as a fraction of 100
+/// The fraction is represented as a percentage in the center of the circle
 class PartialCircle extends StatelessWidget {
   final double fraction;
   final double size;

@@ -12,6 +12,11 @@ import 'package:archive/archive_io.dart';
 
 part 'video_storage_class.g.dart';
 
+/// This class is used to store video data
+/// It is used to keep track of the videos recorded by the user
+/// It is also used to upload the videos to Firebase
+/// It is stored in Hive for persistence
+/// The videos are stored in a list of file paths
 @HiveType(typeId: 1)
 class VideoStorageClassItem {
   @HiveField(0)
@@ -83,6 +88,8 @@ class VideoStorageClassItem {
     return box.get('video_item', defaultValue: VideoStorageClassItem())!;
   }
 
+  /// Print a summary of the current state
+  /// Useful for debugging
   void printSummary() {
     if (kDebugMode) {
       print(isActive);
@@ -95,10 +102,14 @@ class VideoStorageClassItem {
     }
   }
 
+  // Start video recording
+  // This should be called before the recording starts
   void startVideoRecording() {
     isActive = true;
   }
 
+  // Stop video recording and update date/time
+  // This should be called after the recording is done
   void getTime() {
     DateTime now = DateTime.now();
     date = "${now.month}-${now.day}-${now.year}";
@@ -153,6 +164,8 @@ class VideoStorageClassItem {
     }
   }
 
+  /// Zips the folder containing all recorded videos
+  /// Returns the path to the zip file
   Future<File> zipFolder(Directory folder) async {
     final encoder = ZipFileEncoder();
     getTime();
@@ -165,4 +178,4 @@ class VideoStorageClassItem {
     encoder.close();
     return File(zipPath);
   }
-}
+} // EOF video_storage_class.dart

@@ -2,8 +2,11 @@ import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/widgets/home_screen_widgets.dart/score.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
+/// A tile that displays previous video information
+/// It includes the date, time, and score of the video
+/// The tile can be expanded to show more details
+/// This widget is used in the PreviousVideosScreen
 class PreviousVideosTile extends StatefulWidget {
   final String date;
   final String time;
@@ -36,6 +39,7 @@ class _PreviousVideosTileState extends State<PreviousVideosTile> {
         child: Theme(
           data: Theme.of(context).copyWith(dividerColor: ColorTheme.textColor),
           child: ExpansionTile(
+            //
             title: SubTitle('${widget.date} at ${widget.time}'),
             collapsedTextColor: ColorTheme.textColor,
             textColor: ColorTheme.textColor,
@@ -44,7 +48,7 @@ class _PreviousVideosTileState extends State<PreviousVideosTile> {
             collapsedIconColor: ColorTheme.textColor,
             iconColor: ColorTheme.textColor,
             // This is what is in the expanded tile information, it displays the task instructions
-            // This is so that the user can read which instruction they want to do first before going to the recording screen
+
             children: <Widget>[
               Container(
                 alignment: Alignment.center,
@@ -61,4 +65,4 @@ class _PreviousVideosTileState extends State<PreviousVideosTile> {
       ),
     );
   }
-}
+} // EOF previous_videos_tile.dart
