@@ -138,6 +138,25 @@ class UserClass {
     uploadFile(signiture!.path);
   }
 
+  static Future<void> generateICReport() async {
+    List<List<String>> iC = InstructionAndQuestions.getIC();
+    String iCString = '';
+    for (int i = 0; i < iC.length; i++) {
+      iCString += "Q: ${iC[i][1]}\n";
+      iCString += "A: ${iCResponses?[i]}\n";
+    }
+    String fullIString = '--- Informed Consent ---\n$iCString\n';
+
+    // Get app documents directory
+    final directory = await getApplicationDocumentsDirectory();
+
+    // Create a file called intake.txt in the documents directory
+    final file = File('${directory.path}/informed_consent.txt');
+
+    // Write the combined intake string to the file
+    await file.writeAsString(fullIString);
+    await uploadFile(file.path);
+  }
   // function that will take all responses from the the questionaires and turn them into a string,
   // this string will then be written to a file
   // the format of this can be seen in my figma designs
