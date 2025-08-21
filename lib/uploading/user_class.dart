@@ -97,7 +97,19 @@ class UserClass {
       signiture = File(signPath);
     }
 
-    videoList = box.get('videos', defaultValue: <VideoStorageClassItem>[])!;
+    videoList = [];
+    final rawList = box.get(
+      'videoList',
+      defaultValue: <VideoStorageClassItem>[],
+    );
+    if (rawList != null) {
+      try {
+        videoList = (rawList as List).cast<VideoStorageClassItem>();
+      } catch (e) {
+        if (kDebugMode) print('Failed to cast videoList: $e');
+        videoList = [];
+      }
+    }
 
     printSummary();
   }
@@ -211,7 +223,6 @@ class UserClass {
     await file.writeAsString(fullMString);
     await uploadFile(file.path);
   }
-
 
   // makes the user_report.txt file
   static Future<File> get _localFile async {

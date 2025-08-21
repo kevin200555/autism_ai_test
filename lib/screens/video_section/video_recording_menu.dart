@@ -55,9 +55,13 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
       }
     }
     widget.videoItem?.uploadAllFiles();
-    UserClass.videoList.add(widget.videoItem!);
+    widget.videoItem?.printSummary();
+    if (widget.videoItem != null) {
+      UserClass.videoList.add(widget.videoItem!);
+    }
     UserClass.currentScreen = "main_menu";
-    await UserClass.saveToHive();
+    print('UserClass.videoList: ${UserClass.videoList}');
+    UserClass.saveToHive();
     widget.videoItem?.resetAll();
     widget.videoItem?.printSummary();
     if (!mounted) return;
