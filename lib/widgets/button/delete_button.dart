@@ -21,7 +21,6 @@ class DeleteButton extends StatelessWidget {
         onPressed: () {
 
           UserClass.resetAll();
-          VideoStorageClassItem.resetAll();
           // takes the user back to the welcome screen
           // this is where the user can start over
           Navigator.push(

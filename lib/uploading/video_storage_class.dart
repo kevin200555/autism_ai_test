@@ -10,109 +10,118 @@ import 'package:autism_ai_test/uploading/upload_to_firebase.dart';
 import 'package:path/path.dart' as path;
 import 'package:archive/archive_io.dart';
 
-class VideoStorageClassItem {
-  static bool isActive = false;
-  static String date = '';
-  static String time = '';
-  static String timeElasped = '';
-  // These store the videos (size of these could change later)
-  static List<XFile?>? recordedVideos = List<XFile?>.filled(
-    InstructionAndQuestions.videoNames.length,
-    null,
-    growable: false,
-  );
+part 'video_storage_class.g.dart';
 
-  static resetAll() {
+@HiveType(typeId: 1)
+class VideoStorageClassItem {
+  @HiveField(0)
+  bool isActive;
+
+  @HiveField(1)
+  String date;
+
+  @HiveField(2)
+  String time;
+
+  @HiveField(3)
+  String timeElapsed;
+
+  @HiveField(4)
+  String score;
+
+  /// Store **file paths** instead of raw `XFile` objects
+  @HiveField(5)
+  List<String?> recordedVideoPaths;
+
+  VideoStorageClassItem({
+    this.isActive = false,
+    this.date = '',
+    this.time = '',
+    this.timeElapsed = '',
+    this.score = '',
+    List<String?>? recordedVideoPaths,
+  }) : recordedVideoPaths =
+           recordedVideoPaths ??
+           List<String?>.filled(
+             InstructionAndQuestions.videoNames.length,
+             null,
+             growable: false,
+           );
+
+  /// Convenience getter to convert back into `XFile?`
+  List<XFile?> get recordedVideos =>
+      recordedVideoPaths.map((p) => p != null ? XFile(p) : null).toList();
+
+  /// Reset state
+  void resetAll() {
     isActive = false;
     date = '';
     time = '';
-    timeElasped = '';
-    recordedVideos = List<XFile?>.filled(
+    timeElapsed = '';
+    recordedVideoPaths = List<String?>.filled(
       InstructionAndQuestions.videoNames.length,
       null,
       growable: false,
     );
-    saveToHive();
   }
 
-  static Future<void> saveToHive() async {
-    final box = await Hive.openBox('user_data');
-    await box.put('isActive', isActive);
-    await box.put('date', date);
-    await box.put('time', time);
-    await box.put('timeElasped', timeElasped);
-    // Save recorded video paths
-    List<String?> videoPaths = recordedVideos!
-        .map((file) => file?.path)
-        .toList();
-    await box.put('recordedVideoPaths', videoPaths);
+  /// Save whole object to Hive
+  Future<void> saveToHive() async {
+    final box = Hive.isBoxOpen('video_item_box')
+        ? Hive.box<VideoStorageClassItem>('video_item_box')
+        : await Hive.openBox<VideoStorageClassItem>('video_item_box');
+
+    await box.put('video_item', this);
   }
 
-  static Future<void> loadFromHive() async {
-    final box = await Hive.openBox('user_data');
-    // Uncomment to wipe old data for testing
-    // await box.clear();
-    isActive = box.get('isActive', defaultValue: false);
-    date = box.get('date', defaultValue: '');
-    time = box.get('time', defaultValue: '');
-    timeElasped = box.get('timeElasped', defaultValue: '');
-    final videoPaths = (box.get('recordedVideoPaths') as List?)
-        ?.cast<String?>();
-    if (videoPaths != null) {
-      recordedVideos = videoPaths
-          .map((p) => p != null ? XFile(p) : null)
-          .toList();
-    }
-    printSummary();
+  /// Load object from Hive
+  static Future<VideoStorageClassItem> loadFromHive() async {
+    final box = Hive.isBoxOpen('video_item_box')
+        ? Hive.box<VideoStorageClassItem>('video_item_box')
+        : await Hive.openBox<VideoStorageClassItem>('video_item_box');
+
+    return box.get('video_item', defaultValue: VideoStorageClassItem())!;
   }
 
-  // prints all relevant variables in the UserClass
-  static void printSummary() {
+  void printSummary() {
     if (kDebugMode) {
       print(isActive);
       print(date);
       print(time);
-      print(timeElasped);
+      print(timeElapsed);
       for (int i = 0; i < InstructionAndQuestions.videoNames.length; i++) {
-        print("Recorded Video $i: ${recordedVideos?[i]?.path}");
+        print("Recorded Video $i: ${recordedVideoPaths[i]}");
       }
     }
   }
 
-  static void startVideoRecording() {
+  void startVideoRecording() {
     isActive = true;
-    saveToHive();
   }
 
-  static void getTime() {
+  void getTime() {
     DateTime now = DateTime.now();
     date = "${now.month}-${now.day}-${now.year}";
     time = (now.hour >= 12)
         ? "${now.hour - 12}:${now.minute} PM"
         : "${now.hour}:${now.minute} AM";
-    saveToHive();
   }
 
-  static Future<void> uploadAllFiles(File userReport) async {
+  Future<void> uploadAllFiles() async {
     printSummary();
     try {
-      // Get app documents directory
       final directory = await getApplicationDocumentsDirectory();
       final folder = Directory(path.join(directory.path, UserClass.userId));
 
-      // Ensure folder exists
       if (!await folder.exists()) {
         await folder.create(recursive: true);
-        if (kDebugMode) {
-          print('Created folder: ${folder.path}');
-        }
+        if (kDebugMode) print('Created folder: ${folder.path}');
       }
 
-      // Copy each recorded video
       for (int i = 0; i < InstructionAndQuestions.videoNames.length; i++) {
-        final video = recordedVideos?[i];
-        if (video != null) {
-          final file = File(video.path);
+        final videoPath = recordedVideoPaths[i];
+        if (videoPath != null) {
+          final file = File(videoPath);
           if (await file.exists()) {
             final dest = File(
               path.join(
@@ -121,36 +130,20 @@ class VideoStorageClassItem {
               ),
             );
             await file.copy(dest.path);
-            if (kDebugMode) {
-              print('Copied video to: ${dest.path}');
-            }
+            if (kDebugMode) print('Copied video to: ${dest.path}');
           } else {
-            if (kDebugMode) {
-              print('Video file missing, skipping: ${video.path}');
-            }
-          }
-        } else {
-          if (kDebugMode) {
-            print('Recorded video is null for index $i, skipping');
+            if (kDebugMode) print('Video file missing: $videoPath');
           }
         }
       }
 
-      // Zip the folder
       final zipFile = await zipFolder(folder);
       if (kDebugMode) print('Created zip file: ${zipFile.path}');
 
-      // Upload zip
       final url = await uploadFile(zipFile.path);
-      if (url != null && kDebugMode) {
-        if (kDebugMode) {
-          print('Uploaded file URL: $url');
-        }
-      }
+      if (url != null && kDebugMode) print('Uploaded file URL: $url');
 
-      if (kDebugMode) {
-        print('Finished saving files to: ${folder.path}');
-      }
+      if (kDebugMode) print('Finished saving files to: ${folder.path}');
     } catch (e, stack) {
       if (kDebugMode) {
         print('Error in uploadAllFiles: $e');
@@ -159,16 +152,9 @@ class VideoStorageClassItem {
     }
   }
 
-  static Future<File> zipFolder(Directory folder) async {
+  Future<File> zipFolder(Directory folder) async {
     final encoder = ZipFileEncoder();
     getTime();
-    if (kDebugMode) {
-      print(time);
-      print(date);
-      print('${date.replaceAll('-', '_')}_${time.replaceAll('-', '').replaceAll(' ', '')}.zip');
-    }
-
-    //file name should look like 8_20_2025_11:57AM.zip
     final zipPath = path.join(
       folder.parent.path,
       '${date.replaceAll('-', '_')}_${time.replaceAll('-', '').replaceAll(' ', '')}.zip',
@@ -178,4 +164,4 @@ class VideoStorageClassItem {
     encoder.close();
     return File(zipPath);
   }
-} // EOF video_storage_class.dart
+}

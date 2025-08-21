@@ -66,7 +66,7 @@ class UserClass {
   // This function is called after every 'next' button is pressed
   // This means its NOT being called continously
   static Future<void> saveToHive() async {
-    final box = await Hive.openBox('user_data');
+    final box = Hive.box('user_data');
     await box.put('userId', userId);
     await box.put('currentScreen', currentScreen);
     await box.put('iCResponses', iCResponses);
@@ -75,13 +75,12 @@ class UserClass {
     await box.put('parentIntakeResponses', parentIntakeResponses);
     await box.put('compensationResponses', compensationResponses);
     await box.put('signiturePath', signiture?.path);
-
     await box.put('videoList', videoList);
   }
 
   // load any saved data that have been stored as result of saveToHive()
   static Future<void> loadFromHive() async {
-    final box = await Hive.openBox('user_data');
+    final box = Hive.box('user_data');
     userId = box.get('userId');
     currentScreen = box.get('currentScreen') ?? 'main_menu';
     iCResponses = (box.get('iCResponses') as List?)?.cast<String?>();
@@ -126,6 +125,7 @@ class UserClass {
       print("Parent Intake Form Responses: $parentIntakeResponses");
       print("Compensation Form Responses: $compensationResponses");
       print("currentScreen:  $currentScreen");
+      print("Video List: $videoList");
     }
   }
 

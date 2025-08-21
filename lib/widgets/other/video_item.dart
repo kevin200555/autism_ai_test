@@ -1,6 +1,7 @@
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/screens/video_section/video_recording_section_screen.dart';
+import 'package:autism_ai_test/uploading/video_storage_class.dart';
 import 'package:autism_ai_test/widgets/button/next_button.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:camera/camera.dart';
@@ -18,6 +19,7 @@ class VideoItem extends StatefulWidget {
   final int taskNumber;
   final bool isCompleted;
   final VoidCallback? onReturnFromRecording;
+  final VideoStorageClassItem? videoItem;
 
   const VideoItem({
     super.key,
@@ -26,6 +28,7 @@ class VideoItem extends StatefulWidget {
     required this.taskNumber,
     required this.isCompleted,
     this.onReturnFromRecording,
+    required this.videoItem,
   });
 
   @override
@@ -109,6 +112,7 @@ class _VideoItemState extends State<VideoItem> {
                               instructions:
                                   InstructionAndQuestions.videoInstructions,
                               currentStep: widget.taskNumber,
+                              videoItem: widget.videoItem,
                             ),
                           ),
                         );

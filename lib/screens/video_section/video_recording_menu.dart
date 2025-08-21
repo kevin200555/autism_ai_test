@@ -17,7 +17,8 @@ import 'package:flutter/material.dart';
 // This screen also lets the user upload their videos to firebase, provided they completed all their task
 class VideoRecordingMenu extends StatefulWidget {
   final CameraDescription camera;
-  const VideoRecordingMenu({super.key, required this.camera});
+  final VideoStorageClassItem? videoItem;
+  const VideoRecordingMenu({super.key, required this.camera, required this.videoItem});
 
   @override
   State<VideoRecordingMenu> createState() => _VideoRecordingMenuState();
@@ -25,7 +26,7 @@ class VideoRecordingMenu extends StatefulWidget {
 
 class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
   bool isVideoRecorded(int videoNumber) {
-    final list = VideoStorageClassItem.recordedVideos;
+    final list = widget.videoItem?.recordedVideos;
 
     if (list == null) return false;
     if (videoNumber < 0 || videoNumber >= list.length) return false;
@@ -53,10 +54,12 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
         return;
       }
     }
-
-    UserClass.videoList.add(VideoStorageClassItem());
-    VideoStorageClassItem.resetAll();
-    VideoStorageClassItem.printSummary();
+    widget.videoItem?.uploadAllFiles();
+    UserClass.videoList.add(widget.videoItem!);
+    UserClass.currentScreen = "main_menu";
+    await UserClass.saveToHive();
+    widget.videoItem?.resetAll();
+    widget.videoItem?.printSummary();
     if (!mounted) return;
     Navigator.push(
       context,
@@ -128,7 +131,7 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
                               isCompleted: isVideoRecorded(index),
                               onReturnFromRecording: () {
                                 setState(() {});
-                              },
+                              }, videoItem: widget.videoItem,
                             ),
                             SizedBox(height: 8),
                           ],

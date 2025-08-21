@@ -16,11 +16,13 @@ class VideoRecordingSectionScreen extends StatefulWidget {
   final CameraDescription camera;
   final List<String> instructions;
   final int currentStep;
+  final VideoStorageClassItem? videoItem;
   const VideoRecordingSectionScreen({
     super.key,
     required this.camera,
     required this.instructions,
     required this.currentStep,
+    required this.videoItem,
   });
 
   @override
@@ -71,6 +73,7 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
 
   //stops recording, and saves the video automatically
   Future<void> _stopRecording() async {
+    widget.videoItem?.printSummary();
     if (controller.value.isRecordingVideo) {
       try {
         final videoFile = await controller.stopVideoRecording();
@@ -80,8 +83,14 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
           isRecording = false;
           recordedVideo = videoFile;
         });
-        VideoStorageClassItem.recordedVideos?[currentStep] = recordedVideo;
-        VideoStorageClassItem.saveToHive();
+
+        // update the video paths list
+        if (videoFile != null) {
+          widget.videoItem?.recordedVideoPaths[currentStep] = videoFile.path;
+          print('Saving paths: ${widget.videoItem?.recordedVideoPaths[currentStep]}');
+          await widget.videoItem?.saveToHive();
+          print(widget.videoItem?.recordedVideoPaths[currentStep]);
+        }
 
         if (!mounted) return;
         await showDialog(
@@ -117,55 +126,69 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
   //deletes Video, has to convert the recordedvideo from an XFILE to a File, This is why this code doesn't work on web applications
   //since web applications can't use dart.io FIles
   Future<void> deleteVideo() async {
-    // Assuming currentStep is your index:
-    recordedVideo = VideoStorageClassItem.recordedVideos?[currentStep];
+    final video = widget.videoItem?.recordedVideos[currentStep];
 
-    if (recordedVideo != null) {
-      final file = File(recordedVideo!.path);
+    if (video != null) {
+      final file = File(video.path);
 
       if (await file.exists()) {
-        await file.delete();
-        if (!mounted) return;
-        showDialog(
-          context: context,
-          builder: (_) => const AlertDialog(title: Text('Video Deleted!')),
-        );
-        setState(() {
-          VideoStorageClassItem.recordedVideos?[currentStep] = null;
-        });
+        try {
+          await file.delete();
 
-        // Also remove from the list if you want:
-        //UserClass.recordedVideos?.removeAt(currentStep);
+          // Remove from paths list and save
+          widget.videoItem?.recordedVideoPaths[currentStep] = null;
+          await widget.videoItem?.saveToHive();
+
+          if (!mounted) return;
+          await showDialog(
+            context: context,
+            builder: (_) => const AlertDialog(title: Text('Video Deleted!')),
+          );
+
+          setState(() {
+            recordedVideo = null; // clear widget state
+          });
+        } catch (e) {
+          if (!mounted) return;
+          await showDialog(
+            context: context,
+            builder: (_) =>
+                AlertDialog(title: Text('Failed to delete video: $e')),
+          );
+        }
       } else {
         if (!mounted) return;
-        showDialog(
+        await showDialog(
           context: context,
           builder: (_) => const AlertDialog(title: Text('No Video to Delete!')),
         );
       }
     } else {
-      showDialog(
+      if (!mounted) return;
+      await showDialog(
         context: context,
         builder: (_) => const AlertDialog(title: Text('No Video to Delete!')),
       );
     }
   }
 
-  //views video, brings user to a seperate screen to do so, displays popup to user if they haven't recorded anything
   Future<void> viewVideo() async {
-    recordedVideo = VideoStorageClassItem.recordedVideos?[currentStep];
-    if (recordedVideo == null) {
-      showDialog(
+    final video = widget.videoItem?.recordedVideos[currentStep];
+
+    if (video == null || !await File(video.path).exists()) {
+      if (!mounted) return;
+      await showDialog(
         context: context,
         builder: (_) => const AlertDialog(title: Text('No video to view!')),
       );
       return;
     }
+
     if (!mounted) return;
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => VideoPlayerScreen(videoPath: recordedVideo!.path),
+        builder: (context) => VideoPlayerScreen(videoPath: video.path),
       ),
     );
   }
@@ -309,12 +332,13 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
                   width: MediaQuery.of(context).size.width * 0.8,
                   height: MediaQuery.of(context).size.height * 0.05,
                   child: Container(
-                    color: (VideoStorageClassItem.recordedVideos?[currentStep] == null)
+                    color:
+                        (widget.videoItem?.recordedVideos[currentStep] == null)
                         ? ColorTheme.progressBarBackground
                         : ColorTheme.green,
                     child: Center(
                       child: ButtonText(
-                        (VideoStorageClassItem.recordedVideos?[currentStep] == null)
+                        (widget.videoItem?.recordedVideos[currentStep] == null)
                             ? 'Video not recorded'
                             : 'Task Completed! Press the back button!',
                         maxLines: 1,

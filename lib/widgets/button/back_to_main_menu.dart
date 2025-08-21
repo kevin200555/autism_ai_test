@@ -18,7 +18,6 @@ class BackToMainMenu extends StatelessWidget {
       width: MediaQuery.of(context).size.width * 0.4,
       child: ElevatedButton.icon(
         onPressed: () {
-          VideoStorageClassItem.resetAll();
           // takes the user back to the home menu screen
           // deletes all video progress
           Navigator.push(

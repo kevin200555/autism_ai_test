@@ -6,6 +6,7 @@ import 'package:autism_ai_test/screens/mchatr/m_chatr_form_screen.dart';
 import 'package:autism_ai_test/screens/video_section/disconnect_screen.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/uploading/video_storage_class.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,14 @@ Future<void> main() async {
   // await Permission.camera.request();
   // await Permission.microphone.request();
   await Firebase.initializeApp();
+  
   await Hive.initFlutter();
+  Hive.registerAdapter(VideoStorageClassItemAdapter());
+  await Hive.openBox<VideoStorageClassItem>('video_item_box');
+  
+
+  await Hive.openBox('user_data'); // generic box for UserClass
+ 
 
   await UserClass.loadFromHive();
   await VideoStorageClassItem.loadFromHive();
@@ -134,13 +142,13 @@ class AutismAITest extends StatelessWidget {
 // - compares to "normal" behaviors
 // - perhaps an autism tracker as opposed to an autism test
 
-//Given this, I think I got an idea how to organize the app
-//At the beginning, I make the user take the IC document 
-//This gets thier user id 
-//After this, bring them to a page to pay for our services
-//After paying, bring them to the "main menu"
-//main menu has a home screen -> forms screen <-> a videos screen, previous results screen, and settings screen
-//Make them take the intake/mChatR form first (lock the videos)
-//after this, they are able to do the video 
-//Here they can take videos and upload them and get their results back, these can later be seen on the previous results screen  
-//We could remind them to do this every ____ months or so
+// Given this, I think I got an idea how to organize the app
+// At the beginning, I make the user take the IC document 
+// This gets thier user id 
+// After this, bring them to a page to pay for our services
+// After paying, bring them to the "main menu"
+// main menu has a home screen -> forms screen <-> a videos screen, previous results screen, and settings screen
+// Make them take the intake/mChatR form first (lock the videos)
+// after this, they are able to do the video 
+// Here they can take videos and upload them and get their results back, these can later be seen on the previous results screen  
+// We could remind them to do this every ____ months or so
