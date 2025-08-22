@@ -328,6 +328,10 @@ class InstructionAndQuestions {
     return iCQuestions;
   }
 
+  static List<List<String>> getCompensation() {
+    return compensationQuestions;
+  }
+
   static List<List<String>> getSigniture() {
     return signitureQuestions;
   }

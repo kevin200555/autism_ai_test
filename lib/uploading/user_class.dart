@@ -191,12 +191,12 @@ class UserClass {
   }
 
   static Future<void> generateCompensationReport() async {
-    List<List<String>> compensation = InstructionAndQuestions.getMChatR();
+    List<List<String>> compensation = InstructionAndQuestions.getCompensation();
     String cString = '';
     for (int i = 0; i < compensation.length; i++) {
       if (compensation[i][1] == 'Social Security Number: ') {
         cString += "Q: ${compensation[i][1]}\n";
-        cString += "Q: ###-###-####";
+        cString += "Q: ###-###-####\n";
       } else {
         cString += "Q: ${compensation[i][1]}\n";
         cString += "A: ${compensationResponses?[i]}\n";

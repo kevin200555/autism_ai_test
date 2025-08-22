@@ -69,11 +69,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       BodyText(
-                        'Previous Test Result: \n 08/04/2024\n',
+                        'Previous Test Result: \n ${UserClass.videoList[UserClass.videoList.length - 1].date}\n',
                         color: ColorTheme.textColor,
                       ),
                       PartialCircle(
-                        fraction: 0.9,
+                        fraction: 0.28,
                         size: 150,
                         color: ColorTheme.green,
                       ),
