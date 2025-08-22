@@ -6,10 +6,11 @@ import 'package:autism_ai_test/screens/mchatr/m_chatR_form_screen.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/home_screen_widgets.dart/form_tile.dart';
 import 'package:autism_ai_test/widgets/home_screen_widgets.dart/score.dart';
+import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
-// This purpose of this widget is to look and act like a dashboard for the user, 
+// This purpose of this widget is to look and act like a dashboard for the user,
 // It also shows the forms the users needs to take
 // It would probably be the screen the user sees the most when consistenly use the app, so I tried to make it look good
 class DashboardScreen extends StatefulWidget {
@@ -37,27 +38,28 @@ class _DashboardScreenState extends State<DashboardScreen> {
               // Hello, User text
               Expanded(
                 child: Container(
-                  padding: const EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     border: Border.all(color: ColorTheme.textColor, width: 3),
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  child: Text(
-                    'Hello,\n${UserClass.iCResponses?[2]}!',
-                    style: TextStyle(
-                      fontSize: 30,
-                      color: ColorTheme.textColor,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  child: Column(
+                    children: [
+                      SubTitle('Hello'),
+                      ImportantBodyText(
+                        '${UserClass.iCResponses?[2]}!',
+                        color: ColorTheme.textColor,
+                      ),
+                    ],
                   ),
                 ),
               ),
               const SizedBox(width: 16),
-              // Last test result 
+              // Last test result
               Expanded(
                 child: Container(
-                  padding: const EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     border: Border.all(color: ColorTheme.textColor, width: 3),
@@ -66,13 +68,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'Previous Test Result: \nDate: 08/04/2024\n',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: ColorTheme.textColor,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      BodyText(
+                        'Previous Test Result: \n 08/04/2024\n',
+                        color: ColorTheme.textColor,
                       ),
                       PartialCircle(
                         fraction: 0.9,
@@ -98,24 +96,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Forms
-                Text(
-                  'Listed Forms:',
-                  textAlign: TextAlign.start,
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: ColorTheme.textColor,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Text(
+                SubTitle('Listed Forms:'),
+                BodyText(
                   'Make sure to fill out these forms. '
                   'Afterwards, check out the \'video\' tab in order to start a recording section!\n',
-                  textAlign: TextAlign.start,
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: ColorTheme.textColor,
-                    fontWeight: FontWeight.normal,
-                  ),
+                  color: ColorTheme.textColor,
                 ),
                 // Informed Consent Document tile
                 FormTile(

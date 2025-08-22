@@ -39,7 +39,6 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
     // Check if the path contains '/data/'
     final path = video.path;
     if (path.isEmpty) return false; // safety check
-    if (!path.contains('/data/')) return false;
 
     return true;
   }
