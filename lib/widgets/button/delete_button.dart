@@ -27,7 +27,10 @@ class DeleteButton extends StatelessWidget {
             MaterialPageRoute(builder: (context) => WelcomeScreen(camera: camera)),
           );
         },
-        label: ButtonText('DELETE ACCOUNT', maxLines: 1),
+        label: Padding(
+          padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
+          child: ButtonText('DELETE ACCOUNT', maxLines: 1),
+        ),
         style: ElevatedButton.styleFrom(
           backgroundColor: ColorTheme.red,
           foregroundColor: ColorTheme.alternateTextColor,

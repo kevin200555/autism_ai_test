@@ -25,9 +25,12 @@ class BackToMainMenu extends StatelessWidget {
             MaterialPageRoute(builder: (context) => HomeMenuScreen(camera: camera)),
           );
         },
-        label: ButtonText('BACK TO MAIN MENU', maxLines: 1),
+        label: Padding(
+          padding: EdgeInsetsGeometry.fromLTRB(8, 0, 8, 0),
+          child: ButtonText('BACK TO MAIN MENU', maxLines: 1),
+        ),
         style: ElevatedButton.styleFrom(
-          backgroundColor: ColorTheme.red,
+          backgroundColor: ColorTheme.accent,
           foregroundColor: ColorTheme.alternateTextColor,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           padding: const EdgeInsets.symmetric(vertical: 14),
