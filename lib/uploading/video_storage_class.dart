@@ -112,11 +112,26 @@ class VideoStorageClassItem {
   // This should be called after the recording is done
   void getTime() {
     DateTime now = DateTime.now();
-    date = "${now.month}-${now.day}-${now.year}";
-    time = (now.hour >= 12)
-        ? "${now.hour - 12}:${now.minute} PM"
-        : "${now.hour}:${now.minute} AM";
+
+    // Date
+    String date = "${now.month}-${now.day}-${now.year}";
+
+    // Time
+    int hour = now.hour;
+    int minute = now.minute;
+    String period = hour >= 12 ? "PM" : "AM";
+
+    // Convert to 12-hour format
+    hour = hour % 12;
+    if (hour == 0) hour = 12;
+
+    // Add leading zero to minutes
+    String minuteStr = minute.toString().padLeft(2, '0');
+
+    String time = "$hour:$minuteStr $period";
+    if (kDebugMode) print("$date $time");
   }
+
   // Upload all recorded videos to Firebase
   // This will create a zip file of all recorded videos and upload it
   Future<void> uploadAllFiles() async {
