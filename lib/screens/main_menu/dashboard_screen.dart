@@ -23,6 +23,9 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
+    // This is the main widget that holds the dashboard screen
+    // It has an app bar, a body with the score and forms, and a bottom
+    // navigation bar to go to different screens
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
       child: Column(

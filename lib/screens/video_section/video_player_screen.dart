@@ -20,6 +20,9 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   late VideoPlayerController _controller;
 
   @override
+  // Initializes the video player controller with the video path
+  // This is where the video will be loaded and played
+  // The video will automatically play once it is initialized
   void initState() {
     super.initState();
     _controller = VideoPlayerController.file(File(widget.videoPath))
@@ -30,12 +33,17 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   }
 
   @override
+  // Disposes of the video player controller to free up resources
+  // This is important to prevent memory leaks
   void dispose() {
     _controller.dispose();
     super.dispose();
   }
 
   @override
+  // This is the main widget that holds the video player screen
+  // It has an app bar, a body with the video player, and a button to go back
+  // The app bar has a title and a help button
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorTheme.background,

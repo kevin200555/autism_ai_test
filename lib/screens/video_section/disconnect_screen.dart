@@ -18,12 +18,16 @@ class DisconnectScreen extends StatefulWidget {
 class _DisconnectScreenState extends State<DisconnectScreen> {
   VideoStorageClassItem? videoItem;
 
+  // This function loads the video item from the storage class
+  // It is called in the initState to ensure the video item is loaded before the screen
   @override
   void initState() {
     super.initState();
     _loadVideoItem();
   }
 
+  // This function loads the video item from the storage class
+  // It is used to ensure that the video item is available when the screen is built
   Future<void> _loadVideoItem() async {
     final item = await VideoStorageClassItem.loadFromHive();
     setState(() {
@@ -32,6 +36,9 @@ class _DisconnectScreenState extends State<DisconnectScreen> {
   }
 
   @override
+  // This is the main widget that holds the disconnect screen
+  // It has an app bar, a body with the text information, and a button to
+  // go to the general instructions screen
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),

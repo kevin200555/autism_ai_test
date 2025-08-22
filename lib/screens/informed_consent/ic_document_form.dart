@@ -34,6 +34,10 @@ class _InformedConsentSigningScreenState
   var icQuestions = InstructionAndQuestions.getIC();
   List<String?> responses = UserClass.iCResponses ?? [];
 
+  // This is used to keep track of the user's responses
+  // It is initialized with the responses from UserClass if they exist
+  // If not, it will be filled with null values
+  // This is so that the user can continue where they left off
   @override
   void initState() {
     super.initState();
@@ -69,6 +73,7 @@ class _InformedConsentSigningScreenState
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorTheme.background,
+      // App bar with title and help button
       appBar: AppBar(
         leading: BackButton(),
         actions: [
@@ -86,7 +91,8 @@ class _InformedConsentSigningScreenState
         backgroundColor: ColorTheme.accent,
         iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),
       ),
-
+      // Body of the screen
+      // This is a scrollable list of questions
       body: Scrollbar(
         thumbVisibility: true,
         child: ListView.builder(
@@ -109,10 +115,12 @@ class _InformedConsentSigningScreenState
                     );
                     return;
                   }
+                  // Save the user id and current screen
                   UserClass.currentScreen = 'IC_document';
                   UserClass.userId = generateUserId();
                   UserClass.saveToHive();
 
+                  // Navigate to the signiture screen
                   Navigator.push(
                     context,
                     MaterialPageRoute(

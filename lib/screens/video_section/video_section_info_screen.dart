@@ -14,6 +14,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:autism_ai_test/widgets/button/help_button.dart';
 
+// The purpose of the following screens is to provide instructions and information about the video tasks
+// These screens are designed to be informative and easy to read
+// Instructions are split into multiple pages to make it easier for the user to read
 class GeneralInstructionsScreen extends StatelessWidget {
   final CameraDescription camera;
   final VideoStorageClassItem? videoItem;

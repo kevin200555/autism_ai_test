@@ -47,6 +47,9 @@ class _ChildIntakeFormScreenState extends State<ChildIntakeFormScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // This is the main widget that holds the intake form screen
+    // It has an app bar, a body with the questions, and a next button at
+    // the end to go to the parent intake form screen
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
@@ -65,7 +68,9 @@ class _ChildIntakeFormScreenState extends State<ChildIntakeFormScreen> {
         backgroundColor: ColorTheme.accent,
         iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),
       ),
-
+      // This is the body of the screen
+      // It has a scrollable list of questions that the user can answer
+      // Each question is either a multiple choice, short answer, or choose all that apply question
       body: Scrollbar(
         thumbVisibility: true,
         child: ListView.builder(

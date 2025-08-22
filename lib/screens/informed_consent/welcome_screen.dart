@@ -19,6 +19,8 @@ class WelcomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       // App bar
+      // This is the app bar that has the title of the screen
+      // It has a title and is centered
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: AppBarTitle('Welcome!', color: ColorTheme.background),
@@ -26,6 +28,8 @@ class WelcomeScreen extends StatelessWidget {
         backgroundColor: ColorTheme.accent,
       ),
       // Text
+      // This is the body of the screen
+      // It has a scrollable list of text that explains the purpose of the app
       body: SingleChildScrollView(
         child: Column(
           children: [

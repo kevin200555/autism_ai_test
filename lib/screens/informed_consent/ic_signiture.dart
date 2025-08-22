@@ -22,6 +22,10 @@ import 'dart:io';
 import 'package:flutter/rendering.dart';
 import 'package:path_provider/path_provider.dart';
 
+// The purpose of this screen is to get the user's signiture
+// This is important since consent is important you know?
+// The user has to draw their signiture on the screen
+// also this screen isn't scrollable because that makes it harder to draw
 class InformedConsentSignitureScreen extends StatefulWidget {
   final CameraDescription camera;
   const InformedConsentSignitureScreen({super.key, required this.camera});
@@ -74,6 +78,8 @@ class _InformedConsentSignitureScreenState
 
   @override
   Widget build(BuildContext context) {
+    // This is the main widget that holds the signiture screen
+    // It has an app bar, a body with the signiture questions, and a next
     return RepaintBoundary(
       key: _screenShotKey,
       child: Scaffold(

@@ -11,6 +11,9 @@ class HelpScreen extends StatelessWidget {
   const HelpScreen({super.key, required this.camera});
 
   @override
+  // This is the main widget that holds the help screen
+  // It has an app bar, a body with the text information, and a button to
+  // go back to the main menu
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorTheme.background,

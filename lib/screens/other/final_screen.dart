@@ -26,6 +26,10 @@ class _FinalScreenState extends State<FinalScreen> {
   // This would be the results
   String fileText = "";
 
+  // This is the main widget that holds the final screen
+  // It has an app bar, a body with the results, and a button to go
+  // back to the home screen
+  // The app bar has a title and a help button
   @override
   void initState() {
     super.initState();

@@ -15,4 +15,4 @@ Future<String> readTextFileFromFirebase(String path) async {
   } catch (e) {
     throw Exception("Failed to read file: $e");
   }
-}
+} // EOF read_from_firebase.dart

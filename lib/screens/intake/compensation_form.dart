@@ -42,6 +42,8 @@ class _CompensationFormScreenState extends State<CompensationFormScreen> {
   }
 
   @override
+  // This is the main widget that holds the compensation form screen
+  // It has an app bar, a body with the questions, and a next button at
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorTheme.background,

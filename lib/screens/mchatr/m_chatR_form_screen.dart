@@ -35,6 +35,10 @@ class _MChatRFormScreen1State extends State<MChatRFormScreen1> {
   List<String?> responses = [];
   // half refers to half of the mChatRquestions
   int half = 0;
+  // This is used to keep track of the user's responses
+  // It is initialized with the responses from UserClass if they exist
+  // If not, it will be filled with null values
+  // This is so that the user can continue where they left off
   @override
   void initState() {
     super.initState();
@@ -48,6 +52,10 @@ class _MChatRFormScreen1State extends State<MChatRFormScreen1> {
   }
 
   @override
+  // This is the main widget that holds the mChatR form screen
+  // It has an app bar, a body with the questions, and a next button at
+  // the end to go to the next screen
+  // The next button will not be enabled until the user has answered all the questions
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorTheme.background,

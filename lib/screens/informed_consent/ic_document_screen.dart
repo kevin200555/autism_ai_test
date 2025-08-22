@@ -56,6 +56,7 @@ class _PdfViewerScreenState extends State<PdfViewerScreen> {
       floatingActionButton: SizedBox(
         width: double.infinity,
         height: 56,
+        // This button takes the user to the signiture screen
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: ElevatedButton.icon(
@@ -69,6 +70,7 @@ class _PdfViewerScreenState extends State<PdfViewerScreen> {
                 ),
               );
             },
+            // label
             label: ButtonText('SIGN ON NEXT PAGE', maxLines: 1),
             style: ElevatedButton.styleFrom(
               backgroundColor: ColorTheme.accent,

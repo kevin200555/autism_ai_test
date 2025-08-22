@@ -17,7 +17,7 @@ class PreviousVideosScreen extends StatelessWidget {
             // Your text at the top
             SubTitle('Previous recordings:'),
             BodyText(
-              'Here is a list of your previous recording sessions'
+              'Here is a list of your previous recording sessions. '
               'You can click on each to view more information about them.\n',
               color: ColorTheme.textColor,
             ),
@@ -29,7 +29,7 @@ class PreviousVideosScreen extends StatelessWidget {
                 child: PreviousVideosTile(
                   date: video.date,
                   time: video.time,
-                  score: '47',
+                  score: '29',
                 ),
               ),
             ),

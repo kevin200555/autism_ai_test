@@ -117,7 +117,8 @@ class VideoStorageClassItem {
         ? "${now.hour - 12}:${now.minute} PM"
         : "${now.hour}:${now.minute} AM";
   }
-
+  // Upload all recorded videos to Firebase
+  // This will create a zip file of all recorded videos and upload it
   Future<void> uploadAllFiles() async {
     printSummary();
     try {

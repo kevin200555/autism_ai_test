@@ -7,25 +7,17 @@ import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:autism_ai_test/constants/colors.dart';
 
-//The very first screen that a user will see
-class HomeScreen extends StatelessWidget {
+// The purpose of this screen is to provide general instructions for the video tasks
+
+class VideoNavBarScreen extends StatelessWidget {
   final CameraDescription camera;
-  const HomeScreen({super.key, required this.camera});
+  const VideoNavBarScreen({super.key, required this.camera});
   @override
   Widget build(BuildContext context) {
     VideoStorageClassItem videoItem = VideoStorageClassItem();
 
     return Scaffold(
       backgroundColor: ColorTheme.background,
-
-      /*
-      appBar: AppBar(
-        title: AppBarTitle('WELCOME!', color: ColorTheme.textColor),
-        centerTitle: true,
-        backgroundColor: ColorTheme.background,
-        actions: [HelpButton(color: ColorTheme.textColor, camera: camera)],
-        automaticallyImplyLeading: false,
-      ),*/
       body: Scrollbar(
         thumbVisibility: true,
         child: SingleChildScrollView(

@@ -1,7 +1,7 @@
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/screens/main_menu/previous_videos_screen.dart';
 import 'package:autism_ai_test/screens/main_menu/settings_screen.dart';
-import 'package:autism_ai_test/screens/main_menu/home_screen.dart';
+import 'package:autism_ai_test/screens/main_menu/video_navbar_screen.dart';
 import 'package:autism_ai_test/screens/main_menu/dashboard_screen.dart';
 import 'package:autism_ai_test/widgets/button/help_button.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
@@ -25,18 +25,22 @@ class _HomeMenuScreenState extends State<HomeMenuScreen> {
   // Different pages
   late final List<Widget> pages = [
     DashboardScreen(camera: widget.camera,),
-    HomeScreen(camera: widget.camera),
+    VideoNavBarScreen(camera: widget.camera),
     PreviousVideosScreen(),
     SettingsScreen(camera: widget.camera),
   ];
 
   @override
+  // This is the main widget that holds the home menu screen
+  // It has an app bar, a body with the pages, and a bottom navigation bar
+  // The app bar has a title and a help button
   Widget build(BuildContext context) {
     NavigationDestinationLabelBehavior labelBehavior =
         NavigationDestinationLabelBehavior.alwaysShow;
 
     return Scaffold(
       appBar: AppBar(
+        // change title if they ever change the app name
         title: AppBarTitle('Autism Tracker', color: ColorTheme.background),
         centerTitle: true,
         backgroundColor: ColorTheme.accent,

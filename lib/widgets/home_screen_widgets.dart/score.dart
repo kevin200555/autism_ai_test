@@ -38,7 +38,9 @@ class PartialCircle extends StatelessWidget {
     );
   }
 }
-
+// This custom painter draws a partial circle based on the fraction provided
+// It uses the Canvas API to draw an arc that represents the score
+// The arc is drawn from the top of the circle and goes clockwise
 class _PartialCirclePainter extends CustomPainter {
   final double fraction;
   final Color color;

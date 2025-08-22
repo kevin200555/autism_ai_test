@@ -27,6 +27,9 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      // This is the main widget that holds the settings screen
+      // It has an app bar, a body with the user's profile information, and a delete button
+      // The app bar has a title and a help button
       padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

@@ -25,6 +25,8 @@ class VideoRecordingMenu extends StatefulWidget {
 }
 
 class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
+  // This function checks if the video has been recorded
+  // It checks if the video path is not empty and contains '/data/'
   bool isVideoRecorded(int videoNumber) {
     final list = widget.videoItem?.recordedVideos;
 
@@ -42,6 +44,10 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
     return true;
   }
 
+  // This function submits the videos to firebase
+  // It checks if all the videos have been recorded
+  // If not, it shows an alert dialog asking the user to complete all tasks
+  // If all tasks are completed, it uploads the videos and navigates to the final screen
   submit() async {
     for (int i = 0; i < InstructionAndQuestions.videoNames.length; i++) {
       if (!isVideoRecorded(i)) {
@@ -73,6 +79,9 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
   }
 
   @override
+  // This is the main widget that holds the video recording menu
+  // It has an app bar, a body with the instructions and video items, and a
+  // next button at the end to submit the videos
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -92,6 +101,8 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
         iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),
       ),
       body: Scrollbar(
+        // This is the body of the screen
+        // It has a scrollable list of video items that the user can complete
         thumbVisibility: true,
         child: SingleChildScrollView(
           child: Column(
@@ -161,4 +172,4 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
       ),
     );
   }
-}
+} // EOF video_recording_menu.dart
