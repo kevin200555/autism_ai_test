@@ -199,7 +199,7 @@ class UserClass {
         cString += "Q: ###-###-####";
       } else {
         cString += "Q: ${compensation[i][1]}\n";
-        cString += "A: ${mChatRresponses?[i]}\n";
+        cString += "A: ${compensationResponses?[i]}\n";
       }
     }
     String fullCString = '--- Compensation ---\n$cString\n';
@@ -222,7 +222,7 @@ class UserClass {
       mString += "Q: ${mChatR[i][1]}\n";
       mString += "A: ${mChatRresponses?[i]}\n";
     }
-    String fullMString = '--- Compensation ---\n$mString\n';
+    String fullMString = '--- mChatR ---\n$mString\n';
 
     // Get app documents directory
     final directory = await getApplicationDocumentsDirectory();
