@@ -29,7 +29,7 @@ class _PreviousVideosTileState extends State<PreviousVideosTile> {
       decoration: BoxDecoration(
         color: Colors.white, // Background color
         border: Border.all(color: ColorTheme.textColor, width: 2), // Border
-        borderRadius: BorderRadius.circular(8), // Rounded corners
+        borderRadius: BorderRadius.circular(10), // Rounded corners
         boxShadow: [
           BoxShadow(color: Colors.black12, blurRadius: 6, offset: Offset(0, 2)),
         ],
@@ -39,7 +39,6 @@ class _PreviousVideosTileState extends State<PreviousVideosTile> {
         child: Theme(
           data: Theme.of(context).copyWith(dividerColor: ColorTheme.textColor),
           child: ExpansionTile(
-            //
             title: SubTitle('${widget.date} at ${widget.time}'),
             collapsedTextColor: ColorTheme.textColor,
             textColor: ColorTheme.textColor,

@@ -40,7 +40,7 @@ class _FormTileState extends State<FormTile> {
       decoration: BoxDecoration(
         color: Colors.white, // Background color
         border: Border.all(color: ColorTheme.textColor, width: 2), // Border
-        borderRadius: BorderRadius.circular(8), // Rounded corners
+        borderRadius: BorderRadius.circular(10), // Rounded corners
         boxShadow: [
           BoxShadow(color: Colors.black12, blurRadius: 6, offset: Offset(0, 2)),
         ],
