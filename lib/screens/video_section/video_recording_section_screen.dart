@@ -119,6 +119,21 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
     }
   }
 
+    bool isVideoRecorded(int videoNumber) {
+    final list = widget.videoItem?.recordedVideos;
+
+    if (list == null) return false;
+    if (videoNumber < 0 || videoNumber >= list.length) return false;
+
+    final video = list[videoNumber];
+    if (video == null) return false;
+
+    final path = video.path;
+    if (path.isEmpty) return false; // safety check
+
+    return true;
+  }
+
   //deletes Video, has to convert the recordedvideo from an XFILE to a File, This is why this code doesn't work on web applications
   //since web applications can't use dart.io FIles
   Future<void> deleteVideo() async {
@@ -329,14 +344,13 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
                   height: MediaQuery.of(context).size.height * 0.05,
                   child: Container(
                     color:
-                        (widget.videoItem?.recordedVideos[currentStep] == null)
-                        ? ColorTheme.progressBarBackground
-                        : ColorTheme.green,
+                        (isVideoRecorded(currentStep))
+                        ? ColorTheme.green
+                        : ColorTheme.progressBarBackground,
                     child: Center(
-                      child: ButtonText(
-                        (widget.videoItem?.recordedVideos[currentStep] == null)
-                            ? 'Video not recorded'
-                            : 'Task Completed! Press the back button!',
+                      child: ButtonText((isVideoRecorded(currentStep))
+                            ? 'Task Completed! Press the back button!'
+                            : 'Video not recorded',
                         maxLines: 1,
                       ),
                     ),

@@ -185,7 +185,6 @@ class VideoStorageClassItem {
   Future<File> zipFolder(Directory folder) async {
     final encoder = ZipFileEncoder();
     getTime();
-    print('$date, $time');
 
     final zipPath = path.join(
       folder.parent.path,
