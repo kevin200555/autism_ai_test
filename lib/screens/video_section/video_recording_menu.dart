@@ -59,6 +59,9 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
         return;
       }
     }
+    widget.videoItem?.getTime();
+    widget.videoItem?.printSummary();
+    widget.videoItem?.saveToHive();
     widget.videoItem?.uploadAllFiles();
     widget.videoItem?.printSummary();
     if (widget.videoItem != null) {

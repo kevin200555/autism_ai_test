@@ -114,7 +114,7 @@ class VideoStorageClassItem {
     DateTime now = DateTime.now();
 
     // Date
-    String date = "${now.month}-${now.day}-${now.year}";
+    date = "${now.month}-${now.day}-${now.year}";
 
     // Time
     int hour = now.hour;
@@ -128,7 +128,7 @@ class VideoStorageClassItem {
     // Add leading zero to minutes
     String minuteStr = minute.toString().padLeft(2, '0');
 
-    String time = "$hour:$minuteStr $period";
+    time = "$hour:$minuteStr $period";
     if (kDebugMode) print("$date $time");
   }
 
@@ -185,6 +185,8 @@ class VideoStorageClassItem {
   Future<File> zipFolder(Directory folder) async {
     final encoder = ZipFileEncoder();
     getTime();
+    print('$date, $time');
+
     final zipPath = path.join(
       folder.parent.path,
       '${date.replaceAll('-', '_')}_${time.replaceAll('-', '').replaceAll(' ', '')}.zip',
