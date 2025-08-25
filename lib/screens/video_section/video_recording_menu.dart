@@ -18,7 +18,11 @@ import 'package:flutter/material.dart';
 class VideoRecordingMenu extends StatefulWidget {
   final CameraDescription camera;
   final VideoStorageClassItem? videoItem;
-  const VideoRecordingMenu({super.key, required this.camera, required this.videoItem});
+  const VideoRecordingMenu({
+    super.key,
+    required this.camera,
+    required this.videoItem,
+  });
 
   @override
   State<VideoRecordingMenu> createState() => _VideoRecordingMenuState();
@@ -138,7 +142,7 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
                       (index) {
                         return Column(
                           children: [
-                            SizedBox(height: 8),
+                            SizedBox(height: 16),
                             VideoItem(
                               camera: widget.camera,
                               labelText:
@@ -147,7 +151,8 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
                               isCompleted: isVideoRecorded(index),
                               onReturnFromRecording: () {
                                 setState(() {});
-                              }, videoItem: widget.videoItem,
+                              },
+                              videoItem: widget.videoItem,
                             ),
                             SizedBox(height: 8),
                           ],
