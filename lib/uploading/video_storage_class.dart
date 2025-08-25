@@ -137,46 +137,27 @@ class VideoStorageClassItem {
   Future<void> uploadAllFiles() async {
     printSummary();
     try {
-      final directory = await getApplicationDocumentsDirectory();
-      final folder = Directory(path.join(directory.path, UserClass.userId));
+      final appDir = await getApplicationDocumentsDirectory();
+      final folder = Directory(
+        path.join(appDir.path, 'videos'),
+      ); // <-- correct folder
 
       if (!await folder.exists()) {
-        await folder.create(recursive: true);
-        if (kDebugMode) print('Created folder: ${folder.path}');
+        print('No videos folder found!');
+        return;
       }
 
-      for (int i = 0; i < InstructionAndQuestions.videoNames.length; i++) {
-        final videoPath = recordedVideoPaths[i];
-        if (videoPath != null) {
-          final file = File(videoPath);
-          if (await file.exists()) {
-            final dest = File(
-              path.join(
-                folder.path,
-                '${InstructionAndQuestions.videoNames[i]}.mp4',
-              ),
-            );
-            await file.copy(dest.path);
-            if (kDebugMode) print('Copied video to: ${dest.path}');
-          } else {
-            if (kDebugMode) print('Video file missing: $videoPath');
-          }
-        }
-      }
+      // List all files in folder for debug
+      folder.listSync().forEach((f) => print('File to zip: ${f.path}'));
 
       final zipFile = await zipFolder(folder);
-      if (kDebugMode) print('Created zip file: ${zipFile.path}');
+      print('Created zip file: ${zipFile.path}');
 
       final url = await uploadFile(zipFile.path);
-      // ignore: avoid_print
-      if (url != null && kDebugMode) print('Uploaded file URL: $url');
-
-      if (kDebugMode) print('Finished saving files to: ${folder.path}');
+      if (url != null) print('Uploaded file URL: $url');
     } catch (e, stack) {
-      if (kDebugMode) {
-        print('Error in uploadAllFiles: $e');
-        print(stack);
-      }
+      print('Error in uploadAllFiles: $e');
+      print(stack);
     }
   }
 
@@ -188,11 +169,13 @@ class VideoStorageClassItem {
 
     final zipPath = path.join(
       folder.parent.path,
-      '${date.replaceAll('-', '_')}_${time.replaceAll('-', '').replaceAll(' ', '')}.zip',
+      '${date.replaceAll('-', '_')}_${time.replaceAll(':', '').replaceAll(' ', '')}.zip',
     );
+
     encoder.create(zipPath);
-    encoder.addDirectory(folder);
+    encoder.addDirectory(folder); // <-- this now points to folder with videos
     encoder.close();
+
     return File(zipPath);
   }
 } // EOF video_storage_class.dart

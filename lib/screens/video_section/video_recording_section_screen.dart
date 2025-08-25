@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:autism_ai_test/screens/video_section/video_player_screen.dart';
 import 'package:autism_ai_test/constants/colors.dart';
+import 'package:path/path.dart' as path;
+import 'package:path_provider/path_provider.dart';
 
 // This widget takes the user to the screen where they would record their videos
 // The videso will automatically be saved locally on their device, and can be uploaded on video_recording_menu
@@ -73,37 +75,44 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
 
   //stops recording, and saves the video automatically
   Future<void> _stopRecording() async {
-    widget.videoItem?.printSummary();
     if (controller.value.isRecordingVideo) {
       try {
         final videoFile = await controller.stopVideoRecording();
-        debugPrint('Video saved to: ${videoFile.path}');
-        //stores recording in the Xfile list
+        debugPrint('Video saved to temp: ${videoFile.path}');
+
+        // Get persistent app directory
+        final appDir = await getApplicationDocumentsDirectory();
+        final savePath = path.join(
+          appDir.path,
+          'videos',
+          '${InstructionAndQuestions.getVideoNames()[currentStep]}.mp4',
+        );
+
+        // Ensure folder exists
+        await Directory(path.dirname(savePath)).create(recursive: true);
+
+        // Copy from temp to permanent
+        final savedFile = await File(videoFile.path).copy(savePath);
+        debugPrint('Video copied to: ${savedFile.path}');
+
         setState(() {
           isRecording = false;
-          recordedVideo = videoFile;
+          recordedVideo = XFile(savedFile.path);
         });
 
-        // update the video paths list
-        widget.videoItem?.recordedVideoPaths[currentStep] = videoFile.path;
+        // Update Hive model
+        widget.videoItem?.recordedVideoPaths[currentStep] = savedFile.path;
         await widget.videoItem?.saveToHive();
-      
+
         if (!mounted) return;
         await showDialog(
           context: context,
           builder: (_) => const AlertDialog(title: Text('Video Saved!')),
         );
-        viewVideo();
 
-        // checks to make sure the video actually stopped recording
+        viewVideo();
       } catch (e) {
         debugPrint('Error stopping video: $e');
-        if (!mounted) return;
-        await showDialog(
-          context: context,
-          builder: (_) =>
-              const AlertDialog(title: Text('Failed to stop recording!')),
-        );
       }
     }
   }
@@ -119,7 +128,7 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
     }
   }
 
-    bool isVideoRecorded(int videoNumber) {
+  bool isVideoRecorded(int videoNumber) {
     final list = widget.videoItem?.recordedVideos;
 
     if (list == null) return false;
@@ -343,12 +352,12 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
                   width: MediaQuery.of(context).size.width * 0.8,
                   height: MediaQuery.of(context).size.height * 0.05,
                   child: Container(
-                    color:
-                        (isVideoRecorded(currentStep))
+                    color: (isVideoRecorded(currentStep))
                         ? ColorTheme.green
                         : ColorTheme.progressBarBackground,
                     child: Center(
-                      child: ButtonText((isVideoRecorded(currentStep))
+                      child: ButtonText(
+                        (isVideoRecorded(currentStep))
                             ? 'Task Completed! Press the back button!'
                             : 'Video not recorded',
                         maxLines: 1,

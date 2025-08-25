@@ -8,6 +8,7 @@ import 'package:autism_ai_test/widgets/button/next_button.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:autism_ai_test/widgets/other/video_item.dart';
 import 'package:camera/camera.dart';
+import 'package:hive/hive.dart';
 import 'package:flutter/material.dart';
 
 // This widget is the menu for the video recording section
@@ -75,6 +76,8 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
     UserClass.saveToHive();
     widget.videoItem?.resetAll();
     widget.videoItem?.printSummary();
+    final box = await Hive.openBox<VideoStorageClassItem>('video_item_box');
+    await box.clear();
     if (!mounted) return;
     Navigator.push(
       context,
