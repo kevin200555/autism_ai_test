@@ -95,6 +95,7 @@ class WelcomeScreen extends StatelessWidget {
                 );
               },
             ),
+            BodyText('\n\n\n',color: ColorTheme.accent,)
           ],
         ),
       ),

@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
-import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';

@@ -65,24 +65,29 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     border: Border.all(color: ColorTheme.textColor, width: 3),
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      BodyText(
-                        'Previous Test Result: \n ${UserClass.videoList[UserClass.videoList.length - 1].date}',
-                        color: ColorTheme.textColor,
-                      ),
-                      BodyText(
-                        '${UserClass.videoList[UserClass.videoList.length - 1].time}\n',
-                        color: ColorTheme.textColor,
-                      ),
-                      PartialCircle(
-                        fraction: 0.28,
-                        size: 150,
-                        color: ColorTheme.green,
-                      ),
-                    ],
-                  ),
+                  child: UserClass.videoList.isNotEmpty
+                      ? Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            BodyText(
+                              'Previous Test Result: \n ${UserClass.videoList[UserClass.videoList.length - 1].date}',
+                              color: ColorTheme.textColor,
+                            ),
+                            BodyText(
+                              '${UserClass.videoList[UserClass.videoList.length - 1].time}\n',
+                              color: ColorTheme.textColor,
+                            ),
+                            PartialCircle(
+                              fraction: 0.28,
+                              size: 150,
+                              color: ColorTheme.green,
+                            ),
+                          ],
+                        )
+                      : BodyText(
+                          'No previous test results yet.',
+                          color: ColorTheme.textColor,
+                        ),
                 ),
               ),
             ],
@@ -140,7 +145,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     UserClass.compensationResponses,
                   ),
                   description:
-                      'This form is optional, but if you want to be compensated for your time, fill this out'
+                      'This form is optional, but if you want to be compensated for your time, fill this out. '
                       'Keep in mind, this form will ask for your Social Security Number.\n',
                   asscoiatedScreen: CompensationFormScreen(
                     camera: widget.camera,
