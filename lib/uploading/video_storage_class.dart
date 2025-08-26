@@ -142,21 +142,40 @@ class VideoStorageClassItem {
       ); // <-- correct folder
 
       if (!await folder.exists()) {
-        print('No videos folder found!');
+        if (kDebugMode) {
+          print('No videos folder found!');
+        }
         return;
       }
 
-      // List all files in folder for debug
+      // List all files in folder for debug 
+      // loop through and print each file path
+      // ignore: avoid_print
       folder.listSync().forEach((f) => print('File to zip: ${f.path}'));
 
+      // Create zip file
+      // The zip file will be created in the parent directory of the videos folder
       final zipFile = await zipFolder(folder);
-      print('Created zip file: ${zipFile.path}');
+      if (kDebugMode) {
+        print('Created zip file: ${zipFile.path}');
+      }
 
+      // Upload zip file to Firebase
+      // The uploadFile function is defined in upload_to_firebase.dart
       final url = await uploadFile(zipFile.path);
-      if (url != null) print('Uploaded file URL: $url');
+      if (url != null) {}
+      if (kDebugMode) {
+        {
+          print('Uploaded file URL: $url');
+        }
+      }
     } catch (e, stack) {
-      print('Error in uploadAllFiles: $e');
-      print(stack);
+      if (kDebugMode) {
+        print('Error in uploadAllFiles: $e');
+      }
+      if (kDebugMode) {
+        print(stack);
+      }
     }
   }
 
