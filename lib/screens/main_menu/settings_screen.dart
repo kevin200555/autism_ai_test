@@ -26,7 +26,15 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return Padding(
+      padding: EdgeInsetsGeometry.all(16),
+      child: Container(
+            padding: const EdgeInsets.all(16.0),
+            decoration: BoxDecoration(
+              color: ColorTheme.background,
+              border: Border.all(color: ColorTheme.textColor, width: 3),
+              borderRadius: BorderRadius.circular(8),
+            ),child: SingleChildScrollView(
       // This is the main widget that holds the settings screen
       // It has an app bar, a body with the user's profile information, and a delete button
       // The app bar has a title and a help button
@@ -55,9 +63,9 @@ class SettingsScreen extends StatelessWidget {
             '${getDate(UserClass.userId)}\n',
             color: ColorTheme.textColor,
           ),
-          SubTitle('UserId: '),
+          SubTitle('User ID: '),
           BodyText('${UserClass.userId}\n', color: ColorTheme.textColor),
-          SubTitle('Amount of video recording sessions: '),
+          ImportantBodyText('Amount of video recording sessions: ', color: ColorTheme.textColor,),
           BodyText(
             '${UserClass.videoList.length}\n\n\n',
             color: ColorTheme.textColor,
@@ -69,6 +77,6 @@ class SettingsScreen extends StatelessWidget {
           ),
         ],
       ),
-    );
+    )));
   }
 } // EOF settings_screen.dart

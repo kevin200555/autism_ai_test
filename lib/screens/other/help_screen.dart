@@ -45,7 +45,7 @@ class HelpScreen extends StatelessWidget {
               // Video Recording Section
               SubTitle('Video Recording'),
               BodyText(
-                'Video recording is the main feature of the app '
+                'Video recording is the main feature of the app. '
                 'Our AI model requires videos in order to accuratley determine if a child has autism\n\n'
                 'To Record a video, simply press the green button to start recording, and then the red button to stop '
                 'The button with an \'eye\' icon can then be pressed to review the video '
@@ -63,16 +63,17 @@ class HelpScreen extends StatelessWidget {
                 'or \'submit\' button in order for that form or video to be saved\n\n'
                 'Q: Am I able to restart my progress?, I have made a mistake\n'
                 'A: You are welcome to go back to any point in the form and change your answers or upload '
-                'a new video. Keep an eye out for the back button at the top left corner\n',
+                'a new video. Keep an eye out for the back button at the top left corner. In addition, you can delete'
+                'your account in the settings menu if you so choose \n',
                 color: ColorTheme.textColor,
               ),
               // Toubleshooting section
               SubTitle('Troubleshooting'),
               BodyText(
-                'To my knowledge, the only technical issue that could arise is troubles with the camera '
+                'To my knowledge, the only technical issue that could arise is troubles with the camera and WiFi'
                 'make sure to allow the use of the camera whlie on the app, it is critical for this test\n\n'
-                'Also ensure that your device has a working camera, but at when this point, that is a non issue. '
-                'If, for whatever reason, you are stuck, press the below button in order to reset\n',
+                'Also ensure that you are well connected to the internet in order to ensure everything is being '
+                'uploaded correctly',
                 color: ColorTheme.textColor,
               ),
               BodyText(
