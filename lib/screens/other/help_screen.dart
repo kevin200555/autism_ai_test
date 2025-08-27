@@ -42,6 +42,15 @@ class HelpScreen extends StatelessWidget {
                 'this request to record.\n',
                 color: ColorTheme.textColor,
               ),
+              SubTitle('Questionaires'),
+              BodyText(
+                'The first three sections of this test are questionaires. These questionaires are '
+                'important for gathering information about the child and family history. \n\n'
+                'simply read the questions and select the answer that best fits your situation. '
+                'You can navigate from and to these questionaires using the back button at the top left corner. '
+                'Your answers will be saved. \n',
+                color: ColorTheme.textColor,
+              ),
               // Video Recording Section
               SubTitle('Video Recording'),
               BodyText(
@@ -50,7 +59,7 @@ class HelpScreen extends StatelessWidget {
                 'To Record a video, simply press the green button to start recording, and then the red button to stop '
                 'The button with an \'eye\' icon can then be pressed to review the video '
                 'If you\'re not satisfied with the video, you can then delete the video by pressing the button '
-                'with the trash can on it. Take as much time as you need, so don\'t worry about \'messing up\'\n',
+                'with the trash can on it. Take as much time as you need, videos are only uploaded when you submit the videos.\n',
                 color: ColorTheme.textColor,
               ),
               // FAQ Section
@@ -70,10 +79,10 @@ class HelpScreen extends StatelessWidget {
               // Toubleshooting section
               SubTitle('Troubleshooting'),
               BodyText(
-                'To my knowledge, the only technical issue that could arise is troubles with the camera and WiFi'
-                'make sure to allow the use of the camera whlie on the app, it is critical for this test\n\n'
+                'To my knowledge, the only technical issue that could arise is troubles with the camera and WiFi. '
+                'Make sure to allow the use of the camera whlie on the app, it is critical for this test\n\n'
                 'Also ensure that you are well connected to the internet in order to ensure everything is being '
-                'uploaded correctly',
+                'uploaded correctly. \n',
                 color: ColorTheme.textColor,
               ),
               BodyText(
@@ -82,7 +91,7 @@ class HelpScreen extends StatelessWidget {
                 color: ColorTheme.red,
               ),
               BackToMainMenu(camera: camera),
-              BodyText('\n', color: ColorTheme.textColor),
+              //BodyText('\n', color: ColorTheme.textColor),
               // Contact information section
               SubTitle('Contact'),
               BodyText(

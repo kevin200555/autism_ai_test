@@ -36,8 +36,9 @@ class PreviousVideosScreen extends StatelessWidget {
                   'You can click on each to view more information about them.\n',
                   color: ColorTheme.textColor,
                 ),
-
-                ...UserClass.videoList.map(
+                // for each video in the user's video list, create a PreviousVideosTile
+                // reversing the list to show the most recent first
+                ...UserClass.videoList.reversed.map(
                   (video) => Padding(
                     padding: const EdgeInsets.symmetric(vertical: 4),
                     child: PreviousVideosTile(

@@ -70,7 +70,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             BodyText(
-                              'Previous Test Result: \n ${UserClass.videoList[UserClass.videoList.length - 1].date}',
+                              'Previous Test Result: \n${UserClass.videoList[UserClass.videoList.length - 1].date}',
                               color: ColorTheme.textColor,
                             ),
                             BodyText(
