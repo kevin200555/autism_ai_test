@@ -4,7 +4,6 @@ import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/uploading/video_storage_class.dart';
 import 'package:autism_ai_test/widgets/button/help_button.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:autism_ai_test/screens/video_section/video_player_screen.dart';

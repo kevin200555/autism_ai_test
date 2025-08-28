@@ -18,6 +18,19 @@ class VideoPlayerScreen extends StatefulWidget {
 
 class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   late VideoPlayerController _controller;
+  double _scale = 1.0;
+
+  void _onTapDown(TapDownDetails details) {
+    setState(() => _scale = 1.1); // grow slightly
+  }
+
+  void _onTapUp(TapUpDetails details) {
+    setState(() => _scale = 1.0); // back to normal
+  }
+
+  void _onTapCancel() {
+    setState(() => _scale = 1.0); // cancel press
+  }
 
   // Initializes the video player controller with the video path
   // This is where the video will be loaded and played
@@ -87,20 +100,30 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
       floatingActionButton: SizedBox(
         width: MediaQuery.sizeOf(context).height * 0.075,
         height: MediaQuery.sizeOf(context).height * 0.075,
-        child: FloatingActionButton(
-          onPressed: () {
-            setState(() {
-              _controller.value.isPlaying
-                  ? _controller.pause()
-                  : _controller.play();
-            });
-          },
-          shape: const CircleBorder(),
-          backgroundColor: ColorTheme.accent,
-          foregroundColor: ColorTheme.background,
-          child: Icon(
-            _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
-            size: MediaQuery.sizeOf(context).height * 0.07,
+        child: GestureDetector(
+          onTapDown: _onTapDown,
+          onTapUp: _onTapUp,
+          onTapCancel: _onTapCancel,
+          child: AnimatedScale(
+            scale: _scale,
+            duration: const Duration(milliseconds: 120),
+            curve: Curves.easeOut,
+            child: FloatingActionButton(
+              onPressed: () {
+                setState(() {
+                  _controller.value.isPlaying
+                      ? _controller.pause()
+                      : _controller.play();
+                });
+              },
+              shape: const CircleBorder(),
+              backgroundColor: ColorTheme.accent,
+              foregroundColor: ColorTheme.background,
+              child: Icon(
+                _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
+                size: MediaQuery.sizeOf(context).height * 0.07,
+              ),
+            ),
           ),
         ),
       ),

@@ -30,7 +30,6 @@ class VideoRecordingMenu extends StatefulWidget {
 }
 
 class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
-  
   // This function checks if the video has been recorded
   // It checks if the video path is not empty and contains '/data/'
   bool isVideoRecorded(int videoNumber) {
