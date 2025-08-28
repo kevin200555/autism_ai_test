@@ -20,7 +20,11 @@ import 'package:autism_ai_test/widgets/button/help_button.dart';
 class GeneralInstructionsScreen extends StatelessWidget {
   final CameraDescription camera;
   final VideoStorageClassItem? videoItem;
-  const GeneralInstructionsScreen({super.key, required this.camera, required this.videoItem});
+  const GeneralInstructionsScreen({
+    super.key,
+    required this.camera,
+    required this.videoItem,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -115,8 +119,10 @@ class GeneralInstructionsScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) =>
-                            FewTipsBeforeStart(camera: camera, videoItem: videoItem,),
+                        builder: (context) => FewTipsBeforeStart(
+                          camera: camera,
+                          videoItem: videoItem,
+                        ),
                       ),
                     );
                   },
@@ -133,7 +139,11 @@ class GeneralInstructionsScreen extends StatelessWidget {
 class FewTipsBeforeStart extends StatelessWidget {
   final CameraDescription camera;
   final VideoStorageClassItem? videoItem;
-  const FewTipsBeforeStart({super.key, required this.camera, required this.videoItem});
+  const FewTipsBeforeStart({
+    super.key,
+    required this.camera,
+    required this.videoItem,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -411,8 +421,10 @@ class FewTipsBeforeStart extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) =>
-                            BeforeYouStartScreen(camera: camera, videoItem: videoItem,),
+                        builder: (context) => BeforeYouStartScreen(
+                          camera: camera,
+                          videoItem: videoItem,
+                        ),
                       ),
                     );
                   },
@@ -429,7 +441,11 @@ class FewTipsBeforeStart extends StatelessWidget {
 class BeforeYouStartScreen extends StatelessWidget {
   final CameraDescription camera;
   final VideoStorageClassItem? videoItem;
-  const BeforeYouStartScreen({super.key, required this.camera, required this.videoItem});
+  const BeforeYouStartScreen({
+    super.key,
+    required this.camera,
+    required this.videoItem,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -649,7 +665,10 @@ class BeforeYouStartScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => FilmingTipsScreen(camera: camera, videoItem: videoItem,),
+                        builder: (context) => FilmingTipsScreen(
+                          camera: camera,
+                          videoItem: videoItem,
+                        ),
                       ),
                     );
                   },

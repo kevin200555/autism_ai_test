@@ -19,17 +19,25 @@ class VideoPlayerScreen extends StatefulWidget {
 class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   late VideoPlayerController _controller;
 
-  @override
   // Initializes the video player controller with the video path
   // This is where the video will be loaded and played
   // The video will automatically play once it is initialized
+  @override
   void initState() {
     super.initState();
     _controller = VideoPlayerController.file(File(widget.videoPath))
       ..initialize().then((_) {
-        setState(() {});
+        setState(() {}); // refresh UI once ready
         _controller.play();
       });
+
+    // Listen for video state changes
+    _controller.addListener(() {
+      if (_controller.value.position >= _controller.value.duration) {
+        // Video ended → force button to show "play"
+        setState(() {});
+      }
+    });
   }
 
   @override

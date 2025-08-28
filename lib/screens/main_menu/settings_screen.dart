@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 // The purpose of this screen is to actually display the informed_consent answers back to the user
 // Since that form can't be edited, I feel this is good to do
 // Also, it contains a delelte account button that resets user data
-// good for debugging, but if the user made a mistake on the informed_conset, it could be good for them too 
+// good for debugging, but if the user made a mistake on the informed_conset, it could be good for them too
 class SettingsScreen extends StatelessWidget {
   final CameraDescription camera;
 
@@ -29,53 +29,59 @@ class SettingsScreen extends StatelessWidget {
     return Padding(
       padding: EdgeInsetsGeometry.all(16),
       child: Container(
-            padding: const EdgeInsets.all(16.0),
-            decoration: BoxDecoration(
-              color: ColorTheme.background,
-              border: Border.all(color: ColorTheme.textColor, width: 3),
-              borderRadius: BorderRadius.circular(8),
-            ),child: SingleChildScrollView(
-      // This is the main widget that holds the settings screen
-      // It has an app bar, a body with the user's profile information, and a delete button
-      // The app bar has a title and a help button
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SubTitle('Profile'),
-          BodyText(
-            'This is your profile! All of this information is gathered from your '
-            'responses to the Informed Consent Document.\n',
-            color: ColorTheme.textColor,
+        padding: const EdgeInsets.all(16.0),
+        decoration: BoxDecoration(
+          color: ColorTheme.background,
+          border: Border.all(color: ColorTheme.textColor, width: 3),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: SingleChildScrollView(
+          // This is the main widget that holds the settings screen
+          // It has an app bar, a body with the user's profile information, and a delete button
+          // The app bar has a title and a help button
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SubTitle('Profile'),
+              BodyText(
+                'This is your profile! All of this information is gathered from your '
+                'responses to the Informed Consent Document.\n',
+                color: ColorTheme.textColor,
+              ),
+              SubTitle('Name of Child: '),
+              BodyText(
+                '${UserClass.iCResponses?[2]}\n',
+                color: ColorTheme.textColor,
+              ),
+              SubTitle('Name of Parent: '),
+              BodyText(
+                '${UserClass.iCResponses?[4]}\n',
+                color: ColorTheme.textColor,
+              ),
+              SubTitle('Date of account creation: '),
+              BodyText(
+                '${getDate(UserClass.userId)}\n',
+                color: ColorTheme.textColor,
+              ),
+              SubTitle('User ID: '),
+              BodyText('${UserClass.userId}\n', color: ColorTheme.textColor),
+              ImportantBodyText(
+                'Amount of video recording sessions: ',
+                color: ColorTheme.textColor,
+              ),
+              BodyText(
+                '${UserClass.videoList.length}\n\n\n',
+                color: ColorTheme.textColor,
+              ),
+              // Delete Button
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: DeleteButton(camera: camera),
+              ),
+            ],
           ),
-          SubTitle('Name of Child: '),
-          BodyText(
-            '${UserClass.iCResponses?[2]}\n',
-            color: ColorTheme.textColor,
-          ),
-          SubTitle('Name of Parent: '),
-          BodyText(
-            '${UserClass.iCResponses?[4]}\n',
-            color: ColorTheme.textColor,
-          ),
-          SubTitle('Date of account creation: '),
-          BodyText(
-            '${getDate(UserClass.userId)}\n',
-            color: ColorTheme.textColor,
-          ),
-          SubTitle('User ID: '),
-          BodyText('${UserClass.userId}\n', color: ColorTheme.textColor),
-          ImportantBodyText('Amount of video recording sessions: ', color: ColorTheme.textColor,),
-          BodyText(
-            '${UserClass.videoList.length}\n\n\n',
-            color: ColorTheme.textColor,
-          ),
-          // Delete Button
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: DeleteButton(camera: camera),
-          ),
-        ],
+        ),
       ),
-    )));
+    );
   }
 } // EOF settings_screen.dart

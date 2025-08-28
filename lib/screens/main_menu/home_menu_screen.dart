@@ -20,11 +20,11 @@ class HomeMenuScreen extends StatefulWidget {
 }
 
 class _HomeMenuScreenState extends State<HomeMenuScreen> {
-  int currentPageIndex = 0; 
+  int currentPageIndex = 0;
 
   // Different pages
   late final List<Widget> pages = [
-    DashboardScreen(camera: widget.camera,),
+    DashboardScreen(camera: widget.camera),
     VideoNavBarScreen(camera: widget.camera),
     PreviousVideosScreen(),
     SettingsScreen(camera: widget.camera),
@@ -61,12 +61,9 @@ class _HomeMenuScreenState extends State<HomeMenuScreen> {
           });
         },
         destinations: const <Widget>[
-          NavigationDestination(icon: Icon(Icons.home), label: '',),
-          NavigationDestination(icon: Icon(Icons.camera_alt), label: '',),
-          NavigationDestination(
-            icon: Icon(Icons.video_library),
-            label: '',
-          ),
+          NavigationDestination(icon: Icon(Icons.home), label: ''),
+          NavigationDestination(icon: Icon(Icons.camera_alt), label: ''),
+          NavigationDestination(icon: Icon(Icons.video_library), label: ''),
           NavigationDestination(icon: Icon(Icons.settings), label: ''),
         ],
       ),
