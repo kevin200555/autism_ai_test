@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/uploading/video_storage_class.dart';
@@ -34,6 +35,8 @@ class VideoRecordingSectionScreen extends StatefulWidget {
 class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
   late int currentStep = widget.currentStep; //keeps track of page
   late CameraController controller;
+  final stopwatch = Stopwatch();
+  Timer? _timer;
   //final ScrollController _scrollController = ScrollController();
   bool isRecording = false;
   XFile? recordedVideo; //stores recorded videos
@@ -46,6 +49,28 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
   // the camera controllers lets the program interact with the camera (taking and storing videos)
   // the scroll controller makes sure the user always starts at the top of the page before taking a video
   // (so they can read the instructions)
+
+  double _scale = 1.0;
+
+  void _onTapDown(TapDownDetails details) {
+    setState(() => _scale = 1.1); // grow slightly
+  }
+
+  void _onTapUp(TapUpDetails details) {
+    setState(() => _scale = 1.0); // back to normal
+  }
+
+  void _onTapCancel() {
+    setState(() => _scale = 1.0); // cancel press
+  }
+
+  millisecondsToMinutes(int milliseconds) {
+    int totalSeconds = (milliseconds / 1000).floor();
+    int minutes = (totalSeconds / 60).floor();
+    int seconds = totalSeconds % 60;
+    return '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
+  }
+
   @override
   void initState() {
     super.initState();
@@ -67,6 +92,10 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
   //starts recording
   Future<void> _startRecording() async {
     if (!controller.value.isRecordingVideo) {
+      stopwatch.start();
+      _timer = Timer.periodic(const Duration(milliseconds: 100), (_) {
+        if (mounted) setState(() {});
+      });
       await controller.startVideoRecording();
       debugPrint('recording in progress');
       setState(() => isRecording = true);
@@ -77,6 +106,12 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
   Future<void> _stopRecording() async {
     if (controller.value.isRecordingVideo) {
       try {
+        stopwatch.stop();
+        stopwatch.reset();
+
+        _timer?.cancel();
+        _timer = null;
+
         final videoFile = await controller.stopVideoRecording();
         debugPrint('Video saved to temp: ${videoFile.path}');
 
@@ -256,16 +291,12 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
               // Text that indicates to the user if they're recording or not, synced with the recording button
               SizedBox(
                 width: double.infinity,
-                child: AutoSizeText(
-                  (isRecording) ? 'RECORDING IN PROGRESS' : 'RECORDING STOPPED',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: (isRecording) ? ColorTheme.green : ColorTheme.red,
-                    fontWeight: FontWeight.bold,
-                  ),
+                child: ImportantBodyText(
+                  (isRecording)
+                      ? '${millisecondsToMinutes(stopwatch.elapsedMilliseconds)}'
+                      : 'RECORDING STOPPED',
+                  color: (isRecording) ? ColorTheme.green : ColorTheme.red,
                   textAlign: TextAlign.center,
-                  minFontSize: 12,
-                  maxLines: 1,
                 ),
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.01),
@@ -299,30 +330,40 @@ class _GuidedRecorderState extends State<VideoRecordingSectionScreen> {
                   ),
                   SizedBox(width: MediaQuery.of(context).size.width * 0.2),
                   //Recording button
-                  ElevatedButton(
-                    onPressed: !controller.value.isInitialized
-                        ? null
-                        : (isRecording ? _stopRecording : _startRecording),
-                    style: ElevatedButton.styleFrom(
-                      shape: const CircleBorder(),
-                      padding: const EdgeInsets.all(
-                        1,
-                      ), // space inside the button
-                      backgroundColor: (isRecording)
-                          ? ColorTheme.green
-                          : ColorTheme.red,
+                  GestureDetector(
+                    onTapDown: _onTapDown,
+                    onTapUp: _onTapUp,
+                    onTapCancel: _onTapCancel,
+                    child: AnimatedScale(
+                      scale: _scale,
+                      duration: const Duration(milliseconds: 120),
+                      curve: Curves.easeOut,
+                      child: ElevatedButton(
+                        onPressed: !controller.value.isInitialized
+                            ? null
+                            : (isRecording ? _stopRecording : _startRecording),
+                        style: ElevatedButton.styleFrom(
+                          shape: const CircleBorder(),
+                          padding: const EdgeInsets.all(
+                            1,
+                          ), // space inside the button
+                          backgroundColor: (isRecording)
+                              ? ColorTheme.green
+                              : ColorTheme.red,
+                        ),
+                        child: isRecording
+                            ? Icon(
+                                Icons.motion_photos_pause_outlined,
+                                size: 72,
+                                color: ColorTheme.background,
+                              )
+                            : Icon(
+                                Icons.not_started,
+                                size: 72,
+                                color: ColorTheme.background,
+                              ),
+                      ),
                     ),
-                    child: isRecording
-                        ? Icon(
-                            Icons.motion_photos_pause_outlined,
-                            size: 72,
-                            color: ColorTheme.background,
-                          )
-                        : Icon(
-                            Icons.not_started,
-                            size: 72,
-                            color: ColorTheme.background,
-                          ),
                   ),
                   SizedBox(width: MediaQuery.of(context).size.width * 0.2),
                   // Lets User delete video if they have a video
