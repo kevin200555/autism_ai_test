@@ -74,7 +74,7 @@ class InstructionAndQuestions {
     ['SAQ', 'What is your child\'s middle name? (Enter N/A if not applicable)'],
     ['SAQ', 'What is your child\'s last name?'],
     ['SAQ', 'What is their date of birth? (MM/DD/YYYY)'],
-    ['MCQ', 'What is their gender?', 'Male', 'Female'],
+    ['MCQ', 'What is their gender?', 'Male', 'Female','Rather not to say'],
     ['SAQ', 'What is the date of their Diagnosis?'],
     [
       'MCQ',
