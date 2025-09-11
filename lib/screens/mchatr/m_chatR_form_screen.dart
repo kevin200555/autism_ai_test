@@ -10,6 +10,7 @@ import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/button/back_button.dart';
 import 'package:autism_ai_test/widgets/button/help_button.dart';
 import 'package:autism_ai_test/widgets/button/next_button.dart';
+import 'package:autism_ai_test/widgets/other/app_bar_gradient.dart';
 import 'package:autism_ai_test/widgets/questions/radio_multiple_choice_question_widget.dart';
 import 'package:autism_ai_test/constants/colors.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
@@ -72,8 +73,9 @@ class _MChatRFormScreen1State extends State<MChatRFormScreen1> {
           color: ColorTheme.alternateTextColor,
         ),
         centerTitle: true,
-        backgroundColor: ColorTheme.accent,
+        backgroundColor: Colors.transparent,
         iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),
+        flexibleSpace: AppBarGradient(),
       ),
 
       body: Scrollbar(
@@ -172,8 +174,9 @@ class _MChatRFormScreen2State extends State<MChatRFormScreen2> {
           color: ColorTheme.alternateTextColor,
         ),
         centerTitle: true,
-        backgroundColor: ColorTheme.accent,
+        backgroundColor: Colors.transparent,
         iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),
+        flexibleSpace: AppBarGradient(),
       ),
       body: Scrollbar(
         thumbVisibility: true,

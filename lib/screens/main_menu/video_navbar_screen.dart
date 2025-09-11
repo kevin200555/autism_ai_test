@@ -29,7 +29,7 @@ class VideoNavBarScreen extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             decoration: BoxDecoration(
               color: ColorTheme.background,
-              border: Border.all(color: ColorTheme.textColor, width: 3),
+              border: Border.all(color: ColorTheme.textColor, width: 2),
               borderRadius: BorderRadius.circular(8),
             ),
             // This is the body of the screen

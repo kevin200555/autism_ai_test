@@ -70,9 +70,9 @@ class AutismAITest extends StatelessWidget {
       case 'IC_document_form':
         initialScreen = WelcomeScreen(camera: cameras[0]);
       case 'child_intake':
-        initialScreen = ChildIntakeFormScreen(camera: cameras[0]);
+        initialScreen = HomeMenuScreen(camera: cameras[0]);
       case 'mChatR1':
-        initialScreen = MChatRFormScreen1(camera: cameras[0]);
+        initialScreen = HomeMenuScreen(camera: cameras[0]);
       // anytime the user disconnects from the General Instructions Screen, it brings the User to the first screen in that area
       // This is because their isn't a reason not to, might as well since you're not filling anything out any information
       case 'video_info_screen':

@@ -56,19 +56,8 @@ class _NextButtonState extends State<NextButton> {
             scale: _scale,
             duration: const Duration(milliseconds: 120),
             curve: Curves.easeOut,
-            child: Container(
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: ColorTheme.accentShadow,
-                    spreadRadius: 2,
-                    blurRadius: 5,
-                    offset: const Offset(3, 3), // changes position of shadow
-                  ),
-                ],
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: ElevatedButton.icon(
+            child: 
+               ElevatedButton.icon(
                 onPressed: widget
                     .onPressed, // still works with keyboard / accessibility
                 label: ButtonText(
@@ -97,8 +86,6 @@ class _NextButtonState extends State<NextButton> {
             ),
           ),
         ),
-      ),
-    );
-    ;
+      );
   }
 } // EOF next_button.dart

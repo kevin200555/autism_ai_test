@@ -5,6 +5,7 @@ import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/uploading/video_storage_class.dart';
 import 'package:autism_ai_test/widgets/button/help_button.dart';
 import 'package:autism_ai_test/widgets/button/next_button.dart';
+import 'package:autism_ai_test/widgets/other/app_bar_gradient.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:autism_ai_test/widgets/other/video_item.dart';
 import 'package:camera/camera.dart';
@@ -93,6 +94,7 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
   // next button at the end to submit the videos
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ColorTheme.blueBackground,
       appBar: AppBar(
         leading: BackButton(),
         actions: [
@@ -106,8 +108,9 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
           color: ColorTheme.alternateTextColor,
         ),
         centerTitle: true,
-        backgroundColor: ColorTheme.accent,
+        backgroundColor: Colors.transparent,
         iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),
+        flexibleSpace: AppBarGradient(),
       ),
       body: Scrollbar(
         // This is the body of the screen
@@ -116,20 +119,6 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SubTitle('Instructions'),
-              BodyText(
-                'This is the list of all of the videos you have to take. '
-                'Carefully read each set of instructions and decide which one you want to do first. '
-                'You are welcome to take these out of order.  As always, feel free to take breaks '
-                'and continue when you are ready.',
-                color: ColorTheme.textColor,
-              ),
-              BodyText(
-                'Click the drop down arrow in order to read the task\'s instructions.'
-                'Then scroll down and click the "RECORD" button to complete that task.\n',
-                color: ColorTheme.textColor,
-              ),
-              SubTitle('Tasks'),
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
                 child: Container(
@@ -140,46 +129,67 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Column(
-                    children: List.generate(
-                      InstructionAndQuestions.videoNames.length,
-                      (index) {
-                        return Column(
-                          children: [
-                            SizedBox(height: 16),
-                            VideoItem(
-                              camera: widget.camera,
-                              labelText:
-                                  InstructionAndQuestions.videoNames[index],
-                              taskNumber: index,
-                              isCompleted: isVideoRecorded(index),
-                              onReturnFromRecording: () {
-                                setState(() {});
-                              },
-                              videoItem: widget.videoItem,
-                            ),
-                            SizedBox(height: 8),
-                          ],
-                        );
-                      },
-                    ),
+                    children: [
+                      SubTitle('Instructions'),
+                      BodyText(
+                        'This is the list of all of the videos you have to take. '
+                        'Carefully read each set of instructions and decide which one you want to do first. '
+                        'You are welcome to take these out of order.  As always, feel free to take breaks '
+                        'and continue when you are ready.',
+                        color: ColorTheme.textColor,
+                      ),
+                      BodyText(
+                        'Click the drop down arrow in order to read the task\'s instructions. '
+                        'Then scroll down and click the "RECORD" button to complete that task.\n',
+                        color: ColorTheme.textColor,
+                      ),
+
+                      SubTitle('Tasks'),
+                      Column(
+                        children: List.generate(
+                          InstructionAndQuestions.videoNames.length,
+                          (index) {
+                            return Column(
+                              children: [
+                                SizedBox(height: 16),
+                                VideoItem(
+                                  camera: widget.camera,
+                                  labelText:
+                                      InstructionAndQuestions.videoNames[index],
+                                  taskNumber: index,
+                                  isCompleted: isVideoRecorded(index),
+                                  onReturnFromRecording: () {
+                                    setState(() {});
+                                  },
+                                  videoItem: widget.videoItem,
+                                ),
+                                SizedBox(height: 8),
+                              ],
+                            );
+                          },
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.01),
               SubTitle('\n'),
               SubTitle('\n'),
-              NextButton(
-                label: 'SUBMIT VIDEOS',
-                onPressed: () {
-                  UserClass.currentScreen = "main_menu";
-                  submit();
-                },
-              ),
+
               BodyText('\n\n\n', color: ColorTheme.textColor),
             ],
           ),
         ),
       ),
+      floatingActionButton: NextButton(
+        label: 'SUBMIT VIDEOS',
+        onPressed: () {
+          UserClass.currentScreen = "main_menu";
+          submit();
+        },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 } // EOF video_recording_menu.dart

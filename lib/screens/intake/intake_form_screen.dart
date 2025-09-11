@@ -3,6 +3,7 @@ import 'package:autism_ai_test/screens/main_menu/home_menu_screen.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/button/back_button.dart';
 import 'package:autism_ai_test/widgets/button/help_button.dart';
+import 'package:autism_ai_test/widgets/other/app_bar_gradient.dart';
 import 'package:autism_ai_test/widgets/questions/choose_all_question_widget.dart';
 import 'package:autism_ai_test/widgets/questions/mutliple_choice_question_widget.dart';
 import 'package:autism_ai_test/widgets/questions/short_answer_question_widget.dart';
@@ -65,8 +66,9 @@ class _ChildIntakeFormScreenState extends State<ChildIntakeFormScreen> {
           color: ColorTheme.alternateTextColor,
         ),
         centerTitle: true,
-        backgroundColor: ColorTheme.accent,
+        backgroundColor: Colors.transparent,
         iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),
+        flexibleSpace: AppBarGradient(),
       ),
       // This is the body of the screen
       // It has a scrollable list of questions that the user can answer

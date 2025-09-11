@@ -41,7 +41,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    border: Border.all(color: ColorTheme.textColor, width: 3),
+                    border: Border.all(color: ColorTheme.textColor, width: 2),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Column(
@@ -62,7 +62,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    border: Border.all(color: ColorTheme.textColor, width: 3),
+                    border: Border.all(color: ColorTheme.textColor, width: 2),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: UserClass.videoList.isNotEmpty
@@ -98,7 +98,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: Colors.white,
-              border: Border.all(color: ColorTheme.textColor, width: 3),
+              border: Border.all(color: ColorTheme.textColor, width: 2),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Column(

@@ -8,6 +8,7 @@ import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/screens/informed_consent/ic_signiture.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/button/help_button.dart';
+import 'package:autism_ai_test/widgets/other/app_bar_gradient.dart';
 import 'package:autism_ai_test/widgets/questions/mutliple_choice_question_widget.dart';
 import 'package:autism_ai_test/widgets/questions/short_answer_question_widget.dart';
 import 'package:autism_ai_test/constants/colors.dart';
@@ -88,8 +89,9 @@ class _InformedConsentSigningScreenState
           color: ColorTheme.alternateTextColor,
         ),
         centerTitle: true,
-        backgroundColor: ColorTheme.accent,
+        backgroundColor: Colors.transparent,
         iconTheme: IconThemeData(color: ColorTheme.alternateTextColor),
+        flexibleSpace: AppBarGradient(),
       ),
       // Body of the screen
       // This is a scrollable list of questions

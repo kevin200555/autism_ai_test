@@ -3,6 +3,7 @@ import 'package:autism_ai_test/constants/instruction_and_questions.dart';
 import 'package:autism_ai_test/screens/informed_consent/ic_document_screen.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/widgets/button/next_button.dart';
+import 'package:autism_ai_test/widgets/other/app_bar_gradient.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,8 @@ class WelcomeScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
         title: AppBarTitle('Welcome!', color: ColorTheme.background),
         centerTitle: true,
-        backgroundColor: ColorTheme.accent,
+        backgroundColor: Colors.transparent,
+        flexibleSpace: AppBarGradient(),
       ),
       // Text
       // This is the body of the screen
@@ -95,7 +97,7 @@ class WelcomeScreen extends StatelessWidget {
                 );
               },
             ),
-            BodyText('\n\n\n',color: ColorTheme.accent,)
+            BodyText('\n\n\n', color: ColorTheme.accent),
           ],
         ),
       ),

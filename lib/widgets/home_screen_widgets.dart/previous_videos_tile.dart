@@ -25,16 +25,8 @@ class PreviousVideosTile extends StatefulWidget {
 class _PreviousVideosTileState extends State<PreviousVideosTile> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white, // Background color
-        border: Border.all(color: ColorTheme.textColor, width: 2), // Border
-        borderRadius: BorderRadius.circular(10), // Rounded corners
-        boxShadow: [
-          BoxShadow(color: Colors.black12, blurRadius: 6, offset: Offset(0, 2)),
-        ],
-      ),
-      child: ClipRRect(
+    return 
+      ClipRRect(
         borderRadius: BorderRadius.circular(8),
         child: Theme(
           data: Theme.of(context).copyWith(dividerColor: ColorTheme.textColor),
@@ -61,7 +53,6 @@ class _PreviousVideosTileState extends State<PreviousVideosTile> {
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 } // EOF previous_videos_tile.dart
