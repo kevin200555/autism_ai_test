@@ -39,6 +39,7 @@ class _HomeMenuScreenState extends State<HomeMenuScreen> {
         NavigationDestinationLabelBehavior.alwaysShow;
 
     return Scaffold(
+      backgroundColor: ColorTheme.blueBackground,
       appBar: AppBar(
         // change title if they ever change the app name
         title: AppBarTitle('Autism Tracker', color: ColorTheme.background),

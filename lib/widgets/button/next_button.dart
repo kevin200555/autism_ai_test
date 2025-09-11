@@ -56,35 +56,49 @@ class _NextButtonState extends State<NextButton> {
             scale: _scale,
             duration: const Duration(milliseconds: 120),
             curve: Curves.easeOut,
-            child: ElevatedButton.icon(
-              onPressed: widget.onPressed, // still works with keyboard / accessibility
-              label: ButtonText(
-                widget.label,
-                style: GoogleFonts.lato(
-                  textStyle: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: ColorTheme.alternateTextColor,
+            child: Container(
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: ColorTheme.accentShadow,
+                    spreadRadius: 2,
+                    blurRadius: 5,
+                    offset: const Offset(3, 3), // changes position of shadow
                   ),
-                ),
-                maxLines: 1,
-                minFontSize: 12,
+                ],
+                borderRadius: BorderRadius.circular(8),
               ),
-              // Icon next to the label
-              // Using Icons.arrow_forward for a right arrow
-              style: ElevatedButton.styleFrom(
-                backgroundColor: ColorTheme.accent,
-                foregroundColor: ColorTheme.alternateTextColor,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
+              child: ElevatedButton.icon(
+                onPressed: widget
+                    .onPressed, // still works with keyboard / accessibility
+                label: ButtonText(
+                  widget.label,
+                  style: GoogleFonts.lato(
+                    textStyle: TextStyle(
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                      color: ColorTheme.alternateTextColor,
+                    ),
+                  ),
+                  maxLines: 1,
+                  minFontSize: 12,
                 ),
-                padding: const EdgeInsets.symmetric(vertical: 16),
+                // Icon next to the label
+                // Using Icons.arrow_forward for a right arrow
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: ColorTheme.accent,
+                  foregroundColor: ColorTheme.alternateTextColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                ),
               ),
             ),
           ),
         ),
       ),
     );
+    ;
   }
 } // EOF next_button.dart
-
