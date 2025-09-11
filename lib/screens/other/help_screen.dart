@@ -23,6 +23,7 @@ class HelpScreen extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.transparent,
         flexibleSpace: AppBarGradient(),
+        iconTheme: IconThemeData(color: Colors.white),
       ),
       // all of the text information
       body: Scrollbar(

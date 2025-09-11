@@ -31,6 +31,14 @@ class VideoNavBarScreen extends StatelessWidget {
               color: ColorTheme.background,
               border: Border.all(color: ColorTheme.textColor, width: 2),
               borderRadius: BorderRadius.circular(8),
+              boxShadow: [
+                BoxShadow(
+                  color: ColorTheme.accentShadow,
+                  spreadRadius: 2,
+                  blurRadius: 5,
+                  offset: const Offset(0, 0),
+                ),
+              ],
             ),
             // This is the body of the screen
             // It has a scrollable column with text information about the video tasks

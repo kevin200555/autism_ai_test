@@ -5,9 +5,9 @@ class ColorTheme {
   static Color primary = const Color.fromARGB(255, 100, 227, 255);
   static Color primaryShadow = const Color.fromARGB(200, 15, 50, 200);
   static Color accent = const Color.fromRGBO(40, 30, 150, 1);
-  static Color accentShadow = const Color.fromARGB(200, 15, 50, 200);
+  static Color accentShadow = const Color.fromARGB(255, 29, 119, 255);
   static Color background = const Color.fromARGB(255, 245, 247, 250);
-  static Color blueBackground = const Color.fromARGB(255, 212, 242, 252);
+  static Color blueBackground = const Color.fromARGB(255, 230, 245, 250);
   static Color textColor = Colors.black;
   static Color alternateTextColor = Colors.white;
   static Color red = const Color.fromARGB(255, 222, 70, 70);

@@ -135,7 +135,7 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
                         'This is the list of all of the videos you have to take. '
                         'Carefully read each set of instructions and decide which one you want to do first. '
                         'You are welcome to take these out of order.  As always, feel free to take breaks '
-                        'and continue when you are ready.',
+                        'and continue when you are ready.\n',
                         color: ColorTheme.textColor,
                       ),
                       BodyText(

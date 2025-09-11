@@ -56,7 +56,15 @@ class _NextButtonState extends State<NextButton> {
             scale: _scale,
             duration: const Duration(milliseconds: 120),
             curve: Curves.easeOut,
-            child: 
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                gradient: RadialGradient(
+                  radius: 6,
+                  colors: [ColorTheme.accent,ColorTheme.accentShadow,ColorTheme.primary],
+                ),
+              ),
+              child:
                ElevatedButton.icon(
                 onPressed: widget
                     .onPressed, // still works with keyboard / accessibility
@@ -75,14 +83,14 @@ class _NextButtonState extends State<NextButton> {
                 // Icon next to the label
                 // Using Icons.arrow_forward for a right arrow
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: ColorTheme.accent,
+                  backgroundColor: Colors.transparent,
                   foregroundColor: ColorTheme.alternateTextColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
                   padding: const EdgeInsets.symmetric(vertical: 16),
                 ),
-              ),
+              ),),
             ),
           ),
         ),

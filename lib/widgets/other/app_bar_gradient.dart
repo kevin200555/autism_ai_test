@@ -18,4 +18,4 @@ class AppBarGradient extends StatelessWidget {
       ),
     );
   }
-}
+} // EOF app_bar_gradient.dart
