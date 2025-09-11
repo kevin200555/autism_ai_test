@@ -127,6 +127,14 @@ class _VideoRecordingMenuState extends State<VideoRecordingMenu> {
                     color: Colors.white,
                     border: Border.all(color: ColorTheme.textColor, width: 3),
                     borderRadius: BorderRadius.circular(8),
+                    boxShadow: [
+                      BoxShadow(
+                        color: ColorTheme.accentShadow,
+                        spreadRadius: 2,
+                        blurRadius: 5,
+                        offset: const Offset(0, 0),
+                      ),
+                    ],  
                   ),
                   child: Column(
                     children: [
