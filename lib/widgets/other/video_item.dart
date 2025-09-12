@@ -41,11 +41,7 @@ class _VideoItemState extends State<VideoItem> {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white, // Background color
-        border: Border.all(color: ColorTheme.textColor, width: 2), // Border
-        borderRadius: BorderRadius.circular(10), // Rounded corners
-        boxShadow: [
-          BoxShadow(color: Colors.black12, blurRadius: 6, offset: Offset(0, 2)),
-        ],
+
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8),

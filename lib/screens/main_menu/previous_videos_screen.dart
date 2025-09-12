@@ -15,6 +15,7 @@ class PreviousVideosScreen extends StatelessWidget {
     // This is the main widget that holds the previous videos screen
     // It has an app bar, a body with a list of previous videos, and each video
     return Scaffold(
+      backgroundColor: ColorTheme.blueBackground,
       body: Scrollbar(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -22,8 +23,16 @@ class PreviousVideosScreen extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             decoration: BoxDecoration(
               color: ColorTheme.background,
-              border: Border.all(color: ColorTheme.textColor, width: 3),
+              border: Border.all(color: ColorTheme.textColor, width: 2),
               borderRadius: BorderRadius.circular(8),
+              boxShadow: [
+                BoxShadow(
+                  color: ColorTheme.accentShadow,
+                  spreadRadius: 2,
+                  blurRadius: 5,
+                  offset: const Offset(0, 0),
+                ),
+              ],
             ),
             // This is the body of the screen
             // It has a scrollable list of previous videos that the user can view

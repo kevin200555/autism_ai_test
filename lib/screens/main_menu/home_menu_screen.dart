@@ -4,6 +4,7 @@ import 'package:autism_ai_test/screens/main_menu/settings_screen.dart';
 import 'package:autism_ai_test/screens/main_menu/video_navbar_screen.dart';
 import 'package:autism_ai_test/screens/main_menu/dashboard_screen.dart';
 import 'package:autism_ai_test/widgets/button/help_button.dart';
+import 'package:autism_ai_test/widgets/other/app_bar_gradient.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
@@ -39,15 +40,17 @@ class _HomeMenuScreenState extends State<HomeMenuScreen> {
       //  NavigationDestinationLabelBehavior.alwaysShow;
 
     return Scaffold(
+      backgroundColor: ColorTheme.blueBackground,
       appBar: AppBar(
         // change title if they ever change the app name
         title: AppBarTitle('Autism Tracker', color: ColorTheme.background),
         centerTitle: true,
-        backgroundColor: ColorTheme.accent,
+        backgroundColor: Colors.transparent,
         actions: [
           HelpButton(color: ColorTheme.background, camera: widget.camera),
         ],
         automaticallyImplyLeading: false,
+        flexibleSpace: AppBarGradient(),
       ),
       body: pages[currentPageIndex],
       bottomNavigationBar: SizedBox(

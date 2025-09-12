@@ -36,16 +36,7 @@ class FormTile extends StatefulWidget {
 class _FormTileState extends State<FormTile> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white, // Background color
-        border: Border.all(color: ColorTheme.textColor, width: 2), // Border
-        borderRadius: BorderRadius.circular(10), // Rounded corners
-        boxShadow: [
-          BoxShadow(color: Colors.black12, blurRadius: 6, offset: Offset(0, 2)),
-        ],
-      ),
-      child: ClipRRect(
+    return ClipRRect(
         borderRadius: BorderRadius.circular(8),
         child: Theme(
           data: Theme.of(context).copyWith(dividerColor: ColorTheme.textColor),
@@ -60,13 +51,13 @@ class _FormTileState extends State<FormTile> {
             ),
             collapsedTextColor: (widget.isCompleted)
                 ? ColorTheme.background
-                : ColorTheme.textColor,
+                : ColorTheme.background,
             textColor: (widget.isCompleted)
                 ? ColorTheme.background
                 : ColorTheme.textColor,
             collapsedBackgroundColor: (widget.isCompleted)
                 ? ColorTheme.green
-                : ColorTheme.primary,
+                : ColorTheme.progressBarBackground,
             backgroundColor: (widget.isCompleted)
                 ? ColorTheme.green
                 : ColorTheme.background,
@@ -116,7 +107,6 @@ class _FormTileState extends State<FormTile> {
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 } // EOF video_item.dart

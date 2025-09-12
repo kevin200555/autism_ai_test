@@ -32,8 +32,16 @@ class SettingsScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         decoration: BoxDecoration(
           color: ColorTheme.background,
-          border: Border.all(color: ColorTheme.textColor, width: 3),
+          border: Border.all(color: ColorTheme.textColor, width: 2),
           borderRadius: BorderRadius.circular(8),
+          boxShadow: [
+            BoxShadow(
+              color: ColorTheme.accentShadow,
+              spreadRadius: 2,
+              blurRadius: 5,
+              offset: const Offset(0, 0),
+            ),
+          ],
         ),
         child: SingleChildScrollView(
           // This is the main widget that holds the settings screen

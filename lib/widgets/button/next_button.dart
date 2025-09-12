@@ -56,35 +56,44 @@ class _NextButtonState extends State<NextButton> {
             scale: _scale,
             duration: const Duration(milliseconds: 120),
             curve: Curves.easeOut,
-            child: ElevatedButton.icon(
-              onPressed: widget.onPressed, // still works with keyboard / accessibility
-              label: ButtonText(
-                widget.label,
-                style: GoogleFonts.lato(
-                  textStyle: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: ColorTheme.alternateTextColor,
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                gradient: RadialGradient(
+                  radius: 6,
+                  colors: [ColorTheme.accent,ColorTheme.accentShadow,ColorTheme.primary],
+                ),
+              ),
+              child:
+               ElevatedButton.icon(
+                onPressed: widget
+                    .onPressed, // still works with keyboard / accessibility
+                label: ButtonText(
+                  widget.label,
+                  style: GoogleFonts.lato(
+                    textStyle: TextStyle(
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                      color: ColorTheme.alternateTextColor,
+                    ),
                   ),
+                  maxLines: 1,
+                  minFontSize: 12,
                 ),
-                maxLines: 1,
-                minFontSize: 12,
-              ),
-              // Icon next to the label
-              // Using Icons.arrow_forward for a right arrow
-              style: ElevatedButton.styleFrom(
-                backgroundColor: ColorTheme.accent,
-                foregroundColor: ColorTheme.alternateTextColor,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
+                // Icon next to the label
+                // Using Icons.arrow_forward for a right arrow
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.transparent,
+                  foregroundColor: ColorTheme.alternateTextColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  padding: const EdgeInsets.symmetric(vertical: 16),
                 ),
-                padding: const EdgeInsets.symmetric(vertical: 16),
-              ),
+              ),),
             ),
           ),
         ),
-      ),
-    );
+      );
   }
 } // EOF next_button.dart
-

@@ -1,8 +1,7 @@
 import 'package:autism_ai_test/screens/informed_consent/welcome_screen.dart';
 import 'package:autism_ai_test/screens/main_menu/home_menu_screen.dart';
 import 'package:autism_ai_test/screens/other/no_camera_error_screen.dart';
-import 'package:autism_ai_test/screens/intake/intake_form_screen.dart';
-import 'package:autism_ai_test/screens/mchatr/m_chatr_form_screen.dart';
+import 'package:autism_ai_test/screens/other/no_wifi_screen.dart';
 import 'package:autism_ai_test/screens/video_section/disconnect_screen.dart';
 import 'package:autism_ai_test/uploading/user_class.dart';
 import 'package:autism_ai_test/uploading/video_storage_class.dart';
@@ -21,14 +20,12 @@ Future<void> main() async {
   // await Permission.camera.request();
   // await Permission.microphone.request();
   await Firebase.initializeApp();
-  
+
   await Hive.initFlutter();
   Hive.registerAdapter(VideoStorageClassItemAdapter());
   await Hive.openBox<VideoStorageClassItem>('video_item_box');
-  
 
   await Hive.openBox('user_data'); // generic box for UserClass
- 
 
   await UserClass.loadFromHive();
   await VideoStorageClassItem.loadFromHive();
@@ -43,7 +40,15 @@ Future<void> main() async {
   }
   // sets the screen orientation to be vertical (things don't really look right when in horizontal)
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  runApp(AutismAITest());
+  // before running the app, the WiFiGate widget is used to check for wifi connection
+  // if there is no wifi connection, it shows a screen asking the user to connect to wifi
+  // without wifi connection, the app cannot upload anything to firebase (which is a pretty big part of the app)
+  runApp(
+    MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: WiFiGate(child: AutismAITest()),
+    ),
+  );
 }
 
 class AutismAITest extends StatelessWidget {
@@ -70,9 +75,9 @@ class AutismAITest extends StatelessWidget {
       case 'IC_document_form':
         initialScreen = WelcomeScreen(camera: cameras[0]);
       case 'child_intake':
-        initialScreen = ChildIntakeFormScreen(camera: cameras[0]);
+        initialScreen = HomeMenuScreen(camera: cameras[0]);
       case 'mChatR1':
-        initialScreen = MChatRFormScreen1(camera: cameras[0]);
+        initialScreen = HomeMenuScreen(camera: cameras[0]);
       // anytime the user disconnects from the General Instructions Screen, it brings the User to the first screen in that area
       // This is because their isn't a reason not to, might as well since you're not filling anything out any information
       case 'video_info_screen':

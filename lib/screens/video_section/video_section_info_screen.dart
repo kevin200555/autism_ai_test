@@ -111,27 +111,26 @@ class GeneralInstructionsScreen extends StatelessWidget {
                   'Please read all instructions completley\n',
                   color: ColorTheme.textColor,
                 ),
-                NextButton(
-                  label: 'NEXT',
-                  onPressed: () {
-                    UserClass.currentScreen = "main_menu";
-                    UserClass.saveToHive();
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => FewTipsBeforeStart(
-                          camera: camera,
-                          videoItem: videoItem,
-                        ),
-                      ),
-                    );
-                  },
-                ),
               ],
             ),
           ),
         ),
       ),
+      floatingActionButton: NextButton(
+        label: 'NEXT',
+        onPressed: () {
+          UserClass.currentScreen = "main_menu";
+          UserClass.saveToHive();
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) =>
+                  FewTipsBeforeStart(camera: camera, videoItem: videoItem),
+            ),
+          );
+        },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
@@ -413,27 +412,26 @@ class FewTipsBeforeStart extends StatelessWidget {
                   'Thanks again for being part of this—we\'re excited to see what you and your child share with us!\n',
                   color: ColorTheme.textColor,
                 ),
-                NextButton(
-                  label: 'NEXT',
-                  onPressed: () {
-                    UserClass.currentScreen = "main_menu";
-                    UserClass.saveToHive();
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => BeforeYouStartScreen(
-                          camera: camera,
-                          videoItem: videoItem,
-                        ),
-                      ),
-                    );
-                  },
-                ),
               ],
             ),
           ),
         ),
       ),
+      floatingActionButton: NextButton(
+        label: 'NEXT',
+        onPressed: () {
+          UserClass.currentScreen = "main_menu";
+          UserClass.saveToHive();
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) =>
+                  BeforeYouStartScreen(camera: camera, videoItem: videoItem),
+            ),
+          );
+        },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
@@ -657,27 +655,26 @@ class BeforeYouStartScreen extends StatelessWidget {
                   ' everyday moments—so please keep it relaxed and natural.\n',
                   color: ColorTheme.textColor,
                 ),
-                NextButton(
-                  label: 'NEXT',
-                  onPressed: () {
-                    UserClass.currentScreen = "main_menu";
-                    UserClass.saveToHive();
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => FilmingTipsScreen(
-                          camera: camera,
-                          videoItem: videoItem,
-                        ),
-                      ),
-                    );
-                  },
-                ),
               ],
             ),
           ),
         ),
       ),
+      floatingActionButton: NextButton(
+        label: 'NEXT',
+        onPressed: () {
+          UserClass.currentScreen = "main_menu";
+          UserClass.saveToHive();
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) =>
+                  FilmingTipsScreen(camera: camera, videoItem: videoItem),
+            ),
+          );
+        },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
@@ -878,27 +875,28 @@ class _FilmingTipsScreenState extends State<FilmingTipsScreen> {
                     ),
                   ),
                 ),
-                NextButton(
-                  label: 'BEGIN TEST',
-                  onPressed: () {
-                    UserClass.currentScreen = "video_info_screen";
-                    UserClass.saveToHive();
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => VideoRecordingMenu(
-                          camera: widget.camera,
-                          videoItem: widget.videoItem,
-                        ),
-                      ),
-                    );
-                  },
-                ),
               ],
             ),
           ),
         ),
       ),
+      floatingActionButton: NextButton(
+        label: 'BEGIN TEST',
+        onPressed: () {
+          UserClass.currentScreen = "video_info_screen";
+          UserClass.saveToHive();
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => VideoRecordingMenu(
+                camera: widget.camera,
+                videoItem: widget.videoItem,
+              ),
+            ),
+          );
+        },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 } // EOF video_section_info_screen.dart

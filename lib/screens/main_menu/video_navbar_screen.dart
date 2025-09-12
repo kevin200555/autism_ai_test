@@ -7,7 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:autism_ai_test/constants/colors.dart';
 
-// The purpose of this screen is to provide general instructions for the video tasks
+// Ok, this isn't really a navbar screen, it's more of an info screen before you start the video tasks
+// but whatever. This screen gives information about the video tasks and has a button to go to start that whole process
 
 class VideoNavBarScreen extends StatelessWidget {
   final CameraDescription camera;
@@ -19,7 +20,7 @@ class VideoNavBarScreen extends StatelessWidget {
     // It has an app bar, a body with the text information, and a button to
     // go to the general instructions screen
     return Scaffold(
-      backgroundColor: ColorTheme.background,
+      backgroundColor: ColorTheme.blueBackground,
       body: Scrollbar(
         thumbVisibility: true,
         child: Padding(
@@ -28,8 +29,16 @@ class VideoNavBarScreen extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             decoration: BoxDecoration(
               color: ColorTheme.background,
-              border: Border.all(color: ColorTheme.textColor, width: 3),
+              border: Border.all(color: ColorTheme.textColor, width: 2),
               borderRadius: BorderRadius.circular(8),
+              boxShadow: [
+                BoxShadow(
+                  color: ColorTheme.accentShadow,
+                  spreadRadius: 2,
+                  blurRadius: 5,
+                  offset: const Offset(0, 0),
+                ),
+              ],
             ),
             // This is the body of the screen
             // It has a scrollable column with text information about the video tasks

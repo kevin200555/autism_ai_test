@@ -1,4 +1,5 @@
 import 'package:autism_ai_test/widgets/button/back_to_main_menu.dart';
+import 'package:autism_ai_test/widgets/other/app_bar_gradient.dart';
 import 'package:autism_ai_test/widgets/other/text_types.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
@@ -18,9 +19,11 @@ class HelpScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorTheme.background,
       appBar: AppBar(
-        title: AppBarTitle('HELP MENU', color: ColorTheme.textColor),
+        title: AppBarTitle('HELP MENU', color: ColorTheme.alternateTextColor),
         centerTitle: true,
-        backgroundColor: ColorTheme.background,
+        backgroundColor: Colors.transparent,
+        flexibleSpace: AppBarGradient(),
+        iconTheme: IconThemeData(color: Colors.white),
       ),
       // all of the text information
       body: Scrollbar(
