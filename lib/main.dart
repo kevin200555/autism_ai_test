@@ -50,7 +50,7 @@ Future<void> main() async {
     ),
   );
   //uncomment this line if you want to bypass the wifi
-  runApp(AutismAITest());
+  //runApp(AutismAITest());
 }
 
 class AutismAITest extends StatelessWidget {

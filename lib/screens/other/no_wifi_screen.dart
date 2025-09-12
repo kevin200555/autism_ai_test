@@ -11,7 +11,7 @@ class WiFiGate extends StatefulWidget {
 }
 
 class _WiFiGateState extends State<WiFiGate> {
-  bool _internetAvailable = false;
+  bool? _internetAvailable; // null = checking
 
   @override
   void initState() {
@@ -23,16 +23,9 @@ class _WiFiGateState extends State<WiFiGate> {
   }
 
   Future<void> _checkInternet() async {
-    // First, check if device has a network connection
-    var connectivityResult = await Connectivity().checkConnectivity();
-    if (connectivityResult == ConnectivityResult.none) {
-      setState(() => _internetAvailable = false);
-      return;
-    }
-
-    // Then, try to ping an actual website to verify internet access
+    setState(() => _internetAvailable = null); // show loading
     try {
-      final result = await InternetAddress.lookup('example.com');
+      final result = await InternetAddress.lookup('google.com');
       if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
         setState(() => _internetAvailable = true);
       } else {
@@ -45,7 +38,12 @@ class _WiFiGateState extends State<WiFiGate> {
 
   @override
   Widget build(BuildContext context) {
-    if (_internetAvailable) {
+    if (_internetAvailable == null) {
+      // still checking
+      return Scaffold(
+        body: Center(child: CircularProgressIndicator()),
+      );
+    } else if (_internetAvailable == true) {
       return widget.child; // proceed to main app
     } else {
       return Scaffold(
