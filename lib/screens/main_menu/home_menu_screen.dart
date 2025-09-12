@@ -36,8 +36,8 @@ class _HomeMenuScreenState extends State<HomeMenuScreen> {
   // It has an app bar, a body with the pages, and a bottom navigation bar
   // The app bar has a title and a help button
   Widget build(BuildContext context) {
-    NavigationDestinationLabelBehavior labelBehavior =
-        NavigationDestinationLabelBehavior.alwaysShow;
+    //NavigationDestinationLabelBehavior labelBehavior =
+      //  NavigationDestinationLabelBehavior.alwaysShow;
 
     return Scaffold(
       backgroundColor: ColorTheme.blueBackground,
@@ -53,22 +53,39 @@ class _HomeMenuScreenState extends State<HomeMenuScreen> {
         flexibleSpace: AppBarGradient(),
       ),
       body: pages[currentPageIndex],
-      bottomNavigationBar: NavigationBar(
-        labelBehavior: labelBehavior,
-        backgroundColor: ColorTheme.navigationBarBackground,
-        indicatorColor: ColorTheme.primary,
-        selectedIndex: currentPageIndex,
-        onDestinationSelected: (int index) {
-          setState(() {
-            currentPageIndex = index;
-          });
-        },
-        destinations: const <Widget>[
-          NavigationDestination(icon: Icon(Icons.home), label: ''),
-          NavigationDestination(icon: Icon(Icons.camera_alt), label: ''),
-          NavigationDestination(icon: Icon(Icons.video_library), label: ''),
-          NavigationDestination(icon: Icon(Icons.settings), label: ''),
-        ],
+      bottomNavigationBar: SizedBox(
+        height:
+            MediaQuery.of(context).size.height *
+            0.125, // give more vertical room for bigger indicator
+        child: NavigationBar(
+          labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
+          backgroundColor: ColorTheme.navigationBarBackground,
+          indicatorColor: ColorTheme.primary,
+          selectedIndex: currentPageIndex,
+          indicatorShape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16), // pill shape
+          ),
+          onDestinationSelected: (int index) {
+            setState(() {
+              currentPageIndex = index;
+            });
+          },
+          destinations: const <Widget>[
+            NavigationDestination(icon: Icon(Icons.home, size: 40), label: ''),
+            NavigationDestination(
+              icon: Icon(Icons.camera_alt, size: 40),
+              label: '',
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.video_library, size: 40),
+              label: '',
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.settings, size: 40),
+              label: '',
+            ),
+          ],
+        ),
       ),
     );
   }
