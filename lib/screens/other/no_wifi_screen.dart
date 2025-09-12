@@ -23,13 +23,13 @@ class _WiFiGateState extends State<WiFiGate> {
     super.initState();
     _checkWifi();
     Connectivity().onConnectivityChanged.listen((result) {
-      setState(() => _wifiConnected = result == ConnectivityResult.wifi);
+      setState(() => _wifiConnected = result == ConnectivityResult.wifi || result == ConnectivityResult.mobile);
     });
   }
 
   Future<void> _checkWifi() async {
     var result = await Connectivity().checkConnectivity();
-    setState(() => _wifiConnected = result == ConnectivityResult.wifi);
+    setState(() => _wifiConnected = result == ConnectivityResult.wifi || result == ConnectivityResult.mobile);
   }
 
   @override

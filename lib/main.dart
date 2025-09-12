@@ -43,12 +43,13 @@ Future<void> main() async {
   // before running the app, the WiFiGate widget is used to check for wifi connection
   // if there is no wifi connection, it shows a screen asking the user to connect to wifi
   // without wifi connection, the app cannot upload anything to firebase (which is a pretty big part of the app)
-  // runApp(
-  //   MaterialApp(
-  //     debugShowCheckedModeBanner: false,
-  //     home: WiFiGate(child: AutismAITest()),
-  //   ),
-  // );
+  runApp(
+    MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: WiFiGate(child: AutismAITest()),
+    ),
+  );
+  //uncomment this line if you want to bypass the wifi
   runApp(AutismAITest());
 }
 
