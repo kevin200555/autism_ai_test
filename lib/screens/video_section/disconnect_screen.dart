@@ -46,10 +46,13 @@ class _DisconnectScreenState extends State<DisconnectScreen> {
         children: [
           ImportantBodyText(
             'Hey it seemed like you disconnected during your last video recording session '
-            'No worries! Your progress was saved and feel free to continue where you left off\n',
+            'No worries! Your progress was saved and feel free to continue where you left off!\n',
             color: ColorTheme.textColor,
           ),
-          NextButton(
+          
+        ],
+      ),
+      floatingActionButton: NextButton(
             label: 'Next',
             onPressed: () {
               Navigator.push(
@@ -63,8 +66,7 @@ class _DisconnectScreenState extends State<DisconnectScreen> {
               );
             },
           ),
-        ],
-      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 } // EOF disconnect_screen.dart
